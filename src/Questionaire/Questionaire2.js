@@ -82,56 +82,74 @@ const Questionaire = props => {
   }
 
   return (
-    <Form
-      initialValues={questionaire.initialValues}
-      validate={validate}
-      onSubmit={values => {
-        if (isLastPage()) {
-          console.log('Finished!')
-        } else {
-          console.log('Next!')
-          next(values)
-        }
-      }}
-    >
-      {({ handleSubmit, submitting, values }) => (
-        <>
-          <QHeader handlePrevious={previous} values={values} page={pageIndex} />
-          <div className={classes.appContainer}>
-            <Route
-              render={({ location }) => (
+    <User>
+      {({ data: { me } }) => (
+        <Mutation mutation={CREATE_VISIT_MUTATION} variables={variables}>
+          {(createVisit, { error, loading }) => (
+            <Form
+              initialValues={questionaire.initialValues}
+              validate={validate}
+              onSubmit={async values => {
+                if (isLastPage()) {
+                  await createVisit()
+                  console.log('Finished!')
+                } else {
+                  console.log('Next!')
+                  next(values)
+                }
+              }}
+            >
+              {({ handleSubmit, submitting, values }) => (
                 <>
-                  <Switch location={location}>
-                    <Redirect
-                      from={questionaire.pathBase}
-                      exact
-                      to={`${questionaire.pathBase}/zipcode`}
+                  <QHeader
+                    handlePrevious={previous}
+                    values={values}
+                    page={pageIndex}
+                  />
+                  <div className={classes.appContainer}>
+                    <Route
+                      render={({ location }) => (
+                        <>
+                          {me === null ? (
+                            <Redirect to={questionaire.startPath} />
+                          ) : null}
+
+                          <Switch location={location}>
+                            <Redirect
+                              from={questionaire.pathBase}
+                              exact
+                              to={`${questionaire.pathBase}/zipcode`}
+                            />
+                            {questionaire.pages.map(({ key, component: C }) => (
+                              <Route
+                                key={key}
+                                path={`${questionaire.pathBase}/${key}`}
+                                exact
+                                render={() => (
+                                  <C
+                                    key={key}
+                                    direction={transDir}
+                                    handleSubmit={handleSubmit}
+                                    values={values}
+                                    heading={questionaire.heading}
+                                  />
+                                )}
+                              />
+                            ))}
+                            <Route render={() => <div>Not Found</div>} />
+                          </Switch>
+                        </>
+                      )}
                     />
-                    {questionaire.pages.map(({ key, component: C }) => (
-                      <Route
-                        key={key}
-                        path={`${questionaire.pathBase}/${key}`}
-                        exact
-                        render={() => (
-                          <C
-                            key={key}
-                            direction={transDir}
-                            handleSubmit={handleSubmit}
-                            values={values}
-                            heading={questionaire.heading}
-                          />
-                        )}
-                      />
-                    ))}
-                    <Route render={() => <div>Not Found</div>} />
-                  </Switch>
+                  </div>
+                  <pre>{JSON.stringify(values, 0, 2)}</pre>
                 </>
               )}
-            />
-          </div>
-        </>
+            </Form>
+          )}
+        </Mutation>
       )}
-    </Form>
+    </User>
   )
 }
 
