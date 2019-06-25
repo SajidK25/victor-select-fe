@@ -1,0 +1,9 @@
+{
+  "workbench.colorCustomizations": {
+    "titleBar.activeBackground": "#ff33ff",
+    "titleBar.inactiveBackground": "#ff33ff"
+  },
+  "git.ignoreLimitWarning": true,
+  "spellright.language": ["en"],
+  "spellright.documentTypes": ["markdown", "latex", "plaintext"]
+}
