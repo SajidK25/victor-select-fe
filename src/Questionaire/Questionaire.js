@@ -105,7 +105,7 @@ const Questionaire = props => {
                     <Redirect
                       from={questionaire.pathBase}
                       exact
-                      to={`${questionaire.pathBase}/zipcode`}
+                      to={`${questionaire.pathBase}/start`}
                     />
                     {questionaire.pages.map(({ key, component: C }) => (
                       <Route
