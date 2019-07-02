@@ -1,16 +1,16 @@
 /* eslint-disable import/order */
-import React from "react";
-import { Field } from "react-final-form";
-import { EdSelectionDetail } from "../../_components/EdSelectionDetail";
-import { Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import Radio from "@material-ui/core/Radio";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { EdPriceOption } from "../../_components/EdPriceOption";
-import { StandardForm } from "../../_components/StandardForm";
-import { Transition } from "../../_components/Transition";
-import { getPrices } from "../../_constants";
-import { formatMoney } from "../../_constants/drugSelections";
+import React from 'react'
+import { Field } from 'react-final-form'
+import { EdSelectionDetail } from '../../_components/EdSelectionDetail'
+import { Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import Radio from '@material-ui/core/Radio'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import { EdPriceOption } from '../../_components/EdPriceOption'
+import { StandardForm } from '../../_components/StandardForm'
+import { Transition } from '../../_components/Transition'
+import { getPrices } from '../../_constants'
+import { formatMoney } from '../../_constants/drugSelections'
 
 const useStyles = makeStyles(theme => ({
   description: {
@@ -31,65 +31,65 @@ const useStyles = makeStyles(theme => ({
   },
   controlRoot: {
     margin: 0,
-    width: "100%",
-    verticalAlign: "top"
+    width: '100%',
+    verticalAlign: 'top'
   },
   labelRoot: {
-    width: "100%"
+    width: '100%'
   },
   subHead: {
-    width: "80%",
-    marginLeft: "auto",
-    marginRight: "auto",
+    width: '80%',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     marginBottom: theme.spacing(1.5)
   },
   hidden: {
-    display: "none"
+    display: 'none'
   },
   outer: {
-    display: "flex",
-    minHeight: "100%",
-    padding: "0 !important",
-    [theme.breakpoints.down("sm")]: {
-      flexDirection: "column"
+    display: 'flex',
+    minHeight: '100%',
+    padding: '0 !important',
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column'
     }
   },
   main: {
     flexShrink: 0,
-    width: "60%",
-    [theme.breakpoints.down("sm")]: {
-      width: "100%",
+    width: '60%',
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
       paddingBottom: 40
     }
   },
   innerMain: {
     marginLeft: 20,
-    padding: "10px 0 60px",
-    width: "100%",
+    padding: '10px 0 60px',
+    width: '100%',
     maxWidth: 400,
-    [theme.breakpoints.down("sm")]: {
+    [theme.breakpoints.down('sm')]: {
       margin: 0,
-      padding: "0 24px",
-      width: "100%",
-      maxWidth: "unset"
+      padding: '0 24px',
+      width: '100%',
+      maxWidth: 'unset'
     }
   },
   photo: {
-    display: "flex",
+    display: 'flex',
     flexShrink: 0,
-    alignItems: "flex-start",
-    justifyContent: "flex-end",
-    width: "40%",
+    alignItems: 'flex-start',
+    justifyContent: 'flex-end',
+    width: '40%',
     backgroundColor: theme.palette.background.paper,
-    [theme.breakpoints.down("sm")]: {
-      width: "100%"
+    [theme.breakpoints.down('sm')]: {
+      width: '100%'
     }
   },
   pricingGroup: {
-    display: "flex",
+    display: 'flex',
     margin: 0,
-    [theme.breakpoints.down("xs")]: {
-      flexDirection: "column"
+    [theme.breakpoints.down('xs')]: {
+      flexDirection: 'column'
     }
   },
   pricingBox: {
@@ -99,36 +99,36 @@ const useStyles = makeStyles(theme => ({
   },
   priceItem: {
     flexShrink: 0,
-    width: "33.3%",
-    [theme.breakpoints.down("xs")]: {
-      width: "100%"
+    width: '33.3%',
+    [theme.breakpoints.down('xs')]: {
+      width: '100%'
     }
   },
   image: {
-    margin: "75px 33px",
-    maxWidth: "100%",
+    margin: '75px 33px',
+    maxWidth: '100%',
     width: 175,
-    display: "block",
-    height: "auto",
-    [theme.breakpoints.down("sm")]: {
-      margin: "10px auto 15px",
+    display: 'block',
+    height: 'auto',
+    [theme.breakpoints.down('sm')]: {
+      margin: '10px auto 15px',
       maxWidth: 175
     }
   }
-}));
+}))
 
 const validateHowOften = values => {
-  const errors = {};
+  const errors = {}
 
-  return errors;
-};
+  return errors
+}
 
 const PriceRadio = props => {
-  const { input, id, options, LabelDisplay } = props;
-  const classes = useStyles();
-  console.log(props);
+  const { input, id, options, LabelDisplay } = props
+  const classes = useStyles()
+  console.log(props)
 
-  if (options.totalPrice < 50) return null;
+  if (options.totalPrice < 50) return null
 
   return (
     <div className={classes.priceItem}>
@@ -153,16 +153,16 @@ const PriceRadio = props => {
         }
       />
     </div>
-  );
-};
+  )
+}
 
 const PricingGroup = props => {
   const {
     input,
     meta: { touched, error },
     pricing
-  } = props;
-  const classes = useStyles();
+  } = props
+  const classes = useStyles()
 
   return (
     <div className={classes.pricingGroup}>
@@ -172,7 +172,7 @@ const PricingGroup = props => {
         options={{
           pricing: pricing.sixMonth,
           totalPrice: pricing.sixMonth * 6,
-          title: "Ship every 6 months",
+          title: 'Ship every 6 months',
           subTitle: `Billed ${formatMoney(
             pricing.sixTotal
           )} every six months. Cancel anytime.`,
@@ -186,7 +186,7 @@ const PricingGroup = props => {
         options={{
           pricing: pricing.threeMonth,
           totalPrice: pricing.threeMonth * 3,
-          title: "Ship every 3 months",
+          title: 'Ship every 3 months',
           subTitle: `Billed ${formatMoney(
             pricing.threeTotal,
             0
@@ -201,31 +201,22 @@ const PricingGroup = props => {
         options={{
           pricing: pricing.monthly,
           totalPrice: pricing.monthly,
-          title: "Ship monthly",
+          title: 'Ship monthly',
           subTitle: `Pay Full Price.`,
           savings: 0
         }}
         id="monthly"
       />
     </div>
-  );
-};
+  )
+}
 
 const HowOftenPage = props => {
-  const { values, direction, handleSubmit, ...rest } = props;
+  const { values, direction, handleSubmit, ...rest } = props
 
-  const classes = useStyles();
+  const classes = useStyles()
 
-  const pricing = getPrices(values.subscription);
-  // const pricing = {
-  //   display: 'ROMEO XL',
-  //   monthlyDoses: 8,
-  //   monthly: 160,
-  //   threeMonth: 140,
-  //   threeTotal: 420,
-  //   sixMonth: 128,
-  //   sixTotal: 768
-  // }
+  const pricing = getPrices(values.subscription)
 
   return (
     <Transition direction={direction}>
@@ -261,7 +252,7 @@ const HowOftenPage = props => {
         </div>
       </div>
     </Transition>
-  );
-};
+  )
+}
 
-export { HowOftenPage, validateHowOften };
+export { HowOftenPage, validateHowOften }
