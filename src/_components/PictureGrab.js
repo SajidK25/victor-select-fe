@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     borderStyle: "solid",
     borderWidth: 1,
     borderColor: "gray",
-    minWidth: 400,
+    width: '100%',
     minHeight: 200
   },
   image: {

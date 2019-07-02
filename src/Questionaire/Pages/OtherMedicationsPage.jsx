@@ -60,7 +60,7 @@ const validateOtherMedications = values => {
 };
 
 const questionText =
-  "Death can result from taking ED medication with any of the following medicines. You should see a doctor in person and not use our service.";
+  "Severe injury or even death can result from taking ED medication with any of the following medicines. You should see a doctor in person and not use our service.";
 const additionalText = "Select all that apply";
 
 const noOptionField = "otherMeds.none";

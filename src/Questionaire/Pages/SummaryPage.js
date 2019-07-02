@@ -1,13 +1,9 @@
 /* eslint-disable import/order */
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
-import Radio from '@material-ui/core/Radio'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Divider from '@material-ui/core/Divider'
-import { EdPriceOption } from '../../_components/EdPriceOption'
 import { StandardForm } from '../../_components/StandardForm'
 import { Transition } from '../../_components/Transition'
-import { getPrices } from '../../_constants'
 import { formatMoney, drugDisplaySetup } from '../../_constants/drugSelections'
 
 const useStyles = makeStyles(theme => ({

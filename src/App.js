@@ -1,9 +1,10 @@
-import React from "react";
-import { BrowserRouter as Router } from "react-router-dom";
-import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
-import { orange, blue } from "@material-ui/core/colors";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import { Main } from "./_pages/Main";
+import React from 'react'
+import { BrowserRouter as Router } from 'react-router-dom'
+
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
+import { orange, blue } from '@material-ui/core/colors'
+import CssBaseline from '@material-ui/core/CssBaseline'
+import { Main } from './_pages/Main'
 
 let theme = createMuiTheme({
   overrides: {
@@ -17,7 +18,7 @@ let theme = createMuiTheme({
     MuiFormHelperText: {
       root: {
         marginLeft: 12,
-        color: "rgba(0, 0, 0, 0.54)"
+        color: 'rgba(0, 0, 0, 0.54)'
       }
     }
   },
@@ -26,7 +27,7 @@ let theme = createMuiTheme({
     primary: blue,
     secondary: orange,
     background: {
-      default: "#fafafa"
+      default: '#fafafa'
     }
   },
   breakpoints: {
@@ -40,30 +41,29 @@ let theme = createMuiTheme({
       fontWeight: 300
     },
     body2: {
-      fontSize: "1em",
+      fontSize: '1em',
       fontWeight: 300,
-      lineHeight: "1.2rem"
+      lineHeight: '1.2rem'
     },
     h6: {
       fontSize: 20,
-      lineHeight: "1.7rem",
+      lineHeight: '1.7rem',
       letterSpacing: 0,
       fontWeight: 500
     }
   }
-});
+})
 
-class App extends React.Component {
-  render() {
-    return (
-      <MuiThemeProvider theme={theme}>
-        <CssBaseline />
-        <Router>
-          <Main />
-        </Router>
-      </MuiThemeProvider>
-    );
-  }
+const App = () => {
+  return (
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline />
+
+      <Router>
+        <Main />
+      </Router>
+    </MuiThemeProvider>
+  )
 }
 
-export { App };
+export { App }

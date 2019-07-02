@@ -1,12 +1,13 @@
 import React from 'react'
 import { withRouter, Route, Switch } from 'react-router-dom'
 import { withStyles } from '@material-ui/core/styles'
-//import Signin from '../_pages/signin'
+import { Signin } from '../_pages/signin'
 import { Questionaire } from '../Questionaire'
+import { CreateAccountPage } from '../Questionaire/Pages/CreateAccountPage'
 import edQuestionaire from '../Questionaire/edQuestionPaths'
 import sleepQuestionaire from '../Questionaire/sleepQuestionPaths'
 import hairQuestionaire from '../Questionaire/hairQuestionPaths'
-//import Checkout from '../_pages/Checkout'
+import { PaymentForm } from './PaymentForm'
 
 const styles = () => ({
   app: {
@@ -24,8 +25,12 @@ class Main extends React.Component {
     return (
       <div className={classes.app}>
         <Switch>
-          {/* //<Route path="/signin" render={() => <Signin />} />
-          //<Route path="/checkout" render={() => <Checkout />} /> */}
+          <Route path="/signin" render={() => <Signin />} />
+          <Route path="/payment" render={() => <PaymentForm />} />
+          <Route
+            path={edQuestionaire.startPath}
+            render={() => <CreateAccountPage questionaire={edQuestionaire} />}
+          />
           <Route
             path="/visit/ed"
             render={() => <Questionaire questionaire={edQuestionaire} />}

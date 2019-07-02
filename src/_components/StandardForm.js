@@ -1,13 +1,25 @@
-import React from "react";
-import { NextButton } from "./ButtonGroup";
+import React from 'react'
+import { NextButton } from './ButtonGroup'
 
 export const StandardForm = props => {
-  const { handleSubmit, values } = props;
+  const {
+    handleSubmit,
+    buttonText,
+    buttonVariant,
+    validating,
+    submitting,
+    ...rest
+  } = props
 
   return (
     <form onSubmit={handleSubmit}>
       {props.children}
-      <NextButton />
+      <NextButton
+        validating={validating}
+        submitting={submitting}
+        variant={buttonVariant}
+        buttonText={buttonText}
+      />
     </form>
-  );
-};
+  )
+}

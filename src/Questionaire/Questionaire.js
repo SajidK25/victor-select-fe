@@ -10,7 +10,7 @@ import {
   pathMatch
 } from 'react-router-dom'
 import { getNextPage, getCurrentPage } from './questionPaths'
-import { QHeader } from '../_components'
+import { QuestionaireLayout } from '../_components/QuestionaireLayout'
 import { makeStyles } from '@material-ui/core/styles'
 import User from '../_components/User'
 
@@ -34,7 +34,6 @@ const Questionaire = props => {
   const [pageIndex, setPageIndex] = useState(0)
   const [transDir, setTransDir] = useState('left')
   const [page, setPage] = useState(questionaire.pages[0])
-  const [variables, setVariables] = useState({})
 
   const classes = useStyles()
 
@@ -94,42 +93,44 @@ const Questionaire = props => {
         }
       }}
     >
-      {({ handleSubmit, submitting, values }) => (
-        <>
-          <QHeader handlePrevious={previous} values={values} page={pageIndex} />
-          <div className={classes.appContainer}>
-            <Route
-              render={({ location }) => (
-                <>
-                  <Switch location={location}>
-                    <Redirect
-                      from={questionaire.pathBase}
+      {({ handleSubmit, submitting, values, validating }) => (
+        <QuestionaireLayout
+          handlePrevious={previous}
+          values={values}
+          page={pageIndex}
+        >
+          <Route
+            render={({ location }) => (
+              <>
+                <Switch location={location}>
+                  <Redirect
+                    from={questionaire.pathBase}
+                    exact
+                    to={`${questionaire.pathBase}/zipcode`}
+                  />
+                  {questionaire.pages.map(({ key, component: C }) => (
+                    <Route
+                      key={key}
+                      path={`${questionaire.pathBase}/${key}`}
                       exact
-                      to={`${questionaire.pathBase}/start`}
+                      render={() => (
+                        <C
+                          key={key}
+                          direction={transDir}
+                          handleSubmit={handleSubmit}
+                          values={values}
+                          validating={validating}
+                          heading={questionaire.heading}
+                        />
+                      )}
                     />
-                    {questionaire.pages.map(({ key, component: C }) => (
-                      <Route
-                        key={key}
-                        path={`${questionaire.pathBase}/${key}`}
-                        exact
-                        render={() => (
-                          <C
-                            key={key}
-                            direction={transDir}
-                            handleSubmit={handleSubmit}
-                            values={values}
-                            heading={questionaire.heading}
-                          />
-                        )}
-                      />
-                    ))}
-                    <Route render={() => <div>Not Found</div>} />
-                  </Switch>
-                </>
-              )}
-            />
-          </div>
-        </>
+                  ))}
+                  <Route render={() => <div>Not Found</div>} />
+                </Switch>
+              </>
+            )}
+          />
+        </QuestionaireLayout>
       )}
     </Form>
   )

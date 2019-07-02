@@ -52,3 +52,4 @@ export * from "./HairDegreePage";
 export * from "./SummaryPage";
 export * from "./ShippingPage";
 export * from "./CreateAccountPage";
+export * from "./FemaleEdPage";

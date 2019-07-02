@@ -6,9 +6,6 @@ const options = [
   {
     name: "otherConditions.priapism",
     label: "Priapism (erection lasting longer than 4 hours)",
-    explain: "otherConditions.priapismExplain",
-    explainText:
-      "​Please describe the circumstance and list what treatment you received."
   },
   {
     name: "otherConditions.retinitisPigmentosa",
@@ -19,8 +16,6 @@ const options = [
     name: "otherConditions.clotting",
     label:
       "Blood clotting disorder, abnormal bleeding or bruising, or coagulopathy",
-    explain: "otherConditions.clottingExplain",
-    explainText: "Please provide details"
   },
   { name: "otherConditions.myeloma", label: "Myeloma or leukemia" }
 ];
@@ -33,13 +28,10 @@ const validateOtherConditions = values => {
     errors.checkError = "Please select an option";
   }
 
-  if (c.priapism && !c.priapismExplain) {
-    errors.otherConditions.priapismExplain = "Please provide details.";
+  if (!optionsAllFalse(options, values)) {
+    errors.checkError = 'You should see a doctor in person and not use our service.'
   }
-  if (c.clotting && !c.clottingExplain) {
-    errors.otherConditions.clottingExplain = "Please provide details.";
-  }
-
+  
   return errors;
 };
 

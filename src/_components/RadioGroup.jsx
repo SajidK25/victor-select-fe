@@ -23,6 +23,7 @@ export const RadioGroup = props => {
           explainText={i.explainText}
           extraOptions={i.extraOptions}
           extraOptionsName={i.extraOptionsName}
+          warning={i.warning}
           input={input}
           type="radio"
           {...rest}

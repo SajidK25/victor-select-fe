@@ -12,7 +12,7 @@ const useStyles = makeStyles({
 
 //renderCheckbox
 export const RenderCheckbox = props => {
-  const { input, label, explain, explainText } = props;
+  const { input, label, explain, explainText, warning } = props;
   const classes = useStyles();
 
   return (
@@ -42,6 +42,9 @@ export const RenderCheckbox = props => {
           type="text"
         />
       ) : null}
+      {input.value && warning ? (
+        <div>{warning}</div>
+      ) : null  }
     </div>
   );
 };

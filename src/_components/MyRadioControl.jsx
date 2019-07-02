@@ -1,15 +1,16 @@
 /* eslint-disable import/no-cycle */
-import React from "react";
-import { Field } from "react-final-form";
-import Radio from "@material-ui/core/Radio";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import { makeStyles } from "@material-ui/core/styles";
-import { RenderNoteField, RadioGroup } from ".";
-import { standardStyles } from "../_assets/styles";
+import React from 'react'
+import { Field } from 'react-final-form'
+import Radio from '@material-ui/core/Radio'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import { makeStyles } from '@material-ui/core/styles'
+import { RenderNoteField, RadioGroup } from '.'
+import { Warning } from './Warning'
+import { standardStyles } from '../_assets/styles'
 
 const useStyles = makeStyles({
   ...standardStyles
-});
+})
 
 export const MyRadioControl = props => {
   const {
@@ -21,9 +22,10 @@ export const MyRadioControl = props => {
     explainText,
     extraOptions,
     extraOptionsName,
+    warning,
     indent
-  } = props;
-  const classes = useStyles();
+  } = props
+  const classes = useStyles()
 
   return (
     <div className={indent ? classes.indent : classes.contain}>
@@ -56,6 +58,7 @@ export const MyRadioControl = props => {
           type="div"
         />
       ) : null}
+      {warning && input.value === id ? <Warning warning={warning} /> : null}
     </div>
-  );
-};
+  )
+}

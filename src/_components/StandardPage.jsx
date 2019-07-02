@@ -11,7 +11,7 @@ export const StandardPage = props => {
     <QuestionContainer direction={direction} fullWidth={fullWidth}>
       <Box width="100%">
         <StandardHeading {...rest} />
-        <StandardForm handleSubmit={handleSubmit}>
+        <StandardForm handleSubmit={handleSubmit} {...rest} >
           {props.children}
         </StandardForm>
       </Box>

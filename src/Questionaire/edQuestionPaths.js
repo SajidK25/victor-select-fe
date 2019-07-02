@@ -1,4 +1,4 @@
-import { initialValues } from "./edData";
+import { initialValues } from './edData'
 
 import {
   CreateAccountPage,
@@ -6,7 +6,9 @@ import {
   ZipcodePage,
   validateZipcode,
   GenderPage,
-  validateGender,
+  validateEitherGender,
+  FemaleEdPage,
+  validateFemaleEd,
   BirthdatePage,
   validateBirthdate,
   TimesPerMonthPage,
@@ -81,13 +83,14 @@ import {
   validateSummary,
   ShippingPage,
   validateShipping
-} from "./Pages/index";
+} from './Pages/index'
 
 const pathConstants = {
-  CREATEACCOUNT: "start",
-  ZIPCODE: "zipcode",
-  GENDER: "gender",
-  BIRTHDATE: "birthdate",
+  CREATEACCOUNT: 'start',
+  ZIPCODE: 'zipcode',
+  GENDER: 'gender',
+  FEMALE_ED: 'genderf',
+  BIRTHDATE: 'birthdate',
   TIMESPERMONTH: 5,
   DRUGPREFERENCE: 4,
   HOWOFTEN: 6,
@@ -95,7 +98,7 @@ const pathConstants = {
   PROBLEMSBEGAN: 8,
   NEWPARTNER: 9,
   ERECTIONSWHEN: 10,
-  WHILEMASTURBATING: "11",
+  WHILEMASTURBATING: '11',
   ONWAKING: 12,
   PRE_BP: 13,
   SYSTOLIC: 14,
@@ -122,17 +125,12 @@ const pathConstants = {
   OTHERMEDICINES: 34,
   ALLERGIES: 35,
   ANYTHINGELSE: 36,
-  PICTURES: "photos",
-  SUMMARY: "summary",
-  SHIPPING: "shipping"
-};
+  PICTURES: 'photos',
+  SUMMARY: 'summary',
+  SHIPPING: 'shipping'
+}
 
 const pages = [
-  {
-    key: pathConstants.CREATEACCOUNT,
-    component: CreateAccountPage,
-    validate: validateCreateAccount
-  },
   {
     key: pathConstants.ZIPCODE,
     component: ZipcodePage,
@@ -141,7 +139,12 @@ const pages = [
   {
     key: pathConstants.GENDER,
     component: GenderPage,
-    validate: validateGender
+    validate: validateEitherGender
+  },
+  {
+    key: pathConstants.FEMALE_ED,
+    component: FemaleEdPage,
+    validate: validateFemaleEd
   },
   {
     key: pathConstants.BIRTHDATE,
@@ -328,71 +331,91 @@ const pages = [
     component: ShippingPage,
     validate: validateShipping
   }
-];
+]
 
 const SkipPage = (key, values) => {
-  let skip = false;
+  let skip = false
 
   switch (key) {
-    case pathConstants.TIMESPERMONTH: {
-      console.log("Skip: ", values);
+    case pathConstants.TIMESPERMONTH:
       if (
-        values.subscription.drugSelection === "Tadalafil" &&
-        values.subscription.doseOption === "5"
+        values.subscription.drugSelection === 'Tadalafil' &&
+        values.subscription.doseOption === '5'
       ) {
-        skip = true;
-        values.subscription.timesPerMonth = "30";
+        skip = true
+        values.subscription.timesPerMonth = '30'
       }
-      break;
-    }
+      break
 
-    case pathConstants.WHILEMASTURBATING: {
+    case pathConstants.WHILEMASTURBATING:
       // ErectionWhen
-      skip = !values.erectionsWhen.whenMasturbating;
-      break;
-    }
+      skip =
+        !values.erectionsWhen.whenMasturbating ||
+        values.personal.gender === 'female'
+      break
 
-    case pathConstants.ONWAKING: {
-      skip = !values.erectionsWhen.onWaking;
-      break;
-    }
+    case pathConstants.ONWAKING:
+      skip =
+        !values.erectionsWhen.onWaking || values.personal.gender === 'female'
+      break
 
-    case pathConstants.DEPRESSION_FREQUENCY: {
-      skip = values.depression.none;
-      break;
-    }
+    case pathConstants.DEPRESSION_FREQUENCY:
+      skip = values.depression.none
+      break
 
-    case pathConstants.EXPLAIN_CIALIS: {
-      skip = !values.edMeds.cialis;
-      break;
-    }
-    case pathConstants.EXPLAIN_VIAGRA: {
-      skip = !values.edMeds.viagra;
-      break;
-    }
-    case pathConstants.EXPLAIN_LEVITRA: {
-      skip = !values.edMeds.levitra;
-      break;
-    }
-    case pathConstants.EXPLAIN_AVANAFIL: {
-      skip = !values.edMeds.avanafil;
-      break;
-    }
-    default: {
-      skip = false;
-    }
+    case pathConstants.EXPLAIN_CIALIS:
+      skip = !values.edMeds.cialis
+      break
+
+    case pathConstants.EXPLAIN_VIAGRA:
+      skip = !values.edMeds.viagra
+      break
+
+    case pathConstants.EXPLAIN_LEVITRA:
+      skip = !values.edMeds.levitra
+      break
+
+    case pathConstants.EXPLAIN_AVANAFIL:
+      skip = !values.edMeds.avanafil
+      break
+
+    case pathConstants.SYSTOLIC:
+    case pathConstants.DIASTOLIC:
+    case pathConstants.POST_BP:
+      skip = values.bloodPressure.preBP === 'no'
+      break
+
+    case pathConstants.GENITAL_EXAM:
+      skip = values.physicalExam === 'no' || values.personal.gender === 'female'
+      break
+
+    case pathConstants.FEMALE_ED:
+      skip = values.personal.gender === 'male'
+      break
+
+    case pathConstants.ERECTION:
+    case pathConstants.PROBLEMSBEGAN:
+    case pathConstants.NEWPARTNER:
+    case pathConstants.ERECTIONSWHEN:
+    case pathConstants.GENITALISSUES:
+    case pathConstants.EDMEDS:
+      skip = values.personal.gender === 'female'
+      break
+
+    default:
+      skip = false
   }
 
-  return skip;
-};
+  return skip
+}
 
 const edQuestionaire = {
   pages: pages,
   skipPage: SkipPage,
-  pathBase: "/visit/ed",
-  startPath: "/edstart",
-  heading: " a solution for your ED ",
+  pathBase: '/visit/ed',
+  startPath: '/edstart',
+  heading: ' a solution for your ED ',
   initialValues: initialValues
-};
+}
 
-export default edQuestionaire;
+export default edQuestionaire

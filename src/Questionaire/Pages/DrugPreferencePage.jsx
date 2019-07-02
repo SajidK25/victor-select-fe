@@ -1,11 +1,11 @@
-import React from "react";
-import { Field } from "react-final-form";
-import { Typography } from "@material-ui/core";
-import { withStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import { RadioGroup } from "../../_components";
-import { StandardPage } from "../../_components/StandardPage";
-import { drugSelections, validDrugOption } from "../../_constants";
+import React from 'react'
+import { Field } from 'react-final-form'
+import { Typography } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import { RadioGroup } from '../../_components'
+import { StandardPage } from '../../_components/StandardPage'
+import { drugSelections, validDrugOption } from '../../_constants'
 
 const styles = theme => ({
   root: {
@@ -13,29 +13,29 @@ const styles = theme => ({
     marginLeft: 4,
     marginRight: 4
   }
-});
+})
 
-const options = drugSelections;
+const options = drugSelections
 
 const validateDrugPreference = values => {
-  const errors = { subscription: {} };
-  const s = values.subscription;
+  const errors = { subscription: {} }
+  const s = values.subscription
 
   if (!s.drugSelection) {
-    errors.subscription.drugSelection = "Please select an option.";
+    errors.subscription.drugSelection = 'Please select an option.'
   } else if (!validDrugOption(s)) {
-    errors.subscription.drugSelection = "Please make a dose selection";
+    errors.subscription.drugSelection = 'Please make a dose selection'
   }
 
-  return errors;
-};
+  return errors
+}
 
-const questionText = "Do you have a drug preference?";
+const questionText = 'Do you have a drug preference?'
 const additionalText =
-  "Your preference will be shared with a physician, who will use their medical judgement to determine the best treatment plan. Their decision may or may not match your preference.";
+  'Your preference will be shared with a physician, who will use their medical judgement to determine the best treatment plan. Their decision may or may not match your preference.'
 
 let DrugPreferencePage = props => {
-  const { classes, ...rest } = props;
+  const { classes, ...rest } = props
 
   return (
     <StandardPage
@@ -65,10 +65,9 @@ let DrugPreferencePage = props => {
         <Typography variant="body2" gutterBottom>
           Eros is a cutting edge formulation unlike any other medication
           currently available anywhere for the treatment of Erectile
-          Dysfunction. Prescription strength Tadalafil (Cialis), apomorphine,
-          and oxytocin are combined with pharmaceutical-grade nutraceuticals
-          (L-citrulline and Pycnogenol) to create a super drug with a duration
-          of action up to <b>42 hours</b>.
+          Dysfunction. Prescription strength Tadalafil (Cialis) and apomorphine
+          are combined with pharmaceutical-grade nutraceuticals to create a
+          super drug with a duration of action up to <b>36 hours</b>.
         </Typography>
         <Typography variant="h6" color="primary">
           ROMEO
@@ -76,15 +75,15 @@ let DrugPreferencePage = props => {
         <Typography>
           Like Eros, Romeo is a combination product utilizing prescription
           strength Sildenafil (Viagra) as the primary component in conjunction
-          with pharmaceutical grade neutraceuticals ((L-citrulline, Pycnogenol,
-          Apomorphine, and Oxytocin). Romeo is enhanced to be more effective
-          than Viagra alone with a duration of action up to 6 hours.
+          with pharmaceutical grade neutraceuticals (Apomorphine). Romeo is
+          enhanced to be more effective than Viagra alone with a duration of
+          action up to 6 hours.
         </Typography>
       </Paper>
     </StandardPage>
-  );
-};
+  )
+}
 
-DrugPreferencePage = withStyles(styles)(DrugPreferencePage);
+DrugPreferencePage = withStyles(styles)(DrugPreferencePage)
 
-export { DrugPreferencePage, validateDrugPreference };
+export { DrugPreferencePage, validateDrugPreference }
