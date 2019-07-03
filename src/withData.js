@@ -3,8 +3,8 @@ import { endpoint, prodEndpoint } from './config'
 // import { LOCAL_STATE_QUERY } from '../components/Cart'
 
 const client = new ApolloClient({
-  //uri: process.env.NODE_ENV === "development" ? endpoint : prodEndpoint,
-  uri: prodEndpoint,
+  uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint,
+  // uri: prodEndpoint,
   request: operation => {
     operation.setContext({
       fetchOptions: {

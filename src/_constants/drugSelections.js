@@ -43,7 +43,7 @@ export const drugSelections = [
   }
 ]
 
-export function validDrugOption(subscription) {
+function drugName(subscription) {
   let drug = subscription.drugSelection
   switch (subscription.drugSelection) {
     case 'EROS':
@@ -53,6 +53,12 @@ export function validDrugOption(subscription) {
     default:
       drug = subscription.drugSelection + subscription.doseOption
   }
+
+  return drug
+}
+
+export function validDrugOption(subscription) {
+  const drug = drugName(subscription)
 
   const obj = drugPricing.find(x => x.id === drug)
   return obj

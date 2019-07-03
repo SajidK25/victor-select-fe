@@ -130,6 +130,7 @@ const CreateAccountPage = props => {
                 }is just a few clicks away...`}
                 additionalText={additionalText}
                 buttonText="Create Account"
+                buttonVariant="outlined"
                 handleSubmit={handleSubmit}
                 values={values}
                 {...rest}
