@@ -73,21 +73,21 @@ export const Nav = ({ props }) => {
           >
             Log Out
           </Button>
+          <Button
+            variant="outlined"
+            color="primary"
+            align="center"
+            className={classes.signinButton}
+            onClick={() => auth.login()}
+            component={Link}
+            to="/signin"
+          >
+            <LockIcon className={classes.icon} />
+            Sign In
+          </Button>{' '}
         </>
-      ) : (
-        <Button
-          variant="outlined"
-          color="primary"
-          align="center"
-          className={classes.signinButton}
-          onClick={() => auth.login()}
-          component={Link}
-          to="/signin"
-        >
-          <LockIcon className={classes.icon} />
-          Sign In
-        </Button>
-      )}
+      ) : null}
+
       <IconButton
         className={classes.helpButton}
         color="primary"

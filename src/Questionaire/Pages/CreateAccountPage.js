@@ -183,7 +183,7 @@ const CreateAccountPage = props => {
                     />
                   </Grid>
                 </Grid>
-                <button onClick={() => auth.login()}>Login</button>
+                {/*<button onClick={() => auth.login()}>Login</button> */}
                 <Legal textLocation="Create Account" />
               </StandardPage>
             </QuestionaireLayout>
