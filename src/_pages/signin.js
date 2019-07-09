@@ -51,7 +51,7 @@ const Signin = props => {
       mutation={SIGNIN_MUTATION}
       refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       onCompleted={() => {
-        history.push('./account')
+        history.push({ to })
       }}
       onError={error => {
         console.log(error)

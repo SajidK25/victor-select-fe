@@ -1,19 +1,20 @@
-import React from "react";
-import { Field } from "react-final-form";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
-import { makeStyles } from "@material-ui/core/styles";
-import { standardStyles } from "../_assets/styles";
-import { RenderNoteField } from ".";
+import React from 'react'
+import { Field } from 'react-final-form'
+import FormControlLabel from '@material-ui/core/FormControlLabel'
+import Checkbox from '@material-ui/core/Checkbox'
+import { makeStyles } from '@material-ui/core/styles'
+import { standardStyles } from '../_assets/styles'
+import { Warning } from './Warning'
+import { RenderNoteField } from '.'
 
 const useStyles = makeStyles({
   ...standardStyles
-});
+})
 
 //renderCheckbox
 export const RenderCheckbox = props => {
-  const { input, label, explain, explainText, warning } = props;
-  const classes = useStyles();
+  const { input, label, explain, explainText, warning } = props
+  const classes = useStyles()
 
   return (
     <div className={classes.contain}>
@@ -42,9 +43,7 @@ export const RenderCheckbox = props => {
           type="text"
         />
       ) : null}
-      {input.value && warning ? (
-        <div>{warning}</div>
-      ) : null  }
+      {warning && input.value ? <Warning warning={warning} /> : null}
     </div>
-  );
-};
+  )
+}

@@ -4,10 +4,11 @@ import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles({
   warning: {
-    fontSize: 15,
+    fontSize: 14,
     marginLeft: 42,
     fontWeight: 400,
-    marginTop: 10
+    marginTop: 0,
+    lineHeight: '18px'
   }
 })
 

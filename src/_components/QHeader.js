@@ -6,6 +6,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
 import Help from '@material-ui/icons/Help'
 import bigLogo from '../images/select-logo-new.svg'
+import { Nav } from './Nav'
 import { PrevButton } from './ButtonGroup'
 
 const useStyles = makeStyles({
@@ -47,13 +48,14 @@ export const QHeader = props => {
           <img src={bigLogo} alt="vs-big-logo" className={classes.biglogo} />
         </div>
         <div className={classes.rightBar}>
-          <IconButton
+          <Nav />
+          {/*}    <IconButton
             className={classes.helpButton}
             color="primary"
             aria-label="Help"
           >
             <Help />
-          </IconButton>
+          </IconButton> */}
         </div>
       </Toolbar>
     </AppBar>

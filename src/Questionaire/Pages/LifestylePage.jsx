@@ -11,7 +11,10 @@ const options = [
   },
   {
     name: 'lifestyle.poppers',
-    label: 'Use Poppers or Rush'
+    label: 'Use Poppers or Rush',
+    warning: `These products are very dangerous to use 
+    with erectile dysfunction medications. We cannot provide this service 
+    to you if you use these products.`
   }
 ]
 

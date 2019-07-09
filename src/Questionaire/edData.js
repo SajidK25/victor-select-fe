@@ -125,14 +125,17 @@ export const initialValues = {
   },
   otherMeds: {
     nitrates: false,
-    alphaBlockers: false,
-    alphaBlockersExplain: '',
-    isosorbide: false,
     nitroglycerin: false,
+    isosorbide: false,
+    none: false
+  },
+  hypertensionMeds: {
     sildenafil: false,
     sildenafilExplain: '',
     riociguat: false,
     riociguatExplain: '',
+    alphaBlockers: false,
+    alphaBlockersExplain: '',
     none: false
   },
   edMeds: {

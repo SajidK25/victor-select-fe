@@ -1,23 +1,24 @@
-import React from "react";
-import { EdMedsExplainPage } from "./";
+import React from 'react'
+import { EdMedsExplainPage } from './'
 
 const dosageOptions = [
-  { id: "2.5mg", label: "2.5mg" },
-  { id: "5mg", label: "5mg" },
-  { id: "10mg", label: "10mg" },
-  { id: "20mg", label: "20mg" },
-  { id: "no", label: "I can't remember" }
-];
+  { id: '2.5mg', label: '2.5mg' },
+  { id: '5mg', label: '5mg' },
+  { id: '10mg', label: '10mg' },
+  { id: '20mg', label: '20mg' },
+  { id: '40mg', label: '40mg' },
+  { id: 'no', label: "I can't remember" }
+]
 
-const questionText = "What was the dose of Tadalafil (Cialis)?";
+const questionText = 'What was the dose of Tadalafil (Cialis)?'
 
 const validateEdMedsCialisExplain = values => {
-  const errors = {};
+  const errors = {}
   if (!values.edMeds.cialisDose) {
-    errors.edMeds = { cialisDose: "Please select a dose option." };
+    errors.edMeds = { cialisDose: 'Please select a dose option.' }
   }
-  return errors;
-};
+  return errors
+}
 
 const EdMedsCialisExplainPage = props => {
   return (
@@ -29,7 +30,7 @@ const EdMedsCialisExplainPage = props => {
       questionText={questionText}
       {...props}
     />
-  );
-};
+  )
+}
 
-export { EdMedsCialisExplainPage, validateEdMedsCialisExplain };
+export { EdMedsCialisExplainPage, validateEdMedsCialisExplain }

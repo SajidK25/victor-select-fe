@@ -1,8 +1,8 @@
-import React from "react";
-import { Field } from "react-final-form";
-import { OnChange } from "react-final-form-listeners";
-import FormGroup from "@material-ui/core/FormGroup";
-import { RenderCheckbox } from "./RenderCheckbox";
+import React from 'react'
+import { Field } from 'react-final-form'
+import { OnChange } from 'react-final-form-listeners'
+import FormGroup from '@material-ui/core/FormGroup'
+import { RenderCheckbox } from './RenderCheckbox'
 
 const WhenFieldChanges = ({ field, becomes, set, to }) => (
   <Field name={set} subscription={{}}>
@@ -13,13 +13,13 @@ const WhenFieldChanges = ({ field, becomes, set, to }) => (
       <OnChange name={field}>
         {value => {
           if (value === becomes) {
-            onChange(to);
+            onChange(to)
           }
         }}
       </OnChange>
     )}
   </Field>
-);
+)
 
 const NoOption = ({ options, fieldName }) => (
   <>
@@ -40,10 +40,10 @@ const NoOption = ({ options, fieldName }) => (
       </React.Fragment>
     ))}
   </>
-);
+)
 
 export const CheckboxGroup = props => {
-  const { options, noOptionField, noOptionText } = props;
+  const { options, noOptionField, noOptionText } = props
 
   return (
     <FormGroup>
@@ -56,6 +56,7 @@ export const CheckboxGroup = props => {
           key={i.name}
           explain={i.explain}
           explainText={i.explainText}
+          warning={i.warning}
           component={RenderCheckbox}
           type="checkbox"
           label={i.label}
@@ -70,5 +71,5 @@ export const CheckboxGroup = props => {
         />
       ) : null}
     </FormGroup>
-  );
-};
+  )
+}

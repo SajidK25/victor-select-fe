@@ -1,8 +1,8 @@
 const standardStyles = {
   error: {
-    textAlign: "center",
+    textAlign: 'center',
     fontSize: 14,
-    color: "#c60101",
+    color: '#c60101',
     marginLeft: 16,
     marginRight: 16,
     marginBottom: 0,
@@ -14,19 +14,19 @@ const standardStyles = {
     paddingTop: 3,
     paddingBottom: 3,
     paddingRight: 8,
-    borderStyle: "solid",
+    borderStyle: 'solid',
     borderWidth: 0.5,
     marginBottom: 5,
-    backgroundColor: "white",
-    borderColor: "lightgrey",
-    "&:hover": {
-      borderColor: "#2196f3"
+    backgroundColor: 'white',
+    borderColor: 'lightgrey',
+    '&:hover': {
+      borderColor: '#2196f3'
     }
   },
   indent: {
     marginLeft: 30,
     paddingRight: 8,
-    backgroundColor: "white"
+    backgroundColor: 'white'
   },
   root: {
     marginLeft: 0,
@@ -35,13 +35,15 @@ const standardStyles = {
   label: {
     fontSize: 15,
     fontWeight: 300,
-    lineHeight: "20px",
+    lineHeight: '20px',
+    paddingTop: 6,
+    paddingBottom: 6,
     marginLeft: 0
   },
   group: {
     marginTop: 0,
     marginBottom: 0
   }
-};
+}
 
-export { standardStyles };
+export { standardStyles }

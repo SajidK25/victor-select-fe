@@ -43,7 +43,6 @@ const Questionaire = props => {
       const testKey = pathArray[3]
       if (testKey.toString().toLowerCase() !== page.key.toString()) {
         const currPage = getCurrentPage(testKey, questionaire)
-        console.log('CurrPage:', currPage)
         if (currPage) {
           setPageIndex(currPage.pageIndex)
           setPage(currPage.page)
@@ -53,13 +52,10 @@ const Questionaire = props => {
   }, [location, page.key, questionaire])
 
   const next = values => {
-    console.log('PreNext', pageIndex, page)
     const nextPage = getNextPage(values, pageIndex, 1, questionaire)
-    console.log('NextPage:', nextPage)
     setPageIndex(nextPage.pageIndex)
     setPage(nextPage.page)
     setTransDir('left')
-    console.log('PostNext', pageIndex, page)
     history.push(nextPage.path)
   }
 

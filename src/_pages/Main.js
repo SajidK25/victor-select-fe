@@ -1,6 +1,6 @@
-import React from 'react'
-import { withRouter, Route, Switch } from 'react-router-dom'
-import { withStyles } from '@material-ui/core/styles'
+import React, { useState } from 'react'
+import { withRouter, Route, Switch, Redirect } from 'react-router-dom'
+import { makeStyles } from '@material-ui/core/styles'
 import { Signin } from '../_pages/signin'
 import { Questionaire } from '../Questionaire'
 import { CreateAccountPage } from '../Questionaire/Pages/CreateAccountPage'
@@ -8,8 +8,10 @@ import edQuestionaire from '../Questionaire/edQuestionPaths'
 import sleepQuestionaire from '../Questionaire/sleepQuestionPaths'
 import hairQuestionaire from '../Questionaire/hairQuestionPaths'
 import { PaymentForm } from './PaymentForm'
+import { handleAuthentication } from '../Auth/auth'
+import { Callback } from '../_components/Callback'
 
-const styles = () => ({
+const useStyles = makeStyles({
   app: {
     position: 'absolute',
     top: 0,
@@ -19,36 +21,56 @@ const styles = () => ({
   }
 })
 
-class Main extends React.Component {
-  render() {
-    const { classes } = this.props
-    return (
-      <div className={classes.app}>
-        <Switch>
-          <Route path="/signin" render={() => <Signin />} />
-          <Route path="/payment" render={() => <PaymentForm />} />
-          <Route
-            path={edQuestionaire.startPath}
-            render={() => <CreateAccountPage questionaire={edQuestionaire} />}
-          />
-          <Route
-            path="/visit/ed"
-            render={() => <Questionaire questionaire={edQuestionaire} />}
-          />
-          <Route
-            path="/visit/sleep"
-            render={() => <Questionaire questionaire={sleepQuestionaire} />}
-          />
-          <Route
-            path="/visit/hair"
-            render={() => <Questionaire questionaire={hairQuestionaire} />}
-          />
-        </Switch>
-      </div>
-    )
-  }
+const Main = () => {
+  const [visitType, setVisitType] = useState(edQuestionaire)
+  const classes = useStyles()
+
+  return (
+    <div className={classes.app}>
+      <Switch>
+        <Route path="/signin" render={() => <Signin to="/account" />} />
+        <Route path="/payment" render={() => <PaymentForm />} />
+        <Route
+          path={edQuestionaire.startPath}
+          render={() => {
+            setVisitType(edQuestionaire)
+            return <CreateAccountPage questionaire={edQuestionaire} />
+          }}
+        />
+        <Route
+          path={edQuestionaire.pathBase}
+          render={() => <Questionaire questionaire={edQuestionaire} />}
+        />
+        <Route
+          path={hairQuestionaire.startPath}
+          render={() => <CreateAccountPage questionaire={hairQuestionaire} />}
+        />
+        <Route
+          path={hairQuestionaire.pathBase}
+          render={() => <Questionaire questionaire={hairQuestionaire} />}
+        />
+        <Route
+          path={sleepQuestionaire.startPath}
+          render={() => <CreateAccountPage questionaire={sleepQuestionaire} />}
+        />
+        <Route
+          path={sleepQuestionaire.pathBase}
+          render={() => <Questionaire questionaire={sleepQuestionaire} />}
+        />
+        <Route
+          path="/callback"
+          render={props => {
+            handleAuthentication(props)
+            console.log('VisitType', visitType)
+            if (visitType) return <Redirect to={edQuestionaire.pathBase} />
+
+            return <Callback {...props} />
+          }}
+        />
+      </Switch>
+    </div>
+  )
 }
 
-let connectedMain = withStyles(styles)(Main)
-connectedMain = withRouter(connectedMain)
+const connectedMain = withRouter(Main)
 export { connectedMain as Main }

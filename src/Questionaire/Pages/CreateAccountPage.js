@@ -10,7 +10,9 @@ import { StandardPage } from '../../_components/StandardPage'
 import { QuestionaireLayout } from '../../_components/QuestionaireLayout'
 import { RenderStdTextField } from '../../_components/RenderStdTextField'
 import { Legal } from '../../_components'
+import Error from '../../_components/ErrorMessage'
 import { CURRENT_USER_QUERY } from '../../_components/User'
+import { auth } from '../../Auth/auth'
 
 const USER_EXISTS_QUERY = gql`
   query USER_EXISTS_QUERY($email: String!) {
@@ -110,9 +112,6 @@ const CreateAccountPage = props => {
         console.log('Complete', pathBase)
         history.push('./visit/ed')
       }}
-      onError={error => {
-        console.log(error)
-      }}
     >
       {(signup, { error, loading }) => (
         <Form
@@ -135,6 +134,7 @@ const CreateAccountPage = props => {
                 values={values}
                 {...rest}
               >
+                <Error error={error} />
                 <Grid container spacing={3}>
                   <Grid item xs={12} sm={6}>
                     <Field
@@ -183,6 +183,7 @@ const CreateAccountPage = props => {
                     />
                   </Grid>
                 </Grid>
+                <button onClick={() => auth.login()}>Login</button>
                 <Legal textLocation="Create Account" />
               </StandardPage>
             </QuestionaireLayout>
