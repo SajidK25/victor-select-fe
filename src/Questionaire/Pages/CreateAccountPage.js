@@ -1,5 +1,5 @@
 import React from 'react'
-import { withRouter, Link } from 'react-router-dom'
+import { withRouter, Link, Redirect } from 'react-router-dom'
 import { Mutation } from 'react-apollo'
 import client from '../../withData'
 import gql from 'graphql-tag'
@@ -84,8 +84,8 @@ const validateCreateAccount = async values => {
     return errors
   }
 
-  const res = await verifyEmail(values.email)
-  return res
+  // const res = await verifyEmail(values.email)
+  return errors
 }
 
 const initialData = {
@@ -118,7 +118,7 @@ const CreateAccountPage = props => {
           initialValues={initialData}
           validate={validateCreateAccount}
           onSubmit={async values => {
-            await signup({ variables: { ...values } })
+            history.push('./visit/ed')
           }}
         >
           {({ handleSubmit, values, errors, ...rest }) => (
