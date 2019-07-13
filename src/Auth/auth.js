@@ -109,12 +109,4 @@ class Auth {
   }
 }
 
-const auth = new Auth(result => console.log('auth result', result), client)
-
-const handleAuthentication = (nextState, replace) => {
-  if (/access_token|id_token|error/.test(nextState.location.hash)) {
-    auth.handleAuthentication()
-  }
-}
-
-export { auth, handleAuthentication }
+export default Auth

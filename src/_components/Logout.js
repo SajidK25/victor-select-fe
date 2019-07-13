@@ -3,20 +3,19 @@ import Button from '@material-ui/core/Button'
 import LockIcon from '@material-ui/icons/Lock'
 import { AuthConsumer } from '../Auth/authContext'
 
-const Login = () => (
+const Logout = () => (
   <AuthConsumer>
-    {({ initiateLogin }) => (
+    {({ logout }) => (
       <Button
         variant="outlined"
         color="primary"
         align="center"
-        onClick={initiateLogin}
+        onClick={logout}
       >
-        <LockIcon />
-        Login
+        Logout
       </Button>
     )}
   </AuthConsumer>
 )
 
-export default Login
+export default Logout

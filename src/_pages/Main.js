@@ -8,8 +8,8 @@ import edQuestionaire from '../Questionaire/edQuestionPaths'
 import sleepQuestionaire from '../Questionaire/sleepQuestionPaths'
 import hairQuestionaire from '../Questionaire/hairQuestionPaths'
 import { PaymentForm } from './PaymentForm'
-import { handleAuthentication } from '../Auth/auth'
-import { Callback } from '../_components/Callback'
+import Auth from '../_components/Auth'
+import Callback from './callback'
 
 const useStyles = makeStyles({
   app: {
@@ -27,47 +27,42 @@ const Main = () => {
 
   return (
     <div className={classes.app}>
-      <Switch>
-        <Route path="/signin" render={() => <Signin to="/account" />} />
-        <Route path="/payment" render={() => <PaymentForm />} />
-        <Route
-          path={edQuestionaire.startPath}
-          render={() => {
-            setVisitType(edQuestionaire)
-            return <CreateAccountPage questionaire={edQuestionaire} />
-          }}
-        />
-        <Route
-          path={edQuestionaire.pathBase}
-          render={() => <Questionaire questionaire={edQuestionaire} />}
-        />
-        <Route
-          path={hairQuestionaire.startPath}
-          render={() => <CreateAccountPage questionaire={hairQuestionaire} />}
-        />
-        <Route
-          path={hairQuestionaire.pathBase}
-          render={() => <Questionaire questionaire={hairQuestionaire} />}
-        />
-        <Route
-          path={sleepQuestionaire.startPath}
-          render={() => <CreateAccountPage questionaire={sleepQuestionaire} />}
-        />
-        <Route
-          path={sleepQuestionaire.pathBase}
-          render={() => <Questionaire questionaire={sleepQuestionaire} />}
-        />
-        <Route
-          path="/callback"
-          render={props => {
-            handleAuthentication(props)
-            console.log('VisitType', visitType)
-            if (visitType) return <Redirect to={edQuestionaire.pathBase} />
-
-            return <Callback {...props} />
-          }}
-        />
-      </Switch>
+      <Auth>
+        <Switch>
+          <Route path="/signin" render={() => <Signin to="/account" />} />
+          <Route path="/payment" render={() => <PaymentForm />} />
+          <Route
+            path={edQuestionaire.startPath}
+            render={() => {
+              setVisitType(edQuestionaire)
+              return <CreateAccountPage questionaire={edQuestionaire} />
+            }}
+          />
+          <Route
+            path={edQuestionaire.pathBase}
+            render={() => <Questionaire questionaire={edQuestionaire} />}
+          />
+          <Route
+            path={hairQuestionaire.startPath}
+            render={() => <CreateAccountPage questionaire={hairQuestionaire} />}
+          />
+          <Route
+            path={hairQuestionaire.pathBase}
+            render={() => <Questionaire questionaire={hairQuestionaire} />}
+          />
+          <Route
+            path={sleepQuestionaire.startPath}
+            render={() => (
+              <CreateAccountPage questionaire={sleepQuestionaire} />
+            )}
+          />
+          <Route
+            path={sleepQuestionaire.pathBase}
+            render={() => <Questionaire questionaire={sleepQuestionaire} />}
+          />
+          <Route path="/callback" component={Callback} />
+        </Switch>
+      </Auth>
     </div>
   )
 }

@@ -5,12 +5,9 @@ import { makeStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
 import Help from '@material-ui/icons/Help'
 import Button from '@material-ui/core/Button'
-import LockIcon from '@material-ui/icons/Lock'
-import { auth } from '../Auth/auth'
-
-// import { TOGGLE_DOCUMENT_MUTATION } from './Document'
-import User from './User'
-import Signout from './Signout'
+import Login from './Login'
+import Logout from './Logout'
+import { AuthConsumer } from '../Auth/authContext'
 
 const useStyles = makeStyles(theme => ({
   signinButton: {
@@ -42,51 +39,37 @@ export const Nav = ({ props }) => {
 
   return (
     <div className={classes.navButtons}>
-      {auth.isAuthenticated() ? (
-        <>
-          <Button
-            variant="outlined"
-            color="primary"
-            align="center"
-            className={classes.button}
-            component={Link}
-            to="/messages"
-          >
-            Messages
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            align="center"
-            className={classes.button}
-            component={Link}
-            to="/account"
-          >
-            Account
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            align="center"
-            className={classes.button}
-            onClick={() => auth.logout()}
-          >
-            Log Out
-          </Button>
-          <Button
-            variant="outlined"
-            color="primary"
-            align="center"
-            className={classes.signinButton}
-            onClick={() => auth.login()}
-            component={Link}
-            to="/signin"
-          >
-            <LockIcon className={classes.icon} />
-            Sign In
-          </Button>{' '}
-        </>
-      ) : null}
+      <AuthConsumer>
+        {({ authenticated }) =>
+          authenticated ? (
+            <>
+              <Button
+                variant="outlined"
+                color="primary"
+                align="center"
+                className={classes.button}
+                component={Link}
+                to="/messages"
+              >
+                Messages
+              </Button>
+              <Button
+                variant="outlined"
+                color="primary"
+                align="center"
+                className={classes.button}
+                component={Link}
+                to="/account"
+              >
+                Account
+              </Button>
+              <Logout />
+            </>
+          ) : (
+            <Login />
+          )
+        }
+      </AuthConsumer>
 
       <IconButton
         className={classes.helpButton}
