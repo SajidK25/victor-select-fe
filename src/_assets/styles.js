@@ -9,17 +9,18 @@ const standardStyles = {
     padding: 2
   },
   contain: {
-    borderRadius: 8,
+    borderRadius: 2,
     border: 0,
     paddingTop: 3,
     paddingBottom: 3,
     paddingRight: 8,
     borderStyle: 'solid',
-    borderWidth: 0.5,
+    borderWidth: 0,
     marginBottom: 5,
     backgroundColor: 'white',
     borderColor: 'lightgrey',
     '&:hover': {
+      borderWidth: 0.5,
       borderColor: '#2196f3'
     }
   },
@@ -30,11 +31,12 @@ const standardStyles = {
   },
   root: {
     marginLeft: 0,
-    marginRight: 0
+    marginRight: 0,
+    width: '100%'
   },
   label: {
-    fontSize: 15,
-    fontWeight: 300,
+    fontSize: 16,
+    fontWeight: 400,
     lineHeight: '20px',
     paddingTop: 6,
     paddingBottom: 6,

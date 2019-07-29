@@ -8,7 +8,6 @@ import edQuestionaire from '../Questionaire/edQuestionPaths'
 import sleepQuestionaire from '../Questionaire/sleepQuestionPaths'
 import hairQuestionaire from '../Questionaire/hairQuestionPaths'
 import { PaymentForm } from './PaymentForm'
-import Auth from '../_components/Auth'
 import Callback from './callback'
 
 const useStyles = makeStyles({
@@ -27,7 +26,6 @@ const Main = () => {
 
   return (
     <div className={classes.app}>
-      <Auth>
         <Switch>
           <Route path="/signin" render={() => <Signin to="/account" />} />
           <Route path="/payment" render={() => <PaymentForm />} />
@@ -62,7 +60,6 @@ const Main = () => {
           />
           <Route path="/callback" component={Callback} />
         </Switch>
-      </Auth>
     </div>
   )
 }

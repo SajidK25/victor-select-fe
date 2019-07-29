@@ -1,13 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Mutation } from 'react-apollo'
 import { makeStyles } from '@material-ui/core/styles'
 import IconButton from '@material-ui/core/IconButton'
 import Help from '@material-ui/icons/Help'
 import Button from '@material-ui/core/Button'
 import Login from './Login'
 import Logout from './Logout'
-import { AuthConsumer } from '../Auth/authContext'
+import User from './User'
 
 const useStyles = makeStyles(theme => ({
   signinButton: {
@@ -39,25 +38,23 @@ export const Nav = ({ props }) => {
 
   return (
     <div className={classes.navButtons}>
-      <AuthConsumer>
-        {({ authenticated }) =>
-          authenticated ? (
+      <User>
+        {({ data }) =>
+          data && data.me ? (
             <>
               <Button
-                variant="outlined"
+                variant="button"
                 color="primary"
                 align="center"
-                className={classes.button}
                 component={Link}
                 to="/messages"
               >
                 Messages
               </Button>
               <Button
-                variant="outlined"
+                variant="button"
                 color="primary"
                 align="center"
-                className={classes.button}
                 component={Link}
                 to="/account"
               >
@@ -66,10 +63,18 @@ export const Nav = ({ props }) => {
               <Logout />
             </>
           ) : (
-            <Login />
-          )
+            <Button
+                variant="outlined"
+                color="primary"
+                align="center"
+                component={Link}
+                to="/signin"
+              >
+                Login
+            </Button>
+                  )
         }
-      </AuthConsumer>
+      </User>
 
       <IconButton
         className={classes.helpButton}

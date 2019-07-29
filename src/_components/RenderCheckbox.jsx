@@ -2,6 +2,7 @@ import React from 'react'
 import { Field } from 'react-final-form'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Checkbox from '@material-ui/core/Checkbox'
+import Paper from '@material-ui/core/Paper'
 import { makeStyles } from '@material-ui/core/styles'
 import { standardStyles } from '../_assets/styles'
 import { Warning } from './Warning'
@@ -17,7 +18,7 @@ export const RenderCheckbox = props => {
   const classes = useStyles()
 
   return (
-    <div className={classes.contain}>
+    <Paper className={classes.contain}>
       <FormControlLabel
         classes={{
           root: classes.root, // class name, e.g. `classes-nesting-root-x`
@@ -44,6 +45,6 @@ export const RenderCheckbox = props => {
         />
       ) : null}
       {warning && input.value ? <Warning warning={warning} /> : null}
-    </div>
+    </Paper>
   )
 }

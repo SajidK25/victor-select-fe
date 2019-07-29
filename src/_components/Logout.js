@@ -1,21 +1,27 @@
-import React from 'react'
+import React from 'react';
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
 import Button from '@material-ui/core/Button'
-import LockIcon from '@material-ui/icons/Lock'
-import { AuthConsumer } from '../Auth/authContext'
+import { CURRENT_USER_QUERY } from './User';
 
-const Logout = () => (
-  <AuthConsumer>
-    {({ logout }) => (
-      <Button
+const LOGOUT_MUTATION = gql`
+  mutation SIGN_OUT_MUTATION {
+    logout
+  }
+`;
+
+const Logout = props => (
+  <Mutation mutation={LOGOUT_MUTATION} refetchQueries={[{ query: CURRENT_USER_QUERY }]}>
+    {logout => 
+      <Button 
+        onClick={logout} 
         variant="outlined"
         color="primary"
-        align="center"
-        onClick={logout}
-      >
-        Logout
-      </Button>
-    )}
-  </AuthConsumer>
-)
+        align="center">
+          Logout
+      </Button>}
+  </Mutation>
+);
 
 export default Logout
+

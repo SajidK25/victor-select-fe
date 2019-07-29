@@ -3,6 +3,7 @@ import { Field } from "react-final-form";
 import { withStyles } from "@material-ui/core/styles";
 // import SvgIcon from "@material-ui/core/SvgIcon"
 import { StandardPage, RadioGroup } from "../../_components";
+import { RadioSubmit } from '../../_components/RadioSubmit'
 
 const styles = theme => ({
   centerField: {
@@ -43,12 +44,13 @@ const questionText = "Tell us your gender";
 const additionalText = "";
 
 let GenderPage = props => {
-  const { classes, ...rest } = props;
+  const { classes, handleSubmit, ...rest } = props;
   return (
     <StandardPage
       questionText={questionText}
       additionalText={additionalText}
       alignTitles="center"
+      handleSubmit={handleSubmit}
       {...rest}
     >
       <div className={classes.centerField}>
@@ -56,7 +58,13 @@ let GenderPage = props => {
           component={RadioGroup}
           name="personal.gender"
           options={options}
+          handleSubmit={handleSubmit}
           type="div"
+        />
+        <RadioSubmit 
+          name="personal.gender"
+          options={options}
+          handleSubmit={handleSubmit}
         />
       </div>
     </StandardPage>

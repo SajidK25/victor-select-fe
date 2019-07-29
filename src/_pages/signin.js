@@ -14,7 +14,7 @@ import { CURRENT_USER_QUERY } from '../_components/User'
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
-    signin(email: $email, password: $password) {
+    login(email: $email, password: $password) {
       id
       email
       firstName
@@ -57,12 +57,12 @@ const Signin = props => {
         console.log(error)
       }}
     >
-      {(signin, { error, loading }) => (
+      {(login, { error, loading }) => (
         <Form
           initialValues={{ email: '', password: '' }}
           validate={validate}
           onSubmit={async (values, form) => {
-            await signin({ variables: { ...values } })
+            await login({ variables: { ...values } })
           }}
         >
           {({ handleSubmit, values, errors, ...rest }) => (

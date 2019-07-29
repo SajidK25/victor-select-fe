@@ -41,13 +41,13 @@ let theme = createMuiTheme({
       fontWeight: 300
     },
     body2: {
-      fontSize: '1em',
+      fontSize: '.98em',
       fontWeight: 300,
-      lineHeight: '1.2rem'
+      lineHeight: '1.3rem'
     },
     h6: {
-      fontSize: 20,
-      lineHeight: '1.7rem',
+      fontSize: '1.33em',
+      lineHeight: '1.63rem',
       letterSpacing: 0,
       fontWeight: 500
     }

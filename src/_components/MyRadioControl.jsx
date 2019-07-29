@@ -2,6 +2,7 @@
 import React from 'react'
 import { Field } from 'react-final-form'
 import Radio from '@material-ui/core/Radio'
+import Paper from '@material-ui/core/Paper'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import { makeStyles } from '@material-ui/core/styles'
 import { RenderNoteField, RadioGroup } from '.'
@@ -27,8 +28,10 @@ export const MyRadioControl = props => {
   } = props
   const classes = useStyles()
 
+  
+
   return (
-    <div className={indent ? classes.indent : classes.contain}>
+    <Paper className={indent ? classes.indent : classes.contain}>
       <FormControlLabel
         classes={{
           root: classes.root, // class name, e.g. `classes-nesting-root-x`
@@ -37,7 +40,7 @@ export const MyRadioControl = props => {
         value={id}
         onChange={input.onChange}
         checked={input.value === id}
-        control={<Radio name={name} color="primary" type="radio" />}
+        control= {<Radio name={name} color="primary" type="radio" />}
         label={label}
         type="radio"
       />
@@ -59,6 +62,6 @@ export const MyRadioControl = props => {
         />
       ) : null}
       {warning && input.value === id ? <Warning warning={warning} /> : null}
-    </div>
+    </Paper>
   )
 }

@@ -14,7 +14,6 @@ import {
 } from '../_components'
 import { StandardHeading } from '../_components/StandardHeading'
 import { CURRENT_USER_QUERY } from '../_components/User'
-import { auth } from '../Auth/auth'
 
 const useStyles = makeStyles(theme => ({
   formRow: {
