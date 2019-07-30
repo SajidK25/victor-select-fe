@@ -84,7 +84,9 @@ import {
   SummaryPage,
   validateSummary,
   ShippingPage,
-  validateShipping
+  validateShipping,
+  SildenafilDosePage,
+  validateSildenafilDose
 } from './Pages/index'
 
 const pathConstants = {
@@ -93,41 +95,42 @@ const pathConstants = {
   GENDER: 'gender',
   FEMALE_ED: 'genderf',
   BIRTHDATE: 'birthdate',
-  TIMESPERMONTH: 5,
   DRUGPREFERENCE: 4,
-  HOWOFTEN: 6,
-  ERECTION: 7,
-  PROBLEMSBEGAN: 8,
-  NEWPARTNER: 9,
-  ERECTIONSWHEN: 10,
-  WHILEMASTURBATING: '11',
-  ONWAKING: 12,
-  PRE_BP: 13,
-  SYSTOLIC: 14,
-  DIASTOLIC: 15,
-  POST_BP: 16,
-  PHYSICAL_EXAM: 17,
-  GENITAL_EXAM: 18,
-  LIBIDO: 19,
-  DEPRESSION: 20,
-  DEPRESSION_FREQUENCY: 21,
-  LIFESTYLE: 22,
-  CONDITIONS: 23,
-  GENITALISSUES: 24,
-  SERIOUSHISTORY: 25,
-  SERIOUSCONDITIONS: 26,
+  SILDENAFILDOSE: 5,
+  TIMESPERMONTH: 8,
+  HOWOFTEN: 9,
+  ERECTION: 10,
+  PROBLEMSBEGAN: 11,
+  NEWPARTNER: 12,
+  ERECTIONSWHEN: 13,
+  WHILEMASTURBATING: 14,
+  ONWAKING: 15,
+  PRE_BP: 16,
+  SYSTOLIC: 17,
+  DIASTOLIC: 18,
+  POST_BP: 19,
+  PHYSICAL_EXAM: 20,
+  GENITAL_EXAM: 21,
+  LIBIDO: 22,
+  DEPRESSION: 23,
+  DEPRESSION_FREQUENCY: 24,
+  LIFESTYLE: 25,
+  CONDITIONS: 26,
+  GENITALISSUES: 27,
+  SERIOUSHISTORY: 28,
+  SERIOUSCONDITIONS: 29,
   // //  HEARTDISEASE: 50,
-  OTHERCONDITIONS: 27,
-  OTHERMEDICATIONS: 28,
-  HYPERTENSIONMEDS: 29,
-  EDMEDS: 30,
-  EXPLAIN_CIALIS: 31,
-  EXPLAIN_VIAGRA: 32,
-  EXPLAIN_LEVITRA: 33,
-  EXPLAIN_AVANAFIL: 34,
-  OTHERMEDICINES: 35,
-  ALLERGIES: 36,
-  ANYTHINGELSE: 37,
+  OTHERCONDITIONS: 30,
+  OTHERMEDICATIONS: 31,
+  HYPERTENSIONMEDS: 32,
+  EDMEDS: 33,
+  EXPLAIN_CIALIS: 34,
+  EXPLAIN_VIAGRA: 35,
+  EXPLAIN_LEVITRA: 36,
+  EXPLAIN_AVANAFIL: 37,
+  OTHERMEDICINES: 38,
+  ALLERGIES: 39,
+  ANYTHINGELSE: 40,
   PICTURES: 'photos',
   SUMMARY: 'summary',
   SHIPPING: 'shipping'
@@ -158,6 +161,11 @@ const pages = [
     key: pathConstants.DRUGPREFERENCE,
     component: DrugPreferencePage,
     validate: validateDrugPreference
+  },
+  {
+    key: pathConstants.SILDENAFILDOSE,
+    component: SildenafilDosePage,
+    validate: validateSildenafilDose
   },
   {
     key: pathConstants.TIMESPERMONTH,
@@ -385,6 +393,10 @@ const SkipPage = (key, values) => {
 
     case pathConstants.EXPLAIN_AVANAFIL:
       skip = !values.edMeds.avanafil
+      break
+
+    case pathConstants.SILDENAFILDOSE:
+      skip = values.subscription.drugSelection !== 'Sildenafil'
       break
 
     case pathConstants.SYSTOLIC:

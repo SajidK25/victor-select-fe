@@ -111,13 +111,6 @@ export const EdSelectionDetail = props => {
           </Typography>
         </div>
       </div>
-      <Typography className={classes.description}>
-        {`You will be billed and your products shipped ${
-          options.interval
-        }. In each delivery you will be sent ${options.doses} doses of ${
-          pricing.display
-        }. You may cancel or modify your plan whenever you wish.`}
-      </Typography>
     </div>
   )
 }

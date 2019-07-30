@@ -1,22 +1,22 @@
-import React from "react";
-import { withRouter, Link, Redirect } from "react-router-dom";
-import { Mutation, ApolloConsumer } from "react-apollo";
-import gql from "graphql-tag";
-import { Form, Field } from "react-final-form";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import { StandardPage } from "../../_components/StandardPage";
-import { QuestionaireLayout } from "../../_components/QuestionaireLayout";
-import { RenderStdTextField } from "../../_components/RenderStdTextField";
-import { Legal } from "../../_components";
-import Error from "../../_components/ErrorMessage";
-import { CURRENT_USER_QUERY } from "../../_components/User";
+import React from 'react'
+import { withRouter, Link, Redirect } from 'react-router-dom'
+import { Mutation, ApolloConsumer } from 'react-apollo'
+import gql from 'graphql-tag'
+import { Form, Field } from 'react-final-form'
+import Grid from '@material-ui/core/Grid'
+import { makeStyles } from '@material-ui/core/styles'
+import { StandardPage } from '../../_components/StandardPage'
+import { QuestionaireLayout } from '../../_components/QuestionaireLayout'
+import { RenderStdTextField } from '../../_components/RenderStdTextField'
+import { Legal } from '../../_components'
+import Error from '../../_components/ErrorMessage'
+import { CURRENT_USER_QUERY } from '../../_components/User'
 
 const USER_EXISTS_QUERY = gql`
   query USER_EXISTS_QUERY($email: String!) {
     userExists(email: $email)
   }
-`;
+`
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
@@ -37,72 +37,72 @@ const SIGNUP_MUTATION = gql`
       lastName
     }
   }
-`;
+`
 
 const verifyEmail = async (value, client) => {
-  if (!client) return;
+  if (!client) return
 
   const { data } = await client.query({
     query: USER_EXISTS_QUERY,
     variables: { email: value }
-  });
+  })
   if (data.userExists) {
-    return { email: "This email is in use." };
+    return 'This email is in use.'
   }
-};
+}
 
 const validateCreateAccount = async (values, client) => {
-  console.log("Verify:", values, client)
-  const errors = {};
+  const errors = {}
   if (!values.firstName) {
-    errors.firstName = "First Name is required";
+    errors.firstName = 'First Name is required'
   }
   if (!values.lastName) {
-    errors.lastName = "Last Name is required";
+    errors.lastName = 'Last Name is required'
   }
   if (!values.password) {
-    errors.password = "Password is required";
+    errors.password = 'Password is required'
   } else if (
     !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(
       values.password
     )
   ) {
     errors.password =
-      "Password must include at least 8 chars., contain at least 1 uppercase letter, 1 lowercase letter and 1 number";
+      'Password must include at least 8 chars., contain at least 1 uppercase letter, 1 lowercase letter and 1 number'
   }
 
   if (!values.email) {
-    errors.email = "email address is required";
+    errors.email = 'email address is required'
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = "Invalid email address";
+    errors.email = 'Invalid email address'
   }
 
   if (Object.keys(errors).length) {
-    return errors;
+    return errors
   }
 
-  const res = await verifyEmail(values.email, client);
-  if (res) {
-    errors.email = res;
-  }
-  return errors;
-};
+  //  const res = await verifyEmail(values.email, client)
+  //  if (res) {
+  //    console.log(res)
+  //    errors.email = res
+  //  }
+  return errors
+}
 
 const initialData = {
-  email: "",
-  firstName: "",
-  lastName: "",
-  password: ""
-};
+  email: '',
+  firstName: '',
+  lastName: '',
+  password: ''
+}
 
 const additionalText =
-  "The information you provide will be used by your doctor to evaluate your symptoms, history and lifestyle. Then, if appropriate, your doctor will prescribe medication for treatment. ";
+  'The information you provide will be used by your doctor to evaluate your symptoms, history and lifestyle. Then, if appropriate, your doctor will prescribe medication for treatment. '
 
 const CreateAccountPage = props => {
-  const { questionaire, history } = props;
-  const pathBase = questionaire.pathBase;
+  const { questionaire, history } = props
+  const pathBase = questionaire.pathBase
 
-  console.log("Questionaire:", questionaire);
+  console.log('Questionaire:', questionaire)
 
   return (
     <ApolloConsumer>
@@ -111,16 +111,16 @@ const CreateAccountPage = props => {
           mutation={SIGNUP_MUTATION}
           refetchQueries={[{ query: CURRENT_USER_QUERY }]}
           onCompleted={() => {
-            console.log("Complete", pathBase);
-            history.push("./visit/ed");
+            console.log('Complete', pathBase)
+            history.push('./visit/ed')
           }}
         >
           {(signup, { error, loading }) => (
             <Form
               initialValues={initialData}
-              validate={values => validateCreateAccount(values, client)}
+              validate={async values => validateCreateAccount(values, client)}
               onSubmit={async values => {
-                history.push("./visit/ed");
+                history.push('./visit/ed')
               }}
             >
               {({ handleSubmit, values, errors, ...rest }) => (
@@ -163,8 +163,7 @@ const CreateAccountPage = props => {
                       <Grid item xs={12}>
                         <Field
                           component={RenderStdTextField}
-                          required
-                          id="city"
+                          id="email"
                           type="email"
                           name="email"
                           label="email"
@@ -195,11 +194,11 @@ const CreateAccountPage = props => {
         </Mutation>
       )}
     </ApolloConsumer>
-  );
-};
+  )
+}
 
-const connectedCreateAccountPage = withRouter(CreateAccountPage);
+const connectedCreateAccountPage = withRouter(CreateAccountPage)
 export {
   connectedCreateAccountPage as CreateAccountPage,
   validateCreateAccount
-};
+}

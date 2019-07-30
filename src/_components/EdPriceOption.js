@@ -1,8 +1,8 @@
-import React from "react";
-import { Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
-import Paper from "@material-ui/core/Paper";
-import { formatMoney } from "../_constants/drugSelections";
+import React from 'react'
+import { Typography } from '@material-ui/core'
+import { makeStyles } from '@material-ui/core/styles'
+import Paper from '@material-ui/core/Paper'
+import { formatMoney } from '../_constants/drugSelections'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -11,101 +11,94 @@ const useStyles = makeStyles(theme => ({
   },
   paperRoot: {
     margin: 0,
-    padding: 4,
-    height: 120,
-    borderStyle: "solid",
-    borderColor: "lightgray",
-    borderWidth: 1
+    paddingLeft: 4,
+    paddingRight: 4
   },
-  choiceTitle: {
-    fontSize: 12,
+  title: {
+    fontSize: 16,
     fontWeight: 500,
-    marginTop: 8
+    marginTop: 3
+  },
+  subTitle: {
+    fontSize: 12,
+    fontWeight: 300,
+    marginTop: 3
+  },
+  priceLine: {
+    marginTop: 16,
+    width: '100%',
+    display: 'flex',
+    flexDirection: 'row',
+    justifyContent: 'space-between'
   },
   priceBox: {
-    marginTop: 15,
-    width: "100%",
-    lineHeight: 1
-  },
-  checked: {
-    borderStyle: "solid",
-    borderColor: theme.palette.primary.main,
-    borderWidth: 1
-  },
-  subHead: {
-    width: "80%",
-    marginLeft: "auto",
-    marginRight: "auto",
-    marginBottom: theme.spacing(1.5)
+    display: 'flex',
+    alignSelf: 'flex-end'
   },
   perMonth: {
     fontSize: 24,
     fontWeight: 400
   },
   savings: {
-    marginTop: 15,
+    display: 'flex',
+    alignSelf: 'flex-end',
     color: theme.palette.primary.main,
-    fontSize: 14,
+    fontSize: 16,
     fontWeight: 500
   },
   fullPrice: {
-    marginTop: 15,
-    fontSize: 14,
+    display: 'flex',
+    alignSelf: 'flex-end',
     fontWeight: 400
   },
   small: {
     fontSize: 12
   }
-}));
+}))
 
 export const EdPriceOption = props => {
-  const { options, checked } = props;
-  const classes = useStyles();
+  const { options, checked } = props
+  const classes = useStyles()
 
   if (options.totalPrice < 50) {
-    return null;
+    return null
   }
 
   const savings =
     options.savings > 0
       ? `Save ${formatMoney(options.savings, 0)}/year!`
-      : "Pay full price.";
+      : 'Pay full price.'
 
   return (
     <Paper
       classes={{
         root: classes.paperRoot
       }}
-      className={checked ? classes.checked : null}
       square
       elevation={0}
     >
       <div className={classes.container}>
-        <Typography
-          className={classes.choiceTitle}
-          variant="body2"
-          align="center"
-        >
+        <Typography className={classes.title} variant="body2">
           {options.title}
         </Typography>
-        <div className={classes.priceBox}>
+        <Typography className={classes.subTitle}>{options.subTitle}</Typography>
+        <div className={classes.priceLine}>
+          <div className={classes.priceBox}>
+            <Typography className={classes.perMonth} variant="body2">
+              {`${formatMoney(options.pricing, 0)}`}
+              <span className={classes.small}>/mo</span>
+            </Typography>
+          </div>
           <Typography
-            className={classes.perMonth}
+            className={
+              options.savings > 0 ? classes.savings : classes.fullPrice
+            }
             variant="body2"
-            align="center"
           >
-            {`${formatMoney(options.pricing, 0)}`}
-            <span className={classes.small}>/mo</span>
+            {savings}
           </Typography>
         </div>
-        <Typography
-          className={options.savings > 0 ? classes.savings : classes.fullPrice}
-          variant="body2"
-          align="center"
-        >
-          {savings}
-        </Typography>
       </div>
     </Paper>
-  );
-};
+  )
+}
