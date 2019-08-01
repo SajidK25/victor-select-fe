@@ -2,7 +2,7 @@ import React from 'react'
 import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
-import { formatMoney } from '../_constants/drugSelections'
+import { formatMoney } from '../_helpers/money'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -35,6 +35,11 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     alignSelf: 'flex-end'
   },
+  perMultiMonth: {
+    fontSize: 24,
+    color: theme.palette.primary.main,
+    fontWeight: 600
+  },
   perMonth: {
     fontSize: 24,
     fontWeight: 400
@@ -52,12 +57,14 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 400
   },
   small: {
-    fontSize: 12
+    fontSize: 12,
+    fontWeight: 400,
+    color: theme.palette.text.primary
   }
 }))
 
 export const EdPriceOption = props => {
-  const { options, checked } = props
+  const { options } = props
   const classes = useStyles()
 
   if (options.totalPrice < 50) {
@@ -84,8 +91,13 @@ export const EdPriceOption = props => {
         <Typography className={classes.subTitle}>{options.subTitle}</Typography>
         <div className={classes.priceLine}>
           <div className={classes.priceBox}>
-            <Typography className={classes.perMonth} variant="body2">
-              {`${formatMoney(options.pricing, 0)}`}
+            <Typography
+              className={
+                options.savings > 0 ? classes.perMultiMonth : classes.perMonth
+              }
+              variant="body2"
+            >
+              {`${formatMoney(options.pricing, 2)}`}
               <span className={classes.small}>/mo</span>
             </Typography>
           </div>

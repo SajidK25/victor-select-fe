@@ -1,10 +1,9 @@
 import React from 'react'
-import { withRouter, Link, Redirect } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 import { Mutation, ApolloConsumer } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Form, Field } from 'react-final-form'
 import Grid from '@material-ui/core/Grid'
-import { makeStyles } from '@material-ui/core/styles'
 import { StandardPage } from '../../_components/StandardPage'
 import { QuestionaireLayout } from '../../_components/QuestionaireLayout'
 import { RenderStdTextField } from '../../_components/RenderStdTextField'
@@ -80,11 +79,11 @@ const validateCreateAccount = async (values, client) => {
     return errors
   }
 
-  //  const res = await verifyEmail(values.email, client)
-  //  if (res) {
-  //    console.log(res)
-  //    errors.email = res
-  //  }
+  const res = await verifyEmail(values.email, client)
+  if (res) {
+     console.log(res)
+     errors.email = res
+  }
   return errors
 }
 

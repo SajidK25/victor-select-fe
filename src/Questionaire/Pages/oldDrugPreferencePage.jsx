@@ -21,10 +21,10 @@ const validateDrugPreference = values => {
   const errors = { subscription: {} }
   const s = values.subscription
 
-  if (!s.drugSelection) {
-    errors.subscription.drugSelection = 'Please select an option.'
+  if (!s.drugId) {
+    errors.subscription.drugId = 'Please select an option.'
   } else if (!validDrugOption(s)) {
-    errors.subscription.drugSelection = 'Please make a dose selection'
+    errors.subscription.drugId = 'Please make a dose selection'
   }
 
   return errors
@@ -46,7 +46,7 @@ let DrugPreferencePage = props => {
     >
       <Field
         component={RadioGroup}
-        name="subscription.drugSelection"
+        name="subscription.drugId"
         options={options}
         type="div"
       />

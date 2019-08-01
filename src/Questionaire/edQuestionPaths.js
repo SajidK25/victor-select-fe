@@ -1,4 +1,5 @@
 import { initialValues } from './edData'
+import { drugIds } from '../_constants/drugSelections'
 
 import {
   CreateAccountPage,
@@ -85,8 +86,10 @@ import {
   validateSummary,
   ShippingPage,
   validateShipping,
-  SildenafilDosePage,
-  validateSildenafilDose
+  DrugDosePage,
+  validateDrugDose,
+  EdSolutionTypePage,
+  validateEdSolutionType
 } from './Pages/index'
 
 const pathConstants = {
@@ -95,8 +98,9 @@ const pathConstants = {
   GENDER: 'gender',
   FEMALE_ED: 'genderf',
   BIRTHDATE: 'birthdate',
-  DRUGPREFERENCE: 4,
-  SILDENAFILDOSE: 5,
+  EDSOLUTIONTYPE: 4,
+  DRUGPREFERENCE: 5,
+  DRUGDOSE: 6,
   TIMESPERMONTH: 8,
   HOWOFTEN: 9,
   ERECTION: 10,
@@ -158,14 +162,19 @@ const pages = [
     validate: validateBirthdate
   },
   {
+    key: pathConstants.EDSOLUTIONTYPE,
+    component: EdSolutionTypePage,
+    validate: validateEdSolutionType
+  },
+  {
     key: pathConstants.DRUGPREFERENCE,
     component: DrugPreferencePage,
     validate: validateDrugPreference
   },
   {
-    key: pathConstants.SILDENAFILDOSE,
-    component: SildenafilDosePage,
-    validate: validateSildenafilDose
+    key: pathConstants.DRUGDOSE,
+    component: DrugDosePage,
+    validate: validateDrugDose
   },
   {
     key: pathConstants.TIMESPERMONTH,
@@ -355,8 +364,8 @@ const SkipPage = (key, values) => {
   switch (key) {
     case pathConstants.TIMESPERMONTH:
       if (
-        values.subscription.drugSelection === 'Tadalafil' &&
-        values.subscription.doseOption === '5'
+        values.subscription.drugId === drugIds.DAILY_MALE ||
+        values.subscription.drugId === drugIds.TADALAFIL_DAILY
       ) {
         skip = true
         values.subscription.timesPerMonth = '30'
@@ -395,8 +404,10 @@ const SkipPage = (key, values) => {
       skip = !values.edMeds.avanafil
       break
 
-    case pathConstants.SILDENAFILDOSE:
-      skip = values.subscription.drugSelection !== 'Sildenafil'
+    case pathConstants.DRUGDOSE:
+      skip =
+        values.subscription.drugId !== drugIds.SILDENAFIL &&
+        values.subscription.drugId !== drugIds.TADALAFIL
       break
 
     case pathConstants.SYSTOLIC:

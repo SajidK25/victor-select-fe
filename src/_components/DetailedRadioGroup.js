@@ -1,5 +1,5 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles' 
+import { makeStyles } from '@material-ui/core/styles'
 import { DetailedRadio } from './DetailedRadio'
 import { ErrorDisplay } from './ErrorDisplay'
 
@@ -19,16 +19,17 @@ const DetailedRadioGroup = props => {
     displayComponent
   } = props
   const classes = useStyles()
-  
+
   return (
     <div className={classes.container}>
-      {options.map(o => ( 
+      {options.map(o => (
         <DetailedRadio
           input={input}
           LabelDisplay={displayComponent}
-          options = {o.labelOptions}
-          id = {o.id}
-          key = {o.id}
+          options={o.labelOptions}
+          pricing={o.pricing}
+          id={o.id}
+          key={o.id}
         />
       ))}
       {touched && error && <ErrorDisplay errorText={error} />}

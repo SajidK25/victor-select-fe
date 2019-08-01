@@ -22,6 +22,10 @@ const validateGender = values => {
     errors.personal.gender = "Sorry, we can only offer this service to males.";
   }
 
+  if (!values.personal.gender) {
+    errors.personal.gender = "Please make a selection.";
+  }
+
   return errors;
 };
 

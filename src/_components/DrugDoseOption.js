@@ -1,8 +1,7 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import { formatMoney } from '../_constants/drugSelections'
+import { formatMoney } from '../_helpers/money'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -54,30 +53,23 @@ const useStyles = makeStyles(theme => ({
   }
 }))
 
-export const SildenafilDoseOption = props => {
-  const { options } = props
+export const DrugDoseOption = props => {
+  const { options, pricing } = props
   const classes = useStyles()
+  console.log('Dose Options', options)
 
   return (
-    <Paper
-      classes={{
-        root: classes.paperRoot
-      }}
-      square
-      elevation={0}
-    >
-      <div className={classes.container}>
-        <div className={classes.titleLine}>
-          <Typography className={classes.title}>{options.title}</Typography>
-          <div className={classes.priceBox}>
-            <Typography className={classes.price}>
-              {formatMoney(options.price, 2)}
-            </Typography>
-            <Typography className={classes.dose}>per dose</Typography>
-          </div>
+    <div className={classes.container}>
+      <div className={classes.titleLine}>
+        <Typography className={classes.title}>{options.label}</Typography>
+        <div className={classes.priceBox}>
+          <Typography className={classes.price}>
+            {formatMoney(pricing.monthly, 2)}
+          </Typography>
+          <Typography className={classes.dose}>per dose</Typography>
         </div>
-        <Typography className={classes.subTitle}>{options.subTitle}</Typography>
       </div>
-    </Paper>
+      <Typography className={classes.subTitle}>{options.subTitle}</Typography>
+    </div>
   )
 }

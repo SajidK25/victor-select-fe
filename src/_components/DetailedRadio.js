@@ -2,7 +2,7 @@ import React from 'react'
 import Paper from '@material-ui/core/Paper'
 import FormControlLabel from '@material-ui/core/FormControlLabel'
 import Radio from '@material-ui/core/Radio'
-import { makeStyles } from '@material-ui/core/styles' 
+import { makeStyles } from '@material-ui/core/styles'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -28,14 +28,13 @@ const useStyles = makeStyles(theme => ({
   },
   radioRoot: {
     alignSelf: 'self-start',
-    padding: 0,
-  },
+    padding: 0
+  }
 }))
 
 const DetailedRadio = props => {
-  const { input, id, options, LabelDisplay } = props
+  const { input, id, options, pricing, LabelDisplay } = props
   const classes = useStyles()
-  console.log(props)
 
   return (
     <Paper className={classes.container}>
@@ -44,16 +43,22 @@ const DetailedRadio = props => {
           root: classes.root,
           label: classes.labelRoot
         }}
-        label={<LabelDisplay options={options} checked={input.value === id} />}
+        label={
+          <LabelDisplay
+            options={options}
+            pricing={pricing}
+            checked={input.value === id}
+          />
+        }
         value={id}
         onChange={input.onChange}
         checked={input.value === id}
         control={
           <Radio
             name={input.name}
-            color='primary'
+            color="primary"
             classes={{
-              root: classes.radioRoot,
+              root: classes.radioRoot
             }}
             type="radio"
           />

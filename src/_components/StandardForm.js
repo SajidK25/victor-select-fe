@@ -7,8 +7,7 @@ export const StandardForm = props => {
     buttonText,
     buttonVariant,
     validating,
-    submitting,
-    ...rest
+    submitting
   } = props
 
   return (

@@ -1,7 +1,6 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { formatMoney } from '../_helpers/money'
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -21,6 +20,10 @@ const useStyles = makeStyles(theme => ({
     marginTop: 0,
     marginBottom: theme.spacing(0.5)
   },
+  subTitle: {
+    fontSize: 13,
+    fontWeight: 400
+  },
   priceBox: {
     display: 'flex',
     alignSelf: 'flex-start'
@@ -36,37 +39,25 @@ const useStyles = makeStyles(theme => ({
     alignSelf: 'center',
     marginLeft: 4,
     marginTop: 4
-  },
-  description: {
-    fontSize: 14,
-    fontWeight: 300,
-    marginTop: 0
-  },
-  checked: {
-    borderStyle: 'solid',
-    borderColor: theme.palette.primary.main,
-    borderWidth: 1
   }
 }))
 
-export const DrugSelectionDisplay = props => {
+export const EdSolutionTypeDisplay = props => {
   const { options } = props
   const classes = useStyles()
 
   return (
     <div className={classes.container}>
       <div className={classes.titleLine}>
-        <Typography className={classes.title}>{options.label}</Typography>
-        <div className={classes.priceBox}>
+        <Typography className={classes.title}>{options.title}</Typography>
+        {/*}  <div className={classes.priceBox}>
           <Typography className={classes.price}>
             {formatMoney(options.price, 2)}
           </Typography>
           <Typography className={classes.dose}>per dose</Typography>
-        </div>
+  </div> */}
       </div>
-      <Typography className={classes.description} variant="body2">
-        {options.description}
-      </Typography>
+      <Typography className={classes.subTitle}>{options.subTitle}</Typography>
     </div>
   )
 }

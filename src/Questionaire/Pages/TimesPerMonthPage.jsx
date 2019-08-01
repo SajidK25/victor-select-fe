@@ -24,7 +24,7 @@ const questionText =
 let TimesPerMonthPage = props => {
   const { values } = props
   let additionalText = ''
-  if (values.subscription.drugSelection === 'EROS') {
+  if (values.subscription.drugId === 'EROS') {
     additionalText = 'Remember a single dose of EROS lasts a least 36 hours.'
   }
   return (

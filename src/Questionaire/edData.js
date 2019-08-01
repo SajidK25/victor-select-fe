@@ -14,7 +14,8 @@ export const initialValues = {
   },
   subscription: {
     timesPerMonth: '',
-    drugSelection: '',
+    drugType: '',
+    drugId: '',
     doseOption: '',
     shippingInterval: 'everySix'
   },

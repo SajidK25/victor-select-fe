@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
-import { formatMoney } from '../_constants/drugSelections'
+import { formatMoney } from "../_helpers/money";
 
 const useStyles = makeStyles(theme => ({
   container: {

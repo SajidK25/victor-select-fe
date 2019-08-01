@@ -1,64 +1,13 @@
 /* eslint-disable import/order */
 import React from 'react'
 import { Field } from 'react-final-form'
-import { EdSelectionDetail } from '../../_components/EdSelectionDetail'
-import { Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
 import { EdPriceOption } from '../../_components/EdPriceOption'
 import { StandardPage } from '../../_components/StandardPage'
 import { getPrices } from '../../_constants'
-import { formatMoney, MAX_AMOUNT } from '../../_constants/drugSelections'
+import { MAX_AMOUNT } from '../../_constants/drugSelections'
+import { formatMoney } from '../../_helpers/money'
 import { DetailedRadioGroup } from '../../_components/DetailedRadioGroup'
-
-const useStyles = makeStyles(theme => ({
-  description: {
-    marginTop: 16,
-    padding: 16
-  },
-  container: {
-    margin: 0,
-    padding: 0
-  },
-  title: {
-    fontSize: 28,
-    fontWeight: 500,
-    marginBottom: 24
-  },
-  root: {
-    margin: 0
-  },
-  controlRoot: {
-    margin: 0,
-    width: '100%',
-    verticalAlign: 'top'
-  },
-  labelRoot: {
-    width: '100%'
-  },
-  subHead: {
-    width: '80%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    marginBottom: theme.spacing(1.5)
-  },
-  radioRoot: {
-    alignSelf: 'self-start',
-    padding: 0
-  },
-  outer: {
-    display: 'flex',
-    minHeight: '100%',
-    padding: '0 !important',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column'
-    }
-  },
-  pricingGroup: {
-    display: 'flex',
-    margin: 0,
-    flexDirection: 'column'
-  }
-}))
+import { RadioSubmit } from '../../_components/RadioSubmit'
 
 const validateHowOften = values => {
   const errors = {}
@@ -75,19 +24,20 @@ const displayOptions = pricing => {
         subTitle: `You will be billed ${formatMoney(
           pricing.sixTotal,
           0
-        )} and your products shipped every six months. In each delivery you will be sent ${pricing.monthlyDoses *
-          6} 
-                doses of ${
-                  pricing.display
-                }. You may cancel or modify your plan whenever you wish.`,
+        )} and your products shipped every six months. In each delivery you will be sent ${
+          pricing.sixDoses
+        } 
+        doses of ${
+          pricing.display
+        }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.sixMonth,
-        totalPrice: pricing.sixMonth * 6,
+        totalPrice: pricing.sixTotal,
         savings: (pricing.monthly - pricing.sixMonth) * 12
       }
     }
   ]
 
-  if (pricing.threeMonth * 3 >= MAX_AMOUNT) {
+  if (pricing.threeTotal >= MAX_AMOUNT) {
     options.push({
       id: 'everyThree',
       labelOptions: {
@@ -95,13 +45,14 @@ const displayOptions = pricing => {
         subTitle: `You will be billed ${formatMoney(
           pricing.threeTotal,
           0
-        )} and your products shipped every three months. In each delivery you will be sent ${pricing.monthlyDoses *
-          3} 
-                doses of ${
-                  pricing.display
-                }. You may cancel or modify your plan whenever you wish.`,
+        )} and your products shipped every three months. In each delivery you will be sent ${
+          pricing.threeDoses
+        } 
+        doses of ${
+          pricing.display
+        }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.threeMonth,
-        totalPrice: pricing.threeMonth * 3,
+        totalPrice: pricing.threeTotal,
         savings: (pricing.monthly - pricing.threeMonth) * 12
       }
     })
@@ -118,9 +69,9 @@ const displayOptions = pricing => {
         )} and your products shipped monthly. In each delivery you will be sent ${
           pricing.monthlyDoses
         } 
-                doses of ${
-                  pricing.display
-                }. You may cancel or modify your plan whenever you wish.`,
+        doses of ${
+          pricing.display
+        }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.monthly,
         totalPrice: pricing.monthly,
         savings: 0
@@ -131,26 +82,38 @@ const displayOptions = pricing => {
   return options
 }
 
+const questionText = `How often should we ship your treatment?`
+const additionalText = `By choosing to have your treatment delivered every 3 or 6 months you will save money.`
+
 const HowOftenPage = props => {
-  const { values, direction, handleSubmit, ...rest } = props
+  const { values, handleSubmit } = props
 
-  const classes = useStyles()
+  const fieldName = 'subscription.shippingInterval'
 
-  const pricing = getPrices(values.subscription)
+  console.log('How Often Start:', values.subscription)
+
+  const pricing = getPrices(
+    values.subscription.drugId,
+    values.subscription.doseOption,
+    values.subscription.timesPerMonth
+  )
+
   const options = displayOptions(pricing)
 
   return (
-    <StandardPage {...props}>
-      <div className={classes.pricingBox}>
-        <Typography className={classes.title}>{pricing.display}</Typography>
-        <Field
-          component={DetailedRadioGroup}
-          options={options}
-          displayComponent={EdPriceOption}
-          name="subscription.shippingInterval"
-          type="div"
-        />
-      </div>
+    <StandardPage
+      questionText={questionText}
+      additionalText={additionalText}
+      {...props}
+    >
+      <Field
+        component={DetailedRadioGroup}
+        options={options}
+        displayComponent={EdPriceOption}
+        name={fieldName}
+        type="div"
+      />
+      <RadioSubmit name={fieldName} handleSubmit={handleSubmit} />
     </StandardPage>
   )
 }

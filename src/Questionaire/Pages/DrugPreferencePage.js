@@ -7,7 +7,7 @@ import { makeStyles } from '@material-ui/core/styles'
 import { StandardPage } from '../../_components/StandardPage'
 import { DetailedRadioGroup } from '../../_components/DetailedRadioGroup'
 import { RadioSubmit } from '../../_components/RadioSubmit'
-import { drugSelections } from '../../_constants'
+import { getDrugList, validDoseOption, defaultDose } from '../../_constants'
 
 const useStyles = makeStyles(theme => ({
   moreText: {
@@ -16,7 +16,16 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const validateDrugPreference = values => {
-  const errors = {}
+  const errors = { subscription: {} }
+  const s = values.subscription
+
+  if (!values.subscription.drugId) {
+    errors.subscription.drugId = 'Please make a selection.'
+  }
+
+  if (!validDoseOption(s.drugId, s.doseOption)) {
+    values.subscription.doseOption = defaultDose(s.drugId)
+  }
 
   return errors
 }
@@ -26,18 +35,23 @@ const additionalText =
   'Your preference will be shared with a physician, who will use their medical judgement to determine the best treatment plan. Their decision may or may not match your preference.'
 
 const DrugPreferencePage = props => {
-  const { values, direction, handleSubmit, ...rest } = props
+  const { values, handleSubmit } = props
 
   const classes = useStyles()
-  const name = 'subscription.drugSelection'
+  const name = 'subscription.drugId'
+  let options = {}
+
+  const drugType = values.subscription.drugType
+  if (drugType) {
+    options = getDrugList(drugType)
+  }
 
   return (
     <StandardPage
       questionText={questionText}
       additionalText={additionalText}
       alignTitles="left"
-      handleSubmit={handleSubmit}
-      {...rest}
+      {...props}
     >
       <Typography variant="body2" gutterBottom>
         We offer a customized formulation delivered via a unique lozenge which
@@ -52,12 +66,11 @@ const DrugPreferencePage = props => {
       </Typography>
       <Field
         component={DetailedRadioGroup}
-        options={drugSelections}
+        options={options}
         displayComponent={DrugSelectionDisplay}
         name={name}
         type="div"
       />
-
       <RadioSubmit name={name} handleSubmit={handleSubmit} />
     </StandardPage>
   )

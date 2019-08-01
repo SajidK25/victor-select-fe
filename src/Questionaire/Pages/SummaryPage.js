@@ -4,7 +4,8 @@ import { makeStyles } from '@material-ui/core/styles'
 import Divider from '@material-ui/core/Divider'
 import { StandardForm } from '../../_components/StandardForm'
 import { Transition } from '../../_components/Transition'
-import { formatMoney, drugDisplaySetup } from '../../_constants/drugSelections'
+import { drugDisplaySetup } from '../../_constants/drugSelections'
+import { formatMoney } from '../../_helpers/money'
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -94,7 +95,7 @@ const validateSummary = values => {
 }
 
 const SummaryPage = props => {
-  const { values, direction, handleSubmit, ...rest } = props
+  const { values, direction, handleSubmit } = props
 
   const classes = useStyles()
 
