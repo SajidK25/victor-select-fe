@@ -18,20 +18,15 @@ const validateEdAddon = values => {
   const errors = { subscription: {} }
   const s = values.subscription
 
-  if (!values.subscription.drugId) {
-    errors.subscription.drugId = 'Please make a selection.'
-  }
-
-  if (!validDoseOption(s.drugId, s.doseOption)) {
-    values.subscription.doseOption = defaultDose(s.drugId)
+  if (!values.subscription.addOn) {
+    errors.subscription.addOn = 'Please make a selection.'
   }
 
   return errors
 }
 
 const questionText = 'Do you want to enhance your results?'
-const additionalText =
-  "Sex doesn't have to be hard. Especially if you're consistantly hard. This daily add-on will not only enhance your experience, it will provide looong lasting benefits that will not go unnoticed!"
+const additionalText = 'Benefits, benefits, benefits, benefits, more benefits.'
 
 const EdAddonPage = props => {
   const { values, handleSubmit } = props

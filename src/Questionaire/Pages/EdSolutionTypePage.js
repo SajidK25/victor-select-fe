@@ -17,22 +17,25 @@ const displayOptions = () => {
     {
       id: 'A',
       labelOptions: {
-        title: '4 - 6 Hours',
-        subTitle: ''
+        title: 'The "Night"',
+        subTitle: `Choose from options ranging from generic traditional ED drugs to our exclusive
+        super compounds, providing performance ranging from 4-6 hours.`
       }
     },
     {
       id: 'B',
       labelOptions: {
-        title: '36 Hours',
-        subTitle: ''
+        title: 'The "Weekend"',
+        subTitle: `Choose from options ranging from generic traditional ED drugs to our exclusive
+        super compounds, providing performance ranging from 36-42 hours.`
       }
     },
     {
       id: 'C',
       labelOptions: {
-        title: 'Daily Option',
-        subTitle: ''
+        title: '"Enrichment"',
+        subTitle: `Choose from pharmaceutical and nutraceutical options to create a daily regimen 
+        that will greatly enhance your current experience.`
       }
     }
   ]
@@ -46,7 +49,8 @@ const EdSolutionTypePage = props => {
   const fieldName = 'subscription.drugType'
 
   const questionText = 'Type of solution'
-  const additionalText = ''
+  const additionalText =
+    'We have a variety of solutions for every level of ED that can meet your specific needs. Choose the option that most reflects your needs.'
 
   const options = displayOptions()
 

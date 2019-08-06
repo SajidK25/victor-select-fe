@@ -17,6 +17,7 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontSize: 18,
     fontWeight: 500,
+    color: theme.palette.primary.main,
     marginTop: 0,
     marginBottom: theme.spacing(0.5)
   },
