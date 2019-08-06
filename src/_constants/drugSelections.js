@@ -206,7 +206,7 @@ const addOns = [
     id: drugIds.MALE_DAILY,
     category: '',
     labelOptions: {
-      label: 'Daily Male',
+      label: 'Male Daily',
       description: 'Yes! I want this supplement to enhance my results!',
       price: 1.75
     },
