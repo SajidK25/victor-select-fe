@@ -1,5 +1,6 @@
 import React from 'react'
 import { RadioPage } from '../../_components/RadioPage'
+import { drugIds } from '../../_constants/drugSelections'
 
 const options = [
   { id: '4', label: '4 uses per month' },
@@ -24,8 +25,12 @@ const questionText =
 let TimesPerMonthPage = props => {
   const { values } = props
   let additionalText = ''
-  if (values.subscription.drugId === 'EROS') {
-    additionalText = 'Remember a single dose of EROS lasts a least 36 hours.'
+  if (values.subscription.drugId === drugIds.EROS) {
+    additionalText = 'Remember a single dose of EROS can last up to 42 hours.'
+  }
+  if (values.subscription.drugId === drugIds.TADALAFIL) {
+    additionalText =
+      'Remember a single dose of Tadalafil can last up to 36 hours.'
   }
   return (
     <RadioPage
