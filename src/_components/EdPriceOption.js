@@ -67,10 +67,6 @@ export const EdPriceOption = props => {
   const { options } = props
   const classes = useStyles()
 
-  if (options.totalPrice < 50) {
-    return null
-  }
-
   const savings =
     options.savings > 0
       ? `Save ${formatMoney(options.savings, 0)}/year!`

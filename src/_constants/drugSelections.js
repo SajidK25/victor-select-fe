@@ -6,7 +6,8 @@ export const drugIds = {
   TADALAFIL: 'TADALAFIL',
   SILDENAFIL: 'SILDENAFIL',
   TADALAFIL_DAILY: 'TADALAFIL_DAILY',
-  DAILY_MALE: 'DAILY_MALE'
+  MALE_DAILY: 'MALE_DAILY',
+  NO_ADDON: 'NO_ADDON'
 }
 
 export const drugSelections = [
@@ -19,7 +20,8 @@ export const drugSelections = [
                     for the treatment of Erectile Dysfunction. 
                     Prescription strength Tadalafil (Cialis) and Apomorphine
                     are combined to create a super drug with a duration 
-                    of action up to 42 hours.`
+                    of action up to 42 hours.`,
+      price: 18.75
     },
     doseOptions: [
       {
@@ -64,12 +66,12 @@ export const drugSelections = [
     ]
   },
   {
-    id: drugIds.DAILY_MALE,
+    id: drugIds.MALE_DAILY,
     category: 'C',
     labelOptions: {
-      label: 'Daily Male',
+      label: 'Male Daily',
       description: '',
-      price: 3.75
+      price: 2.5
     },
     doseOptions: [
       {
@@ -78,7 +80,7 @@ export const drugSelections = [
         labelOptions: {
           title: '',
           subTile: '',
-          display: 'Daily Male'
+          display: 'Male Daily'
         },
         pricing: {
           sixMonth: 2,
@@ -198,6 +200,41 @@ export const drugSelections = [
     ]
   }
 ]
+
+const addOns = [
+  {
+    id: drugIds.MALE_DAILY,
+    category: '',
+    labelOptions: {
+      label: 'Daily Male',
+      description: 'Yes! I want this supplement to enhance my results!',
+      price: 1.75
+    },
+    pricing: {
+      sixMonth: 1.25,
+      threeMonth: 1.5,
+      monthly: 1.75
+    }
+  },
+  {
+    id: drugIds.NO_ADDON,
+    category: '',
+    labelOptions: {
+      label: 'No Addon',
+      description: "No thanks! I don't want to supercharge my treatment.",
+      price: 0
+    },
+    pricing: {
+      sixMonth: 0,
+      threeMonth: 0,
+      monthly: 0
+    }
+  }
+]
+
+export const getAddonList = category => {
+  return addOns
+}
 
 export const getDrugList = category => {
   return drugSelections.filter(d => d.category === category)

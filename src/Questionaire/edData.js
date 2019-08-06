@@ -17,7 +17,8 @@ export const initialValues = {
     drugType: '',
     drugId: '',
     doseOption: '',
-    shippingInterval: 'everySix'
+    shippingInterval: 'everySix',
+    addOn: ''
   },
   getErections: '',
   problemsBegan: '',

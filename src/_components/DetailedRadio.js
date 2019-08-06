@@ -33,7 +33,7 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const DetailedRadio = props => {
-  const { input, id, options, pricing, LabelDisplay } = props
+  const { input, id, options, pricing, LabelDisplay, ...rest } = props
   const classes = useStyles()
 
   return (
@@ -48,6 +48,7 @@ const DetailedRadio = props => {
             options={options}
             pricing={pricing}
             checked={input.value === id}
+            {...rest}
           />
         }
         value={id}

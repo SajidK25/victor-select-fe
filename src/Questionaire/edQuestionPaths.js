@@ -89,7 +89,9 @@ import {
   DrugDosePage,
   validateDrugDose,
   EdSolutionTypePage,
-  validateEdSolutionType
+  validateEdSolutionType,
+  EdAddonPage,
+  validateEdAddon
 } from './Pages/index'
 
 const pathConstants = {
@@ -101,8 +103,9 @@ const pathConstants = {
   EDSOLUTIONTYPE: 4,
   DRUGPREFERENCE: 5,
   DRUGDOSE: 6,
-  TIMESPERMONTH: 8,
-  HOWOFTEN: 9,
+  TIMESPERMONTH: 7,
+  HOWOFTEN: 8,
+  ADDON: 9,
   ERECTION: 10,
   PROBLEMSBEGAN: 11,
   NEWPARTNER: 12,
@@ -185,6 +188,11 @@ const pages = [
     key: pathConstants.HOWOFTEN,
     component: HowOftenPage,
     validate: validateHowOften
+  },
+  {
+    key: pathConstants.ADDON,
+    component: EdAddonPage,
+    validate: validateEdAddon
   },
   {
     key: pathConstants.ERECTION,
@@ -364,12 +372,16 @@ const SkipPage = (key, values) => {
   switch (key) {
     case pathConstants.TIMESPERMONTH:
       if (
-        values.subscription.drugId === drugIds.DAILY_MALE ||
+        values.subscription.drugId === drugIds.MALE_DAILY ||
         values.subscription.drugId === drugIds.TADALAFIL_DAILY
       ) {
         skip = true
         values.subscription.timesPerMonth = '30'
       }
+      break
+
+    case pathConstants.ADDON:
+      skip = values.subscription.drugId === drugIds.MALE_DAILY
       break
 
     case pathConstants.WHILEMASTURBATING:

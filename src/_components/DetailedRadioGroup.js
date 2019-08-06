@@ -16,7 +16,8 @@ const DetailedRadioGroup = props => {
     input,
     meta: { touched, error },
     options,
-    displayComponent
+    displayComponent,
+    ...rest
   } = props
   const classes = useStyles()
 
@@ -30,6 +31,7 @@ const DetailedRadioGroup = props => {
           pricing={o.pricing}
           id={o.id}
           key={o.id}
+          {...rest}
         />
       ))}
       {touched && error && <ErrorDisplay errorText={error} />}
