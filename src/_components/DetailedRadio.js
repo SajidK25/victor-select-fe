@@ -45,6 +45,7 @@ const DetailedRadio = props => {
         }}
         label={
           <LabelDisplay
+            id={id}
             options={options}
             pricing={pricing}
             checked={input.value === id}

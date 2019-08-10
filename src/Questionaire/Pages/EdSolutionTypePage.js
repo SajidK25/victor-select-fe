@@ -17,15 +17,15 @@ const displayOptions = () => {
     {
       id: 'A',
       labelOptions: {
-        title: 'The "Night"',
-        subTitle: `Choose from options ranging from generic traditional ED drugs to our exclusive
-        super compounds, providing performance ranging from 4-6 hours.`
+        title: '"Intimate Rendezvous" (4-6 hours)',
+        subTitle: `Romeo (Sildenafil*/Viagra + Apomorphine) our specialty combination drug can last up to 6 hours and is likely to have an onset of action in as little as 30 minutes.
+                  Due to extreme Generic Sildenafil`,
       }
     },
     {
       id: 'B',
       labelOptions: {
-        title: 'The "Weekend"',
+        title: '"Weekend Getaway" (36-42 hours)',
         subTitle: `Choose from options ranging from generic traditional ED drugs to our exclusive
         super compounds, providing performance ranging from 36-42 hours.`
       }
@@ -33,7 +33,7 @@ const displayOptions = () => {
     {
       id: 'C',
       labelOptions: {
-        title: '"Enrichment"',
+        title: '"Always Ready" (Daily)',
         subTitle: `Choose from pharmaceutical and nutraceutical options to create a daily regimen 
         that will greatly enhance your current experience.`
       }
@@ -48,9 +48,9 @@ const EdSolutionTypePage = props => {
 
   const fieldName = 'subscription.drugType'
 
-  const questionText = 'Type of solution'
+  const questionText = 'Choose a Duration of Action'
   const additionalText =
-    'We have a variety of solutions for every level of ED that can meet your specific needs. Choose the option that most reflects your needs.'
+    'Please select the option that best meets your desired window of readiness for intercourse.'
 
   const options = displayOptions()
 
@@ -70,6 +70,7 @@ const EdSolutionTypePage = props => {
       <RadioSubmit name={fieldName} handleSubmit={handleSubmit} />
     </StandardPage>
   )
+}
 }
 
 export { EdSolutionTypePage, validateEdSolutionType }
