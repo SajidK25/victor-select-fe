@@ -5,15 +5,13 @@ import { StandardForm } from "./StandardForm";
 import Box from "@material-ui/core/Box";
 
 export const StandardPage = props => {
-  const { direction, fullWidth, handleSubmit, ...rest } = props;
+  const { direction, fullWidth } = props;
 
   return (
     <QuestionContainer direction={direction} fullWidth={fullWidth}>
       <Box width="100%">
-        <StandardHeading {...rest} />
-        <StandardForm handleSubmit={handleSubmit} {...rest} >
-          {props.children}
-        </StandardForm>
+        <StandardHeading {...props} />
+        <StandardForm {...props}>{props.children}</StandardForm>
       </Box>
     </QuestionContainer>
   );

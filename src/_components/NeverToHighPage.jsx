@@ -6,10 +6,10 @@ import { NeverToHigh } from "./NeverToHigh";
 import { StandardPage } from "./StandardPage";
 
 export const NeverToHighPage = props => {
-  const { options, ...rest } = props;
+  const { options } = props;
 
   return (
-    <StandardPage {...rest}>
+    <StandardPage {...props}>
       <Box mt={2}>
         <FormGroup>
           {options.map(o => (

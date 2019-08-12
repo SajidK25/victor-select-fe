@@ -1,7 +1,7 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { formatMoney } from '../_helpers/money'
+import React from "react";
+import { Typography } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { formatMoney } from "../../../_helpers/money";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -10,10 +10,10 @@ const useStyles = makeStyles(theme => ({
     paddingRight: 8
   },
   titleLine: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
   title: {
     fontSize: 18,
@@ -21,9 +21,13 @@ const useStyles = makeStyles(theme => ({
     marginTop: 0,
     marginBottom: theme.spacing(0.5)
   },
+  subTitle: {
+    fontSize: 13,
+    fontWeight: 400
+  },
   priceBox: {
-    display: 'flex',
-    alignSelf: 'flex-start'
+    display: "flex",
+    alignSelf: "flex-start"
   },
   price: {
     fontSize: 18,
@@ -33,7 +37,7 @@ const useStyles = makeStyles(theme => ({
   dose: {
     fontSize: 11,
     fontWeight: 300,
-    alignSelf: 'center',
+    alignSelf: "center",
     marginLeft: 4,
     marginTop: 4
   },
@@ -43,15 +47,16 @@ const useStyles = makeStyles(theme => ({
     marginTop: 0
   },
   checked: {
-    borderStyle: 'solid',
+    borderStyle: "solid",
     borderColor: theme.palette.primary.main,
     borderWidth: 1
   }
-}))
+}));
 
-export const DrugSelectionDisplay = props => {
-  const { options } = props
-  const classes = useStyles()
+export const DrugDoseOption = props => {
+  const { options, pricing } = props;
+  const classes = useStyles();
+  console.log("Dose Options", options);
 
   return (
     <div className={classes.container}>
@@ -59,14 +64,12 @@ export const DrugSelectionDisplay = props => {
         <Typography className={classes.title}>{options.label}</Typography>
         <div className={classes.priceBox}>
           <Typography className={classes.price}>
-            {formatMoney(options.price, 2)}
+            {formatMoney(pricing.monthly, 2)}
           </Typography>
           <Typography className={classes.dose}>per dose</Typography>
         </div>
       </div>
-      <Typography className={classes.description} variant="body2">
-        {options.description}
-      </Typography>
+      <Typography className={classes.subTitle}>{options.subTitle}</Typography>
     </div>
-  )
-}
+  );
+};

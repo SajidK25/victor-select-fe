@@ -12,8 +12,8 @@ const useStyles = makeStyles({
     paddingRight: 15
   },
   label: {
-    fontSize: 14,
-    marginBottom: 3
+    fontSize: 15,
+    marginBottom: 0
   }
 });
 

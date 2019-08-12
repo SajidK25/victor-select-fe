@@ -1,9 +1,10 @@
 import React from "react";
 import { Field } from "react-final-form";
 import Typography from "@material-ui/core/Typography";
-import { withStyles } from "@material-ui/core/styles";
+import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/core/styles";
 import {
-  StandardPage,
+  InfoPage,
   RenderSimpleCheckbox,
   RenderCheckError
 } from "../../_components";
@@ -18,24 +19,30 @@ const validatePostBP = values => {
   return errors;
 };
 
-const styles = {
+const useStyles = makeStyles(theme => ({
   group: {
-    marginTop: 15,
-    marginBottom: 15
+    padding: theme.spacing(2)
+  },
+  heading: {
+    fontSize: 16,
+    fontWeight: 400,
+    marginBottom: theme.spacing(2)
   }
-};
+}));
 
-let PostBPPage = props => {
-  const { values, ...rest } = props;
+const PostBPPage = props => {
+  const { values } = props;
+  const classes = useStyles();
+
   const bloodPressure = `${values.bloodPressure.systolic || ""}/${values
     .bloodPressure.diastolic || ""} mmHg`;
   return (
-    <StandardPage values={values} {...rest}>
-      <Typography variant="body1" align="left" gutterBottom>
+    <InfoPage {...props}>
+      <Typography variant="body2" align="center" className={classes.heading}>
         Please confirm that this is your correct blood pressure reading and it
         was done within the last 6 months.
       </Typography>
-      <Typography variant="headline" align="center" gutterBottom>
+      <Typography variant="h6" align="center" gutterBottom>
         {bloodPressure}
       </Typography>
       <Typography variant="body1" align="center" gutterBottom>
@@ -46,10 +53,8 @@ let PostBPPage = props => {
         />
         <Field name="checkError" component={RenderCheckError} />
       </Typography>
-    </StandardPage>
+    </InfoPage>
   );
 };
-
-PostBPPage = withStyles(styles)(PostBPPage);
 
 export { PostBPPage, validatePostBP };

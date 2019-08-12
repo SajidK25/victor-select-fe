@@ -1,10 +1,10 @@
-import React from 'react'
-import { BrowserRouter as Router } from 'react-router-dom'
+import React from "react";
+import { BrowserRouter as Router } from "react-router-dom";
 
-import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles'
-import { orange, blue } from '@material-ui/core/colors'
-import CssBaseline from '@material-ui/core/CssBaseline'
-import { Main } from './_pages/Main'
+import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
+import { orange, blue } from "@material-ui/core/colors";
+import CssBaseline from "@material-ui/core/CssBaseline";
+import { Main } from "./_pages/Main";
 
 let theme = createMuiTheme({
   overrides: {
@@ -18,7 +18,7 @@ let theme = createMuiTheme({
     MuiFormHelperText: {
       root: {
         marginLeft: 12,
-        color: 'rgba(0, 0, 0, 0.54)'
+        color: "rgba(0, 0, 0, 0.54)"
       }
     }
   },
@@ -27,7 +27,7 @@ let theme = createMuiTheme({
     primary: blue,
     secondary: orange,
     background: {
-      default: '#fafafa'
+      default: "#fafafa"
     }
   },
   breakpoints: {
@@ -41,18 +41,18 @@ let theme = createMuiTheme({
       fontWeight: 300
     },
     body2: {
-      fontSize: '0.9em',
+      fontSize: "0.96em",
       fontWeight: 300,
-      lineHeight: '1.2rem'
+      lineHeight: "1.2rem"
     },
     h6: {
-      fontSize: '1.33em',
-      lineHeight: '1.63rem',
+      fontSize: "1.5em",
+      lineHeight: "1.66rem",
       letterSpacing: 0,
       fontWeight: 500
     }
   }
-})
+});
 
 const App = ({ client }) => {
   return (
@@ -63,7 +63,7 @@ const App = ({ client }) => {
         <Main />
       </Router>
     </MuiThemeProvider>
-  )
-}
+  );
+};
 
-export { App }
+export { App };

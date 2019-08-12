@@ -1,7 +1,7 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import { formatMoney } from '../_helpers/money'
+import React from "react";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
+import { formatMoney } from "../../../_helpers";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -10,10 +10,10 @@ const useStyles = makeStyles(theme => ({
     paddingRight: 8
   },
   titleLine: {
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
   title: {
     fontSize: 18,
@@ -23,22 +23,22 @@ const useStyles = makeStyles(theme => ({
   },
   priceLine: {
     marginTop: 8,
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
   totalPrice: {
     fontWeight: 500,
     marginRight: 4
   },
   priceBox: {
-    display: 'flex',
-    alignSelf: 'flex-start'
+    display: "flex",
+    alignSelf: "flex-start"
   },
   detailBox: {
-    display: 'flex',
-    alignSelf: 'flex-end',
+    display: "flex",
+    alignSelf: "flex-end",
     fontSize: 14,
     marginTop: 8
   },
@@ -50,7 +50,7 @@ const useStyles = makeStyles(theme => ({
   dose: {
     fontSize: 11,
     fontWeight: 300,
-    alignSelf: 'center',
+    alignSelf: "center",
     marginLeft: 4,
     marginTop: 4
   },
@@ -58,51 +58,46 @@ const useStyles = makeStyles(theme => ({
     fontSize: 14,
     fontWeight: 300,
     marginTop: 0
-  },
-  checked: {
-    borderStyle: 'solid',
-    borderColor: theme.palette.primary.main,
-    borderWidth: 1
   }
-}))
+}));
 
 const setPricing = (pricing, howOften) => {
-  const options = {}
+  const options = {};
   switch (howOften) {
-    case 'everySix':
-      options.price = pricing.sixMonth * 180
-      options.perDay = pricing.sixMonth
-      options.doses = 180
-      options.interval = 'every 6 months'
-      break
+    case "everySix":
+      options.price = pricing.sixMonth * 180;
+      options.perDay = pricing.sixMonth;
+      options.doses = 180;
+      options.interval = "every 6 months";
+      break;
 
-    case 'everyThree':
-      options.price = pricing.threeMonth * 90
-      options.perDay = pricing.threeMonth
-      options.doses = 90
-      options.interval = 'every 3 months'
-      break
+    case "everyThree":
+      options.price = pricing.threeMonth * 90;
+      options.perDay = pricing.threeMonth;
+      options.doses = 90;
+      options.interval = "every 3 months";
+      break;
 
     default:
-    case 'monthly':
-      options.price = pricing.monthly * 30
-      options.perDay = pricing.monthly
-      options.doses = 30
-      options.interval = 'monthly'
-      break
+    case "monthly":
+      options.price = pricing.monthly * 30;
+      options.perDay = pricing.monthly;
+      options.doses = 30;
+      options.interval = "monthly";
+      break;
   }
 
-  return options
-}
+  return options;
+};
 
 export const EdAddonDisplay = props => {
-  const { options, pricing, howOften } = props
-  const classes = useStyles()
+  const { options, pricing, howOften } = props;
+  const classes = useStyles();
 
-  console.log('Pricing:', pricing)
-  console.log('howOften:', howOften)
+  console.log("Pricing:", pricing);
+  console.log("howOften:", howOften);
 
-  const pricingOptions = setPricing(pricing, howOften)
+  const pricingOptions = setPricing(pricing, howOften);
 
   return (
     <div className={classes.container}>
@@ -133,5 +128,5 @@ export const EdAddonDisplay = props => {
         </div>
       ) : null}
     </div>
-  )
-}
+  );
+};
