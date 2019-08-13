@@ -1,7 +1,6 @@
 import React from "react";
 import { Field } from "react-final-form";
 import Typography from "@material-ui/core/Typography";
-import Paper from "@material-ui/core/Paper";
 import { makeStyles } from "@material-ui/core/styles";
 import {
   InfoPage,
