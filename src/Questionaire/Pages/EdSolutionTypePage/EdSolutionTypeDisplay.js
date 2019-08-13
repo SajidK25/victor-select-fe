@@ -46,7 +46,7 @@ export const EdSolutionTypeDisplay = props => {
         <Typography className={classes.title}>{options.title}</Typography>
       </div>
       {options.product.map(p => (
-        <Typography className={classes.product}>
+        <Typography className={classes.product} key={p.title}>
           <span className={classes.productTitle}>{p.title}</span>
           {p.description}
         </Typography>

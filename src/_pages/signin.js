@@ -1,16 +1,16 @@
-import React, { useState } from 'react'
-import { withRouter, Link } from 'react-router-dom'
-import { Form, Field } from 'react-final-form'
-import { Mutation } from 'react-apollo'
-import gql from 'graphql-tag'
-import Grid from '@material-ui/core/Grid'
-import { Typography } from '@material-ui/core'
-import { QuestionaireLayout } from '../_components/QuestionaireLayout'
-import { RenderStdTextField } from '../_components/RenderStdTextField'
-import ErrorDisplay from '../_components/ErrorMessage'
-import { StandardPage, QuestionContainer, Legal } from '../_components'
+import React, { useState } from "react";
+import { withRouter, Link } from "react-router-dom";
+import { Form, Field } from "react-final-form";
+import { Mutation } from "@apollo/react-components";
+import gql from "graphql-tag";
+import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+import { QuestionaireLayout } from "../_components/QuestionaireLayout";
+import { RenderStdTextField } from "../_components/RenderStdTextField";
+import ErrorDisplay from "../_components/ErrorMessage";
+import { StandardPage, QuestionContainer, Legal } from "../_components";
 
-import { CURRENT_USER_QUERY } from '../_components/User'
+import { CURRENT_USER_QUERY } from "../_components/User";
 
 const SIGNIN_MUTATION = gql`
   mutation SIGNIN_MUTATION($email: String!, $password: String!) {
@@ -20,49 +20,49 @@ const SIGNIN_MUTATION = gql`
       firstName
     }
   }
-`
+`;
 
 const validate = values => {
-  const errors = {}
+  const errors = {};
   if (!values.password) {
-    errors.password = 'Password is required'
+    errors.password = "Password is required";
   } else if (
     !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(
       values.password
     )
   ) {
     errors.password =
-      'Password must include at least 8 chars., contain at least 1 uppercase letter, 1 lowercase letter and 1 number'
+      "Password must include at least 8 chars., contain at least 1 uppercase letter, 1 lowercase letter and 1 number";
   }
 
   if (!values.email) {
-    errors.email = 'email address is required'
+    errors.email = "email address is required";
   } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-    errors.email = 'Invalid email address'
+    errors.email = "Invalid email address";
   }
-  return errors
-}
+  return errors;
+};
 
 const Signin = props => {
-  const { history, to } = props
+  const { history, to } = props;
 
   return (
     <Mutation
       mutation={SIGNIN_MUTATION}
       refetchQueries={[{ query: CURRENT_USER_QUERY }]}
       onCompleted={() => {
-        history.push({ to })
+        history.push({ to });
       }}
       onError={error => {
-        console.log(error)
+        console.log(error);
       }}
     >
       {(login, { error, loading }) => (
         <Form
-          initialValues={{ email: '', password: '' }}
+          initialValues={{ email: "", password: "" }}
           validate={validate}
           onSubmit={async (values, form) => {
-            await login({ variables: { ...values } })
+            await login({ variables: { ...values } });
           }}
         >
           {({ handleSubmit, values, errors, ...rest }) => (
@@ -116,8 +116,8 @@ const Signin = props => {
         </Form>
       )}
     </Mutation>
-  )
-}
+  );
+};
 
-const connectedSignin = withRouter(Signin)
-export { connectedSignin as Signin }
+const connectedSignin = withRouter(Signin);
+export { connectedSignin as Signin };

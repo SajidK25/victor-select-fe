@@ -20,3 +20,4 @@ export * from "./QHeader";
 export * from "./DetailedRadioGroup";
 export * from "./RadioSubmit";
 export * from "./InfoPage";
+export * from "./Spinner";

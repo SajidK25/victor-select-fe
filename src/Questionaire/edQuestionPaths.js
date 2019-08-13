@@ -2,8 +2,6 @@ import { initialValues } from "./edData";
 import { drugIds } from "../_constants/drugSelections";
 
 import {
-  CreateAccountPage,
-  validateCreateAccount,
   ZipcodePage,
   validateZipcode,
   GenderPage,
