@@ -196,6 +196,16 @@ const pages = [
     validate: validateEdAddon
   },
   {
+    key: pathConstants.SUMMARY,
+    component: SummaryPage,
+    validate: validateSummary
+  },
+  {
+    key: pathConstants.SHIPPING,
+    component: ShippingPage,
+    validate: validateShipping
+  },
+  {
     key: pathConstants.EDSTART,
     component: EdStartPage,
     validate: validateEdStart
@@ -359,16 +369,6 @@ const pages = [
     key: pathConstants.PICTURES,
     component: PicturesPage,
     validate: validatePictures
-  },
-  {
-    key: pathConstants.SUMMARY,
-    component: SummaryPage,
-    validate: validateSummary
-  },
-  {
-    key: pathConstants.SHIPPING,
-    component: ShippingPage,
-    validate: validateShipping
   }
 ];
 

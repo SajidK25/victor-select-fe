@@ -55,7 +55,7 @@ const DrugPreferencePage = props => {
     case "C": // Daily
     default:
       extraText =
-        "Unlike other products you can eat or drink alcohol without diluting the efficacy of the medication.";
+        "Unlike other products you can eat without diluting the efficacy of the medication.";
   }
 
   if (drugType) {

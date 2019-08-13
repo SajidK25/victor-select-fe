@@ -28,8 +28,8 @@ const displayOptions = () => {
           {
             title: "Romeo (Sildenafil*/Viagra + Apomorphine)",
             description: ` our specialty combination drug can last up to 6 hours and is likely to 
-              have an onset of action in as little as 30 minutes. Due to extreme potency of our product headaches can result 
-              but are easily treated with Ibuprofen or other NSAIDs (e.g. Naprosin).`
+              have an onset of action in as little as 30 minutes. Due to the extreme potency of our product, headaches can result 
+              but are easily treated with Ibuprofen or other NSAIDs (e.g. Naprosyn).`
           },
           {
             title: "Generic Sildenafil",
@@ -48,8 +48,8 @@ const displayOptions = () => {
           {
             title: "EROS (Tadalafil*/Cialis + Apomorphine)",
             description: ` our specialty combination drug can last up to 42 hours and takes effect within 45 minutes. 
-              Due to extreme potency of our product headaches can result but are easily treated with 
-              Ibuprofen or other NSAIDs (e.g. Naprosin).`
+              Due to the extreme potency of our product, headaches can result but are easily treated with 
+              Ibuprofen or other NSAIDs (e.g. Naprosyn).`
           },
           {
             title: "Generic Tadalafil",
@@ -66,13 +66,13 @@ const displayOptions = () => {
         title: '"Always Ready" (Daily)',
         product: [
           {
-            title: "Tadalafil/Cialis 5mg",
-            description: ` can be taken on a daily basis to treat erectile disfunction. Daily administration has the advantage 
+            title: "Tadalafil*/Cialis 5mg",
+            description: ` can be taken on a daily basis to treat erectile dysfunction. Daily administration has the advantage 
               of using a lower dose medication to minimize side effects such as headaches. The disadvantage being it is more 
               work and higher cost to take a pill every day. Tadalafil 5mg daily is also a treatment for BPH (Benign Prostatic Hypertrophy).`
           }
         ],
-        footnote: null
+        footnote: "*Exact same product as name brand Cialis in generic form."
       }
     }
   ];
