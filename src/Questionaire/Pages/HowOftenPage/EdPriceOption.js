@@ -1,8 +1,8 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
-import { formatMoney } from '../_helpers/money'
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
+import { formatMoney } from "../../../_helpers";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -15,25 +15,29 @@ const useStyles = makeStyles(theme => ({
     paddingRight: 4
   },
   title: {
-    fontSize: 16,
+    fontSize: 20,
     fontWeight: 500,
-    marginTop: 3
+    marginTop: 4
   },
   subTitle: {
+    fontSize: 13,
+    fontWeight: 500,
+    marginTop: 8
+  },
+  moreText: {
     fontSize: 12,
-    fontWeight: 300,
-    marginTop: 3
+    fontWeight: 300
   },
   priceLine: {
     marginTop: 16,
-    width: '100%',
-    display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'space-between'
+    width: "100%",
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-between"
   },
   priceBox: {
-    display: 'flex',
-    alignSelf: 'flex-end'
+    display: "flex",
+    alignSelf: "flex-end"
   },
   perMultiMonth: {
     fontSize: 24,
@@ -45,15 +49,15 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 400
   },
   savings: {
-    display: 'flex',
-    alignSelf: 'flex-end',
+    display: "flex",
+    alignSelf: "flex-end",
     color: theme.palette.primary.main,
     fontSize: 16,
     fontWeight: 500
   },
   fullPrice: {
-    display: 'flex',
-    alignSelf: 'flex-end',
+    display: "flex",
+    alignSelf: "flex-end",
     fontWeight: 400
   },
   small: {
@@ -61,16 +65,16 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 400,
     color: theme.palette.text.primary
   }
-}))
+}));
 
 export const EdPriceOption = props => {
-  const { options } = props
-  const classes = useStyles()
+  const { options } = props;
+  const classes = useStyles();
 
   const savings =
     options.savings > 0
       ? `Save ${formatMoney(options.savings, 0)}/year!`
-      : 'Pay full price.'
+      : "Pay full price.";
 
   return (
     <Paper
@@ -85,6 +89,7 @@ export const EdPriceOption = props => {
           {options.title}
         </Typography>
         <Typography className={classes.subTitle}>{options.subTitle}</Typography>
+        <Typography className={classes.moreText}>{options.moreText}</Typography>
         <div className={classes.priceLine}>
           <div className={classes.priceBox}>
             <Typography
@@ -108,5 +113,5 @@ export const EdPriceOption = props => {
         </div>
       </div>
     </Paper>
-  )
-}
+  );
+};
