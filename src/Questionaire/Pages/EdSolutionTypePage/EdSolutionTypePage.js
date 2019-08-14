@@ -21,6 +21,24 @@ const validateEdSolutionType = values => {
 const displayOptions = () => {
   let options = [
     {
+      id: "B",
+      labelOptions: {
+        title: '"Weekend Getaway" (36-42 hours)',
+        product: [
+          {
+            title: "EROS (Tadalafil*/Cialis + Apomorphine)",
+            description: ` our specialty combination drug can last up to 42 hours and takes effect within 45 minutes.`
+          },
+          {
+            title: "Generic Cialis",
+            description: ` can take an hour or more to achieve maximum benefits. Because of the 
+              longer duration of action, EROS and Tadalafil do not have any restrictions on eating prior to intercourse.`
+          }
+        ],
+        footnote: "*Exact same product as name brand Cialis in generic form."
+      }
+    },
+    {
       id: "A",
       labelOptions: {
         title: '"Intimate Rendezvous" (4-6 hours)',
@@ -28,36 +46,14 @@ const displayOptions = () => {
           {
             title: "Romeo (Sildenafil*/Viagra + Apomorphine)",
             description: ` our specialty combination drug can last up to 6 hours and is likely to 
-              have an onset of action in as little as 30 minutes. Due to the extreme potency of our product, headaches can result 
-              but are easily treated with Ibuprofen or other NSAIDs (e.g. Naprosyn).`
+              have an onset of action in as little as 30 minutes.`
           },
           {
-            title: "Generic Sildenafil",
-            description: `, like Viagra, requires 
-              an hour to achieve full potency as well as an empty stomach to be effective for up to 4 hours.`
+            title: "Generic Viagra",
+            description: ` requires an hour to achieve full potency as well as an empty stomach to be effective for up to 4 hours.`
           }
         ],
         footnote: "*Exact same product as name brand Viagra in generic form."
-      }
-    },
-    {
-      id: "B",
-      labelOptions: {
-        title: '"Weekend Getaway" (36-42 hours)',
-        product: [
-          {
-            title: "EROS (Tadalafil*/Cialis + Apomorphine)",
-            description: ` our specialty combination drug can last up to 42 hours and takes effect within 45 minutes. 
-              Due to the extreme potency of our product, headaches can result but are easily treated with 
-              Ibuprofen or other NSAIDs (e.g. Naprosyn).`
-          },
-          {
-            title: "Generic Tadalafil",
-            description: `, like Cialis, can take an hour or more to achieve maximum benefits. Because of the 
-              longer duration of action, EROS and Tadalafil do not have any restrictions on eating prior to intercourse.`
-          }
-        ],
-        footnote: "*Exact same product as name brand Cialis in generic form."
       }
     },
     {
@@ -68,8 +64,7 @@ const displayOptions = () => {
           {
             title: "Tadalafil*/Cialis 5mg",
             description: ` can be taken on a daily basis to treat erectile dysfunction. Daily administration has the advantage 
-              of using a lower dose medication to minimize side effects such as headaches. The disadvantage being it is more 
-              work and higher cost to take a pill every day. Tadalafil 5mg daily is also a treatment for BPH (Benign Prostatic Hypertrophy).`
+              of using a lower dose medication to minimize side effects such as headaches. Tadalafil 5mg daily is also a treatment for an enlarged prostate.`
           }
         ],
         footnote: "*Exact same product as name brand Cialis in generic form."

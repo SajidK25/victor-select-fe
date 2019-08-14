@@ -17,7 +17,6 @@ const useStyles = makeStyles(theme => ({
   title: {
     fontSize: 18,
     fontWeight: 500,
-    color: theme.palette.primary.main,
     marginTop: 0,
     marginBottom: theme.spacing(0.5)
   },
@@ -27,12 +26,23 @@ const useStyles = makeStyles(theme => ({
     marginBottom: 8
   },
   productTitle: {
-    fontWeight: 500
+    fontSize: 14,
+    fontWeight: 500,
+    color: theme.palette.primary.main
   },
   footnote: {
     fontWeight: 200,
     fontSize: 12,
     fontStyle: "italic"
+  },
+  list: {
+    marginLeft: 16,
+    padding: 0,
+    marginTop: 4,
+    marginBottom: 12
+  },
+  listItem: {
+    marginLeft: 0
   }
 }));
 
@@ -45,12 +55,16 @@ export const EdSolutionTypeDisplay = props => {
       <div className={classes.titleLine}>
         <Typography className={classes.title}>{options.title}</Typography>
       </div>
-      {options.product.map(p => (
-        <Typography className={classes.product} key={p.title}>
-          <span className={classes.productTitle}>{p.title}</span>
-          {p.description}
-        </Typography>
-      ))}
+      <ul className={classes.list}>
+        {options.product.map(p => (
+          <li className={classes.listItem} key={p.title}>
+            <Typography className={classes.product}>
+              <span className={classes.productTitle}>{p.title}</span>
+              {p.description}
+            </Typography>
+          </li>
+        ))}
+      </ul>
       {options.footnote && (
         <Typography className={classes.footnote}>{options.footnote}</Typography>
       )}
