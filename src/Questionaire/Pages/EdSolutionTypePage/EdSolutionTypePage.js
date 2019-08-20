@@ -100,7 +100,7 @@ const EdSolutionTypePage = props => {
       <Typography
         className={classes.subTitle}
         variant="body2"
-        color="error"
+        color="secondary"
         paragraph
       >
         {additionalText}

@@ -26,13 +26,6 @@ const validate = values => {
   const errors = {};
   if (!values.password) {
     errors.password = "Password is required";
-  } else if (
-    !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(
-      values.password
-    )
-  ) {
-    errors.password =
-      "Password must include at least 8 chars., contain at least 1 uppercase letter, 1 lowercase letter and 1 number";
   }
 
   if (!values.email) {
@@ -109,8 +102,8 @@ const Signin = props => {
                 </Grid>
                 <Legal textLocation="Sign In" />
               </StandardPage>
-              <pre>{JSON.stringify(errors, 0, 2)}</pre>
-              <pre>{JSON.stringify(values, 0, 2)}</pre>
+              {/*}         <pre>{JSON.stringify(errors, 0, 2)}</pre>
+              <pre>{JSON.stringify(values, 0, 2)}</pre> */}
             </QuestionaireLayout>
           )}
         </Form>
