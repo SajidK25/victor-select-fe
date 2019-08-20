@@ -84,9 +84,9 @@ export const drugSelections = [
           display: "Male Daily"
         },
         pricing: {
-          sixMonth: 2,
-          threeMonth: 2.25,
-          monthly: 2.5
+          sixMonth: 1.05,
+          threeMonth: 1.25,
+          monthly: 1.4
         }
       }
     ]
