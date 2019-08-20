@@ -1,12 +1,20 @@
 /* eslint-disable import/order */
 import React from "react";
 import { Field } from "react-final-form";
+import { makeStyles } from "@material-ui/core/styles";
+import Typography from "@material-ui/core/Typography";
 import { EdSolutionTypeDisplay } from "./EdSolutionTypeDisplay";
 import {
   StandardPage,
   DetailedRadioGroup,
   RadioSubmit
 } from "../../../_components";
+
+const useStyles = makeStyles({
+  subTitle: {
+    fontWeight: 500
+  }
+});
 
 const validateEdSolutionType = values => {
   const errors = { subscription: {} };
@@ -77,6 +85,7 @@ const displayOptions = () => {
 
 const EdSolutionTypePage = props => {
   const { handleSubmit } = props;
+  const classes = useStyles();
 
   const fieldName = "subscription.drugType";
 
@@ -87,11 +96,15 @@ const EdSolutionTypePage = props => {
   const options = displayOptions();
 
   return (
-    <StandardPage
-      questionText={questionText}
-      additionalText={additionalText}
-      {...props}
-    >
+    <StandardPage questionText={questionText} {...props}>
+      <Typography
+        className={classes.subTitle}
+        variant="body2"
+        color="error"
+        paragraph
+      >
+        {additionalText}
+      </Typography>
       <Field
         component={DetailedRadioGroup}
         options={options}

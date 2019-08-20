@@ -1,19 +1,15 @@
 import React from "react";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
+import docWithClipboard from "../../images/DocWithClipboard.png";
 import { InfoPage, StandardHeading } from "../../_components";
 
 const useStyles = makeStyles(theme => ({
-  disclaimer: {
-    fontSize: 14,
-    fontWeight: 500,
-    marginTop: theme.spacing(10),
-    marginBottom: theme.spacing(0.25)
-  },
-  disclaimerText: {
-    fontWeight: 300,
-    fontSize: 12,
-    fontStyle: "italic"
+  image: {
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    marginTop: 16
   }
 }));
 
@@ -24,8 +20,8 @@ const validateEdStart = values => {
 };
 
 const questionText = "Lets Get Started";
-const additionalText = `Because the medication you selected contains prescription or compound drugs, you are required to complete 
-   the following medical questionnaire.`;
+const additionalText = `Because the medication you selected contains prescription or compounded drugs, 
+                      Victory Select needs to review some medical questions wih you to ensure success`;
 
 const EdStartPage = props => {
   const classes = useStyles();
@@ -37,14 +33,11 @@ const EdStartPage = props => {
         additionalText={additionalText}
         alignTitles="center"
       />
-      <Typography align="center" className={classes.disclaimer}>
-        * Disclaimer for ED Meds *
-      </Typography>
-      <Typography align="center" className={classes.disclaimerText}>
-        In certain conditions our medications may not be effective in treating
-        erectile dysfunction. In those circomstances, more invasive medical or
-        surgical intervention may be required.
-      </Typography>
+      <img
+        src={docWithClipboard}
+        alt="doc-with-clipboard"
+        className={classes.image}
+      />
     </InfoPage>
   );
 };

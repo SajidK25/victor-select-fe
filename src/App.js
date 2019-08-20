@@ -43,7 +43,7 @@ let theme = createMuiTheme({
     body2: {
       fontSize: "0.96em",
       fontWeight: 300,
-      lineHeight: "1.2rem"
+      lineHeight: "1.35rem"
     },
     h6: {
       fontSize: "1.5em",
