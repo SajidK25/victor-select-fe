@@ -27,8 +27,10 @@ const displayOptions = pricing => {
           2
         )} and your products shipped every six months.`,
         moreText: `In each delivery you will be sent ${pricing.sixDoses} 
-        doses of ${
-          pricing.display
+        doses of ${pricing.display} ${
+          pricing.addOnDisplay
+            ? ` and ${pricing.addOnSixDoses} doses of ${pricing.addOnDisplay}`
+            : ""
         }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.sixMonth,
         totalPrice: pricing.sixTotal,
@@ -47,8 +49,10 @@ const displayOptions = pricing => {
           2
         )} and your products shipped every three months.`,
         moreText: `In each delivery you will be sent ${pricing.threeDoses} 
-        doses of ${
-          pricing.display
+        doses of ${pricing.display} ${
+          pricing.addOnDisplay
+            ? ` and ${pricing.addOnThreeDoses} doses of ${pricing.addOnDisplay}`
+            : ""
         }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.threeMonth,
         totalPrice: pricing.threeTotal,
@@ -67,8 +71,12 @@ const displayOptions = pricing => {
           2
         )} and your products shipped monthly.`,
         moreText: `In each delivery you will be sent ${pricing.monthlyDoses} 
-        doses of ${
-          pricing.display
+        doses of ${pricing.display} ${
+          pricing.addOnDisplay
+            ? ` and ${pricing.addOnMonthlyDoses} doses of ${
+                pricing.addOnDisplay
+              }`
+            : ""
         }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.monthly,
         totalPrice: pricing.monthly,
@@ -93,7 +101,8 @@ const HowOftenPage = props => {
   const pricing = getPrices(
     values.subscription.drugId,
     values.subscription.doseOption,
-    values.subscription.timesPerMonth
+    values.subscription.timesPerMonth,
+    values.subscription.addOn
   );
 
   const options = displayOptions(pricing);

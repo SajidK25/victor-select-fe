@@ -9,11 +9,15 @@ import {
   RadioSubmit
 } from "../../../_components";
 import { getDrugList, validDoseOption, defaultDose } from "../../../_constants";
-import { DrugSelectionDisplay } from "./DrugSelectionDisplay";
+import { DrugPreferenceDisplay } from "./DrugPreferenceDisplay";
 
 const useStyles = makeStyles(theme => ({
   moreText: {
     marginBottom: theme.spacing(2)
+  },
+  highlite: {
+    fontWeight: 500,
+    color: theme.palette.primary.main
   }
 }));
 
@@ -39,7 +43,7 @@ const DrugPreferencePage = props => {
 
   const classes = useStyles();
   const name = "subscription.drugId";
-  let options = {};
+  let options = [];
 
   const drugType = values.subscription.drugType;
   let extraText = "";
@@ -71,25 +75,27 @@ const DrugPreferencePage = props => {
       </Typography>
       {drugType === "C" && (
         <Typography variant="body2" gutterBottom>
-          Male Daily is a collection of nutraceuticals (supplements) designed to
-          improve testosterone levels thereby enhancing erectile performance.
-          Male Daily can be taken alone if you are seeking a completely
-          non-prescriptive substance. Utilizing this option will not be nearly
-          as potent as using it conjunction with one of our customized
-          medications.
+          <span className={classes.highlite}>Male Daily</span> is a collection
+          of nutraceuticals (supplements) designed to improve testosterone
+          levels thereby enhancing erectile performance. Male Daily can be taken
+          alone if you are seeking a completely non-prescriptive substance.
+          Utilizing this option will not be nearly as potent as using it
+          conjunction with one of our customized medications.
         </Typography>
       )}
       <Typography variant="body2" className={classes.moreText}>
         The pricing shown is for the recommended starting dose for an average,
         healthy person. We offer discounts for ordering in quantity.
       </Typography>
-      <Field
-        component={DetailedRadioGroup}
-        options={options}
-        displayComponent={DrugSelectionDisplay}
-        name={name}
-        type="div"
-      />
+      {options && (
+        <Field
+          component={DetailedRadioGroup}
+          options={options}
+          displayComponent={DrugPreferenceDisplay}
+          name={name}
+          type="div"
+        />
+      )}
       <RadioSubmit name={name} handleSubmit={handleSubmit} />
     </StandardPage>
   );

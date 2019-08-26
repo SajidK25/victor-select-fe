@@ -95,7 +95,6 @@ export const EdAddonDisplay = props => {
   const classes = useStyles();
 
   console.log("Pricing:", pricing);
-  console.log("howOften:", howOften);
 
   const pricingOptions = setPricing(pricing, howOften);
 
@@ -115,7 +114,7 @@ export const EdAddonDisplay = props => {
       <Typography className={classes.description} variant="body2">
         {options.description}
       </Typography>
-      {options.price ? (
+      {/*     {options.price ? (
         <div>
           <div className={classes.detailBox}>
             <span className={classes.totalPrice}>
@@ -126,7 +125,7 @@ export const EdAddonDisplay = props => {
             }`}
           </div>
         </div>
-      ) : null}
+          ) : null} */}
     </div>
   );
 };

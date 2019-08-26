@@ -186,14 +186,14 @@ const pages = [
     validate: validateTimesPerMonth
   },
   {
-    key: pathConstants.HOWOFTEN,
-    component: HowOftenPage,
-    validate: validateHowOften
-  },
-  {
     key: pathConstants.ADDON,
     component: EdAddonPage,
     validate: validateEdAddon
+  },
+  {
+    key: pathConstants.HOWOFTEN,
+    component: HowOftenPage,
+    validate: validateHowOften
   },
   {
     key: pathConstants.EDSTART,
@@ -388,7 +388,9 @@ const SkipPage = (key, values) => {
       break;
 
     case pathConstants.ADDON:
-      skip = values.subscription.drugId === drugIds.MALE_DAILY;
+      skip =
+        values.subscription.drugId === drugIds.MALE_DAILY ||
+        values.subscription.drugId === drugIds.DAILY_PLUS;
       break;
 
     case pathConstants.WHILEMASTURBATING:

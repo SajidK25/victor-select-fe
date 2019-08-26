@@ -49,7 +49,7 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export const DrugSelectionDisplay = props => {
+export const DrugPreferenceDisplay = props => {
   const { options } = props;
   const classes = useStyles();
 

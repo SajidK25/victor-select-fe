@@ -72,7 +72,7 @@ export const drugSelections = [
     labelOptions: {
       label: "Male Daily",
       description: "",
-      price: 2.5
+      price: 1.4
     },
     doseOptions: [
       {
@@ -97,7 +97,7 @@ export const drugSelections = [
     labelOptions: {
       label: "Male Daily + Tadalafil Daily (5mg)",
       description: "",
-      price: 6.0
+      price: 5.0
     },
     doseOptions: [
       {
@@ -109,9 +109,9 @@ export const drugSelections = [
           display: "Male Daily+Tadalafil 5mg"
         },
         pricing: {
-          sixMonth: 5,
-          threeMonth: 5.5,
-          monthly: 6
+          sixMonth: 3.75,
+          threeMonth: 4.25,
+          monthly: 5
         }
       }
     ]
@@ -234,12 +234,12 @@ const addOns = [
     labelOptions: {
       label: "Male Daily",
       description: "Yes! I want this supplement to enhance my results!",
-      price: 1.75
+      price: 1.2
     },
     pricing: {
-      sixMonth: 1.25,
-      threeMonth: 1.5,
-      monthly: 1.75
+      sixMonth: 0.8,
+      threeMonth: 1.0,
+      monthly: 1.2
     }
   },
   {
@@ -258,10 +258,37 @@ const addOns = [
   }
 ];
 
-export const getAddonList = category => {
+export const getAddonList = () => {
   return addOns;
 };
 
+const getAddon = addOnId => {
+  if (!addOnId || addOnId === drugIds.NO_ADDON) return null;
+
+  return addOns.find(d => d.id === addOnId);
+};
+
+const getAddonPricing = addOnId => {
+  const pricing = {
+    sixMonth: 0,
+    threeMonth: 0,
+    monthly: 0
+  };
+
+  const addOn = getAddon(addOnId);
+  if (!addOn) return pricing;
+
+  return addOn.pricing;
+};
+
+const getAddonName = addOnId => {
+  const addOn = getAddon(addOnId);
+  if (!addOn) return "";
+
+  return addOn.labelOptions.label;
+};
+
+// Get a list of drugs filtered by category
 export const getDrugList = category => {
   return drugSelections.filter(d => d.category === category);
 };
@@ -312,31 +339,44 @@ export const defaultDose = drugId => {
   return opt.id;
 };
 
-export const getPrices = (drugId, dose, count) => {
+export const getPrices = (drugId, dose, count, addOn) => {
   const pricing = {
     display: `${drugId} not found`,
     monthly: 0,
     monthlyDoses: 0,
+    addOnMonthlyDoses: 0,
     threeMonth: 0,
     threeTotal: 0,
     threeDoses: 0,
+    addOnThreeDoses: 0,
     sixMonth: 0,
     sixTotal: 0,
-    sixDoses: 0
+    sixDoses: 0,
+    addOnSixDoses: 0
   };
 
   const doseOption = getDoseOption(drugId, dose);
   if (!doseOption) return pricing;
 
+  const addOnPricing = getAddonPricing(addOn);
+  const addOnDisplay = getAddonName(addOn);
+
   pricing.display = doseOption.labelOptions.display;
-  pricing.monthly = doseOption.pricing.monthly * count;
+  pricing.addOnDisplay = addOnDisplay;
+  pricing.monthly =
+    doseOption.pricing.monthly * count + addOnPricing.monthly * 30;
   pricing.monthlyDoses = count;
-  pricing.threeMonth = doseOption.pricing.threeMonth * count;
+  pricing.addOnMonthlyDoses = 30;
+  pricing.threeMonth =
+    doseOption.pricing.threeMonth * count + addOnPricing.threeMonth * 30;
   pricing.threeTotal = pricing.threeMonth * 3;
   pricing.threeDoses = count * 3;
-  pricing.sixMonth = doseOption.pricing.sixMonth * count;
+  pricing.addOnThreeDoses = 90;
+  pricing.sixMonth =
+    doseOption.pricing.sixMonth * count + addOnPricing.sixMonth * 30;
   pricing.sixTotal = pricing.sixMonth * 6;
   pricing.sixDoses = count * 6;
+  pricing.addOnSixDoses = 180;
 
   return pricing;
 };

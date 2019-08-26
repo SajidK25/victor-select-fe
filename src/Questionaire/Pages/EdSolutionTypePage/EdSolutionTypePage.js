@@ -43,7 +43,7 @@ const displayOptions = () => {
               longer duration of action, EROS and Tadalafil do not have any restrictions on eating prior to intercourse.`
           }
         ],
-        footnote: "*Exact same product as name brand Cialis in generic form."
+        footnote: "*Same active ingredient as Cialis in generic form."
       }
     },
     {
@@ -61,7 +61,7 @@ const displayOptions = () => {
             description: ` requires an hour to achieve full potency as well as an empty stomach to be effective for up to 4 hours.`
           }
         ],
-        footnote: "*Exact same product as name brand Viagra in generic form."
+        footnote: "*Same active ingredient as Viagra in generic form."
       }
     },
     {
@@ -75,7 +75,7 @@ const displayOptions = () => {
               of using a lower dose medication to minimize side effects such as headaches. Tadalafil 5mg daily is also a treatment for an enlarged prostate.`
           }
         ],
-        footnote: "*Exact same product as name brand Cialis in generic form."
+        footnote: "*Same active ingredient as Cialis in generic form."
       }
     }
   ];
@@ -90,20 +90,17 @@ const EdSolutionTypePage = props => {
   const fieldName = "subscription.drugType";
 
   const questionText = "Choose a Duration of Action";
-  const additionalText =
-    "Please select the option that best meets your desired window of readiness for intercourse.";
 
   const options = displayOptions();
 
   return (
     <StandardPage questionText={questionText} {...props}>
-      <Typography
-        className={classes.subTitle}
-        variant="body2"
-        color="secondary"
-        paragraph
-      >
-        {additionalText}
+      <Typography className={classes.subTitle} variant="body2" paragraph>
+        <span role="img" aria-label="rocket">
+          🚀
+        </span>{" "}
+        Please select the option that best meets your{" "}
+        <b>desired window of readiness</b> for intercourse.
       </Typography>
       <Field
         component={DetailedRadioGroup}
