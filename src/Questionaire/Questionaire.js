@@ -9,23 +9,13 @@ import {
 } from "react-router-dom";
 import { getNextPage, getCurrentPage } from "./questionPaths";
 import { QuestionaireLayout } from "../_components/QuestionaireLayout";
-import { makeStyles } from "@material-ui/core/styles";
 import User from "../_components/User";
-
-const useStyles = makeStyles({
-  appContainer: {
-    overflowY: "auto",
-    paddingTop: 70
-  }
-});
 
 const Questionaire = props => {
   const { history, location, questionaire, match } = props;
   const [pageIndex, setPageIndex] = useState(0);
   const [transDir, setTransDir] = useState("left");
   const [page, setPage] = useState(questionaire.pages[0]);
-
-  const classes = useStyles();
 
   useEffect(() => {
     const pathArray = location.pathname.split("/");
@@ -72,6 +62,7 @@ const Questionaire = props => {
       validate={validate}
       onSubmit={values => {
         if (isLastPage()) {
+          alert("Saving...");
           console.log("Finished!");
         } else {
           console.log("Next!");
@@ -79,7 +70,7 @@ const Questionaire = props => {
         }
       }}
     >
-      {({ handleSubmit, submitting, values, validating }) => (
+      {({ handleSubmit, values, validating }) => (
         <QuestionaireLayout
           handlePrevious={previous}
           values={values}

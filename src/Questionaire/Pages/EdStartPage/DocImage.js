@@ -6,7 +6,10 @@ import rocketData from "../../../lotties/rocket.json";
 
 const useStyles = makeStyles(theme => ({
   container: {
-    position: "relative"
+    position: "relative",
+    width: 250,
+    marginLeft: "auto",
+    marginRight: "auto"
   },
   image: {
     display: "block",
@@ -16,7 +19,7 @@ const useStyles = makeStyles(theme => ({
   },
   rocket: {
     position: "absolute",
-    left: 147,
+    left: 38,
     top: 73,
     transform: "rotate(-12.5deg)"
   }
