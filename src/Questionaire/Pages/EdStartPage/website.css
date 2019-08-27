@@ -1,0 +1,55 @@
+/*---------------Menu CTA Button---------------*/
+
+@media only screen and (min-width: 981px) {
+  .menu-cta a {
+    display: inline-block;
+    font-weight: 700;
+    margin-left: 0.5em;
+    height: 10px;
+    padding: 1em;
+    padding-bottom: 2em !important;
+    border: 1px solid #0eeaea;
+    border-radius: 25px;
+    background-color: #0eeaea;
+    color: #fff !important;
+  }
+  .menu-cta a:hover {
+    color: #20295a !important;
+    background-color: #0eeaea;
+  }
+  .menu-cta.et-fixed-header #top-menu a {
+    color: #fff !important;
+  }
+}
+
+@media (max-width: 980px) {
+  #top-header,
+  div#et-secondary-menu,
+  ul#et-secondary-nav {
+    display: block !important;
+  }
+  #page-container {
+    padding-top: 96px !important;
+  }
+  #top-header .container {
+    padding-top: 0.75em;
+  }
+
+  body.et_fixed_nav.et_secondary_nav_enabled #main-header,
+  body.et_non_fixed_nav.et_transparent_nav.et_secondary_nav_enabled
+    #main-header {
+    top: 30px !important;
+  }
+}
+
+#mobile_menu li:not([id]) {
+  display: none !important;
+}
+
+.profile_pic img {
+  border-radius: 50%;
+}
+
+.inline-pill {
+  margin-bottom: -4px;
+}

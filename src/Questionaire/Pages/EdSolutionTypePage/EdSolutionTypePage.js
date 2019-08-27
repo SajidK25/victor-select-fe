@@ -11,7 +11,7 @@ import {
 } from "../../../_components";
 
 const useStyles = makeStyles({
-  subTitle: {
+  hilight: {
     fontWeight: 500
   }
 });
@@ -95,12 +95,13 @@ const EdSolutionTypePage = props => {
 
   return (
     <StandardPage questionText={questionText} {...props}>
-      <Typography className={classes.subTitle} variant="body2" paragraph>
+      <Typography variant="body2" paragraph>
         <span role="img" aria-label="rocket">
           🚀
         </span>{" "}
         Please select the option that best meets your{" "}
-        <b>desired window of readiness</b> for intercourse.
+        <span className={classes.hilight}>desired window of readiness</span> for
+        intercourse.
       </Typography>
       <Field
         component={DetailedRadioGroup}
