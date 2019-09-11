@@ -60,13 +60,13 @@ const CreateAccountPage = props => {
   });
 
   const verifyEmail = async (value, client) => {
-    const { data } = await client.query({
-      query: USER_EXISTS_QUERY,
-      variables: { email: value }
-    });
-    if (data.userExists) {
-      return "This email is in use.";
-    }
+    //   const { data } = await client.query({
+    //     query: USER_EXISTS_QUERY,
+    //     variables: { email: value }
+    //   });
+    //   if (data.userExists) {
+    //     return "This email is in use.";
+    //   }
   };
 
   const validateCreateAccount = async (values, client) => {
