@@ -162,5 +162,9 @@ export const initialValues = {
   anythingElse: {
     answer: "",
     explain: ""
+  },
+  allergies: {
+    have: "",
+    explain: ""
   }
 };

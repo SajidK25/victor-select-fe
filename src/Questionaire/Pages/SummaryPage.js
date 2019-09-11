@@ -1,11 +1,11 @@
 /* eslint-disable import/order */
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import Divider from '@material-ui/core/Divider'
-import { StandardForm } from '../../_components/StandardForm'
-import { Transition } from '../../_components/Transition'
-import { drugDisplaySetup } from '../../_constants/drugSelections'
-import { formatMoney } from '../../_helpers/money'
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import Divider from "@material-ui/core/Divider";
+import { InfoPage, StandardHeading } from "../../_components";
+
+import { drugDisplaySetup } from "../../_constants/drugSelections";
+import { formatMoney } from "../../_helpers/money";
 
 const useStyles = makeStyles(theme => ({
   title: {
@@ -33,73 +33,73 @@ const useStyles = makeStyles(theme => ({
   noCharge: {
     marginTop: 20,
     marginBottom: 16,
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 13
   },
   outer: {
-    display: 'flex',
-    minHeight: '100%',
-    padding: '0 !important',
-    [theme.breakpoints.down('sm')]: {
-      flexDirection: 'column'
+    display: "flex",
+    minHeight: "100%",
+    padding: "0 !important",
+    [theme.breakpoints.down("sm")]: {
+      flexDirection: "column"
     }
   },
   main: {
     flexShrink: 0,
-    width: '60%',
-    [theme.breakpoints.down('sm')]: {
-      width: '100%',
+    width: "60%",
+    [theme.breakpoints.down("sm")]: {
+      width: "100%",
       paddingBottom: 40
     }
   },
   innerMain: {
     marginLeft: 20,
-    padding: '10px 0 60px',
-    width: '100%',
+    padding: "10px 0 60px",
+    width: "100%",
     maxWidth: 400,
-    [theme.breakpoints.down('sm')]: {
+    [theme.breakpoints.down("sm")]: {
       margin: 0,
-      padding: '0 24px',
-      width: '100%',
-      maxWidth: 'unset'
+      padding: "0 24px",
+      width: "100%",
+      maxWidth: "unset"
     }
   },
   photo: {
-    display: 'flex',
+    display: "flex",
     flexShrink: 0,
-    alignItems: 'flex-start',
-    justifyContent: 'flex-end',
-    width: '40%',
+    alignItems: "flex-start",
+    justifyContent: "flex-end",
+    width: "40%",
     backgroundColor: theme.palette.background.paper,
-    [theme.breakpoints.down('sm')]: {
-      width: '100%'
+    [theme.breakpoints.down("sm")]: {
+      width: "100%"
     }
   },
   image: {
-    margin: '50px 33px',
-    maxWidth: '100%',
+    margin: "50px 33px",
+    maxWidth: "100%",
     width: 175,
-    display: 'block',
-    height: 'auto',
-    [theme.breakpoints.down('sm')]: {
-      margin: '10px auto 15px',
+    display: "block",
+    height: "auto",
+    [theme.breakpoints.down("sm")]: {
+      margin: "10px auto 15px",
       maxWidth: 175
     }
   }
-}))
+}));
 
 const validateSummary = values => {
-  const errors = {}
+  const errors = {};
 
-  return errors
-}
+  return errors;
+};
 
 const SummaryPage = props => {
-  const { values, direction, handleSubmit } = props
+  const { values } = props;
 
-  const classes = useStyles()
+  const classes = useStyles();
 
-  const displayOptions = drugDisplaySetup(values.subscription)
+  const displayOptions = drugDisplaySetup(values.subscription);
   // const displayOptions = {
   //   display: "Romeo",
   //   monthlyDoses: 8,
@@ -112,49 +112,30 @@ const SummaryPage = props => {
   // };
 
   return (
-    <Transition direction={direction}>
-      <div className={classes.outer}>
-        <div className={classes.photo}>
-          <img
-            className={classes.image}
-            src="https://res.cloudinary.com/bakerman59/image/upload/v1560876136/victory-select/victory_bottle_n6koc8.png"
-            alt="bottle"
-          />
+    <InfoPage {...props}>
+      <StandardHeading
+        questionText="Visit Summary"
+        additionalText="Here is a reminder of your treatment options."
+      />
+      <Divider />
+      <div className={classes.pricingBox}>
+        <div className={classes.drugDisplay}>{displayOptions.display}</div>
+        <div className={classes.drugDoses}>{`${
+          displayOptions.monthlyDoses
+        }x per month`}</div>
+        <div className={classes.drugDelivery}>{displayOptions.title}</div>
+        <div className={classes.drugPrice}>
+          <span className={classes.drugMoney}>
+            {formatMoney(displayOptions.total, 0)}
+          </span>
+          {` ${displayOptions.interval}`}
         </div>
-        <div className={classes.main}>
-          <div className={classes.innerMain}>
-            <StandardForm handleSubmit={handleSubmit}>
-              <div className={classes.pricingBox}>
-                <div className={classes.title}>Visit Summary</div>
-                <div className={classes.subTitle}>
-                  Here is a reminder of your treatment options.
-                </div>
-                <Divider />
-                <div className={classes.drugDisplay}>
-                  {displayOptions.display}
-                </div>
-                <div className={classes.drugDoses}>{`${
-                  displayOptions.monthlyDoses
-                }x per month`}</div>
-                <div className={classes.drugDelivery}>
-                  {displayOptions.title}
-                </div>
-                <div className={classes.drugPrice}>
-                  <span className={classes.drugMoney}>
-                    {formatMoney(displayOptions.total, 0)}
-                  </span>
-                  {` ${displayOptions.interval}`}
-                </div>
-                <div className={classes.noCharge}>
-                  You won't be charged for your medication yet.
-                </div>
-              </div>
-            </StandardForm>
-          </div>
+        <div className={classes.noCharge}>
+          You won't be charged for your medication yet.
         </div>
       </div>
-    </Transition>
-  )
-}
+    </InfoPage>
+  );
+};
 
-export { SummaryPage, validateSummary }
+export { SummaryPage, validateSummary };

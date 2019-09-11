@@ -1,5 +1,8 @@
 import React from "react";
-import { RelativeSelectPage } from "../../_components/RelativeSelectPage";
+import { Field } from "react-final-form";
+import FormGroup from "@material-ui/core/FormGroup";
+import { StandardPage } from "../../../_components";
+import { RelativeSelect } from "./RelativeSelect";
 
 const options = [
   {
@@ -44,12 +47,22 @@ const additionalText = `Please indicate.`;
 
 const SleepFamilyPage = props => {
   return (
-    <RelativeSelectPage
+    <StandardPage
       questionText={questionText}
       additionalText={additionalText}
-      options={options}
       {...props}
-    />
+    >
+      <FormGroup>
+        {options.map(o => (
+          <Field
+            name={o.name}
+            key={o.name}
+            component={RelativeSelect}
+            label={o.label}
+          />
+        ))}
+      </FormGroup>
+    </StandardPage>
   );
 };
 

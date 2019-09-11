@@ -7,11 +7,13 @@ import {
   GenderPage,
   validateEitherGender,
   BirthdatePage,
+  validateBirthdate,
   HairLossTimePage,
   validateHairLossTime,
   HairDegreePage,
   validateHairDegree,
-  validateBirthdate,
+  HairLossRatePage,
+  validateHairLossRate,
   OtherMedicinesPage,
   validateOtherMedicines,
   AllergiesPage,
@@ -28,6 +30,7 @@ const pathConstants = {
   BIRTHDATE: "Birthdate",
   HAIRLOSSTIME: 5,
   HAIRDEGREE: 6,
+  HAIRLOSSRATE: 8,
   OTHERMEDICINES: 34,
   ALLERGIES: 35,
   ANYTHINGELSE: 36,
@@ -59,6 +62,11 @@ const pages = [
     key: pathConstants.HAIRDEGREE,
     component: HairDegreePage,
     validate: validateHairDegree
+  },
+  {
+    key: pathConstants.HAIRLOSSRATE,
+    component: HairLossRatePage,
+    validate: validateHairLossRate
   },
   {
     key: pathConstants.OTHERMEDICINES,

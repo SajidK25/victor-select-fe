@@ -76,11 +76,11 @@ const DrugPreferencePage = props => {
       {drugType === "C" && (
         <Typography variant="body2" gutterBottom>
           <span className={classes.highlite}>Male Daily</span> is a collection
-          of nutraceuticals (supplements) designed to improve testosterone
-          levels thereby enhancing erectile performance. Male Daily can be taken
-          alone if you are seeking a completely non-prescriptive substance.
-          Utilizing this option will not be nearly as potent as using it
-          conjunction with one of our customized medications.
+          of supplements designed to improve testosterone levels thereby
+          enhancing erectile performance. Male Daily can be taken alone if you
+          are seeking a completely non-prescriptive substance. Utilizing this
+          option will not be nearly as potent as using in conjunction with one
+          of our customized medications.
         </Typography>
       )}
       <Typography variant="body2" className={classes.moreText}>

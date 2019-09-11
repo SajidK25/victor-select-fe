@@ -23,6 +23,10 @@ export const initialValues = {
     taking: "",
     explain: ""
   },
+  allergies: {
+    have: "",
+    explain: ""
+  },
   anythingElse: {
     answer: "",
     explain: ""

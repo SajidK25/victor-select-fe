@@ -46,11 +46,12 @@ const EdAddonPage = props => {
     <StandardPage questionText={questionText} {...props}>
       <Typography variant="body2" paragraph>
         <span className={classes.highlite}>Male Daily</span> is a collection of
-        nutraceuticals (supplements) designed to improve testosterone levels
-        thereby enhancing erectile performance. Male Daily can be taken alone if
-        you are seeking a completely non-prescriptive substance. Utilizing this
-        option will not be nearly as potent as using it conjunction with one of
-        our customized medications.
+        supplements designed to improve testosterone levels thereby enhancing
+        erectile performance. Adding this option can supercharge the results of
+        our prescriptive products making this one of the best possible
+        combinations to achieve your ultimate desired results. Male Daily can
+        also be taken alone, however, it will not yield the same amazing results
+        as taking it in conjunction with our customized medications.
       </Typography>
       {options && (
         <Field
