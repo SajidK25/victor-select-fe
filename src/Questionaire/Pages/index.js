@@ -58,3 +58,4 @@ export * from "./EdSolutionTypePage";
 export * from "./EdAddonPage";
 export * from "./EdStartPage";
 export * from "./HairLossRatePage";
+export * from "./SleepAllergiesPage";

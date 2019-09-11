@@ -30,7 +30,7 @@ import {
   validateSleepFamily,
   OtherMedicinesPage,
   validateOtherMedicines,
-  AllergiesPage,
+  SleepAllergiesPage,
   validateAllergies,
   AnythingElsePage,
   validateAnythingElse,
@@ -131,7 +131,7 @@ const pages = [
   },
   {
     key: pathConstants.ALLERGIES,
-    component: AllergiesPage,
+    component: SleepAllergiesPage,
     validate: validateAllergies
   },
   {
