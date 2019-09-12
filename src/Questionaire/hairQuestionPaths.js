@@ -8,6 +8,10 @@ import {
   validateEitherGender,
   BirthdatePage,
   validateBirthdate,
+  HairIntervalPage,
+  validateHairInterval,
+  HairDrugPreferencePage,
+  validateHairDrugPreference,
   HairLossTimeSpanPage,
   validateHairLossTimeSpan,
   HairLossDegreePage,
@@ -71,13 +75,22 @@ import {
   AnythingElsePage,
   validateAnythingElse,
   PicturesPage,
-  validatePictures
+  validatePictures,
+  EdStartPage,
+  validateEdStart,
+  HairAddonPage,
+  validateHairAddon
 } from "./Pages/index";
+import { getAge } from "../_helpers";
 
 const pathConstants = {
   ZIPCODE: "Zipcode",
   GENDER: "Gender",
   BIRTHDATE: "Birthdate",
+  HAIRDRUGPREFERENCE: 1,
+  HAIRADDON: 2,
+  HAIRINTERVAL: 3,
+  HAIRSTART: 4,
   HAIRLOSSTIMESPAN: 5,
   HAIRLOSSDEGREE: 6,
   HAIRLOSSCHANGE: 7,
@@ -127,6 +140,26 @@ const pages = [
     key: pathConstants.BIRTHDATE,
     component: BirthdatePage,
     validate: validateBirthdate
+  },
+  {
+    key: pathConstants.HAIRDRUGPREFERENCE,
+    component: HairDrugPreferencePage,
+    validate: validateHairDrugPreference
+  },
+  {
+    key: pathConstants.HAIRADDON,
+    component: HairAddonPage,
+    validate: validateHairAddon
+  },
+  {
+    key: pathConstants.HAIRINTERVAL,
+    component: HairIntervalPage,
+    validate: validateHairInterval
+  },
+  {
+    key: pathConstants.HAIRSTART,
+    component: EdStartPage,
+    validate: validateEdStart
   },
   {
     key: pathConstants.HAIRLOSSTIMESPAN,
@@ -296,6 +329,12 @@ const SkipPage = (key, values) => {
   switch (key) {
     case pathConstants.HAIRLOSSTHINNING:
       skip = values.hairLoss.shedding === "yes";
+      break;
+
+    case pathConstants.HAIRADDON:
+      skip =
+        values.personal.gender === "male" ||
+        getAge(values.personal.birthDate) < 40;
       break;
 
     case pathConstants.HAIRPERIOD:

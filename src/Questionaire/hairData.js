@@ -7,10 +7,9 @@ export const initialValues = {
     gender: ""
   },
   subscription: {
-    timesPerMonth: "",
-    drugSelection: "",
-    doseOption: "",
-    shippingInterval: ""
+    drugId: "",
+    shippingInterval: "everyThree",
+    addOn: ""
   },
   hairLoss: {
     timeSpan: "",

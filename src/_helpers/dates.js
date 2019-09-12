@@ -23,6 +23,8 @@ export const dateIsValid = value => {
 };
 
 export function getAge(dateString) {
+  if (!dateIsValid(dateString)) return 0;
+
   var today = new Date();
   var birthDate = new Date(dateString);
   var age = today.getFullYear() - birthDate.getFullYear();

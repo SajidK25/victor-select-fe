@@ -85,3 +85,6 @@ export * from "./HairAnemiaThyroidPage";
 export * from "./HairAllergiesPage";
 export * from "./HairLossWherePage";
 export * from "./HairGetAttachmentPage";
+export * from "./HairDrugPreferencePage";
+export * from "./HairIntervalPage";
+export * from "./HairAddonPage";
