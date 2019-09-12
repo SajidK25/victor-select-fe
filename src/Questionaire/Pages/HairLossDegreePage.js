@@ -7,7 +7,7 @@ const options = [
   { id: "extensive", label: "Extensive" }
 ];
 
-const validateHairDegree = values => {
+const validateHairLossDegree = values => {
   const errors = { hairLoss: {} };
 
   if (!values.hairLoss.degree) {
@@ -20,7 +20,7 @@ const validateHairDegree = values => {
 const qText =
   "How would you best characterize your current degree of hair loss?";
 
-let HairDegreePage = props => {
+let HairLossDegreePage = props => {
   return (
     <RadioPage
       name="hairLoss.degree"
@@ -32,4 +32,4 @@ let HairDegreePage = props => {
   );
 };
 
-export { HairDegreePage, validateHairDegree };
+export { HairLossDegreePage, validateHairLossDegree };

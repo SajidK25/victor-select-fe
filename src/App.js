@@ -18,7 +18,7 @@ let theme = createMuiTheme({
     MuiFormHelperText: {
       root: {
         marginLeft: 12,
-        color: "rgba(0, 0, 0, 0.54)"
+        color: "rgba(0, 0, 0, 0.75)"
       }
     }
   },

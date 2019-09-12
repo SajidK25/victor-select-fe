@@ -9,7 +9,7 @@ const options = [
   { id: ">10y", label: "More than 10 years" }
 ];
 
-const validateHairChange = values => {
+const validateHairLossTimeSpan = values => {
   const errors = { hairLoss: {} };
 
   if (!values.hairLoss.timeSpan) {
@@ -22,7 +22,7 @@ const validateHairChange = values => {
 const qText =
   "How long have you had hair loss or what is your earliest memory of your hair density changing?";
 
-let HairChangePage = props => {
+let HairLossTimeSpanPage = props => {
   return (
     <RadioPage
       name="hairLoss.timeSpan"
@@ -34,4 +34,4 @@ let HairChangePage = props => {
   );
 };
 
-export { HairChangePage, validateHairChange };
+export { HairLossTimeSpanPage, validateHairLossTimeSpan };

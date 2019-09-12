@@ -8,16 +8,66 @@ import {
   validateEitherGender,
   BirthdatePage,
   validateBirthdate,
-  HairLossTimePage,
-  validateHairLossTime,
-  HairDegreePage,
-  validateHairDegree,
+  HairLossTimeSpanPage,
+  validateHairLossTimeSpan,
+  HairLossDegreePage,
+  validateHairLossDegree,
+  HairLossChangePage,
+  validateHairLossChange,
+  HairLossWherePage,
+  validateHairLossWhere,
   HairLossRatePage,
   validateHairLossRate,
-  OtherMedicinesPage,
-  validateOtherMedicines,
-  AllergiesPage,
-  validateAllergies,
+  HairLossSheddingPage,
+  validateHairLossShedding,
+  HairLossThinningPage,
+  validateHairLossThinning,
+  HairLossTypePage,
+  validateHairLossType,
+  HairSixMonthPage,
+  validateHairSixMonth,
+  HairSignificantPage,
+  validateHairSignificant,
+  HairHistoryPage,
+  validateHairHistory,
+  HairDietingPage,
+  validateHairDieting,
+  HairLabWorkPage,
+  validateHairLabWork,
+  HairGetAttachmentPage,
+  validateHairGetAttachment,
+  HairScalpPage,
+  validateHairScalp,
+  HairRelativesPage,
+  validateHairRelatives,
+  HairTreatmentsPage,
+  validateHairTreatments,
+  HairCurrentMedsPage,
+  validateHairCurrentMeds,
+  HairSupplementsPage,
+  validateHairSupplements,
+  HairColoredPage,
+  validateHairColored,
+  HairPeriodPage,
+  validateHairPeriod,
+  HairExcessHairPage,
+  validateHairExcessHair,
+  HairWomenHistoryPage,
+  validateHairWomenHistory,
+  HairLossReasonPage,
+  validateHairLossReason,
+  PhysicalExamPage,
+  validatePhysicalExam,
+  HairExamPage,
+  validateHairExam,
+  HairLifestylePage,
+  validateHairLifestyle,
+  HairConditionsPage,
+  validateHairConditions,
+  HairAnemiaThyroidPage,
+  validateHairAnemiaThyroid,
+  HairAllergiesPage,
+  validateHairAllergies,
   AnythingElsePage,
   validateAnythingElse,
   PicturesPage,
@@ -28,11 +78,36 @@ const pathConstants = {
   ZIPCODE: "Zipcode",
   GENDER: "Gender",
   BIRTHDATE: "Birthdate",
-  HAIRLOSSTIME: 5,
-  HAIRDEGREE: 6,
-  HAIRLOSSRATE: 8,
-  OTHERMEDICINES: 34,
-  ALLERGIES: 35,
+  HAIRLOSSTIMESPAN: 5,
+  HAIRLOSSDEGREE: 6,
+  HAIRLOSSCHANGE: 7,
+  HAIRLOSSWHERE: 8,
+  HAIRLOSSRATE: 9,
+  HAIRLOSSSHEDDING: 10,
+  HAIRLOSSTHINNING: 11,
+  HAIRLOSSTYPE: 12,
+  HAIRSIXMONTH: 13,
+  HAIRSIGNIFICANT: 14,
+  HAIRHISTORY: 15,
+  HAIRDIETING: 16,
+  HAIRLABWORK: 17,
+  HAIRGETATTACHMENT: 18,
+  HAIRSCALP: 19,
+  HAIRRELATIVES: 20,
+  HAIRTREATMENTS: 21,
+  HAIRCURRENTMEDS: 22,
+  HAIRSUPPLEMENTS: 23,
+  HAIRCOLORED: 24,
+  HAIRPERIOD: 25,
+  HAIREXCESSHAIR: 26,
+  HAIRWOMENHISTORY: 27,
+  HAIRLOSSREASON: 28,
+  PHYSICALEXAM: 29,
+  HAIREXAM: 30,
+  HAIRLIFESTYLE: 31,
+  HAIRCONDITIONS: 32,
+  HAIRANEMIATHYROID: 33,
+  HAIRALLERGIES: 35,
   ANYTHINGELSE: 36,
   PICTURES: 37
 };
@@ -54,14 +129,24 @@ const pages = [
     validate: validateBirthdate
   },
   {
-    key: pathConstants.HAIRLOSSTIME,
-    component: HairLossTimePage,
-    validate: validateHairLossTime
+    key: pathConstants.HAIRLOSSTIMESPAN,
+    component: HairLossTimeSpanPage,
+    validate: validateHairLossTimeSpan
   },
   {
-    key: pathConstants.HAIRDEGREE,
-    component: HairDegreePage,
-    validate: validateHairDegree
+    key: pathConstants.HAIRLOSSDEGREE,
+    component: HairLossDegreePage,
+    validate: validateHairLossDegree
+  },
+  {
+    key: pathConstants.HAIRLOSSCHANGE,
+    component: HairLossChangePage,
+    validate: validateHairLossChange
+  },
+  {
+    key: pathConstants.HAIRLOSSWHERE,
+    component: HairLossWherePage,
+    validate: validateHairLossWhere
   },
   {
     key: pathConstants.HAIRLOSSRATE,
@@ -69,14 +154,129 @@ const pages = [
     validate: validateHairLossRate
   },
   {
-    key: pathConstants.OTHERMEDICINES,
-    component: OtherMedicinesPage,
-    validate: validateOtherMedicines
+    key: pathConstants.HAIRLOSSSHEDDING,
+    component: HairLossSheddingPage,
+    validate: validateHairLossShedding
   },
   {
-    key: pathConstants.ALLERGIES,
-    component: AllergiesPage,
-    validate: validateAllergies
+    key: pathConstants.HAIRLOSSTHINNING,
+    component: HairLossThinningPage,
+    validate: validateHairLossThinning
+  },
+  {
+    key: pathConstants.HAIRLOSSTYPE,
+    component: HairLossTypePage,
+    validate: validateHairLossType
+  },
+  {
+    key: pathConstants.HAIRSIXMONTH,
+    component: HairSixMonthPage,
+    validate: validateHairSixMonth
+  },
+  {
+    key: pathConstants.HAIRSIGNIFICANT,
+    component: HairSignificantPage,
+    validate: validateHairSignificant
+  },
+  {
+    key: pathConstants.HAIRHISTORY,
+    component: HairHistoryPage,
+    validate: validateHairHistory
+  },
+  {
+    key: pathConstants.HAIRDIETING,
+    component: HairDietingPage,
+    validate: validateHairDieting
+  },
+  {
+    key: pathConstants.HAIRLABWORK,
+    component: HairLabWorkPage,
+    validate: validateHairLabWork
+  },
+  {
+    key: pathConstants.HAIRGETATTACHMENT,
+    component: HairGetAttachmentPage,
+    validate: validateHairGetAttachment
+  },
+  {
+    key: pathConstants.HAIRSCALP,
+    component: HairScalpPage,
+    validate: validateHairScalp
+  },
+  {
+    key: pathConstants.HAIRRELATIVES,
+    component: HairRelativesPage,
+    validate: validateHairRelatives
+  },
+  {
+    key: pathConstants.HAIRTREATMENTS,
+    component: HairTreatmentsPage,
+    validate: validateHairTreatments
+  },
+  {
+    key: pathConstants.HAIRCURRENTMEDS,
+    component: HairCurrentMedsPage,
+    validate: validateHairCurrentMeds
+  },
+  {
+    key: pathConstants.HAIRSUPPLEMENTS,
+    component: HairSupplementsPage,
+    validate: validateHairSupplements
+  },
+  {
+    key: pathConstants.HAIRCOLORED,
+    component: HairColoredPage,
+    validate: validateHairColored
+  },
+  {
+    key: pathConstants.HAIRPERIOD,
+    component: HairPeriodPage,
+    validate: validateHairPeriod
+  },
+  {
+    key: pathConstants.HAIREXCESSHAIR,
+    component: HairExcessHairPage,
+    validate: validateHairExcessHair
+  },
+  {
+    key: pathConstants.HAIRWOMENHISTORY,
+    component: HairWomenHistoryPage,
+    validate: validateHairWomenHistory
+  },
+  {
+    key: pathConstants.HAIRLOSSREASON,
+    component: HairLossReasonPage,
+    validate: validateHairLossReason
+  },
+  {
+    key: pathConstants.PHYSICALEXAM,
+    component: PhysicalExamPage,
+    validate: validatePhysicalExam
+  },
+  {
+    key: pathConstants.HAIREXAM,
+    component: HairExamPage,
+    validate: validateHairExam
+  },
+  {
+    key: pathConstants.HAIRLIFESTYLE,
+    component: HairLifestylePage,
+    validate: validateHairLifestyle
+  },
+  {
+    key: pathConstants.HAIRCONDITIONS,
+    component: HairConditionsPage,
+    validate: validateHairConditions
+  },
+  {
+    key: pathConstants.HAIRANEMIATHYROID,
+    component: HairAnemiaThyroidPage,
+    validate: validateHairAnemiaThyroid
+  },
+  {
+    key: pathConstants.HAIRALLERGIES,
+    component: HairAllergiesPage,
+    validate: validateHairAllergies
   },
   {
     key: pathConstants.ANYTHINGELSE,
@@ -94,9 +294,26 @@ const SkipPage = (key, values) => {
   let skip = false;
 
   switch (key) {
-    default: {
+    case pathConstants.HAIRLOSSTHINNING:
+      skip = values.hairLoss.shedding === "yes";
+      break;
+
+    case pathConstants.HAIRPERIOD:
+    case pathConstants.HAIREXCESSHAIR:
+    case pathConstants.HAIRWOMENHISTORY:
+      skip = values.personal.gender === "male";
+      break;
+
+    case pathConstants.HAIRGETATTACHMENT:
+      skip = values.labWork.answer === "no";
+      break;
+
+    case pathConstants.HAIREXAM:
+      skip = values.physicalExam === "no";
+      break;
+
+    default:
       skip = false;
-    }
   }
 
   return skip;

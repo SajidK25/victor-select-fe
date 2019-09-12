@@ -12,8 +12,6 @@ export const StandardHeading = props => {
     additionalWeight
   } = props;
 
-  console.log("Weight:", additionalWeight);
-
   return (
     <>
       {questionText && (

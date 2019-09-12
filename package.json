@@ -22,6 +22,7 @@
     "graphql": "^14.3.0",
     "graphql-tag": "^2.10.1",
     "lodash.debounce": "^4.0.8",
+    "material-ui-dropzone": "^2.4.1",
     "prop-types": "^15.7.2",
     "react": "^16.8.1",
     "react-adopt": "^0.6.0",
