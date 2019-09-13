@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
   },
   textInput: {
     backgroundColor: theme.palette.common.white,
-    fontSize: 12,
+    fontSize: 15,
     padding: "6px 8px",
     width: "100%"
   },

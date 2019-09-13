@@ -35,13 +35,16 @@ import {
   AnythingElsePage,
   validateAnythingElse,
   PicturesPage,
-  validatePictures
+  validatePictures,
+  EdStartPage,
+  validateEdStart
 } from "./Pages/index";
 
 const pathConstants = {
   ZIPCODE: "Zipcode",
   GENDER: "Gender",
   BIRTHDATE: "Birthdate",
+  SLEEPSTART: 6,
   SLEEPPROBLEMS: 7,
   SLEEPISSUES: 8,
   SLEEPHEALTH: 9,
@@ -73,6 +76,11 @@ const pages = [
     key: pathConstants.BIRTHDATE,
     component: BirthdatePage,
     validate: validateBirthdate
+  },
+  {
+    key: pathConstants.SLEEPSTART,
+    component: EdStartPage,
+    validate: validateEdStart
   },
   {
     key: pathConstants.SLEEPPROBLEMS,
