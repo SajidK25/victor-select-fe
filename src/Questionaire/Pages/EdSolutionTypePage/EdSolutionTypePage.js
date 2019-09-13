@@ -31,11 +31,11 @@ const displayOptions = () => {
     {
       id: "B",
       labelOptions: {
-        title: '"Weekend Getaway" (36-42 hours)',
+        title: '"Weekend Getaway" (36-48 hours)',
         product: [
           {
             title: "EROS (Tadalafil*/Cialis + Apomorphine)",
-            description: ` our specialty combination drug can last up to 42 hours and takes effect within 45 minutes.`
+            description: ` our specialty combination drug can last up to 48 hours and takes effect within 45 minutes.`
           },
           {
             title: "Generic Cialis",

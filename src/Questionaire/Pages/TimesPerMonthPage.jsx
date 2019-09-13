@@ -26,7 +26,7 @@ let TimesPerMonthPage = props => {
   const { values } = props;
   let additionalText = "";
   if (values.subscription.drugId === drugIds.EROS) {
-    additionalText = "Remember a single dose of EROS can last up to 42 hours.";
+    additionalText = "Remember a single dose of EROS can last up to 48 hours.";
   }
   if (values.subscription.drugId === drugIds.TADALAFIL) {
     additionalText =

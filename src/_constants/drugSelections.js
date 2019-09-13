@@ -21,7 +21,7 @@ export const drugSelections = [
                     for the treatment of Erectile Dysfunction. 
                     Prescription strength Tadalafil (Cialis) and Apomorphine
                     are combined to create a super drug with a duration 
-                    of action up to 42 hours.`,
+                    of action up to 48 hours.`,
       price: 18.75
     },
     doseOptions: [

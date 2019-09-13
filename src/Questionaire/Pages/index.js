@@ -88,3 +88,7 @@ export * from "./HairGetAttachmentPage";
 export * from "./HairDrugPreferencePage";
 export * from "./HairIntervalPage";
 export * from "./HairAddonPage";
+export * from "./SleepPillsPerNightPage";
+export * from "./SleepDrugPreferencePage";
+export * from "./SleepDosePage";
+export * from "./SleepIntervalPage";

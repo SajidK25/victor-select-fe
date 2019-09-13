@@ -37,14 +37,23 @@ import {
   PicturesPage,
   validatePictures,
   EdStartPage,
-  validateEdStart
+  validateEdStart,
+  SleepDrugPreferencePage,
+  validateSleepDrugPreference,
+  SleepDosePage,
+  validateSleepDose,
+  SleepIntervalPage,
+  validateSleepInterval
 } from "./Pages/index";
 
 const pathConstants = {
   ZIPCODE: "Zipcode",
   GENDER: "Gender",
   BIRTHDATE: "Birthdate",
-  SLEEPSTART: 6,
+  DRUGPREFERENCE: 1,
+  SLEEPDOSE: 2,
+  SLEEPINTERVAL: 3,
+  SLEEPSTART: 4,
   SLEEPPROBLEMS: 7,
   SLEEPISSUES: 8,
   SLEEPHEALTH: 9,
@@ -76,6 +85,21 @@ const pages = [
     key: pathConstants.BIRTHDATE,
     component: BirthdatePage,
     validate: validateBirthdate
+  },
+  {
+    key: pathConstants.DRUGPREFERENCE,
+    component: SleepDrugPreferencePage,
+    validate: validateSleepDrugPreference
+  },
+  {
+    key: pathConstants.SLEEPDOSE,
+    component: SleepDosePage,
+    validate: validateSleepDose
+  },
+  {
+    key: pathConstants.SLEEPINTERVAL,
+    component: SleepIntervalPage,
+    validate: validateSleepInterval
   },
   {
     key: pathConstants.SLEEPSTART,

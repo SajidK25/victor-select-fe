@@ -7,8 +7,7 @@ export const initialValues = {
     gender: ""
   },
   subscription: {
-    timesPerMonth: "",
-    drugSelection: "",
+    drugId: "",
     doseOption: "",
     shippingInterval: ""
   },
