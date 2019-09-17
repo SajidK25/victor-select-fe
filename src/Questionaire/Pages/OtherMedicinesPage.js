@@ -4,12 +4,12 @@ import { RadioPage } from "../../_components/RadioPage";
 const options = [
   {
     id: "yes",
-    label: "Yes",
+    label: "Yes, I'm taking medications",
     explain: "otherMedicines.explain",
     explainText:
       "Please list any other medications or over-the-counter products that you have not mentioned in previous questions."
   },
-  { id: "no", label: "No" }
+  { id: "no", label: "No, I'm not taking medications" }
 ];
 
 const validateOtherMedicines = values => {

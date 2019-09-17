@@ -9,13 +9,13 @@ import {
 } from "../../../_components";
 
 const options = [
-  { id: "1", labelOptions: { id: "1" } },
+  //{ id: "1", labelOptions: { id: "1" } },
   { id: "2", labelOptions: { id: "2" } },
-  { id: "3", labelOptions: { id: "3" } },
+  // { id: "3", labelOptions: { id: "3" } },
   { id: "4", labelOptions: { id: "4" } },
-  { id: "5", labelOptions: { id: "5" } },
+  // { id: "5", labelOptions: { id: "5" } },
   { id: "6", labelOptions: { id: "6" } },
-  { id: "7", labelOptions: { id: "7" } },
+  // { id: "7", labelOptions: { id: "7" } },
   { id: "8", labelOptions: { id: "8" } }
 ];
 
