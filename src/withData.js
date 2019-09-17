@@ -7,8 +7,13 @@ const cache = new InMemoryCache();
 const endpoint =
   process.env.NODE_ENV === "development" ? dev_endpoint : prod_endpoint;
 
+console.log(process.env.NODE_ENV);
+
 const client = new ApolloClient({
-  link: createHttpLink({ uri: endpoint, credentials: "include" }),
+  link: createHttpLink({
+    uri: process.env.REACT_APP_API_ENDPOINT,
+    credentials: "include"
+  }),
   cache,
   resolvers: {}
 });

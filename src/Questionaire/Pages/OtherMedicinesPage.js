@@ -4,7 +4,7 @@ import { RadioPage } from "../../_components/RadioPage";
 const options = [
   {
     id: "yes",
-    label: "Yes, I'm taking medications",
+    label: "Yes, I'm taking other medications",
     explain: "otherMedicines.explain",
     explainText:
       "Please list any other medications or over-the-counter products that you have not mentioned in previous questions."
