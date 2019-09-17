@@ -2,6 +2,7 @@ import React from "react";
 import Radio from "@material-ui/core/Radio";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
+import Paper from "@material-ui/core/Paper";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { ErrorDisplay } from "./";
 import { makeStyles } from "@material-ui/core/styles";
@@ -42,7 +43,7 @@ export const NeverToHigh = props => {
   const classes = useStyles();
 
   return (
-    <div className={classes.contain}>
+    <Paper className={classes.contain}>
       <Typography className={classes.textLabel}>{label}</Typography>
       <Box ml={2}>
         {options.map((o, index) => (
@@ -71,6 +72,6 @@ export const NeverToHigh = props => {
         ))}
       </Box>
       {touched && error && <ErrorDisplay errorText={error} />}
-    </div>
+    </Paper>
   );
 };

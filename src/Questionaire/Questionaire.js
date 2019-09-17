@@ -102,7 +102,7 @@ const Questionaire = props => {
                       )}
                     />
                   ))}
-                  <Route render={() => <div>Not Found</div>} />
+                  <Route render={() => <div>Page not found</div>} />
                 </Switch>
               </>
             )}

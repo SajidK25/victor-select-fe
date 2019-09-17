@@ -6,7 +6,8 @@ const useStyles = makeStyles(theme => ({
   progress: {
     position: "fixed",
     top: "50%",
-    left: "50%"
+    left: "50%",
+    zIndex: 1500
   }
 }));
 

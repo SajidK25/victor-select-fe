@@ -79,7 +79,7 @@ const relatives = [
   "Sibling",
   "Grandparent",
   "Aunt/Uncle",
-  "Neice/Nephew",
+  "Niece/Nephew",
   "Other"
 ];
 

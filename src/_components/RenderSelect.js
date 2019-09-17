@@ -1,22 +1,20 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import FormControl from '@material-ui/core/FormControl'
-import FormHelperText from '@material-ui/core/FormHelperText'
-import Select from '@material-ui/core/Select'
-import OutlinedInput from '@material-ui/core/OutlinedInput'
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import FormControl from "@material-ui/core/FormControl";
+import FormHelperText from "@material-ui/core/FormHelperText";
+import Select from "@material-ui/core/Select";
+import OutlinedInput from "@material-ui/core/OutlinedInput";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
-    paddingRight: 6,
-    paddingBottom: 6,
-    verticalAlign: 'top'
+    paddingRight: 6
   },
   textRoot: {
     padding: 0,
-    backgroundColor: 'white'
+    backgroundColor: "white"
   },
   textInput: {
-    padding: '8px 10px',
+    padding: "8px 10px",
     fontSize: 18
   },
   formHelper: {
@@ -24,12 +22,12 @@ const useStyles = makeStyles(theme => ({
     marginRight: 0,
     marginTop: 4,
     marginBottom: 4,
-    textAlign: 'center'
+    textAlign: "center"
   },
   select: {
-    width: 'calc(100% - 20px)'
+    width: "calc(100% - 20px)"
   }
-}))
+}));
 
 const RenderSelect = props => {
   const {
@@ -40,8 +38,8 @@ const RenderSelect = props => {
     autoFocus,
     options,
     meta: { touched, error }
-  } = props
-  const classes = useStyles()
+  } = props;
+  const classes = useStyles();
 
   return (
     <FormControl
@@ -82,7 +80,7 @@ const RenderSelect = props => {
         </FormHelperText>
       )}
     </FormControl>
-  )
-}
+  );
+};
 
-export { RenderSelect }
+export { RenderSelect };

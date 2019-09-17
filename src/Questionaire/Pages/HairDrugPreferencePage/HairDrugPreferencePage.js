@@ -23,7 +23,6 @@ const useStyles = makeStyles(theme => ({
 
 const validateHairDrugPreference = values => {
   const errors = { subscription: {} };
-  const s = values.subscription;
 
   if (!values.subscription.drugId) {
     errors.subscription.drugId = "Please make a selection.";
@@ -45,7 +44,9 @@ const HairDrugPreferencePage = props => {
   return (
     <StandardPage questionText={questionText} alignTitles="left" {...props}>
       <Typography variant="body2" gutterBottom>
-        Paragraph One of great marketing text.
+        Our hair loss composition masterfully mixes the two most popular
+        medications for hair restoration with uniquely formulated nutraceutical
+        blends.
       </Typography>
       <Typography variant="body2" className={classes.moreText}>
         The pricing shown is for the recommended starting dose for an average,

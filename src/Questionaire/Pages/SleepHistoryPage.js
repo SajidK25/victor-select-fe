@@ -5,46 +5,45 @@ import { optionsAllFalse } from "../../_helpers";
 const options = [
   {
     name: "sleepHistory.sleepStudy",
-    label: "Ever had a sleep study in the past?",
+    label: "Had a sleep study in the past",
     explain: "sleepHistory.sleepStudyExplain",
     explainText: "​Let us know when and where."
   },
   {
     name: "sleepHistory.useCPAP",
-    label: "Use CPAP or BiPAP at home?",
+    label: "Use CPAP or BiPAP at home",
     explain: "sleepHistory.useCPAPExplain",
     explainText: "​What pressure setting?"
   },
   {
     name: "sleepHistory.tonsilsRemoved",
-    label: "Ever had tonsils or adenoids removed?"
+    label: "Had tonsils or adenoids removed"
   },
   {
     name: "sleepHistory.sinusSurgery",
-    label: "Ever had sinus or nasal surgery?"
+    label: "Had sinus or nasal surgery"
   },
   {
     name: "sleepHistory.brokenNose",
-    label: "Ever broken your nose?"
+    label: "Have had a broken nose"
   },
   {
     name: "sleepHistory.headInjury",
-    label: "Had any type of head injury?"
+    label: "Had any type of head injury"
   },
   {
     name: "sleepHistory.distruptConditions",
-    label: "Have any medical conditions that disrupt your sleep?",
+    label: "Have any medical conditions that disrupt sleep",
     explain: "sleepHistory.distruptConditionsExplain",
     explainText: "​Please provide details."
   },
   {
     name: "sleepHistory.childProblems",
-    label: "Had sleep problems as a child?"
+    label: "Had sleep problems as a child"
   },
   {
     name: "sleepHistory.hadExam",
-    label:
-      "Within the past five years have you had a physical exam by a doctor?"
+    label: "Within the past five years had a physical exam by a doctor"
   }
 ];
 

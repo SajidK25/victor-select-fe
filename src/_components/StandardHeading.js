@@ -8,8 +8,7 @@ export const StandardHeading = props => {
     additionalText,
     alignTitles,
     titleColor,
-    additionalColor,
-    additionalWeight
+    additionalColor
   } = props;
 
   return (

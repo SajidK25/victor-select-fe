@@ -38,7 +38,6 @@ const options = [
 
 const validateSleepDozing = values => {
   const errors = { sleepDozing: {} };
-  const s = values.sleepDozing;
 
   return errors;
 };

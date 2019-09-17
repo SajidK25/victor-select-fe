@@ -14,7 +14,7 @@ export const drugSelections = [
     category: "A",
     labelOptions: {
       label: "Topical Forte",
-      description: `This is the compelling description for Tropical Forte`,
+      description: `Generate new hair growth!`,
       price: 98.0
     },
     doseOptions: [
@@ -39,7 +39,7 @@ export const drugSelections = [
     category: "A",
     labelOptions: {
       label: "Topical Forte + AM/PM Caps",
-      description: "Great copy about this product goes here.",
+      description: "Ultimate Hair Restoration",
       price: 160
     },
     doseOptions: [
@@ -64,7 +64,7 @@ export const drugSelections = [
     category: "A",
     labelOptions: {
       label: "AM/PM Caps",
-      description: "Really great product, can't say enough",
+      description: "Faster Growth - Stronger Hair",
       price: 65
     },
     doseOptions: [

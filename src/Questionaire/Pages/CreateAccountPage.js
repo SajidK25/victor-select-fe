@@ -40,14 +40,17 @@ const initialData = {
   password: ""
 };
 
-const additionalText =
-  "The information you provide will be used by your doctor to evaluate your symptoms, history and lifestyle. Then, if appropriate, your doctor will prescribe medication for treatment. ";
+const additionalText = `The information you provide will be used by your doctor to 
+   evaluate your symptoms, history and lifestyle. Then, if appropriate,
+   your doctor will prescribe the medication for treatment.`;
 
 const CreateAccountPage = props => {
-  const { questionaire, history } = props;
+  const { questionaire, history, match } = props;
   const pathBase = questionaire.pathBase;
   const client = useApolloClient();
 
+  console.log("CC:", match);
+  client.writeData({ data: { sleepType: match.params.id } });
   const [
     register,
     { loading: mutationLoading, error: mutationError }

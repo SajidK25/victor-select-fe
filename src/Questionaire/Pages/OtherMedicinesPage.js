@@ -26,7 +26,7 @@ const validateOtherMedicines = values => {
   return errors;
 };
 
-const questionText = "Are you currently taking any other medicines? ";
+const questionText = "Please list all medications you are currently taking.";
 const additionalText =
   "Include prescriptions and over-the-counter products like pain relievers, sleep aids, vitamins, herbs and other supplements.";
 

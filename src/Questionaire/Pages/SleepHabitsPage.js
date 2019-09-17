@@ -27,7 +27,7 @@ const options = [
   },
   {
     name: "sleepHabits.exercise",
-    label: "Do you exercise?"
+    label: "Exercise regularly (at least 3x/week)"
   }
 ];
 
@@ -46,8 +46,7 @@ const validateSleepHabits = values => {
   return errors;
 };
 
-const questionText =
-  "Please indicate if you personally experience any of the following issues.";
+const questionText = "Please indicate which of the following apply to you.";
 const additionalText = "Check all that apply.";
 
 const noOptionField = "sleepHabits.none";

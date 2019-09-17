@@ -13,9 +13,6 @@ const useStyles = makeStyles(theme => ({
     fontSize: 18,
     padding: 8
   },
-  prevButton: {
-    margin: 4
-  },
   buttonContainer: {
     display: "flex",
     justifyContent: "space-between",
@@ -55,16 +52,9 @@ export const NextButton = props => {
 // Previous Button
 export const PrevButton = props => {
   const { input, handleClick, ...custom } = props;
-  const classes = useStyles();
 
   return (
-    <IconButton
-      {...input}
-      {...custom}
-      onClick={handleClick}
-      color="primary"
-      className={classes.prevButton}
-    >
+    <IconButton {...input} {...custom} onClick={handleClick} color="primary">
       <ArrowBack />
     </IconButton>
   );

@@ -28,7 +28,8 @@ const useStyles = makeStyles(theme => ({
     marginRight: 4
   },
   navButtons: {
-    display: "block"
+    display: "flex"
+    // display: "block"
   }
 }));
 

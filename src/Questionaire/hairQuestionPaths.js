@@ -1,7 +1,6 @@
 import { initialValues } from "./hairData";
 
 import {
-  validateStartVisit,
   ZipcodePage,
   validateZipcode,
   GenderPage,
@@ -77,9 +76,7 @@ import {
   PicturesPage,
   validatePictures,
   EdStartPage,
-  validateEdStart,
-  HairAddonPage,
-  validateHairAddon
+  validateEdStart
 } from "./Pages/index";
 import { getAge } from "../_helpers";
 
@@ -146,11 +143,11 @@ const pages = [
     component: HairDrugPreferencePage,
     validate: validateHairDrugPreference
   },
-  {
-    key: pathConstants.HAIRADDON,
-    component: HairAddonPage,
-    validate: validateHairAddon
-  },
+  //{
+  //  key: pathConstants.HAIRADDON,
+  //  component: HairAddonPage,
+  //  validate: validateHairAddon
+  //},
   {
     key: pathConstants.HAIRINTERVAL,
     component: HairIntervalPage,

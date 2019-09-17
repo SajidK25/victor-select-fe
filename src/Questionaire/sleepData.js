@@ -48,8 +48,8 @@ export const initialValues = {
   sleepBehavior: {
     bedtimeWeekday: "",
     bedtimeWeekend: "",
-    naps: "Never",
-    awakenRefreshed: false
+    naps: "0",
+    awakenRefreshed: ""
   },
   sleepHistory: {
     sleepStudy: false,
@@ -153,6 +153,19 @@ export const initialValues = {
     hypertension: [],
     stroke: [],
     diabetes: []
+  },
+  otherMeds: {
+    hydrocodone: false,
+    bupropion: false,
+    cimetidine: false,
+    stJohnsWart: false,
+    terbinafine: false,
+    tolazamide: false,
+    antiDepressants: false,
+    antiDepressantsExplain: "",
+    heartMeds: false,
+    heartMedsExplain: "",
+    none: false
   },
   otherMedicines: {
     taking: "",

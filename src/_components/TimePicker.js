@@ -1,50 +1,23 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import FormControl from "@material-ui/core/FormControl";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
   KeyboardTimePicker
 } from "@material-ui/pickers";
-import FormHelperText from "@material-ui/core/FormHelperText";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
 
 const useStyles = makeStyles(theme => ({
   formControl: {
     paddingRight: 6,
-    paddingBottom: 6,
     marginTop: 0,
     marginBottom: 0,
-    paddingTop: 0,
-    verticalAlign: "top"
-  },
-  textRoot: {
-    padding: 0
-  },
-  textInput: {
-    backgroundColor: theme.palette.common.white,
-    padding: "8px 10px",
-    fontSize: 20
-  },
-  formHelper: {
-    marginLeft: 0,
-    marginRight: 0,
-    marginTop: 4,
-    marginBottom: 4,
-    textAlign: "center"
-  },
-  validating: {
-    margin: theme.spacing(1)
-  },
-  adormnment: {
-    root: { backgroundColor: theme.palette.common.white }
+    paddingTop: 0
   }
 }));
 
 const TimePicker = props => {
   const {
-    input: { name, onChange, value, ...restInput },
+    input: { name, onChange, value },
     meta,
     ...rest
   } = props;

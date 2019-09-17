@@ -1,122 +1,120 @@
 export const MAX_AMOUNT = 50;
 
 export const drugIds = {
-  SYNERGY: "SYNERGY",
-  SYNERGY_FORTE: "SYNERGY_FORTE"
+  SLEEP_D: "SLEEP_D",
+  SLEEP_D_FORTE: "SLEEP_D_FORTE",
+  SLEEP_T: "SLEEP_T",
+  SLEEP_T_FORTE: "SLEEP_T_FORTE"
 };
 
 export const drugSelections = [
   {
-    id: drugIds.SYNERGY,
-    category: "",
+    id: drugIds.SLEEP_D,
+    category: "D",
     labelOptions: {
-      label: "Sleep Synergy",
-      description: `This is the compelling description for Sleep Synergy`,
+      label: "Sleep D Regular",
+      description: `This is the recommended starting dose for those who suffer
+                    with mild to moderate insomnia.`,
       price: 35
     },
     doseOptions: [
       {
-        id: "2",
+        id: "",
         default: true,
         labelOptions: {
-          label: "2 per night",
+          label: "",
           subTile: "",
-          display: "Sleep Synergy (2)"
+          display: "Sleep D Regular"
         },
         pricing: {
           threeMonth: 29.75,
           twoMonth: 31.5,
           monthly: 35
         }
-      },
+      }
+    ]
+  },
+  {
+    id: drugIds.SLEEP_D_FORTE,
+    category: "D",
+    labelOptions: {
+      label: "Sleep D Forte",
+      description: `This is our most potent formulation, recommended for those 
+                    with severe insomnia.`,
+      price: 35
+    },
+    doseOptions: [
       {
-        id: "3",
+        id: "",
         default: true,
         labelOptions: {
-          label: "3 per night",
+          label: "",
           subTile: "",
-          display: "Sleep Synergy (3)"
+          display: "Sleep D Forte"
         },
         pricing: {
-          threeMonth: 42.5,
-          twoMonth: 45,
-          monthly: 50
+          threeMonth: 29.75,
+          twoMonth: 31.5,
+          monthly: 35
         }
       }
     ]
   },
   {
-    id: drugIds.SYNERGY_FORTE,
-    category: "",
+    id: drugIds.SLEEP_T,
+    category: "T",
     labelOptions: {
-      label: "Sleep Synergy Forte",
-      description: `This is the compelling description for Sleep Synergy Forte`,
-      price: 40
+      label: "Sleep T Regular",
+      description: `This is the recommended starting dose for those who suffer
+                    with mild to moderate insomnia.`,
+      price: 35
     },
     doseOptions: [
       {
-        id: "2",
+        id: "",
         default: true,
         labelOptions: {
-          label: "2 per night",
+          label: "",
           subTile: "",
-          display: "Sleep Synergy Forte (2)"
+          display: "Sleep T Regular"
         },
         pricing: {
-          threeMonth: 34,
-          twoMonth: 36,
-          monthly: 40
+          threeMonth: 29.75,
+          twoMonth: 31.5,
+          monthly: 35
         }
-      },
+      }
+    ]
+  },
+  {
+    id: drugIds.SLEEP_T_FORTE,
+    category: "T",
+    labelOptions: {
+      label: "Sleep T Forte",
+      description: `This is our most potent formulation, recommended for those 
+                    with severe insomnia.`,
+      price: 35
+    },
+    doseOptions: [
       {
-        id: "3",
+        id: "",
         default: true,
         labelOptions: {
-          label: "3 per night",
+          label: "",
           subTile: "",
-          display: "Sleep Synergy Forte (3)"
+          display: "Sleep T Forte"
         },
         pricing: {
-          threeMonth: 51,
-          twoMonth: 54,
-          monthly: 60
+          threeMonth: 29.75,
+          twoMonth: 31.5,
+          monthly: 35
         }
       }
     ]
   }
 ];
 
-// Not used yet
-const addOns = [
-  {
-    id: drugIds.HAIR_ADDON,
-    category: "",
-    labelOptions: {
-      label: "Spironolactone 50mg",
-      description: "Yes! I want this supplement to enhance my results!",
-      price: 20
-    },
-    pricing: {
-      threeMonth: 17,
-      twoMonth: 18,
-      monthly: 20
-    }
-  },
-  {
-    id: drugIds.HAIR_NO_ADDON,
-    category: "",
-    labelOptions: {
-      label: "No Addon",
-      description: "No thanks! I don't want to add this to my treatment.",
-      price: 0
-    },
-    pricing: {
-      sixMonth: 0,
-      threeMonth: 0,
-      monthly: 0
-    }
-  }
-];
+const addOns = [{}];
 
 export const getAddonList = () => {
   return addOns;
@@ -149,8 +147,8 @@ const getAddonName = addOnId => {
 };
 
 // Get a list of drugs filtered by category
-export const getDrugList = () => {
-  return drugSelections;
+export const getDrugList = category => {
+  return drugSelections.filter(d => d.category === category);
 };
 
 const getDrug = drugId => {

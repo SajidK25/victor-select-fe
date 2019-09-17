@@ -1,7 +1,6 @@
 import { initialValues } from "./sleepData";
 
 import {
-  validateStartVisit,
   ZipcodePage,
   validateZipcode,
   GenderPage,
@@ -43,7 +42,9 @@ import {
   SleepDosePage,
   validateSleepDose,
   SleepIntervalPage,
-  validateSleepInterval
+  validateSleepInterval,
+  SleepOtherMedicationsPage,
+  validateSleepOtherMedications
 } from "./Pages/index";
 
 const pathConstants = {
@@ -54,6 +55,7 @@ const pathConstants = {
   SLEEPDOSE: 2,
   SLEEPINTERVAL: 3,
   SLEEPSTART: 4,
+  SLEEPOTHERMEDS: 6,
   SLEEPPROBLEMS: 7,
   SLEEPISSUES: 8,
   SLEEPHEALTH: 9,
@@ -105,6 +107,11 @@ const pages = [
     key: pathConstants.SLEEPSTART,
     component: EdStartPage,
     validate: validateEdStart
+  },
+  {
+    key: pathConstants.SLEEPOTHERMEDS,
+    component: SleepOtherMedicationsPage,
+    validate: validateSleepOtherMedications
   },
   {
     key: pathConstants.SLEEPPROBLEMS,
