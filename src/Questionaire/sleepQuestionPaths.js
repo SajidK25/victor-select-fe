@@ -94,11 +94,6 @@ const pages = [
     validate: validateSleepDrugPreference
   },
   {
-    key: pathConstants.SLEEPDOSE,
-    component: SleepDosePage,
-    validate: validateSleepDose
-  },
-  {
     key: pathConstants.SLEEPINTERVAL,
     component: SleepIntervalPage,
     validate: validateSleepInterval
