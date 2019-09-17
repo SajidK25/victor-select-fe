@@ -11,7 +11,7 @@ console.log(process.env.NODE_ENV);
 
 const client = new ApolloClient({
   link: createHttpLink({
-    uri: process.env.REACT_APP_API_ENDPOINT,
+    uri: endpoint,
     credentials: "include"
   }),
   cache,
