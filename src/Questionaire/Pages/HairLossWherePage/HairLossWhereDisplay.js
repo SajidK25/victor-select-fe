@@ -16,9 +16,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const HairLossWhereDisplay = props => {
-  const { options } = props;
+  const { options, option } = props;
   const classes = useStyles();
-  const imageName = require(`../../../images/HairLoss-${options.id}.png`);
+  const imageName = require(`../../../images/HairLoss-${
+    option === "female" ? "Female" : "Male"
+  }-${options.id}.png`);
   return (
     <div className={classes.container}>
       <img className={classes.image} src={imageName} alt="hair guy" />
