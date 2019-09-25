@@ -16,12 +16,26 @@ const options = [
   // { id: "5", labelOptions: { id: "5" } },
   { id: "3", labelOptions: { id: "3" } },
   // { id: "7", labelOptions: { id: "7" } },
-  { id: "4", labelOptions: { id: "4" } }
+  {
+    id: "4",
+    labelOptions: { id: "4" },
+    warning:
+      "If you experience hair loss this extensive, our products are not likely to benefit you."
+  }
 ];
 
 const validateHairLossWhere = values => {
-  const errors = {};
+  const errors = { hairLoss: {} };
 
+  if (!values.hairLoss.where) {
+    errors.hairLoss.where = "Please make a selection";
+  }
+
+  if (values.hairLoss.where === "4") {
+    errors.hairLoss.where = "We are unable to provide this service for you.";
+  }
+
+  console.log("Errors:", errors);
   return errors;
 };
 

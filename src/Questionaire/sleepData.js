@@ -165,6 +165,9 @@ export const initialValues = {
     antiDepressantsExplain: "",
     heartMeds: false,
     heartMedsExplain: "",
+    mesoridazine: false,
+    ketoconazole: false,
+    safinamide: false,
     none: false
   },
   otherMedicines: {

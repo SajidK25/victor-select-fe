@@ -2,6 +2,7 @@ import React from "react";
 import Paper from "@material-ui/core/Paper";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
+import { Warning } from "./";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles(theme => ({
@@ -33,7 +34,7 @@ const useStyles = makeStyles(theme => ({
 }));
 
 const DetailedRadio = props => {
-  const { input, id, options, pricing, LabelDisplay, ...rest } = props;
+  const { input, id, options, pricing, LabelDisplay, warning, ...rest } = props;
   const classes = useStyles();
 
   return (
@@ -67,6 +68,7 @@ const DetailedRadio = props => {
           />
         }
       />
+      {warning && input.value === id ? <Warning warning={warning} /> : null}
     </Paper>
   );
 };

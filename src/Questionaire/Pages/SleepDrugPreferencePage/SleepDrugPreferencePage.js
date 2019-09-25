@@ -1,7 +1,6 @@
 /* eslint-disable import/order */
 import React from "react";
 import { useQuery } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 import { Field } from "react-final-form";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,14 +9,8 @@ import {
   DetailedRadioGroup,
   RadioSubmit
 } from "../../../_components";
-import { getDrugList } from "../../../_constants/sleepSelections";
+import { getDrugList, GET_SLEEP_TYPE } from "../../../_constants/sleepSelections";
 import { SleepDrugPreferenceDisplay } from "./SleepDrugPreferenceDisplay";
-
-const GET_SLEEP_TYPE = gql`
-  {
-    sleepType @client
-  }
-`;
 
 const useStyles = makeStyles(theme => ({
   moreText: {
@@ -58,8 +51,9 @@ const SleepDrugPreferencePage = props => {
         recommend starting with 1 pill and increasing to 3 as needed.
       </Typography>
       <Typography variant="body2" className={classes.moreText}>
-        The pricing shown is for the recommended starting dose for an average,
-        healthy person. We offer discounts for ordering in quantity.
+      If 3 pills of the regular strength is inadequate for you to feel rested,
+      we recommend the Forte formula.  Start with 1 pill and increase up to 3 
+      for a perfect night’s sleep.
       </Typography>
       {options && (
         <Field

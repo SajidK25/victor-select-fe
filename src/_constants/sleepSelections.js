@@ -1,4 +1,12 @@
+import gql from "graphql-tag";
+
 export const MAX_AMOUNT = 50;
+
+export const GET_SLEEP_TYPE = gql`
+  {
+    sleepType @client
+  }
+`;
 
 export const drugIds = {
   SLEEP_D: "SLEEP_D",
@@ -15,7 +23,7 @@ export const drugSelections = [
       label: "Sleep D Regular",
       description: `This is the recommended starting dose for those who suffer
                     with mild to moderate insomnia.`,
-      price: 35
+      price: 50
     },
     doseOptions: [
       {
@@ -27,9 +35,9 @@ export const drugSelections = [
           display: "Sleep D Regular"
         },
         pricing: {
-          threeMonth: 29.75,
-          twoMonth: 31.5,
-          monthly: 35
+          threeMonth: 42.5,
+          twoMonth: 45,
+          monthly: 50
         }
       }
     ]
@@ -41,7 +49,7 @@ export const drugSelections = [
       label: "Sleep D Forte",
       description: `This is our most potent formulation, recommended for those 
                     with severe insomnia.`,
-      price: 35
+      price: 60
     },
     doseOptions: [
       {
@@ -53,9 +61,9 @@ export const drugSelections = [
           display: "Sleep D Forte"
         },
         pricing: {
-          threeMonth: 29.75,
-          twoMonth: 31.5,
-          monthly: 35
+          threeMonth: 51,
+          twoMonth: 54,
+          monthly: 60
         }
       }
     ]
@@ -67,7 +75,7 @@ export const drugSelections = [
       label: "Sleep T Regular",
       description: `This is the recommended starting dose for those who suffer
                     with mild to moderate insomnia.`,
-      price: 35
+      price: 50
     },
     doseOptions: [
       {
@@ -79,9 +87,9 @@ export const drugSelections = [
           display: "Sleep T Regular"
         },
         pricing: {
-          threeMonth: 29.75,
-          twoMonth: 31.5,
-          monthly: 35
+          threeMonth: 42.5,
+          twoMonth: 45,
+          monthly: 50
         }
       }
     ]
@@ -93,7 +101,7 @@ export const drugSelections = [
       label: "Sleep T Forte",
       description: `This is our most potent formulation, recommended for those 
                     with severe insomnia.`,
-      price: 35
+      price: 60
     },
     doseOptions: [
       {
@@ -105,9 +113,9 @@ export const drugSelections = [
           display: "Sleep T Forte"
         },
         pricing: {
-          threeMonth: 29.75,
-          twoMonth: 31.5,
-          monthly: 35
+          threeMonth: 51,
+          twoMonth: 54,
+          monthly: 60
         }
       }
     ]

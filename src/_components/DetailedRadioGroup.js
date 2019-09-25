@@ -1,15 +1,15 @@
-import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { DetailedRadio } from './DetailedRadio'
-import { ErrorDisplay } from './ErrorDisplay'
+import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
+import { DetailedRadio } from "./DetailedRadio";
+import { ErrorDisplay } from "./ErrorDisplay";
 
 const useStyles = makeStyles({
   container: {
-    display: 'flex',
+    display: "flex",
     margin: 0,
-    flexDirection: 'column'
+    flexDirection: "column"
   }
-})
+});
 
 const DetailedRadioGroup = props => {
   const {
@@ -18,8 +18,8 @@ const DetailedRadioGroup = props => {
     options,
     displayComponent,
     ...rest
-  } = props
-  const classes = useStyles()
+  } = props;
+  const classes = useStyles();
 
   return (
     <div className={classes.container}>
@@ -31,12 +31,13 @@ const DetailedRadioGroup = props => {
           pricing={o.pricing}
           id={o.id}
           key={o.id}
+          warning={o.warning}
           {...rest}
         />
       ))}
       {touched && error && <ErrorDisplay errorText={error} />}
     </div>
-  )
-}
+  );
+};
 
-export { DetailedRadioGroup }
+export { DetailedRadioGroup };

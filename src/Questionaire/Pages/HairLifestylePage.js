@@ -7,7 +7,7 @@ const options = [
   { name: "lifestyle.overweight", label: "More than 50 lbs. overweight" },
   {
     name: "lifestyle.alcohol",
-    label: "Have more than 2 acoholic drinks per day"
+    label: "Have more than 2 alcoholic drinks per day"
   },
   { name: "lifestyle.drugs", label: "Regulary use recreational drugs" }
 ];
