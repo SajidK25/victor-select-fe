@@ -4,11 +4,17 @@ import { useMutation, useApolloClient } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { Form, Field } from "react-final-form";
 import Grid from "@material-ui/core/Grid";
-import { StandardPage, Spinner } from "../../_components";
-import { QuestionaireLayout } from "../../_components/QuestionaireLayout";
-import { RenderStdTextField } from "../../_components/RenderStdTextField";
-import { Legal } from "../../_components";
-import Error from "../../_components/ErrorMessage";
+import Typography from "@material-ui/core/Typography";
+import {
+  StandardPage,
+  Spinner,
+  QuestionaireLayout,
+  RenderStdTextField,
+  RenderSimpleCheckbox,
+  RenderCheckError,
+  Legal,
+  ErrorMessage
+} from "../../_components";
 import { CURRENT_USER_QUERY } from "../../_components/User";
 
 const USER_EXISTS_QUERY = gql`
@@ -37,7 +43,8 @@ const initialData = {
   email: "",
   firstName: "",
   lastName: "",
-  password: ""
+  password: "",
+  accept: false
 };
 
 const additionalText = `The information you provide will be used by your doctor to 
@@ -74,6 +81,9 @@ const CreateAccountPage = props => {
 
   const validateCreateAccount = async (values, client) => {
     const errors = {};
+    if (!values.accept) {
+      errors.checkError = "";
+    }
     if (!values.firstName) {
       errors.firstName = "First Name is required";
     }
@@ -134,7 +144,7 @@ const CreateAccountPage = props => {
             values={values}
             {...rest}
           >
-            <Error error={mutationError} />
+            <ErrorMessage error={mutationError} />
             <Grid container spacing={3}>
               <Grid item xs={12} sm={6}>
                 <Field
@@ -179,8 +189,14 @@ const CreateAccountPage = props => {
                 />
               </Grid>
             </Grid>
-            {/*<button onClick={() => auth.login()}>Login</button> */}
-            <Legal textLocation="Create Account" />
+            <Grid item xs={12}>
+              <Field
+                name="accept"
+                component={RenderSimpleCheckbox}
+                label={<Legal />}
+              />
+              <Field name="checkError" component={RenderCheckError} />
+            </Grid>
           </StandardPage>
         </QuestionaireLayout>
       )}

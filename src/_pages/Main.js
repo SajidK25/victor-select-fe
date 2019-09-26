@@ -28,7 +28,7 @@ const Main = props => {
         <Route path="/signin" render={() => <Signin to="/account" />} />
         <Route
           path={edQuestionaire.startPath}
-          render={() => <Questionaire questionaire={edQuestionaire} />}
+          render={() => <CreateAccountPage questionaire={edQuestionaire} />}
         />
         <Route
           path={edQuestionaire.pathBase}

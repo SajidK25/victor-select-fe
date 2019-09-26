@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import Typography from '@material-ui/core/Typography'
-import { makeStyles } from '@material-ui/core/styles'
+import React from "react";
+import PropTypes from "prop-types";
+import Typography from "@material-ui/core/Typography";
+import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles({
   errorStyles: {
-    alignText: 'center',
-    color: 'red'
+    alignText: "center",
+    color: "red"
   }
-})
+});
 
 // const ErrorStyles = styled.div`
 //   padding: 2rem;
@@ -25,10 +25,10 @@ const useStyles = makeStyles({
 //   }
 // `;
 
-const DisplayError = ({ error }) => {
-  const classes = useStyles()
+export const ErrorMessage = ({ error }) => {
+  const classes = useStyles();
 
-  if (!error || !error.message) return null
+  if (!error || !error.message) return null;
   if (
     error.networkError &&
     error.networkError.result &&
@@ -36,23 +36,21 @@ const DisplayError = ({ error }) => {
   ) {
     return error.networkError.result.errors.map((error, i) => (
       <Typography align="center" color="error" key={i}>
-        {error.message.replace('GraphQL error: ', '')}
+        {error.message.replace("GraphQL error: ", "")}
       </Typography>
-    ))
+    ));
   }
   return (
     <Typography align="center" color="error">
-      {error.message.replace('GraphQL error: ', '')}
+      {error.message.replace("GraphQL error: ", "")}
     </Typography>
-  )
-}
+  );
+};
 
-DisplayError.defaultProps = {
+ErrorMessage.defaultProps = {
   error: {}
-}
+};
 
-DisplayError.propTypes = {
+ErrorMessage.propTypes = {
   error: PropTypes.object
-}
-
-export default DisplayError
+};

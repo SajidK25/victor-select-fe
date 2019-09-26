@@ -5,10 +5,13 @@ import { Mutation } from "@apollo/react-components";
 import gql from "graphql-tag";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import { QuestionaireLayout } from "../_components/QuestionaireLayout";
-import { RenderStdTextField } from "../_components/RenderStdTextField";
-import ErrorDisplay from "../_components/ErrorMessage";
-import { StandardPage, QuestionContainer, Legal } from "../_components";
+import {
+  QuestionaireLayout,
+  RenderStdTextField,
+  ErrorMessage,
+  StandardPage,
+  Legal
+} from "../_components";
 
 import { CURRENT_USER_QUERY } from "../_components/User";
 
@@ -72,7 +75,7 @@ const Signin = props => {
                 <Typography align="center" gutterBottom variant="h4">
                   Sign In
                 </Typography>
-                <ErrorDisplay error={error} />
+                <ErrorMessage error={error} />
                 <Grid container spacing={3}>
                   <Grid item xs={12}>
                     <Field
