@@ -82,7 +82,7 @@ const CreateAccountPage = props => {
   const validateCreateAccount = async (values, client) => {
     const errors = {};
     if (!values.accept) {
-      errors.checkError = "";
+      errors.checkError = "You must indicate that you accept and consent.";
     }
     if (!values.firstName) {
       errors.firstName = "First Name is required";
