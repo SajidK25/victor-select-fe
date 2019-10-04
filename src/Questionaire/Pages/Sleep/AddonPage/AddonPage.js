@@ -45,8 +45,8 @@ const AddonPage = props => {
   return (
     <StandardPage questionText={questionText} {...props}>
       <Typography variant="body2" paragraph>
-        <span className={classes.highlite}>CBD Addon</span> is a collection of
-        supplements designed to improve sleep...
+        <span className={classes.highlite}>?Sleep Addon?</span> is a collection
+        of supplements designed to improve sleep...
       </Typography>
       {options && (
         <Field

@@ -127,7 +127,7 @@ const addOns = [
     id: drugIds.CBD_ADDON,
     category: "",
     labelOptions: {
-      label: "CBD Booster",
+      label: "Sleep Addon",
       description: "Yes! I want this supplement to enhance my results!",
       price: 1.2
     },
