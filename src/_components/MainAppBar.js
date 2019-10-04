@@ -6,7 +6,7 @@ import Toolbar from "@material-ui/core/Toolbar";
 import withWidth from "@material-ui/core/withWidth";
 import IconButton from "@material-ui/core/IconButton";
 import Help from "@material-ui/icons/Help";
-import bigLogo from "../images/select-logo-new.svg";
+import bigLogo from "../_images/select-logo-new.svg";
 
 const styles = () => ({
   fixed: {

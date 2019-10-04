@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import bigLogo from "../images/select-logo-new.svg";
+import bigLogo from "../_images/select-logo-new.svg";
 import { HelpButton } from "./";
 import { PreviousButton } from "./";
 

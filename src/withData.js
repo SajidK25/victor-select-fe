@@ -19,10 +19,23 @@ const client = new ApolloClient({
   resolvers: {}
 });
 
-cache.writeData({
-  data: {
-    sleepType: ""
+const data = {
+  sleepType: "",
+  user: {
+    firstName: "",
+    lastName: "",
+    zipCode: "",
+    email: "",
+    gender: ""
+  },
+  networkStatus: {
+    __typename: "Network Status",
+    isConnected: false
   }
-});
+};
+
+cache.writeData({ data });
+
+// cache.onResetStore(() => cache.writeData({ data }));
 
 export default client;

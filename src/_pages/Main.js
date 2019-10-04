@@ -3,10 +3,10 @@ import { withRouter, Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Signin } from "../_pages/signin";
 import { Questionaire } from "../Questionaire";
-import { CreateAccountPage } from "../Questionaire/Pages/CreateAccountPage";
-import edQuestionaire from "../Questionaire/edQuestionPaths";
-import sleepQuestionaire from "../Questionaire/sleepQuestionPaths";
-import hairQuestionaire from "../Questionaire/hairQuestionPaths";
+import { CreateAccountPage } from "../Questionaire/Pages/Shared/CreateAccountPage";
+import edQuestionaire from "../Questionaire/ED/questionPaths";
+import sleepQuestionaire from "../Questionaire/Sleep/questionPaths";
+import hairQuestionaire from "../Questionaire/Hair/questionPaths";
 import Callback from "./callback";
 
 const useStyles = makeStyles({
