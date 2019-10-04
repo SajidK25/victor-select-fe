@@ -2,7 +2,7 @@ import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { CheckboxPage } from "../../../_components";
 import { optionsAllFalse } from "../../../_helpers";
-import { GET_SLEEP_TYPE } from "../../Sleep/sleepSelections";
+import { drugIds } from "../../Sleep/sleepSelections";
 
 const stdDWarning = `This medication may potentially interact with Doxepin, but is not contraindicated.
     Please consult with your physician prior to taking these medications together.`;
@@ -13,7 +13,7 @@ const stdTWarning = `This medication may potentially interact with Trazadone.
 var options = [];
 
 const setOptions = sleepType => {
-  if (sleepType === "D") {
+  if (sleepType === drugIds.SLEEP_D) {
     options = [
       {
         name: "otherMeds.hydrocodone",
@@ -99,11 +99,11 @@ const noOptionField = "otherMeds.none";
 const noOptionText = "None of these apply";
 
 const SleepOtherMedicationsPage = props => {
-  const { data } = useQuery(GET_SLEEP_TYPE);
-  setOptions(data.sleepType);
+  const { values } = props;
+  setOptions(values.subscription.drugId);
   const questionText = `Please indicate if you are currently taking  
   any of the following medications that may interact with 
-  ${data.sleepType === "D" ? "Doxepine" : "Trazadone"}`;
+  ${values.subscription.drugId === drugIds.SLEEP_D ? "Doxepine" : "Trazadone"}`;
 
   return (
     <CheckboxPage

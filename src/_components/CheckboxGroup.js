@@ -21,24 +21,20 @@ const WhenFieldChanges = ({ field, becomes, set, to }) => (
   </Field>
 );
 
-const NoOption = ({ options, noOptionFieldName }) => (
+const NoOption = ({ options, fieldName }) => (
   <>
     {options.map(i => (
       <React.Fragment key={i.name}>
-        {/* When the 'None Above' field gets set to true
-            set all of the other fields in the group to false*/}
         <WhenFieldChanges
-          field={noOptionFieldName}
+          field={fieldName}
           becomes={true}
           set={i.name}
           to={false}
         />
-        {/* When any of the non-'None Above' fields gets set to true
-            set the 'Non Above' field to false */}
         <WhenFieldChanges
           field={i.name}
           becomes={true}
-          set={noOptionFieldName}
+          set={fieldName}
           to={false}
         />
       </React.Fragment>
