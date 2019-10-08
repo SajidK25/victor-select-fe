@@ -14,7 +14,6 @@ import {
   Legal,
   ErrorMessage
 } from "../../../_components";
-import { parseError } from "../../../_helpers";
 import { CURRENT_USER_QUERY } from "../../../_components/User";
 
 const USER_EXISTS_QUERY = gql`
@@ -55,7 +54,6 @@ export const CreateAccountPage = props => {
   const { questionaire } = props;
   const history = useHistory();
   const pathBase = questionaire.pathBase;
-  const type = questionaire.type;
   const client = useApolloClient();
 
   const [
@@ -64,15 +62,8 @@ export const CreateAccountPage = props => {
   ] = useMutation(SIGNUP_MUTATION, {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
     awaitRefetchQueries: true,
-    onCompleted: data => {
-      if (!data || data.register) {
-        if (data.register === "EXISTS") {
-          history.push(`/Login/${type}`);
-        } else if (data.register === "OK") {
-          history.push(pathBase);
-        }
-      }
-      console.log("Data: ", data);
+    onCompleted: () => {
+      history.push(pathBase);
     }
   });
 
@@ -122,6 +113,7 @@ export const CreateAccountPage = props => {
 
     const res = await verifyEmail(values.email, client);
     if (res) {
+      console.log(res);
       errors.email = res;
     }
     return errors;

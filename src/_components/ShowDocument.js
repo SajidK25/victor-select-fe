@@ -17,7 +17,6 @@ const useStyles = makeStyles({
 export const ShowDocument = ({ btnText, title, document }) => {
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
-  console.log("Document", document);
 
   const handleClickOpen = () => {
     setOpen(true);

@@ -466,6 +466,7 @@ const SkipPage = (key, values) => {
 };
 
 const edQuestionaire = {
+  type: "ED",
   pages: pages,
   skipPage: SkipPage,
   pathBase: "/visit/ed",

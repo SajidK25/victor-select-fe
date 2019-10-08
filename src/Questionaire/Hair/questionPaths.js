@@ -360,6 +360,7 @@ const SkipPage = (key, values) => {
 };
 
 const hairQuestionaire = {
+  type: "Hair",
   pages: pages,
   skipPage: SkipPage,
   pathBase: "/visit/hair",

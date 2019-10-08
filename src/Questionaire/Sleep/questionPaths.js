@@ -217,6 +217,7 @@ const SkipPage = (key, values) => {
 };
 
 const sleepQuestionaire = {
+  type: "Sleep",
   pages: pages,
   skipPage: SkipPage,
   pathBase: "/visit/sleep",
