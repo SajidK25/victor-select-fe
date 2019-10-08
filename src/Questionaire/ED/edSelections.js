@@ -34,8 +34,8 @@ export const drugSelections = [
           display: "EROS"
         },
         pricing: {
-          sixMonth: 15,
-          threeMonth: 16.5,
+          threeMonth: 16.25,
+          twoMonth: 17.25,
           monthly: 18.75
         }
       }
@@ -59,8 +59,8 @@ export const drugSelections = [
           display: "Tadalafil Daily"
         },
         pricing: {
-          sixMonth: 3,
           threeMonth: 3.25,
+          twoMonth: 3.5,
           monthly: 3.75
         }
       }
@@ -84,9 +84,9 @@ export const drugSelections = [
           display: "Male Daily"
         },
         pricing: {
-          sixMonth: 1.05,
           threeMonth: 1.25,
-          monthly: 1.4
+          twoMonth: 1.35,
+          monthly: 1.5
         }
       }
     ]
@@ -109,8 +109,8 @@ export const drugSelections = [
           display: "Male Daily+Tadalafil 5mg"
         },
         pricing: {
-          sixMonth: 3.75,
           threeMonth: 4.25,
+          twoMonth: 4.75,
           monthly: 5
         }
       }
@@ -135,8 +135,8 @@ export const drugSelections = [
           display: "Tadalafil 20mg"
         },
         pricing: {
-          sixMonth: 12,
-          threeMonth: 13.25,
+          threeMonth: 13,
+          twoMonth: 13.75,
           monthly: 15
         }
       },
@@ -149,8 +149,8 @@ export const drugSelections = [
           display: "Tadalafil 10mg"
         },
         pricing: {
-          sixMonth: 6,
           threeMonth: 6.5,
+          twoMonth: 7.0,
           monthly: 7.5
         }
       }
@@ -178,8 +178,8 @@ export const drugSelections = [
           display: "ROMEO"
         },
         pricing: {
-          sixMonth: 8,
-          threeMonth: 8.75,
+          threeMonth: 8.5,
+          twoMonth: 9,
           monthly: 10
         }
       }
@@ -204,8 +204,8 @@ export const drugSelections = [
           display: "Sildenafil 50mg"
         },
         pricing: {
-          sixMonth: 7,
-          threeMonth: 7.75,
+          threeMonth: 7.5,
+          twoMonth: 8,
           monthly: 8.75
         }
       },
@@ -218,8 +218,8 @@ export const drugSelections = [
           display: "Sildenafil 25mg"
         },
         pricing: {
-          sixMonth: 4,
           threeMonth: 4.5,
+          twoMonth: 4.75,
           monthly: 5
         }
       }
@@ -237,8 +237,8 @@ const addOns = [
       price: 1.2
     },
     pricing: {
-      sixMonth: 0.8,
-      threeMonth: 1.0,
+      threeMonth: 1,
+      twoMonth: 1.1,
       monthly: 1.2
     }
   },
@@ -251,8 +251,8 @@ const addOns = [
       price: 0
     },
     pricing: {
-      sixMonth: 0,
       threeMonth: 0,
+      twoMonth: 0,
       monthly: 0
     }
   }
@@ -270,8 +270,8 @@ const getAddon = addOnId => {
 
 const getAddonPricing = addOnId => {
   const pricing = {
-    sixMonth: 0,
     threeMonth: 0,
+    twoMonth: 0,
     monthly: 0
   };
 
@@ -345,14 +345,14 @@ export const getPrices = (drugId, dose, count, addOn) => {
     monthly: 0,
     monthlyDoses: 0,
     addOnMonthlyDoses: 0,
+    twoMonth: 0,
+    twoTotal: 0,
+    twoDoses: 0,
+    addOnTwoDoses: 0,
     threeMonth: 0,
     threeTotal: 0,
     threeDoses: 0,
-    addOnThreeDoses: 0,
-    sixMonth: 0,
-    sixTotal: 0,
-    sixDoses: 0,
-    addOnSixDoses: 0
+    addOnThreeDoses: 0
   };
 
   const doseOption = getDoseOption(drugId, dose);
@@ -367,16 +367,16 @@ export const getPrices = (drugId, dose, count, addOn) => {
     doseOption.pricing.monthly * count + addOnPricing.monthly * 30;
   pricing.monthlyDoses = count;
   pricing.addOnMonthlyDoses = 30;
+  pricing.twoMonth =
+    doseOption.pricing.twoMonth * count + addOnPricing.twoMonth * 30;
+  pricing.twoTotal = pricing.twoMonth * 2;
+  pricing.twoDoses = count * 2;
+  pricing.addOnTwoDoses = 60;
   pricing.threeMonth =
     doseOption.pricing.threeMonth * count + addOnPricing.threeMonth * 30;
   pricing.threeTotal = pricing.threeMonth * 3;
   pricing.threeDoses = count * 3;
   pricing.addOnThreeDoses = 90;
-  pricing.sixMonth =
-    doseOption.pricing.sixMonth * count + addOnPricing.sixMonth * 30;
-  pricing.sixTotal = pricing.sixMonth * 6;
-  pricing.sixDoses = count * 6;
-  pricing.addOnSixDoses = 180;
 
   return pricing;
 };
@@ -402,15 +402,6 @@ export const drugDisplaySetup = subscription => {
   options.monthlyDoses = pricing.monthlyDoses;
 
   switch (subscription.shippingInterval) {
-    case "everySix":
-      options.title = "6 Month Delivery";
-      options.total = pricing.sixTotal;
-      options.doses = pricing.monthlyDoses * 6;
-      options.per = "6 mo";
-      options.interval = "every 6 months";
-      options.noDiscount = pricing.monthly * 6;
-      break;
-
     case "everyThree":
       options.title = "3 Month Delivery";
       options.total = pricing.threeTotal;
@@ -418,6 +409,15 @@ export const drugDisplaySetup = subscription => {
       options.per = "3 mo";
       options.interval = "every 3 months";
       options.noDiscount = pricing.monthly * 3;
+      break;
+
+    case "everyTwo":
+      options.title = "2 Month Delivery";
+      options.total = pricing.twoTotal;
+      options.doses = pricing.monthlyDoses * 2;
+      options.per = "2 mo";
+      options.interval = "every 2 months";
+      options.noDiscount = pricing.monthly * 2;
       break;
 
     case "monthly":

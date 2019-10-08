@@ -19,28 +19,6 @@ const validateHowOften = values => {
 const displayOptions = pricing => {
   let options = [
     {
-      id: "everySix",
-      labelOptions: {
-        title: "Ship every 6 months",
-        subTitle: `You will be billed ${formatMoney(
-          pricing.sixTotal,
-          2
-        )} and your products shipped every six months.`,
-        moreText: `In each delivery you will be sent ${pricing.sixDoses} 
-        doses of ${pricing.display} ${
-          pricing.addOnDisplay
-            ? ` and ${pricing.addOnSixDoses} doses of ${pricing.addOnDisplay}`
-            : ""
-        }. You may cancel or modify your plan whenever you wish.`,
-        pricing: pricing.sixMonth,
-        totalPrice: pricing.sixTotal,
-        savings: (pricing.monthly - pricing.sixMonth) * 12
-      }
-    }
-  ];
-
-  if (pricing.threeTotal >= MAX_AMOUNT) {
-    options.push({
       id: "everyThree",
       labelOptions: {
         title: "Ship every 3 months",
@@ -57,6 +35,28 @@ const displayOptions = pricing => {
         pricing: pricing.threeMonth,
         totalPrice: pricing.threeTotal,
         savings: (pricing.monthly - pricing.threeMonth) * 12
+      }
+    }
+  ];
+
+  if (pricing.threeTotal >= MAX_AMOUNT) {
+    options.push({
+      id: "everyTwo",
+      labelOptions: {
+        title: "Ship every 2 months",
+        subTitle: `You will be billed ${formatMoney(
+          pricing.twoTotal,
+          2
+        )} and your products shipped every two months.`,
+        moreText: `In each delivery you will be sent ${pricing.twoDoses} 
+        doses of ${pricing.display} ${
+          pricing.addOnDisplay
+            ? ` and ${pricing.addOnTwoDoses} doses of ${pricing.addOnDisplay}`
+            : ""
+        }. You may cancel or modify your plan whenever you wish.`,
+        pricing: pricing.twoMonth,
+        totalPrice: pricing.twoTotal,
+        savings: (pricing.monthly - pricing.twoMonth) * 12
       }
     });
   }
@@ -89,7 +89,7 @@ const displayOptions = pricing => {
 };
 
 const questionText = `How often should we ship your treatment?`;
-const additionalText = `By choosing to have your treatment delivered every 3 or 6 months you will save money.`;
+const additionalText = `By choosing to have your treatment delivered every 2 or 3 months you will save money.`;
 
 const HowOftenPage = props => {
   const { values, handleSubmit } = props;
