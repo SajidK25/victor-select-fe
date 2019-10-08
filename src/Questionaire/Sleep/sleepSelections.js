@@ -22,7 +22,9 @@ export const drugSelections = [
     category: "D",
     labelOptions: {
       label: "Sleep D",
-      description: `This is the description for Sleep D.`,
+      description: `Our top recommendation for optimal sleep. This 
+                    formula contains Doxepin which is widely prescribed 
+                    for insomnia.`,
       price: 50
     },
     doseOptions: [
@@ -30,9 +32,10 @@ export const drugSelections = [
         id: "REG",
         default: true,
         labelOptions: {
-          label: "Regular",
+          label: "Sleep D Regular",
           subTile: "SubTitle",
-          display: "Sleep D Regular"
+          display: `This is the recommended starting dose for those who suffer
+                    with mild to moderate insomnia.`
         },
         pricing: {
           threeMonth: 42.5,
@@ -44,9 +47,10 @@ export const drugSelections = [
         id: "FORTE",
         default: false,
         labelOptions: {
-          label: "Forte",
+          label: "Sleep D Forte (extra strength)",
           subTile: "Subtitle",
-          display: "Sleep D Forte"
+          display: `This is our most potent formulation recommended for 
+                    those with severe insomnia.`
         },
         pricing: {
           threeMonth: 51,
@@ -61,7 +65,8 @@ export const drugSelections = [
     category: "T",
     labelOptions: {
       label: "Sleep T",
-      description: `This is the description for Sleep T.`,
+      description: `Our sleep formula containing Trazodone, a prescriptive 
+                    also highly utilized in the treatment of sleep disorders.`,
       price: 50
     },
     doseOptions: [
@@ -69,9 +74,10 @@ export const drugSelections = [
         id: "",
         default: true,
         labelOptions: {
-          label: "Regular",
+          label: "Sleep T Regular",
           subTile: "",
-          display: "Sleep T Regular"
+          display: `This is the recommended starting dose for those who suffer
+                    with mild to moderate insomnia.`
         },
         pricing: {
           threeMonth: 42.5,
@@ -83,9 +89,10 @@ export const drugSelections = [
         id: "FORTE",
         default: true,
         labelOptions: {
-          label: "Forte",
+          label: "Sleep T Forte (extra strength)",
           subTile: "",
-          display: "Sleep T Forte"
+          display: `Our extra strength formulation to treat 
+                    severe insomnia.`
         },
         pricing: {
           threeMonth: 50,
@@ -99,8 +106,10 @@ export const drugSelections = [
     id: drugIds.SLEEP_N,
     category: "T",
     labelOptions: {
-      label: "Sleep Natural",
-      description: `This is the description for Sleep N.`,
+      label: "Sleep N",
+      description: `Our natural formula encompassing a variety of
+                    supplements known to help achieve a more restful
+                    nights sleep.`,
       price: 50
     },
     doseOptions: [
@@ -127,9 +136,9 @@ const addOns = [
     id: drugIds.CBD_ADDON,
     category: "",
     labelOptions: {
-      label: "Sleep Addon",
-      description: "Yes! I want this supplement to enhance my results!",
-      price: 1.2
+      label: "CBD Addon",
+      description: `Yes! I want this supplement to enhance my results!`,
+      price: 50
     },
     pricing: {
       threeMonth: 30,

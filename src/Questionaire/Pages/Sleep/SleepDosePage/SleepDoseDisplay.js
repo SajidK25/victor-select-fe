@@ -22,8 +22,8 @@ const useStyles = makeStyles(theme => ({
     marginBottom: theme.spacing(0.5)
   },
   subTitle: {
-    fontSize: 13,
-    fontWeight: 400
+    fontSize: 14,
+    fontWeight: 300
   },
   priceBox: {
     display: "flex",
@@ -69,7 +69,7 @@ export const SleepDoseDisplay = props => {
           <Typography className={classes.dose}>per month</Typography>
         </div>
       </div>
-      <Typography className={classes.subTitle}>{options.subTitle}</Typography>
+      <Typography className={classes.subTitle}>{options.display}</Typography>
     </div>
   );
 };

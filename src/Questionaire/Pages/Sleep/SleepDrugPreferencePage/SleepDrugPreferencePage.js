@@ -45,11 +45,10 @@ const SleepDrugPreferencePage = props => {
   return (
     <StandardPage questionText={questionText} alignTitles="left" {...props}>
       <Typography variant="body2" gutterBottom>
-        Explain the benefits....
+        Our customized formulations gently caress you to a restful nights sleep
+        while minimizing the side effects of other prescription medications.
       </Typography>
-      <Typography variant="body2" className={classes.moreText}>
-        Help choose the right product...
-      </Typography>
+
       {options && (
         <Field
           component={DetailedRadioGroup}

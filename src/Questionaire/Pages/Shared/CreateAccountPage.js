@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { useMutation, useApolloClient } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { Form, Field } from "react-final-form";
@@ -50,13 +50,12 @@ const additionalText = `The information you provide will be used by your doctor 
    evaluate your symptoms, history and lifestyle. Then, if appropriate,
    your doctor will prescribe the medication for treatment.`;
 
-const CreateAccountPage = props => {
-  const { questionaire, history, match } = props;
+export const CreateAccountPage = props => {
+  const { questionaire } = props;
+  const history = useHistory();
   const pathBase = questionaire.pathBase;
   const client = useApolloClient();
 
-  console.log("CC:", match);
-  client.writeData({ data: { sleepType: match.params.id } });
   const [
     register,
     { loading: mutationLoading, error: mutationError }
@@ -69,13 +68,13 @@ const CreateAccountPage = props => {
   });
 
   const verifyEmail = async (value, client) => {
-    //   const { data } = await client.query({
-    //     query: USER_EXISTS_QUERY,
-    //     variables: { email: value }
-    //   });
-    //   if (data.userExists) {
-    //     return "This email is in use.";
-    //   }
+    // const { data } = await client.query({
+    //   query: USER_EXISTS_QUERY,
+    //   variables: { email: value }
+    // });
+    // if (data.userExists) {
+    //   return "This email is in use.";
+    // }
   };
 
   const validateCreateAccount = async (values, client) => {
@@ -202,6 +201,3 @@ const CreateAccountPage = props => {
     </Form>
   );
 };
-
-const connectedCreateAccountPage = withRouter(CreateAccountPage);
-export { connectedCreateAccountPage as CreateAccountPage };

@@ -43,7 +43,7 @@ const Main = props => {
           render={() => <Questionaire questionaire={hairQuestionaire} />}
         />
         <Route
-          path={`${sleepQuestionaire.startPath}/:id`}
+          path={sleepQuestionaire.startPath}
           render={() => <CreateAccountPage questionaire={sleepQuestionaire} />}
         />
         <Route

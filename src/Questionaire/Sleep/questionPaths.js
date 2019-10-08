@@ -202,7 +202,8 @@ const SkipPage = (key, values) => {
   let skip = false;
 
   switch (key) {
-    case pathConstants.SLEEPDOSE: {
+    case pathConstants.SLEEPDOSE:
+    case pathConstants.SLEEPOTHERMEDS: {
       skip = values.subscription.drugId === drugIds.SLEEP_N;
       break;
     }

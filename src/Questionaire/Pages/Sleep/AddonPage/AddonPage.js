@@ -45,8 +45,8 @@ const AddonPage = props => {
   return (
     <StandardPage questionText={questionText} {...props}>
       <Typography variant="body2" paragraph>
-        <span className={classes.highlite}>?Sleep Addon?</span> is a collection
-        of supplements designed to improve sleep...
+        Optimize your sleep! Add CBD and take advantage of the relaxing benefits
+        to experience your best possible nights sleep!
       </Typography>
       {options && (
         <Field

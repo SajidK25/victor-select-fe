@@ -31,8 +31,7 @@
     "react-final-form-listeners": "^1.0.2",
     "react-lottie": "^1.2.3",
     "react-router-dom": "^5.0.0",
-    "react-scripts": "^3.0.1",
-    "react-stripe-elements": "^3.0.0"
+    "react-scripts": "^3.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
