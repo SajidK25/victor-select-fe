@@ -1,1 +1,1 @@
-export * from "./Questionaire"
+export * from "./Questionaire";

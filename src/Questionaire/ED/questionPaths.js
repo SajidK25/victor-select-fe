@@ -98,7 +98,6 @@ import {
 } from "../Pages/ED";
 
 const pathConstants = {
-  CREATEACCOUNT: "start",
   ZIPCODE: "zipcode",
   GENDER: "gender",
   FEMALE_ED: "genderf",
@@ -465,14 +464,12 @@ const SkipPage = (key, values) => {
   return skip;
 };
 
-const edQuestionaire = {
+export const edQuestionaire = {
   type: "ED",
   pages: pages,
   skipPage: SkipPage,
-  pathBase: "/visit/ed",
+  pathBase: "/visit/ED",
   startPath: "/edstart",
   heading: " a solution for your ED ",
   initialValues: initialValues
 };
-
-export default edQuestionaire;

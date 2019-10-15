@@ -1,6 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { useMutation, useApolloClient } from "@apollo/react-hooks";
+import { useHistory, useParams } from "react-router-dom";
+import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { Form, Field } from "react-final-form";
 import Grid from "@material-ui/core/Grid";
@@ -14,14 +14,8 @@ import {
   Legal,
   ErrorMessage
 } from "../../../_components";
-import { parseError } from "../../../_helpers";
+import { getQuestionaire } from "../../questionPaths";
 import { CURRENT_USER_QUERY } from "../../../_components/User";
-
-const USER_EXISTS_QUERY = gql`
-  query USER_EXISTS_QUERY($email: String!) {
-    userExists(email: $email)
-  }
-`;
 
 const SIGNUP_MUTATION = gql`
   mutation SIGNUP_MUTATION(
@@ -35,7 +29,9 @@ const SIGNUP_MUTATION = gql`
       firstName: $firstName
       lastName: $lastName
       password: $password
-    )
+    ) {
+      message
+    }
   }
 `;
 
@@ -47,16 +43,47 @@ const initialData = {
   accept: false
 };
 
+const validateCreateAccount = values => {
+  const errors = {};
+  if (!values.accept) {
+    errors.checkError = "You must indicate that you accept and consent.";
+  }
+  if (!values.firstName) {
+    errors.firstName = "First Name is required";
+  }
+  if (!values.lastName) {
+    errors.lastName = "Last Name is required";
+  }
+  if (!values.password) {
+    errors.password = "Password is required";
+  } else if (
+    !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(
+      values.password
+    )
+  ) {
+    errors.password =
+      "Password must include at least 8 chars., contain at least 1 uppercase letter, 1 lowercase letter and 1 number";
+  }
+
+  if (!values.email) {
+    errors.email = "email address is required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Invalid email address";
+  }
+
+  return errors;
+};
+
 const additionalText = `The information you provide will be used by your doctor to 
    evaluate your symptoms, history and lifestyle. Then, if appropriate,
    your doctor will prescribe the medication for treatment.`;
 
-export const CreateAccountPage = props => {
-  const { questionaire } = props;
+export const CreateAccountPage = () => {
   const history = useHistory();
+  const { id } = useParams();
+
+  const questionaire = getQuestionaire(id);
   const pathBase = questionaire.pathBase;
-  const type = questionaire.type;
-  const client = useApolloClient();
 
   const [
     register,
@@ -66,9 +93,9 @@ export const CreateAccountPage = props => {
     awaitRefetchQueries: true,
     onCompleted: data => {
       if (!data || data.register) {
-        if (data.register === "EXISTS") {
-          history.push(`/Login/${type}`);
-        } else if (data.register === "OK") {
+        if (data.register.message === "EXISTS") {
+          history.push(`/Login/${id}`);
+        } else if (data.register.message === "OK") {
           history.push(pathBase);
         }
       }
@@ -76,61 +103,10 @@ export const CreateAccountPage = props => {
     }
   });
 
-  const verifyEmail = async (value, client) => {
-    // const { data } = await client.query({
-    //   query: USER_EXISTS_QUERY,
-    //   variables: { email: value }
-    // });
-    // if (data.userExists) {
-    //   return "This email is in use.";
-    // }
-  };
-
-  const validateCreateAccount = async (values, client) => {
-    const errors = {};
-    if (!values.accept) {
-      errors.checkError = "You must indicate that you accept and consent.";
-    }
-    if (!values.firstName) {
-      errors.firstName = "First Name is required";
-    }
-    if (!values.lastName) {
-      errors.lastName = "Last Name is required";
-    }
-    if (!values.password) {
-      errors.password = "Password is required";
-    } else if (
-      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(
-        values.password
-      )
-    ) {
-      errors.password =
-        "Password must include at least 8 chars., contain at least 1 uppercase letter, 1 lowercase letter and 1 number";
-    }
-
-    if (!values.email) {
-      errors.email = "email address is required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email address";
-    }
-
-    if (Object.keys(errors).length) {
-      return errors;
-    }
-
-    const res = await verifyEmail(values.email, client);
-    if (res) {
-      errors.email = res;
-    }
-    return errors;
-  };
-
   return (
     <Form
       initialValues={initialData}
-      validate={async values => validateCreateAccount(values, client)}
+      validate={validateCreateAccount}
       onSubmit={values => {
         console.log("Signup:", values);
         register({ variables: { ...values } });

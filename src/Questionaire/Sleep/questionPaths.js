@@ -216,14 +216,12 @@ const SkipPage = (key, values) => {
   return skip;
 };
 
-const sleepQuestionaire = {
+export const sleepQuestionaire = {
   type: "Sleep",
   pages: pages,
   skipPage: SkipPage,
-  pathBase: "/visit/sleep",
+  pathBase: "/visit/Sleep",
   startPath: "/sleepstart",
   heading: " better sleep ",
   initialValues: initialValues
 };
-
-export default sleepQuestionaire;

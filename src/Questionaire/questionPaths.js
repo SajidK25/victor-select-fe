@@ -1,7 +1,26 @@
+import { edQuestionaire } from "./ED";
+import { sleepQuestionaire } from "./Sleep/questionPaths";
+import { hairQuestionaire } from "./Hair/questionPaths";
+
 const visitTypes = {
-  SLEEP: "Sleep",
-  ED: "ED",
-  HAIR: "Hair"
+  SLEEP: "sleep",
+  ED: "ed",
+  HAIR: "hair"
+};
+
+const questionaires = [
+  { id: visitTypes.SLEEP, questionaire: sleepQuestionaire },
+  { id: visitTypes.ED, questionaire: edQuestionaire },
+  { id: visitTypes.HAIR, questionaire: hairQuestionaire }
+];
+
+export const getQuestionaire = id => {
+  console.log("ID:", id);
+  const que = questionaires.find(q => q.id === id.toLowerCase());
+  if (que) {
+    return que.questionaire;
+  }
+  return null;
 };
 
 function nextPage(direction, currPage, pages) {

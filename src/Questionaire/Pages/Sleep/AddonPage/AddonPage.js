@@ -2,7 +2,6 @@
 import React from "react";
 import { Field } from "react-final-form";
 import Typography from "@material-ui/core/Typography";
-import { makeStyles } from "@material-ui/core/styles";
 import {
   StandardPage,
   DetailedRadioGroup,
@@ -10,16 +9,6 @@ import {
 } from "../../../../_components";
 import { getAddonList } from "../../../Sleep/sleepSelections";
 import { AddonDisplay } from "./AddonDisplay";
-
-const useStyles = makeStyles(theme => ({
-  moreText: {
-    marginBottom: theme.spacing(2)
-  },
-  highlite: {
-    fontWeight: 500,
-    color: theme.palette.primary.main
-  }
-}));
 
 const validateAddon = values => {
   const errors = { subscription: {} };
@@ -35,7 +24,6 @@ const questionText = "Do you want to enhance your results?";
 
 const AddonPage = props => {
   const { handleSubmit } = props;
-  const classes = useStyles();
   const name = "subscription.addOn";
   let options = [];
 

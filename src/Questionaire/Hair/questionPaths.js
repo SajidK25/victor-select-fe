@@ -363,10 +363,10 @@ const hairQuestionaire = {
   type: "Hair",
   pages: pages,
   skipPage: SkipPage,
-  pathBase: "/visit/hair",
+  pathBase: "/visit/Hair",
   startPath: "/hairstart",
   heading: " growing new hair ",
   initialValues: initialValues
 };
 
-export default hairQuestionaire;
+export { hairQuestionaire };

@@ -1,18 +1,26 @@
 import React, { useState, useEffect } from "react";
 import { Form } from "react-final-form";
 import {
-  withRouter,
   Redirect,
   Route,
   Switch,
-  pathMatch
+  useHistory,
+  useLocation,
+  useParams
 } from "react-router-dom";
 import { getNextPage, getCurrentPage } from "./questionPaths";
 import { QuestionaireLayout } from "../_components/QuestionaireLayout";
+import { getQuestionaire } from "./questionPaths";
 import User from "../_components/User";
 
-const Questionaire = props => {
-  const { history, location, questionaire, match } = props;
+const Questionaire = () => {
+  const history = useHistory();
+  const location = useLocation();
+  const { id } = useParams();
+
+  console.log("Params:", id);
+  const questionaire = getQuestionaire(id);
+
   const [pageIndex, setPageIndex] = useState(0);
   const [transDir, setTransDir] = useState("left");
   const [page, setPage] = useState(questionaire.pages[0]);
@@ -63,9 +71,7 @@ const Questionaire = props => {
       onSubmit={values => {
         if (isLastPage()) {
           alert("Saving...");
-          console.log("Finished!");
         } else {
-          console.log("Next!");
           next(values);
         }
       }}
@@ -76,42 +82,32 @@ const Questionaire = props => {
           values={values}
           page={pageIndex}
         >
-          <Route
-            render={({ location }) => (
-              <>
-                <Switch location={location}>
-                  <Redirect
-                    from={questionaire.pathBase}
-                    exact
-                    to={`${questionaire.pathBase}/zipcode`}
-                  />
-                  {questionaire.pages.map(({ key, component: C }) => (
-                    <Route
-                      key={key}
-                      path={`${questionaire.pathBase}/${key}`}
-                      exact
-                      render={() => (
-                        <C
-                          key={key}
-                          direction={transDir}
-                          handleSubmit={handleSubmit}
-                          values={values}
-                          validating={validating}
-                          heading={questionaire.heading}
-                        />
-                      )}
-                    />
-                  ))}
-                  <Route render={() => <div>Page not found</div>} />
-                </Switch>
-              </>
-            )}
-          />
+          <Switch location={location}>
+            <Redirect
+              from={questionaire.pathBase}
+              exact
+              to={`${questionaire.pathBase}/zipcode`}
+            />
+            {questionaire.pages.map(({ key, component: C }) => (
+              <Route key={key} path={`${questionaire.pathBase}/${key}`} exact>
+                <C
+                  key={key}
+                  direction={transDir}
+                  handleSubmit={handleSubmit}
+                  values={values}
+                  validating={validating}
+                  heading={questionaire.heading}
+                />
+              </Route>
+            ))}
+            <Route>
+              <div>Page not found</div>
+            </Route>
+          </Switch>
         </QuestionaireLayout>
       )}
     </Form>
   );
 };
 
-const connectedQuestionaire = withRouter(Questionaire);
-export { connectedQuestionaire as Questionaire };
+export { Questionaire };

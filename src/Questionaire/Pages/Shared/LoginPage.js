@@ -1,6 +1,6 @@
 import React from "react";
-import { useHistory } from "react-router-dom";
-import { useMutation, useApolloClient } from "@apollo/react-hooks";
+import { useHistory, useParams } from "react-router-dom";
+import { useMutation } from "@apollo/react-hooks";
 import gql from "graphql-tag";
 import { Form, Field } from "react-final-form";
 import Grid from "@material-ui/core/Grid";
@@ -9,134 +9,71 @@ import {
   Spinner,
   QuestionaireLayout,
   RenderStdTextField,
-  RenderSimpleCheckbox,
-  RenderCheckError,
-  Legal,
   ErrorMessage
 } from "../../../_components";
 import { CURRENT_USER_QUERY } from "../../../_components/User";
 
-const USER_EXISTS_QUERY = gql`
-  query USER_EXISTS_QUERY($email: String!) {
-    userExists(email: $email)
-  }
-`;
-
-const SIGNUP_MUTATION = gql`
-  mutation SIGNUP_MUTATION(
-    $email: String!
-    $firstName: String!
-    $lastName: String!
-    $password: String!
-  ) {
-    register(
-      email: $email
-      firstName: $firstName
-      lastName: $lastName
-      password: $password
-    )
+const SIGNIN_MUTATION = gql`
+  mutation SIGNIN_MUTATION($email: String!, $password: String!) {
+    login(email: $email, password: $password) {
+      id
+      email
+      firstName
+    }
   }
 `;
 
 const initialData = {
   email: "",
-  firstName: "",
-  lastName: "",
-  password: "",
-  accept: false
+  password: ""
 };
 
-const additionalText = `The information you provide will be used by your doctor to 
-   evaluate your symptoms, history and lifestyle. Then, if appropriate,
-   your doctor will prescribe the medication for treatment.`;
+const validateLogin = values => {
+  const errors = {};
+  if (!values.password) {
+    errors.password = "Password is required";
+  }
 
-export const CreateAccountPage = props => {
-  const { questionaire } = props;
+  if (!values.email) {
+    errors.email = "email address is required";
+  } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
+    errors.email = "Invalid email address";
+  }
+
+  return errors;
+};
+
+export const LoginPage = () => {
   const history = useHistory();
-  const pathBase = questionaire.pathBase;
-  const client = useApolloClient();
+  const { id } = useParams();
 
   const [
-    register,
+    signin,
     { loading: mutationLoading, error: mutationError }
-  ] = useMutation(SIGNUP_MUTATION, {
+  ] = useMutation(SIGNIN_MUTATION, {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
     awaitRefetchQueries: true,
     onCompleted: () => {
-      history.push(pathBase);
+      history.push(`/visit/${id}`);
     }
   });
-
-  const verifyEmail = async (value, client) => {
-    // const { data } = await client.query({
-    //   query: USER_EXISTS_QUERY,
-    //   variables: { email: value }
-    // });
-    // if (data.userExists) {
-    //   return "This email is in use.";
-    // }
-  };
-
-  const validateCreateAccount = async (values, client) => {
-    const errors = {};
-    if (!values.accept) {
-      errors.checkError = "You must indicate that you accept and consent.";
-    }
-    if (!values.firstName) {
-      errors.firstName = "First Name is required";
-    }
-    if (!values.lastName) {
-      errors.lastName = "Last Name is required";
-    }
-    if (!values.password) {
-      errors.password = "Password is required";
-    } else if (
-      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(
-        values.password
-      )
-    ) {
-      errors.password =
-        "Password must include at least 8 chars., contain at least 1 uppercase letter, 1 lowercase letter and 1 number";
-    }
-
-    if (!values.email) {
-      errors.email = "email address is required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email address";
-    }
-
-    if (Object.keys(errors).length) {
-      return errors;
-    }
-
-    const res = await verifyEmail(values.email, client);
-    if (res) {
-      console.log(res);
-      errors.email = res;
-    }
-    return errors;
-  };
 
   return (
     <Form
       initialValues={initialData}
-      validate={async values => validateCreateAccount(values, client)}
+      validate={validateLogin}
       onSubmit={values => {
         console.log("Signup:", values);
-        register({ variables: { ...values } });
+        signin({ variables: { ...values } });
       }}
     >
       {({ handleSubmit, values, errors, ...rest }) => (
         <QuestionaireLayout values={values} page={0}>
           {mutationLoading && <Spinner />}
           <StandardPage
-            questionText={`Getting started towards${
-              questionaire.heading
-            }is just a few clicks away...`}
-            additionalText={additionalText}
-            buttonText="Create Account"
+            questionText={`Login`}
+            additionalText={"It appears that you already have an account"}
+            buttonText="Continue"
             buttonVariant="outlined"
             handleSubmit={handleSubmit}
             values={values}
@@ -144,26 +81,6 @@ export const CreateAccountPage = props => {
           >
             <ErrorMessage error={mutationError} />
             <Grid container spacing={3}>
-              <Grid item xs={12} sm={6}>
-                <Field
-                  component={RenderStdTextField}
-                  id="fname"
-                  name="firstName"
-                  label="First Name"
-                  fullWidth
-                  autoComplete="fname"
-                />
-              </Grid>
-              <Grid item xs={12} sm={6}>
-                <Field
-                  component={RenderStdTextField}
-                  id="lname"
-                  name="lastName"
-                  label="Last Name"
-                  fullWidth
-                  autoComplete="lname"
-                />
-              </Grid>
               <Grid item xs={12}>
                 <Field
                   component={RenderStdTextField}
@@ -186,14 +103,6 @@ export const CreateAccountPage = props => {
                   fullWidth
                 />
               </Grid>
-            </Grid>
-            <Grid item xs={12}>
-              <Field
-                name="accept"
-                component={RenderSimpleCheckbox}
-                label={<Legal />}
-              />
-              <Field name="checkError" component={RenderCheckError} />
             </Grid>
           </StandardPage>
         </QuestionaireLayout>

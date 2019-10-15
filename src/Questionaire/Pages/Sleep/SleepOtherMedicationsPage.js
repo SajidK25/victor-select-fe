@@ -1,5 +1,4 @@
 import React from "react";
-import { useQuery } from "@apollo/react-hooks";
 import { CheckboxPage } from "../../../_components";
 import { optionsAllFalse } from "../../../_helpers";
 import { drugIds } from "../../Sleep/sleepSelections";
