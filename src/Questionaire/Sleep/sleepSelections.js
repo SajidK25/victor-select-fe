@@ -21,7 +21,7 @@ export const drugSelections = [
     id: drugIds.SLEEP_D,
     category: "D",
     labelOptions: {
-      label: "Sleep D",
+      label: "Sleep-D Synergy",
       description: `Our top recommendation for optimal sleep. This 
                     formula contains Doxepin which is widely prescribed 
                     for insomnia.`,
@@ -32,14 +32,14 @@ export const drugSelections = [
         id: "REG",
         default: true,
         labelOptions: {
-          label: "Sleep D Regular",
+          label: "Sleep-D Synergy",
           subTile: "SubTitle",
           display: `This is the recommended starting dose for those who suffer
                     with mild to moderate insomnia.`
         },
         pricing: {
-          threeMonth: 42.5,
-          twoMonth: 45,
+          threeMonth: 43.25,
+          twoMonth: 45.5,
           monthly: 50
         }
       },
@@ -47,14 +47,14 @@ export const drugSelections = [
         id: "FORTE",
         default: false,
         labelOptions: {
-          label: "Sleep D Forte (extra strength)",
+          label: "Sleep-D Forte (extra strength)",
           subTile: "Subtitle",
           display: `This is our most potent formulation recommended for 
                     those with severe insomnia.`
         },
         pricing: {
-          threeMonth: 51,
-          twoMonth: 54,
+          threeMonth: 52,
+          twoMonth: 55,
           monthly: 60
         }
       }
@@ -64,7 +64,7 @@ export const drugSelections = [
     id: drugIds.SLEEP_T,
     category: "T",
     labelOptions: {
-      label: "Sleep T",
+      label: "Sleep-T Synergy",
       description: `Our sleep formula containing Trazodone, a prescriptive 
                     also highly utilized in the treatment of sleep disorders.`,
       price: 50
@@ -74,14 +74,14 @@ export const drugSelections = [
         id: "",
         default: true,
         labelOptions: {
-          label: "Sleep T Regular",
+          label: "Sleep-T Synergy",
           subTile: "",
           display: `This is the recommended starting dose for those who suffer
                     with mild to moderate insomnia.`
         },
         pricing: {
-          threeMonth: 42.5,
-          twoMonth: 45,
+          threeMonth: 43.25,
+          twoMonth: 45.5,
           monthly: 50
         }
       },
@@ -89,14 +89,14 @@ export const drugSelections = [
         id: "FORTE",
         default: true,
         labelOptions: {
-          label: "Sleep T Forte (extra strength)",
+          label: "Sleep-T Forte (extra strength)",
           subTile: "",
           display: `Our extra strength formulation to treat 
                     severe insomnia.`
         },
         pricing: {
-          threeMonth: 50,
-          twoMonth: 54,
+          threeMonth: 52,
+          twoMonth: 55,
           monthly: 60
         }
       }
@@ -106,7 +106,7 @@ export const drugSelections = [
     id: drugIds.SLEEP_N,
     category: "T",
     labelOptions: {
-      label: "Sleep N",
+      label: "Sleep-N Synergy",
       description: `Our natural formula encompassing a variety of
                     supplements known to help achieve a more restful
                     nights sleep.`,
@@ -122,8 +122,8 @@ export const drugSelections = [
           display: "Sleep N"
         },
         pricing: {
-          threeMonth: 39,
-          twoMonth: 45,
+          threeMonth: 43.25,
+          twoMonth: 45.5,
           monthly: 50
         }
       }
@@ -138,12 +138,12 @@ const addOns = [
     labelOptions: {
       label: "CBD Addon",
       description: `Yes! I want this supplement to enhance my results!`,
-      price: 50
+      price: 80.5
     },
     pricing: {
-      threeMonth: 30,
-      twoMonth: 40,
-      monthly: 50
+      threeMonth: 70,
+      twoMonth: 73,
+      monthly: 80.5
     }
   },
   {
