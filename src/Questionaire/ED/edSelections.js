@@ -342,6 +342,7 @@ export const defaultDose = drugId => {
 export const getPrices = (drugId, dose, count, addOn) => {
   const pricing = {
     display: `${drugId} not found`,
+    addOnDisplay: "",
     monthly: 0,
     monthlyDoses: 0,
     addOnMonthlyDoses: 0,
@@ -385,11 +386,14 @@ export const drugDisplaySetup = subscription => {
   const pricing = getPrices(
     subscription.drugId,
     subscription.doseOption,
-    subscription.timesPerMonth
+    subscription.timesPerMonth,
+    subscription.addOn
   );
   const options = {
     display: "",
+    addOnDisplay: "",
     monthlyDoses: 0,
+
     title: "",
     total: 0,
     doses: 0,
@@ -398,14 +402,18 @@ export const drugDisplaySetup = subscription => {
     noDiscount: 0
   };
 
+  console.log("Pricing:", pricing);
   options.display = pricing.display;
+  options.addOnDisplay = pricing.addOnDisplay;
   options.monthlyDoses = pricing.monthlyDoses;
+  options.addOnMonthlyDoses = pricing.addOnMonthlyDoses;
 
   switch (subscription.shippingInterval) {
     case "everyThree":
       options.title = "3 Month Delivery";
       options.total = pricing.threeTotal;
-      options.doses = pricing.monthlyDoses * 3;
+      options.doses = pricing.threeDoses;
+      options.addOnDoses = pricing.addOnThreeDoses;
       options.per = "3 mo";
       options.interval = "every 3 months";
       options.noDiscount = pricing.monthly * 3;
@@ -414,7 +422,8 @@ export const drugDisplaySetup = subscription => {
     case "everyTwo":
       options.title = "2 Month Delivery";
       options.total = pricing.twoTotal;
-      options.doses = pricing.monthlyDoses * 2;
+      options.doses = pricing.twoDoses;
+      options.addOnDoses = pricing.addOnTwoDoses;
       options.per = "2 mo";
       options.interval = "every 2 months";
       options.noDiscount = pricing.monthly * 2;
@@ -424,6 +433,7 @@ export const drugDisplaySetup = subscription => {
       options.title = "Monthly Delivery";
       options.total = pricing.monthly;
       options.doses = pricing.monthlyDoses;
+      options.addOnDoses = pricing.addOnMonthlyDoses;
       options.per = "mo";
       options.interval = "monthly";
       options.noDiscount = 0;

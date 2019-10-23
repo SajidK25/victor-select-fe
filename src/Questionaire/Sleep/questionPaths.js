@@ -106,11 +106,11 @@ const pages = [
     component: SleepDosePage,
     validate: validateSleepDose
   },
-  {
-    key: pathConstants.ADDON,
-    component: AddonPage,
-    validate: validateAddon
-  },
+  //{
+  //  key: pathConstants.ADDON,
+  //  component: AddonPage,
+  //  validate: validateAddon
+  //},
   {
     key: pathConstants.SLEEPINTERVAL,
     component: SleepIntervalPage,

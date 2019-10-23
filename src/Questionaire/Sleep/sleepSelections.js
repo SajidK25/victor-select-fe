@@ -21,7 +21,7 @@ export const drugSelections = [
     id: drugIds.SLEEP_D,
     category: "D",
     labelOptions: {
-      label: "Sleep-D Synergy",
+      label: "Hypnos-D",
       description: `Our top recommendation for optimal sleep. This 
                     formula contains Doxepin which is widely prescribed 
                     for insomnia.`,
@@ -32,9 +32,9 @@ export const drugSelections = [
         id: "REG",
         default: true,
         labelOptions: {
-          label: "Sleep-D Synergy",
-          subTile: "SubTitle",
-          display: `This is the recommended starting dose for those who suffer
+          label: "Hypnos-D",
+          display: "Hypnos-D",
+          subTitle: `This is the recommended starting dose for those who suffer
                     with mild to moderate insomnia.`
         },
         pricing: {
@@ -47,9 +47,9 @@ export const drugSelections = [
         id: "FORTE",
         default: false,
         labelOptions: {
-          label: "Sleep-D Forte (extra strength)",
-          subTile: "Subtitle",
-          display: `This is our most potent formulation recommended for 
+          label: "Hypnos-D Forte (extra strength)",
+          display: "Hypnos-D Forte",
+          subTitle: `This is our most potent formulation recommended for 
                     those with severe insomnia.`
         },
         pricing: {
@@ -64,19 +64,19 @@ export const drugSelections = [
     id: drugIds.SLEEP_T,
     category: "T",
     labelOptions: {
-      label: "Sleep-T Synergy",
+      label: "Hypnos-T",
       description: `Our sleep formula containing Trazodone, a prescriptive 
                     also highly utilized in the treatment of sleep disorders.`,
       price: 50
     },
     doseOptions: [
       {
-        id: "",
+        id: "REG",
         default: true,
         labelOptions: {
-          label: "Sleep-T Synergy",
-          subTile: "",
-          display: `This is the recommended starting dose for those who suffer
+          label: "Hypnos-T",
+          display: "Hypnos-T",
+          subTitle: `This is the recommended starting dose for those who suffer
                     with mild to moderate insomnia.`
         },
         pricing: {
@@ -89,9 +89,9 @@ export const drugSelections = [
         id: "FORTE",
         default: true,
         labelOptions: {
-          label: "Sleep-T Forte (extra strength)",
-          subTile: "",
-          display: `Our extra strength formulation to treat 
+          label: "Hypnos-T Forte (extra strength)",
+          display: "Hypnos-T Forte",
+          subTitle: `Our extra strength formulation to treat 
                     severe insomnia.`
         },
         pricing: {
@@ -106,7 +106,7 @@ export const drugSelections = [
     id: drugIds.SLEEP_N,
     category: "T",
     labelOptions: {
-      label: "Sleep-N Synergy",
+      label: "Hypnos-N",
       description: `Our natural formula encompassing a variety of
                     supplements known to help achieve a more restful
                     nights sleep.`,
@@ -224,12 +224,11 @@ const getDoseOption = (drugId, dose) => {
   return options.find(o => o.id === dose);
 };
 
-// export const validDoseOption = (drugId, dose) => {
-//   const option = getDoseOption(drugId, dose);
-//   if (!option) return false;
-
-//   return true;
-// };
+export const validDoseOption = (drugId, dose) => {
+  const option = getDoseOption(drugId, dose);
+  if (!option) return false;
+  return true;
+};
 
 export const defaultDose = drugId => {
   const options = getDoseOptions(drugId);

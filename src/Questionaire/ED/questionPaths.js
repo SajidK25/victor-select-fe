@@ -18,8 +18,6 @@ import {
   validatePhysicalExam,
   AnythingElsePage,
   validateAnythingElse,
-  SummaryPage,
-  validateSummary,
   ShippingPage,
   validateShipping
 } from "../Pages/Shared";
@@ -94,7 +92,9 @@ import {
   EdAddonPage,
   validateEdAddon,
   EdMedsPage,
-  validateEdMeds
+  validateEdMeds,
+  SummaryPage,
+  validateSummary
 } from "../Pages/ED";
 
 const pathConstants = {
@@ -197,11 +197,11 @@ const pages = [
     component: HowOftenPage,
     validate: validateHowOften
   },
-  {
-    key: pathConstants.EDSTART,
-    component: VisitStartPage,
-    validate: validateVisitStart
-  },
+   {
+     key: pathConstants.EDSTART,
+     component: VisitStartPage,
+     validate: validateVisitStart
+   },
   {
     key: pathConstants.ERECTION,
     component: ErectionPage,

@@ -69,7 +69,7 @@ export const SleepDoseDisplay = props => {
           <Typography className={classes.dose}>per month</Typography>
         </div>
       </div>
-      <Typography className={classes.subTitle}>{options.display}</Typography>
+      <Typography className={classes.subTitle}>{options.subTitle}</Typography>
     </div>
   );
 };

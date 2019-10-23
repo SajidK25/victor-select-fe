@@ -34,3 +34,4 @@ export * from "./EdAddonPage";
 export * from "./EdSolutionTypePage";
 export * from "./FemaleEdPage";
 export * from "./HypertensionMedsPage";
+export * from "./SummaryPage";

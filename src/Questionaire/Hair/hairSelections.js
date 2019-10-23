@@ -13,7 +13,7 @@ export const drugSelections = [
     id: drugIds.HAIRGOOD,
     category: "A",
     labelOptions: {
-      label: "Topical Synergy",
+      label: "Pelage",
       description: `Generate new hair growth!`,
       price: 98.0
     },
@@ -24,7 +24,7 @@ export const drugSelections = [
         labelOptions: {
           label: "",
           subTile: "",
-          display: "Topical Synergy"
+          display: "Pelage"
         },
         pricing: {
           threeMonth: 83.3,
@@ -38,7 +38,7 @@ export const drugSelections = [
     id: drugIds.HAIRBEST,
     category: "A",
     labelOptions: {
-      label: "Topical Synergy + AM/PM Caps",
+      label: "Pelage + AM/PM Caps",
       description: "Ultimate Hair Restoration",
       price: 160
     },
@@ -49,7 +49,7 @@ export const drugSelections = [
         labelOptions: {
           title: "",
           subTile: "",
-          display: "Topical Synergy + AM/PM Caps"
+          display: "Pelage + AM/PM Caps"
         },
         pricing: {
           threeMonth: 136,

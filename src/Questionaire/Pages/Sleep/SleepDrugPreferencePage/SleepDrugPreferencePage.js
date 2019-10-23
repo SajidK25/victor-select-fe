@@ -7,14 +7,23 @@ import {
   DetailedRadioGroup,
   RadioSubmit
 } from "../../../../_components";
-import { getDrugList } from "../../../Sleep/sleepSelections";
+import {
+  getDrugList,
+  validDoseOption,
+  defaultDose
+} from "../../../Sleep/sleepSelections";
 import { SleepDrugPreferenceDisplay } from "./SleepDrugPreferenceDisplay";
 
 const validateSleepDrugPreference = values => {
   const errors = { subscription: {} };
+  const s = values.subscription;
 
-  if (!values.subscription.drugId) {
+  if (!s.drugId) {
     errors.subscription.drugId = "Please make a selection.";
+  }
+
+  if (!validDoseOption(s.drugId, s.doseOption)) {
+    values.subscription.doseOption = defaultDose(s.drugId);
   }
 
   return errors;
