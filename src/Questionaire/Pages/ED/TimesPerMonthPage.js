@@ -12,8 +12,8 @@ const validateTimesPerMonth = values => {
   const errors = { subscription: {} };
   const s = values.subscription;
 
-  if (!s.timesPerMonth) {
-    errors.subscription.timesPerMonth = "Please select an option.";
+  if (!s.dosesPerMonth) {
+    errors.subscription.dosesPerMonth = "Please select an option.";
   }
 
   return errors;
@@ -34,7 +34,7 @@ let TimesPerMonthPage = props => {
   }
   return (
     <RadioPage
-      name="subscription.timesPerMonth"
+      name="subscription.dosesPerMonth"
       options={options}
       questionText={questionText}
       additionalText={additionalText}

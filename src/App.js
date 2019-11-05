@@ -1,6 +1,5 @@
 import React from "react";
 import { BrowserRouter as Router } from "react-router-dom";
-
 import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { orange, blue } from "@material-ui/core/colors";
 import CssBaseline from "@material-ui/core/CssBaseline";

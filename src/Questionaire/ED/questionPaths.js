@@ -19,7 +19,9 @@ import {
   AnythingElsePage,
   validateAnythingElse,
   ShippingPage,
-  validateShipping
+  validateShipping,
+  PaymentPage,
+  validatePayment
 } from "../Pages/Shared";
 
 import {
@@ -143,7 +145,8 @@ const pathConstants = {
   ANYTHINGELSE: 40,
   PICTURES: "photos",
   SUMMARY: "summary",
-  SHIPPING: "shipping"
+  SHIPPING: "shipping",
+  PAYMENT: "payment"
 };
 
 const pages = [
@@ -197,11 +200,11 @@ const pages = [
     component: HowOftenPage,
     validate: validateHowOften
   },
-   {
-     key: pathConstants.EDSTART,
-     component: VisitStartPage,
-     validate: validateVisitStart
-   },
+  {
+    key: pathConstants.EDSTART,
+    component: VisitStartPage,
+    validate: validateVisitStart
+  },
   {
     key: pathConstants.ERECTION,
     component: ErectionPage,
@@ -371,6 +374,11 @@ const pages = [
     key: pathConstants.SHIPPING,
     component: ShippingPage,
     validate: validateShipping
+  },
+  {
+    key: pathConstants.PAYMENT,
+    component: PaymentPage,
+    validate: validatePayment
   }
 ];
 
@@ -379,13 +387,14 @@ const SkipPage = (key, values) => {
 
   switch (key) {
     case pathConstants.TIMESPERMONTH:
+      const s = values.subscription;
       if (
-        values.subscription.drugId === drugIds.MALE_DAILY ||
-        values.subscription.drugId === drugIds.TADALAFIL_DAILY ||
-        values.subscription.drugId === drugIds.DAILY_PLUS
+        s.drugId === drugIds.MALE_DAILY ||
+        s.drugId === drugIds.TADALAFIL_DAILY ||
+        s.drugId === drugIds.DAILY_PLUS
       ) {
         skip = true;
-        values.subscription.timesPerMonth = "30";
+        s.dosesPerMonth = "30";
       }
       break;
 

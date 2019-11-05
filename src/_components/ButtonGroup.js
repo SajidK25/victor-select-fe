@@ -4,6 +4,7 @@ import ArrowForward from "@material-ui/icons/ArrowForward";
 import ArrowBack from "@material-ui/icons/ArrowBack";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
+import { useFormState } from "react-final-form";
 
 const useStyles = makeStyles(theme => ({
   nextButton: {
@@ -27,12 +28,15 @@ const useStyles = makeStyles(theme => ({
 
 // Next Button
 export const NextButton = props => {
-  const { buttonText, validating, submitting, variant } = props;
+  const { buttonText, variant } = props;
   const classes = useStyles();
+  const formState = useFormState();
 
   return (
     <Button
-      disabled={submitting || validating}
+      disabled={
+        formState.submitting || formState.validating || formState.invalid
+      }
       variant={!variant ? "contained" : variant}
       color="primary"
       type="submit"

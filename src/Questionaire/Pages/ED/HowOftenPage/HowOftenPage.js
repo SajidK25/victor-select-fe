@@ -101,7 +101,7 @@ const HowOftenPage = props => {
   const pricing = getPrices(
     values.subscription.drugId,
     values.subscription.doseOption,
-    values.subscription.timesPerMonth,
+    values.subscription.dosesPerMonth,
     values.subscription.addOn
   );
 

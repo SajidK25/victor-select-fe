@@ -1,9 +1,10 @@
 import React from "react";
-import { Field } from "react-final-form";
+import { Field, useForm, useField, useFormState } from "react-final-form";
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 import { RenderTextField, StandardPage } from "../../../_components";
 import { normalizeZip } from "../../../_helpers";
+import { zipcodeIsValid } from "../../../_helpers/zipcodes";
 
 const validZips = [
   { min: 73301, max: 73301 },
@@ -21,17 +22,31 @@ const checkZips = zipCode => {
   return false;
 };
 
-const validateZipcode = values => {
+const verifyZipcode = async (zipcode, client) => {
+  const result = await zipcodeIsValid(zipcode, client);
+  if (!result) {
+    return {
+      personal: { zipCode: "Sorry, we aren't servicing your state yet." }
+    };
+  }
+  return { personal: {} };
+};
+
+const validateZipcode = (values, client) => {
   const errors = { personal: {} };
   if (!values.personal.zipCode) {
     errors.personal.zipCode = "Zipcode is required";
   } else if (values.personal.zipCode.length !== 5) {
     errors.personal.zipCode = "Please enter a valid zip code.";
-  } else if (!checkZips(parseInt(values.personal.zipCode))) {
-    errors.personal.zipCode = "Sorry, we aren't servicing your state yet.";
   }
 
-  return errors;
+  //else if (!checkZips(parseInt(values.personal.zipCode))) {
+  //  errors.personal.zipCode = "Sorry, we aren't servicing your state yet.";
+  // }
+
+  return Object.keys(errors.personal).length
+    ? errors
+    : verifyZipcode(values.personal.zipCode, client);
 };
 
 const questionText = "What is your zip code?";

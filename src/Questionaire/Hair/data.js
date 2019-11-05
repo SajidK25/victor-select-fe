@@ -9,7 +9,7 @@ export const initialValues = {
   subscription: {
     drugId: "",
     shippingInterval: "everyThree",
-    addOn: ""
+    addOnId: ""
   },
   hairLoss: {
     timeSpan: "",

@@ -8,3 +8,4 @@ export * from "./CreateAccountPage";
 export * from "./OtherMedicinesPage";
 export * from "./PhysicalExamPage";
 export * from "./VisitStartPage";
+export * from "./PaymentPage";

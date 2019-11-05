@@ -12,11 +12,13 @@ import { getNextPage, getCurrentPage } from "./questionPaths";
 import { QuestionaireLayout } from "../_components/QuestionaireLayout";
 import { getQuestionaire } from "./questionPaths";
 import User from "../_components/User";
+import { useApolloClient } from "@apollo/react-hooks";
 
 const Questionaire = () => {
   const history = useHistory();
   const location = useLocation();
   const { id } = useParams();
+  const client = useApolloClient();
 
   console.log("Params:", id);
   const questionaire = getQuestionaire(id);
@@ -61,7 +63,7 @@ const Questionaire = () => {
 
   const validate = values => {
     const activePage = page;
-    return activePage.validate ? activePage.validate(values) : {};
+    return activePage.validate ? activePage.validate(values, client) : {};
   };
 
   return (

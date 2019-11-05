@@ -386,8 +386,8 @@ export const drugDisplaySetup = subscription => {
   const pricing = getPrices(
     subscription.drugId,
     subscription.doseOption,
-    subscription.timesPerMonth,
-    subscription.addOn
+    subscription.dosesPerMonth,
+    subscription.addOnId
   );
   const options = {
     display: "",

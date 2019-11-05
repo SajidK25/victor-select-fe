@@ -12,13 +12,18 @@ export const initialValues = {
     gender: "",
     profileImage: ""
   },
+  payment: {
+    cardNumber: "",
+    cardExpiry: "",
+    cardCVC: ""
+  },
   subscription: {
-    timesPerMonth: "",
     drugType: "",
     drugId: "",
+    addOnId: "",
     doseOption: "",
-    shippingInterval: "everySix",
-    addOn: ""
+    dosesPerMonth: "",
+    shippingInterval: "everyThree",
   },
   getErections: "",
   problemsBegan: "",
