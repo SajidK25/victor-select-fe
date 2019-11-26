@@ -1,30 +1,9 @@
+import { personal, payment, subscription } from "../Shared/data";
+
 export const initialValues = {
-  personal: {
-    firstName: "",
-    lastName: "",
-    addressOne: "",
-    addressTwo: "",
-    city: "",
-    state: "",
-    zipCode: "",
-    birthDate: "",
-    telephone: "",
-    gender: "",
-    profileImage: ""
-  },
-  payment: {
-    cardNumber: "",
-    cardExpiry: "",
-    cardCVC: ""
-  },
-  subscription: {
-    drugType: "",
-    drugId: "",
-    addOnId: "",
-    doseOption: "",
-    dosesPerMonth: "",
-    shippingInterval: "everyThree",
-  },
+  personal,
+  payment,
+  subscription,
   getErections: "",
   problemsBegan: "",
   explainSuddenly: "",

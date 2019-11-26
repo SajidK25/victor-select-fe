@@ -1,17 +1,20 @@
 import { edQuestionaire } from "./ED";
 import { sleepQuestionaire } from "./Sleep/questionPaths";
 import { hairQuestionaire } from "./Hair/questionPaths";
+import { allergyQuestionaire } from "./Allergy/questionPaths";
 
 const visitTypes = {
   SLEEP: "sleep",
   ED: "ed",
-  HAIR: "hair"
+  HAIR: "hair",
+  ALLERGY: "allergy"
 };
 
 const questionaires = [
   { id: visitTypes.SLEEP, questionaire: sleepQuestionaire },
   { id: visitTypes.ED, questionaire: edQuestionaire },
-  { id: visitTypes.HAIR, questionaire: hairQuestionaire }
+  { id: visitTypes.HAIR, questionaire: hairQuestionaire },
+  { id: visitTypes.ALLERGY, questionaire: allergyQuestionaire }
 ];
 
 export const getQuestionaire = id => {

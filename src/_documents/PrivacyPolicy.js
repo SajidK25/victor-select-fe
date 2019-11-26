@@ -1,9 +1,23 @@
 import React from "react";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 
+const useStyles = makeStyles(theme => ({
+  h3: {
+    fontSize: 24,
+    fontWeight: 300
+  }
+}));
+
 export const PrivacyPolicy = () => {
+  const classes = useStyles();
+
   return (
-    <Typography>
+    <Typography
+      classes={{
+        h3: classes.h3
+      }}
+    >
       <h3>Your Information. Your Rights. Our Responsibilities.</h3>
       This notice describes how medical information about you may be used and
       disclosed and how you can get access to this information. Please review it

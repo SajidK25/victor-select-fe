@@ -1,17 +1,9 @@
+import { personal, payment, subscription } from "../Shared/data";
+
 export const initialValues = {
-  personal: {
-    firstName: "",
-    lastName: "",
-    zipCode: "",
-    birthDate: "",
-    gender: ""
-  },
-  subscription: {
-    drugType: "",
-    drugId: "",
-    doseOption: "",
-    shippingInterval: ""
-  },
+  personal,
+  payment,
+  subscription,
   sleepProblems: {
     falling: false,
     fallingExplain: "",

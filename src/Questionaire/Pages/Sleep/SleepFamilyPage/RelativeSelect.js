@@ -1,12 +1,12 @@
 import React from "react";
 import { Field } from "react-final-form";
-import Checkbox from "@material-ui/core/Checkbox";
 import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
 import FormGroup from "@material-ui/core/FormGroup";
 import { makeStyles } from "@material-ui/core/styles";
+import { CheckboxWrapper } from "../../../../_components";
 
 const useStyles = makeStyles({
   contain: {
@@ -54,24 +54,6 @@ const useStyles = makeStyles({
     paddingLeft: 8
   }
 });
-
-const CheckboxWrapper = props => {
-  const {
-    input: { checked, name, onChange, ...restInput },
-    meta,
-    ...rest
-  } = props;
-
-  return (
-    <Checkbox
-      {...rest}
-      name={name}
-      inputProps={restInput}
-      onChange={onChange}
-      checked={checked}
-    />
-  );
-};
 
 const relatives = [
   "Parent",

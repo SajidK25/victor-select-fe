@@ -1,16 +1,9 @@
+import { personal, payment, subscription } from "../Shared/data";
+
 export const initialValues = {
-  personal: {
-    firstName: "",
-    lastName: "",
-    zipCode: "",
-    birthDate: "",
-    gender: ""
-  },
-  subscription: {
-    drugId: "",
-    shippingInterval: "everyThree",
-    addOnId: ""
-  },
+  personal,
+  payment,
+  subscription,
   hairLoss: {
     timeSpan: "",
     degree: "",

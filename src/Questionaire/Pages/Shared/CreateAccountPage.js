@@ -116,9 +116,7 @@ export const CreateAccountPage = () => {
         <QuestionaireLayout values={values} page={0}>
           {mutationLoading && <Spinner />}
           <StandardPage
-            questionText={`Getting started towards${
-              questionaire.heading
-            }is just a few clicks away...`}
+            questionText={`Getting started towards${questionaire.heading}is just a few clicks away...`}
             additionalText={additionalText}
             buttonText="Create Account"
             buttonVariant="outlined"

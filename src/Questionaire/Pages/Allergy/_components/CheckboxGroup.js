@@ -2,7 +2,7 @@ import React from "react";
 import { Field } from "react-final-form";
 import { OnChange } from "react-final-form-listeners";
 import FormGroup from "@material-ui/core/FormGroup";
-import { RenderCheckbox } from "./RenderCheckbox";
+import { RenderCheckbox } from "../../../../_components/RenderCheckbox";
 
 const WhenFieldChanges = ({ field, becomes, set, to }) => (
   <Field name={set} subscription={{}}>
@@ -21,7 +21,7 @@ const WhenFieldChanges = ({ field, becomes, set, to }) => (
   </Field>
 );
 
-const NoOptionHandler = ({ options, fieldName }) => (
+const NoOption = ({ options, fieldName }) => (
   <>
     {options.map(i => (
       <React.Fragment key={i.name}>
@@ -43,23 +43,21 @@ const NoOptionHandler = ({ options, fieldName }) => (
 );
 
 export const CheckboxGroup = props => {
-  const { options, noOptionField, noOptionText } = props;
+  const { options, noOptionField, noOptionText, component } = props;
 
   return (
     <FormGroup>
       {noOptionField ? (
-        <NoOptionHandler options={options} fieldName={noOptionField} />
+        <NoOption options={options} fieldName={noOptionField} />
       ) : null}
       {options.map(i => (
         <Field
           name={i.name}
           key={i.name}
-          explain={i.explain}
-          explainText={i.explainText}
-          warning={i.warning}
-          component={RenderCheckbox}
-          type="checkbox"
           label={i.label}
+          options={i.options}
+          component={component}
+          type="checkbox"
         />
       ))}
       {noOptionField ? (

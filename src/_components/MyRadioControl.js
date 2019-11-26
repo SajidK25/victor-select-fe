@@ -1,17 +1,17 @@
 /* eslint-disable import/no-cycle */
-import React from 'react'
-import { Field } from 'react-final-form'
-import Radio from '@material-ui/core/Radio'
-import Paper from '@material-ui/core/Paper'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import { makeStyles } from '@material-ui/core/styles'
-import { RenderNoteField, RadioGroup } from '.'
-import { Warning } from './Warning'
-import { standardStyles } from '../_assets/styles'
+import React from "react";
+import { Field } from "react-final-form";
+import Radio from "@material-ui/core/Radio";
+import Paper from "@material-ui/core/Paper";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import { makeStyles } from "@material-ui/core/styles";
+import { RenderNoteField, RadioGroup } from ".";
+import { Warning } from "./Warning";
+import { standardStyles } from "../_assets/styles";
 
 const useStyles = makeStyles({
   ...standardStyles
-})
+});
 
 export const MyRadioControl = props => {
   const {
@@ -25,10 +25,8 @@ export const MyRadioControl = props => {
     extraOptionsName,
     warning,
     indent
-  } = props
-  const classes = useStyles()
-
-  
+  } = props;
+  const classes = useStyles();
 
   return (
     <Paper className={indent ? classes.indent : classes.contain}>
@@ -40,7 +38,7 @@ export const MyRadioControl = props => {
         value={id}
         onChange={input.onChange}
         checked={input.value === id}
-        control= {<Radio name={name} color="primary" type="radio" />}
+        control={<Radio name={name} color="primary" type="radio" />}
         label={label}
         type="radio"
       />
@@ -63,5 +61,5 @@ export const MyRadioControl = props => {
       ) : null}
       {warning && input.value === id ? <Warning warning={warning} /> : null}
     </Paper>
-  )
-}
+  );
+};

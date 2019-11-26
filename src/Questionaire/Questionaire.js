@@ -106,6 +106,7 @@ const Questionaire = () => {
               <div>Page not found</div>
             </Route>
           </Switch>
+          {/*      <pre>{JSON.stringify(values, 0, 2)}</pre> */}
         </QuestionaireLayout>
       )}
     </Form>
