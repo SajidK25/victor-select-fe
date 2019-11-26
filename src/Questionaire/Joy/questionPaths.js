@@ -189,6 +189,6 @@ export const joyQuestionaire = {
   skipPage: SkipPage,
   pathBase: "/visit/Joy",
   startPath: "/joystart",
-  heading: " a solution for your blues ",
+  heading: " getting rid of your blues ",
   initialValues: initialValues
 };
