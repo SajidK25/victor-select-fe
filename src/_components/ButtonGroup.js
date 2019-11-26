@@ -56,6 +56,7 @@ export const NextButton = props => {
 // Previous Button
 export const PrevButton = props => {
   const { input, handleClick, ...custom } = props;
+  console.log("Buttons: ", props);
 
   return (
     <IconButton {...input} {...custom} onClick={handleClick} color="primary">

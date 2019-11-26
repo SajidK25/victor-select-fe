@@ -5,6 +5,7 @@ import IconButton from "@material-ui/core/IconButton";
 // Previous Button
 export const PreviousButton = props => {
   const { handleClick } = props;
+  console.log("Button:", props);
 
   return (
     <IconButton onClick={handleClick} color="primary">

@@ -94,6 +94,7 @@ const Questionaire = () => {
               <Route key={key} path={`${questionaire.pathBase}/${key}`} exact>
                 <C
                   key={key}
+                  pageNo={key}
                   direction={transDir}
                   handleSubmit={handleSubmit}
                   values={values}

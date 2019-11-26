@@ -2,7 +2,7 @@ export const MAX_AMOUNT = 40;
 
 export const drugIds = {
   RELEVIUM: "RELEVIUM",
-  RELEVIUM_AM: "RELEVIUM_AM",
+  RELEVIUM_AM: "RELEVIUM_D",
   RELEVIUM_PM: "RELEVIUM_PM",
   CBD_ADDON: "ADDON",
   NO_ADDON: "NO_ADDON"
@@ -35,10 +35,10 @@ export const drugSelections = [
     ]
   },
   {
-    id: drugIds.RELEVIUM_AM,
+    id: drugIds.RELEVIUM_D,
     category: "T",
     labelOptions: {
-      label: "Relevium AM",
+      label: "Relevium D",
       description: `Description for Relevium AM.`,
       price: 46
     },
