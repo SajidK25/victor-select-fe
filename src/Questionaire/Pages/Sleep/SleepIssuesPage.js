@@ -25,10 +25,7 @@ const options = [
   },
   {
     name: "sleepIssues.unusualHours",
-    label: "Have unusual work hours",
-    explain: "sleepIssues.unusualHoursExplain",
-    explainText:
-      "​Please explain. If you are a shift worker what kind of shift do you work?"
+    label: "Have unusual work hours"
   }
 ];
 

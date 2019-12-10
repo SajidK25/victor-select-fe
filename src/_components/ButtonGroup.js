@@ -34,9 +34,7 @@ export const NextButton = props => {
 
   return (
     <Button
-      disabled={
-        formState.submitting || formState.validating || formState.invalid
-      }
+      disabled={formState.submitting || formState.validating}
       variant={!variant ? "contained" : variant}
       color="primary"
       type="submit"
@@ -56,7 +54,6 @@ export const NextButton = props => {
 // Previous Button
 export const PrevButton = props => {
   const { input, handleClick, ...custom } = props;
-  console.log("Buttons: ", props);
 
   return (
     <IconButton {...input} {...custom} onClick={handleClick} color="primary">

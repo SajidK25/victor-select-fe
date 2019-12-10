@@ -6,10 +6,22 @@ const options = [
   { name: "seriousHistory.lowBP", label: "Severe low blood pressure" },
   {
     name: "seriousHistory.heartAttack",
-    label: "Heart attack or heart failure"
+    label: "Heart attack or heart failure",
+    explain: "seriousHistory.heartAttackExplain",
+    explainText: "Please provide details."
   },
-  { name: "seriousHistory.stroke", label: "Stroke" },
-  { name: "seriousHistory.angina", label: "Angina" },
+  {
+    name: "seriousHistory.stroke",
+    label: "Stroke",
+    explain: "seriousHistory.strokeExplain",
+    explainText: "Please provide details."
+  },
+  {
+    name: "seriousHistory.angina",
+    label: "Angina",
+    explain: "seriousHistory.anginaExplain",
+    explainText: "Please provide details."
+  },
   {
     name: "seriousHistory.claudation",
     label: "Peripheral vascular disease or claudication",
@@ -77,6 +89,18 @@ const validateSeriousHistory = values => {
   }
   if (values.seriousHistory.hcm && !values.seriousHistory.hcmExplain) {
     errors.seriousHistory.hcmExplain = "Please provide details.";
+  }
+  if (
+    values.seriousHistory.heartAttack &&
+    !values.seriousHistory.heartAttackExplain
+  ) {
+    errors.seriousHistory.heartAttackExplain = "Please provide details.";
+  }
+  if (values.seriousHistory.angina && !values.seriousHistory.anginaExplain) {
+    errors.seriousHistory.anginaExplain = "Please provide details.";
+  }
+  if (values.seriousHistory.stroke && !values.seriousHistory.strokeExplain) {
+    errors.seriousHistory.strokeExplain = "Please provide details.";
   }
 
   return errors;

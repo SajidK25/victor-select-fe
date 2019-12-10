@@ -21,9 +21,6 @@ export const Main = props => {
   const p = useParams();
   const location = useLocation();
 
-  console.log("Params:", p);
-  console.log("Location:", location);
-
   return (
     <div className={classes.app}>
       <Switch>

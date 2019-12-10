@@ -114,7 +114,7 @@ const options = [
   },
   {
     name: "noseSneezing.selected",
-    label: "Exessive Sneezing",
+    label: "Excessive Sneezing",
     options: [
       {
         name: "noseSneezing.frequency",

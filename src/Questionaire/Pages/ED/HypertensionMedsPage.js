@@ -13,7 +13,7 @@ const options = [
   },
   {
     name: "hypertensionMeds.sildenafil",
-    label: "Sildenafil (Revatio) used to treat pulmonary hypertension",
+    label: "Sildenafil (Viagra, Revatio) used to treat pulmonary hypertension",
     warning:
       "If already taking this treatment for hypertension, please consult your cardiologist for proper dosing."
     //  explain: 'hypertensionMeds.sildenafilExplain',

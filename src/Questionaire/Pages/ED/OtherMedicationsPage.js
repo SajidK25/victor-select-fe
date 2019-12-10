@@ -25,7 +25,8 @@ const validateOtherMedications = values => {
   }
 
   if (!optionsAllFalse(options, values)) {
-    errors.checkError = "We are unable to provide this service for you.";
+    errors.checkError =
+      "Based on the medications indicated and possible severe drug interactions, we cannot provide this service to you.  Please consult with your primary care doctor to discuss your options.";
   }
 
   return errors;

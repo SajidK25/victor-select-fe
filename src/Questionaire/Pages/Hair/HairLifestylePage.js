@@ -8,8 +8,7 @@ const options = [
   {
     name: "lifestyle.alcohol",
     label: "Have more than 2 alcoholic drinks per day"
-  },
-  { name: "lifestyle.drugs", label: "Regulary use recreational drugs" }
+  }
 ];
 
 const validateHairLifestyle = values => {

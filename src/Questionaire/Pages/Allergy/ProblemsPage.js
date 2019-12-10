@@ -17,10 +17,6 @@ const options = [
     label: "Broken Nose"
   },
   {
-    name: "problems.flonase",
-    label: "Flonase"
-  },
-  {
     name: "problems.earTubes",
     label: "Ear Tubes"
   },

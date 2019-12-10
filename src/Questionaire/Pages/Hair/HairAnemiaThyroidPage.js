@@ -8,9 +8,7 @@ const options = [
   { name: "anemiaThyroid.lowThyroid", label: "Low thyroid levels" },
   { name: "anemiaThyroid.coldIntolerance", label: "Cold intolerance" },
   { name: "anemiaThyroid.fatigue", label: "Fatigue" },
-  { name: "anemiaThyroid.weightGain", label: "Weight gain" },
-  { name: "anemiaThyroid.depression", label: "Depression" },
-  { name: "anemiaThyroid.breathing", label: "Difficulty breathing" }
+  { name: "anemiaThyroid.weightGain", label: "Weight gain" }
 ];
 
 const validateHairAnemiaThyroid = values => {

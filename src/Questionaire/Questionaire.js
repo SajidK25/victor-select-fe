@@ -20,7 +20,6 @@ const Questionaire = () => {
   const { id } = useParams();
   const client = useApolloClient();
 
-  console.log("Params:", id);
   const questionaire = getQuestionaire(id);
 
   const [pageIndex, setPageIndex] = useState(0);

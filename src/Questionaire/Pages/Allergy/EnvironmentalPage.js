@@ -85,12 +85,6 @@ const EnvironmentalPage = props => {
       additionalText={additionalText}
       {...props}
     >
-      <SingleTextField
-        name="environment.occupation"
-        label="Occupation or Grade"
-        heading="What is/was your occupation or, if you are still a student, your grade in school?"
-      />
-
       <FormGroup>
         {options.map(o => (
           <FieldContainer key={o.name}>

@@ -2,7 +2,7 @@ export const MAX_AMOUNT = 40;
 
 export const drugIds = {
   RELEVIUM: "RELEVIUM",
-  RELEVIUM_AM: "RELEVIUM_D",
+  RELEVIUM_D: "RELEVIUM_D",
   RELEVIUM_PM: "RELEVIUM_PM",
   CBD_ADDON: "ADDON",
   NO_ADDON: "NO_ADDON"
@@ -14,7 +14,12 @@ export const drugSelections = [
     category: "D",
     labelOptions: {
       label: "Relevium",
-      description: `Relevium description goes here.`,
+      description: `Combines the two most 
+                    potent non-sedating antihistamines 
+                    on the market. 
+                    In addition, we’ve combined highly bioactive 
+                    nutraceuticals and vitamins that enhance the efficacy 
+                    of the antihistamines.`,
       price: 44
     },
     doseOptions: [
@@ -39,7 +44,9 @@ export const drugSelections = [
     category: "T",
     labelOptions: {
       label: "Relevium D",
-      description: `Description for Relevium AM.`,
+      description: `We have added a decongestant in addition to all the 
+               other ingredients of Relevium to create a powerful morning 
+               cocktail to soothe your allergy symptoms.`,
       price: 46
     },
     doseOptions: [
@@ -64,7 +71,9 @@ export const drugSelections = [
     category: "T",
     labelOptions: {
       label: "Relevium PM",
-      description: `Description for Relevium PM.`,
+      description: `Strikeout your allergies with our 
+        nighttime formula.  A third sedating antihistamine is 
+        added to Relevium to provide maximum relief.`,
       price: 42
     },
     doseOptions: [

@@ -30,7 +30,7 @@ const validateOtherConditions = values => {
 
   if (!optionsAllFalse(options, values)) {
     errors.checkError =
-      "You should see a doctor in person and not use our service.";
+      "Based on the diagnosis indicated, we cannot provide this service to you.  Please consult with your primary care doctor to discuss your options.";
   }
 
   return errors;

@@ -33,7 +33,6 @@ const useStyles = makeStyles(theme => ({
 export const QuestionContainer = props => {
   const { direction } = props;
   const classes = useStyles();
-  console.log("QContainer:", props);
 
   return (
     <Transition direction={direction}>

@@ -56,16 +56,12 @@ import {
   validateHairRelatives,
   HairTreatmentsPage,
   validateHairTreatments,
-  HairCurrentMedsPage,
-  validateHairCurrentMeds,
   HairSupplementsPage,
   validateHairSupplements,
   HairColoredPage,
   validateHairColored,
   HairPeriodPage,
   validateHairPeriod,
-  HairExcessHairPage,
-  validateHairExcessHair,
   HairWomenHistoryPage,
   validateHairWomenHistory,
   HairLossReasonPage,
@@ -113,7 +109,6 @@ const pathConstants = {
   HAIRSUPPLEMENTS: 23,
   HAIRCOLORED: 24,
   HAIRPERIOD: 25,
-  HAIREXCESSHAIR: 26,
   HAIRWOMENHISTORY: 27,
   HAIRLOSSREASON: 28,
   PHYSICALEXAM: 29,
@@ -248,11 +243,6 @@ const pages = [
     validate: validateHairTreatments
   },
   {
-    key: pathConstants.HAIRCURRENTMEDS,
-    component: HairCurrentMedsPage,
-    validate: validateHairCurrentMeds
-  },
-  {
     key: pathConstants.HAIRSUPPLEMENTS,
     component: HairSupplementsPage,
     validate: validateHairSupplements
@@ -266,11 +256,6 @@ const pages = [
     key: pathConstants.HAIRPERIOD,
     component: HairPeriodPage,
     validate: validateHairPeriod
-  },
-  {
-    key: pathConstants.HAIREXCESSHAIR,
-    component: HairExcessHairPage,
-    validate: validateHairExcessHair
   },
   {
     key: pathConstants.HAIRWOMENHISTORY,

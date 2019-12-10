@@ -1,6 +1,10 @@
 import React from "react";
 import { Field } from "react-final-form";
-import { StandardPage } from "../../../_components";
+import {
+  StandardPage,
+  RenderSimpleCheckbox,
+  RenderCheckError
+} from "../../../_components";
 import { withStyles } from "@material-ui/core/styles";
 import { PictureGrab } from "../../../_components/PictureGrab";
 
@@ -16,11 +20,10 @@ const styles = theme => ({
 
 const validatePictures = values => {
   const errors = { personal: {} };
-  if (!values.personal.profileImage) {
-    errors.personal.profileImage = "Please provide a photo of yourself.";
-  }
-  if (!values.personal.licenseImage) {
-    errors.personal.licenseImage = "Please provide a photo of your ID.";
+  if (!values.personal.sendImageLater) {
+    if (!values.personal.licenseImage) {
+      errors.personal.licenseImage = "Please provide a photo of your ID.";
+    }
   }
 
   return errors;
@@ -28,7 +31,7 @@ const validatePictures = values => {
 
 const questionText = "Verify your Identity";
 const additionalText =
-  "Your provider needs to verify your identity. They will do that by matching photos of your face and a government issued ID.";
+  "Your provider needs to verify your identity. They will do that by having you provide an image of a government issued ID that includes a picture of you.";
 
 class PicturesPage extends React.Component {
   state = {
@@ -47,18 +50,16 @@ class PicturesPage extends React.Component {
         <div className={classes.picture}>
           <Field
             component={PictureGrab}
-            name="personal.profileImage"
-            label="UPLOAD A PHOTO OF YOURSELF"
-          />
-        </div>
-
-        <div className={classes.picture}>
-          <Field
-            component={PictureGrab}
             name="personal.licenseImage"
             label="UPLOAD A PHOTO OF YOUR ID"
           />
         </div>
+        <Field
+          name="personal.sendImageLater"
+          component={RenderSimpleCheckbox}
+          label="I'll provide an image later."
+        />
+        <Field name="checkError" component={RenderCheckError} />
       </StandardPage>
     );
   }

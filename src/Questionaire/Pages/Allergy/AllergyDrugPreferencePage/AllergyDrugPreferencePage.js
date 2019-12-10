@@ -41,7 +41,8 @@ const AllergyDrugPreferencePage = props => {
   return (
     <StandardPage questionText={questionText} alignTitles="left" {...props}>
       <Typography variant="body2" gutterBottom>
-        -- Allergy marketing message ---
+        Our Products help alleviate your suffering from headaches, sneezing,
+        drainage, coughing, itching, rashes, and more!
       </Typography>
 
       {options && (

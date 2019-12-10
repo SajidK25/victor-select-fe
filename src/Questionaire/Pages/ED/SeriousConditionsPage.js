@@ -6,11 +6,17 @@ const options = [
   {
     name: "seriousConditions.chestPain",
     label:
-      "Chest pain or shortness of breath while walking up 2 flights of stairs"
+      "Chest pain or shortness of breath while walking up 2 flights of stairs",
+    explain: "seriousConditions.chestPainExplain",
+    explainText:
+      "Have you sought treatment for this? If so, what kind of treatment did you receive? Please explain more."
   },
   {
     name: "seriousConditions.chestPainWithSex",
-    label: "Chest pain or shortness of breath with sexual activity"
+    label: "Chest pain or shortness of breath with sexual activity",
+    explain: "seriousConditions.chestPainWithSexExplain",
+    explainText:
+      "Have you sought treatment for this? If so, what kind of treatment did you receive? Please explain more."
   },
   {
     name: "seriousConditions.dizziness",
@@ -52,6 +58,13 @@ const validateSeriousConditions = values => {
   }
   if (s.abnormalHeartBeats && !s.abnormalHeartBeatsExplain) {
     errors.seriousConditions.abnormalHeartBeatsExplain =
+      "Please provide details.";
+  }
+  if (s.chestPain && !s.chestPainExplain) {
+    errors.seriousConditions.chestPainExplain = "Please provide details.";
+  }
+  if (s.chestPainWithSex && !s.chestPainWithSexExplain) {
+    errors.seriousConditions.chestPainWithSexExplain =
       "Please provide details.";
   }
 

@@ -204,7 +204,6 @@ export const initialValues = {
     earInfections: false,
     sinus: false,
     brokenNose: false,
-    flonase: false,
     earTubes: false,
     nasalSurgery: false,
     nasalPolyps: false,

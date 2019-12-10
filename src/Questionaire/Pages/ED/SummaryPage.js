@@ -69,8 +69,8 @@ const SummaryPage = props => {
 
   return (
     <StandardPage
-      questionText="Visit Summary"
-      additionalText="Here is a reminder of your treatment options."
+      questionText="Your Selections"
+      additionalText="Please see your selections below."
       {...props}
     >
       <Paper className={classes.pricingBox}>

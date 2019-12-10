@@ -7,7 +7,7 @@ const options = [
     id: "no",
     label: "No",
     warning:
-      "We suggest that you visit your physician's office to discuss taking this medication."
+      "We Strongly suggest you get a physical examination performed prior to taking this medication."
   }
 ];
 

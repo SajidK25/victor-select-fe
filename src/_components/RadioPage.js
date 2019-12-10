@@ -1,7 +1,6 @@
 import React from "react";
 import { Field } from "react-final-form";
-import { RadioSubmit } from "./RadioSubmit";
-import { StandardPage, RadioGroup } from "./";
+import { StandardPage, RadioGroup, RadioSubmit } from "./";
 
 // RadioPage
 export const RadioPage = props => {

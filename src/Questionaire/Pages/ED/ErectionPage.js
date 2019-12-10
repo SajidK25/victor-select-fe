@@ -4,8 +4,7 @@ import { RadioPage } from "../../../_components";
 const erectionChoices = [
   { id: "every_time", label: "Yes, every time I want an erection" },
   { id: "sometimes", label: "Yes, sometimes when I want an erection" },
-  { id: "rarely", label: "Yes, rarely when I want an erection" },
-  { id: "never", label: "No, never have problems with an erection" }
+  { id: "rarely", label: "Yes, rarely when I want an erection" }
 ];
 
 const validateErection = values => {

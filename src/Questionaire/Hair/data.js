@@ -73,7 +73,7 @@ export const initialValues = {
     answer: "",
     explain: ""
   },
-  supplements: {
+  medicationsSupplements: {
     answer: "",
     explain: ""
   },
@@ -90,13 +90,6 @@ export const initialValues = {
     ovaries: false,
     ovariesExplain: ""
   },
-  excessHair: {
-    chin: false,
-    face: false,
-    abdomen: false,
-    nipples: false,
-    none: false
-  },
   physicalExam: "",
   hairExam: "",
   explainExam: "",
@@ -104,7 +97,6 @@ export const initialValues = {
     overweight: false,
     smoke: false,
     alcohol: false,
-    drugs: false,
     none: false
   },
   conditions: {
@@ -122,8 +114,6 @@ export const initialValues = {
     pelvisExplain: "",
     stomach: false,
     stomachExplain: "",
-    hiv: false,
-    hivExplain: "",
     none: false
   },
   anemiaThyroid: {

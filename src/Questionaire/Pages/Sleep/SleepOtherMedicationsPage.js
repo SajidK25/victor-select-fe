@@ -6,6 +6,8 @@ import { drugIds } from "../../Sleep/sleepSelections";
 const stdDWarning = `This medication may potentially interact with Doxepin, but is not contraindicated.
     Please consult with your physician prior to taking these medications together.`;
 
+const stdWarning = `Consider consulting with your physician prior to taking these medications together.`;
+
 const stdTWarning = `This medication may potentially interact with Trazadone.
       Please consult with your physician prior to taking these medications together.`;
 
@@ -27,22 +29,22 @@ const setOptions = sleepType => {
       {
         name: "otherMeds.cimetidine",
         label: "Cimetidine (Tagamet)",
-        warning: stdDWarning
+        warning: stdWarning
       },
       {
         name: "otherMeds.stJohnsWort",
         label: "St. John's Wort (Hipericum perforatum)",
-        warning: stdDWarning
+        warning: stdWarning
       },
       {
         name: "otherMeds.terbinafine",
         label: "Terbinafine (Lamisil)",
-        warning: stdDWarning
+        warning: stdWarning
       },
       {
         name: "otherMeds.tolazamide",
         label: "Tolazamide (Tolinase)",
-        warning: stdDWarning
+        warning: stdWarning
       },
       {
         name: "otherMeds.antiDepressants",
@@ -50,14 +52,14 @@ const setOptions = sleepType => {
           "Antidepressants or other medication used to treat mental illness",
         explain: "otherMeds.antiDepressantsExplain",
         explainText: "Please list all here.",
-        warning: stdDWarning
+        warning: stdWarning
       },
       {
         name: "otherMeds.heartMeds",
         label: "Heart Rhythm Medications",
         explain: "otherMeds.heartMedsExplain",
         explainText: "Please list all here.",
-        warning: stdDWarning
+        warning: stdWarning
       }
     ];
   } else {
@@ -102,7 +104,7 @@ const SleepOtherMedicationsPage = props => {
   setOptions(values.subscription.drugId);
   const questionText = `Please indicate if you are currently taking  
   any of the following medications that may interact with 
-  ${values.subscription.drugId === drugIds.SLEEP_D ? "Doxepine" : "Trazadone"}`;
+  ${values.subscription.drugId === drugIds.SLEEP_D ? "Doxepin" : "Trazadone"}`;
 
   return (
     <CheckboxPage

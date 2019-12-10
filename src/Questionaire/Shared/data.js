@@ -9,7 +9,8 @@ export const personal = {
   birthDate: "",
   telephone: "",
   gender: "",
-  profileImage: ""
+  profileImage: "",
+  provideImageLater: false
 };
 
 export const payment = {

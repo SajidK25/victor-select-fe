@@ -6,7 +6,6 @@ import Box from "@material-ui/core/Box";
 
 export const StandardPage = props => {
   const { direction, fullWidth, pageNo } = props;
-  console.log("StdPage:", props);
 
   return (
     <QuestionContainer direction={direction} fullWidth={fullWidth}>

@@ -36,7 +36,6 @@ const useStyles = makeStyles({
 export const QHeader = props => {
   const { handlePrevious, page, values } = props;
   const classes = useStyles();
-  console.log("QHeader:", props);
 
   return (
     <AppBar position="fixed" color="default">

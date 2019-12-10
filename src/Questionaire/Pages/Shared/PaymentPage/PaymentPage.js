@@ -40,6 +40,10 @@ const useStyles = makeStyles(theme => ({
     fontWeight: 600,
     fontSize: 18
   },
+  free: {
+    fontWeight: 600,
+    color: theme.palette.primary.main
+  },
   supply: {
     fontWeight: 300,
     fontSize: 12
@@ -82,7 +86,7 @@ const PaymentPage = props => {
   const name = options.display;
   const addonName = options.addOnDisplay;
   const amount = options.total;
-  const visitAmount = 15;
+  const visitAmount = 0;
   const buttonText = `PAY $${visitAmount} TODAY`;
   const supply = options.per + "nth supply";
   const interval = options.interval;

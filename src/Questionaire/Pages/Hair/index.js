@@ -13,7 +13,6 @@ export * from "./HairLabWorkPage";
 export * from "./HairScalpPage";
 export * from "./HairRelativesPage";
 export * from "./HairTreatmentsPage";
-export * from "./HairCurrentMedsPage";
 export * from "./HairSupplementsPage";
 export * from "./HairColoredPage";
 export * from "./HairPeriodPage";

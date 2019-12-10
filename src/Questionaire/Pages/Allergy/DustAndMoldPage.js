@@ -10,18 +10,6 @@ import {
 
 const options = [
   {
-    name: "dustCover.selected",
-    label: "I have zippered dust mite allergy covers",
-    options: [
-      {
-        name: "dustCover.covered",
-        component: CheckboxInline,
-        label: "Items covered",
-        options: ["Pillows", "Mattress", "Comforter", "Box Springs"]
-      }
-    ]
-  },
-  {
     name: "mold.selected",
     label: "My home has a mold or mildew problem",
     options: [
@@ -46,10 +34,6 @@ const validateDustAndMold = values => {
 
   if (!values.mold.selected) {
     errors.mold = { selected: "Please choose an option." };
-  }
-
-  if (!values.dustCover.selected) {
-    errors.dustCover = { selected: "Please choose an option." };
   }
 
   //   if (g.scarring && !g.scarringExplain) {

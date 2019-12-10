@@ -1,34 +1,36 @@
-import React from 'react'
-import { OnChange } from 'react-final-form-listeners'
+import React from "react";
+import { OnChange } from "react-final-form-listeners";
 
-const RadioSubmit = (props) => {
+const RadioSubmit = props => {
+  const { name, options, handleSubmit } = props;
 
-  const { name, options, handleSubmit } = props
-
-  const okOption = (value) => {
-    let ret = true
-    
+  const okOption = (value, options) => {
+    let ret = true;
+    console.log("okOptions:", options);
     if (options) {
-      options.forEach((o) => {
-        if ((o.id === value) && o.warning) {
-          console.log("Values are equal!!")
-          ret = false
+      options.forEach(o => {
+        if (o.id === value && o.warning) {
+          console.log("Values are equal!!");
+          ret = false;
         }
-      })
+      });
     }
 
-    return ret
-  }
+    return ret;
+  };
 
-return (
+  console.log("Radio Options:", options);
+
+  return (
     <OnChange name={name}>
       {(value, previous) => {
-        if (okOption(value)) {
-          handleSubmit()
+        console.log("OnChange:", value);
+        if (okOption(value, options)) {
+          handleSubmit();
         }
       }}
     </OnChange>
-  )
-}
+  );
+};
 
-export { RadioSubmit }
+export { RadioSubmit };

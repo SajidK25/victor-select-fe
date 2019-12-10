@@ -33,13 +33,6 @@ const options = [
       "Please elaborate and indicate any treatment you are receiving."
   },
   {
-    name: "conditions.hiv",
-    label: "HIV",
-    explain: "conditions.hivExplain",
-    explainText:
-      "Please tell us more about your HIV and current treatment. Do you know your CD4 count? And are you currently taking any medication for HIV? If so, what medications?"
-  },
-  {
     name: "conditions.spinal",
     label: "Spinal injury or paralysis",
     explain: "conditions.spinalExplain",
@@ -80,9 +73,6 @@ const validateHairConditions = values => {
   }
   if (c.neurological && !c.neurologicalExplain) {
     errors.conditions = { neurologicalExplain: "Please provide details." };
-  }
-  if (c.hiv && !c.hivExplain) {
-    errors.conditions = { hivExplain: "Please provide details." };
   }
   if (c.spinal && !c.spinalExplain) {
     errors.conditions = { spinalExplain: "Please provide details." };

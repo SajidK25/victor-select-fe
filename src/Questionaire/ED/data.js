@@ -74,8 +74,11 @@ export const initialValues = {
   seriousHistory: {
     lowBP: false,
     heartAttack: false,
+    heartAttackExplain: "",
     stroke: false,
+    strokeExplain: "",
     angina: false,
+    anginaExplain: "",
     claudation: false,
     claudationExplain: "",
     arrhythmia: false,
@@ -90,7 +93,9 @@ export const initialValues = {
   },
   seriousConditions: {
     chestPain: false,
+    chestPainExplain: "",
     chestPainWithSex: false,
+    chestPainWithSexExplain: "",
     dizziness: false,
     dizzinessExplain: "",
     cramping: false,

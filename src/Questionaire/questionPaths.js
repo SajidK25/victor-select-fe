@@ -21,7 +21,6 @@ const questionaires = [
 ];
 
 export const getQuestionaire = id => {
-  console.log("ID:", id);
   const que = questionaires.find(q => q.id === id.toLowerCase());
   if (que) {
     return que.questionaire;
