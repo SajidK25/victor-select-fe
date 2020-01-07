@@ -7,8 +7,6 @@ const VALID_ZIPCODE = gql`
 `;
 
 export const zipcodeIsValid = async (zipCode, client) => {
-  console.log("zipcodeIsValid:", zipCode);
-  console.log("Client:", client);
 
   try {
     var { data } = await client.query({
@@ -21,7 +19,5 @@ export const zipcodeIsValid = async (zipCode, client) => {
     console.log(e.networkError.result.errors);
   }
 
-  //console.log("Data", data);
-  //  console.log("DATA:", data);
   return false;
 };

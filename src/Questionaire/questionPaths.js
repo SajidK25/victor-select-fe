@@ -1,8 +1,8 @@
-import { edQuestionaire } from "./ED";
-import { sleepQuestionaire } from "./Sleep/questionPaths";
-import { hairQuestionaire } from "./Hair/questionPaths";
-import { allergyQuestionaire } from "./Allergy/questionPaths";
-import { joyQuestionaire } from "./Joy/questionPaths";
+import { edQuestionaire } from "./ED/ProductInfo";
+import { sleepQuestionaire } from "./Sleep/ProductInfo";
+import { hairQuestionaire } from "./Hair/ProductInfo";
+import { allergyQuestionaire } from "./Allergy/ProductInfo";
+import { joyQuestionaire } from "./Joy/ProductInfo";
 
 const visitTypes = {
   SLEEP: "sleep",

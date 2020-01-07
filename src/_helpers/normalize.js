@@ -51,11 +51,16 @@ export const normalizePhone = value => {
     return value;
   }
 
+  if (!value) return value;
   const onlyNums = onlyNumbers(value);
-  if (onlyNums.length > 10) {
-    return onlyNums.slice(0, 10);
-  }
-  return onlyNums;
+  if (onlyNums.length <= 3) return onlyNums;
+  if (onlyNums.length <= 7)
+    return `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3, 7)}`;
+  return `(${onlyNums.slice(0, 3)}) ${onlyNums.slice(3, 6)}-${onlyNums.slice(
+    6,
+    10
+  )}`;
+
 };
 
 export { normalizeZip };

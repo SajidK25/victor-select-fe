@@ -61,7 +61,6 @@ export const RadioInline = props => {
     options
   } = props;
 
-  console.log("Inline:", props);
   const classes = useStyles();
 
   return (

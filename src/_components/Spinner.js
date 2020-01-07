@@ -1,22 +1,27 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import LinearProgress from "@material-ui/core/LinearProgress";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles({
   progress: {
-    position: "fixed",
-    top: "50%",
-    left: "50%",
-    zIndex: 1500
+    width: "100%"
   }
-}));
+});
+
+//progress: {
+//  position: "fixed",
+
+//  top: "50%",
+//  left: "50%",
+//  zIndex: 1500
+//}
 
 export const Spinner = () => {
   const classes = useStyles();
 
   return (
     <div className={classes.progress}>
-      <CircularProgress />
+      <LinearProgress />
     </div>
   );
 };

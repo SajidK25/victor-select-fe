@@ -8,9 +8,6 @@ const RenderStdTextField = props => {
     ...rest
   } = props;
 
-  console.log("Props", props);
-  console.log("Rest", rest);
-
   return (
     <TextField
       {...input}

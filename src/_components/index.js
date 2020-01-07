@@ -1,4 +1,3 @@
-/* eslint-disable import/no-cycle */
 export * from "./PrivateRoute";
 export * from "./RenderTextField";
 export * from "./RadioGroup";
@@ -10,6 +9,7 @@ export * from "./RadioPage";
 export * from "./CheckboxPage";
 export * from "./CheckboxGroup";
 export * from "./StandardPage";
+export * from "./StandardForm";
 export * from "./StandardHeading";
 export * from "./RenderCheckError";
 export * from "./MyRadioControl";

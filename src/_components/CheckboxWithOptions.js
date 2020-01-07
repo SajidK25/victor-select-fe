@@ -15,7 +15,6 @@ const useStyles = makeStyles({
 export const CheckboxWithOptions = props => {
   const { input, label, options } = props;
 
-  console.log("With Options:", options);
   const classes = useStyles();
 
   return (

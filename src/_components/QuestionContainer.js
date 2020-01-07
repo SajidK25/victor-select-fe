@@ -1,6 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Transition } from "./Transition";
+import { Spinner } from "./";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -31,12 +32,15 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const QuestionContainer = props => {
-  const { direction } = props;
+  const { direction, validating, submitting } = props;
   const classes = useStyles();
 
   return (
     <Transition direction={direction}>
-      <div className={classes.container}>{props.children}</div>
+      <div className={classes.container}>
+        {(validating || submitting) && <Spinner />}
+        {props.children}
+      </div>
     </Transition>
   );
 };

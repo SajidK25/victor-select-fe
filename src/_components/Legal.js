@@ -17,7 +17,13 @@ export const Legal = ({ textLocation }) => {
   const classes = useStyles();
   return (
     <div className={classes.container}>
-      By clicking, I agree to the{" "}
+      By clicking Create Account, I agree to the following:{" "}
+      <ShowDocument
+        btnText="consent for off-label use of medication"
+        title="Consent for Off-Label Use of Medication"
+        document={<PrivacyPolicy />}
+      />
+      {", "}
       <ShowDocument
         btnText="privacy policy"
         title="Privacy Policy"

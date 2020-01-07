@@ -2,9 +2,8 @@ import React from "react";
 import { Route, Switch, useParams, useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Signin } from "../_pages/signin";
-import { LoginPage } from "../Questionaire/Pages/Shared/LoginPage";
+import { LoginPage, CreateAccountPage } from "../Questionaire/Shared/Pages";
 import { Questionaire } from "../Questionaire";
-import { CreateAccountPage } from "../Questionaire/Pages/Shared/CreateAccountPage";
 
 const useStyles = makeStyles({
   app: {

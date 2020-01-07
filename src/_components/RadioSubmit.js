@@ -6,11 +6,9 @@ const RadioSubmit = props => {
 
   const okOption = (value, options) => {
     let ret = true;
-    console.log("okOptions:", options);
     if (options) {
       options.forEach(o => {
         if (o.id === value && o.warning) {
-          console.log("Values are equal!!");
           ret = false;
         }
       });
@@ -19,12 +17,10 @@ const RadioSubmit = props => {
     return ret;
   };
 
-  console.log("Radio Options:", options);
 
   return (
     <OnChange name={name}>
       {(value, previous) => {
-        console.log("OnChange:", value);
         if (okOption(value, options)) {
           handleSubmit();
         }
