@@ -32,15 +32,11 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export const QuestionContainer = props => {
-  const { direction, validating, submitting } = props;
+  const { direction } = props;
   const classes = useStyles();
-
   return (
     <Transition direction={direction}>
-      <div className={classes.container}>
-        {(validating || submitting) && <Spinner />}
-        {props.children}
-      </div>
+      <div className={classes.container}>{props.children}</div>
     </Transition>
   );
 };

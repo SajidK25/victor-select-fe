@@ -28,7 +28,7 @@ export const getQuestionaire = id => {
   return null;
 };
 
-function nextPage(direction, currPage, pages) {
+const nextPage = (direction, currPage, pages) => {
   if (direction === 1 && currPage === pages.length - 1) {
     return currPage;
   }
@@ -38,9 +38,9 @@ function nextPage(direction, currPage, pages) {
 
   currPage += direction;
   return currPage;
-}
+};
 
-function getNextPage(values, currPage, direction, questionaire) {
+const getNextPage = (values, currPage, direction, questionaire) => {
   let i = currPage;
 
   do {
@@ -52,12 +52,11 @@ function getNextPage(values, currPage, direction, questionaire) {
     path: `${questionaire.pathBase}/${questionaire.pages[i].key}`,
     page: questionaire.pages[i]
   };
-}
+};
 
-function getCurrentPage(key, questionaire) {
-  function keyMatch(q) {
-    return q.key.toString().toLowerCase() === key.toString().toLowerCase();
-  }
+const getCurrentPage = (key, questionaire) => {
+  const keyMatch = q =>
+    q.key.toString().toLowerCase() === key.toString().toLowerCase();
 
   const i = questionaire.pages.findIndex(keyMatch);
 
@@ -70,6 +69,14 @@ function getCurrentPage(key, questionaire) {
     path: `${questionaire.pathBase}/${questionaire.pages[i].key}`,
     page: questionaire.pages[i]
   };
-}
+};
 
-export { getNextPage, getCurrentPage, visitTypes };
+const getFirstPage = questionaire => {
+  return {
+    pageIndex: 0,
+    path: `${questionaire.pathBase}/${questionaire.pages[0].key}`,
+    page: questionaire.pages[0]
+  };
+};
+
+export { getNextPage, getCurrentPage, visitTypes, getFirstPage };

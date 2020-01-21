@@ -3,13 +3,13 @@ import { NextButton } from "./ButtonGroup";
 import { ErrorDisplay } from "./";
 
 export const StandardForm = props => {
-  const { handleSubmit, submitError, buttonText, buttonVariant } = props;
+  const { handleSubmit, submitError, buttonVariant, ...rest } = props;
 
   return (
     <form onSubmit={handleSubmit}>
       {props.children}
       {submitError && <ErrorDisplay errorText={submitError} />}
-      <NextButton variant={buttonVariant} buttonText={buttonText} />
+      <NextButton variant={buttonVariant} {...rest} />
     </form>
   );
 };

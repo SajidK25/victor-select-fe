@@ -13,8 +13,8 @@ import { AddonDisplay } from "./AddonDisplay";
 const validateAddon = values => {
   const errors = { subscription: {} };
 
-  if (!values.subscription.addOn) {
-    errors.subscription.addOn = "Please make a selection.";
+  if (!values.subscription.addOnId) {
+    errors.subscription.addOnId = "Please make a selection.";
   }
 
   return errors;
@@ -24,7 +24,7 @@ const questionText = "Do you want to enhance your results?";
 
 const AddonPage = props => {
   const { handleSubmit } = props;
-  const name = "subscription.addOn";
+  const name = "subscription.addOnId";
   let options = [];
 
   options = getAddonList();

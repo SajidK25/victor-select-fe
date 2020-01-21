@@ -27,7 +27,7 @@ export const RenderSimpleCheckbox = ({ input, label }) => {
       }}
       control={
         <Checkbox
-          checked={input.value ? true : false}
+          checked={input.checked}
           onChange={input.onChange}
           classes={{
             checked: classes.checked

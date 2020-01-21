@@ -2,6 +2,7 @@ import React from "react";
 import { Route, Switch, useParams, useLocation } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
 import { Signin } from "../_pages/signin";
+import { Review } from "../_pages/Review";
 import { LoginPage, CreateAccountPage } from "../Questionaire/Shared/Pages";
 import { Questionaire } from "../Questionaire";
 
@@ -25,6 +26,9 @@ export const Main = props => {
       <Switch>
         <Route path="/signin">
           <Signin to="/account" />
+        </Route>
+        <Route path="/confirmation">
+          <Review />
         </Route>
         <Route path={`/visitStart/:id`}>
           <CreateAccountPage />

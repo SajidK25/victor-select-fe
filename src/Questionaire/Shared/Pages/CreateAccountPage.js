@@ -102,14 +102,14 @@ export const CreateAccountPage = () => {
     refetchQueries: [{ query: CURRENT_USER_QUERY }],
     awaitRefetchQueries: true,
     onCompleted: data => {
-      if (!data || data.register) {
+      if (data && data.register) {
         if (data.register.message === "EXISTS") {
           history.push(`/Login/${id}`);
         } else if (data.register.message === "OK") {
+          console.log("Data: ", data);
           history.push(pathBase);
         }
       }
-      console.log("Data: ", data);
     },
     onError: error => {
       console.log("Error:", error);
@@ -121,11 +121,10 @@ export const CreateAccountPage = () => {
       initialValues={initialData}
       validate={validateCreateAccount}
       onSubmit={values => {
-        console.log("Signup:", values);
         const input = { ...values };
         delete input.accept;
         console.log("Input: ", input);
-        register({ variables: { input: input } });
+        register({ variables: { input } });
       }}
     >
       {({ handleSubmit, values, errors, ...rest }) => (

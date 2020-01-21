@@ -28,6 +28,8 @@ export const MyRadioControl = props => {
   } = props;
   const classes = useStyles();
 
+  console.log("Radio Input:", input);
+
   return (
     <Paper className={indent ? classes.indent : classes.contain}>
       <FormControlLabel

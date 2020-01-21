@@ -6,7 +6,12 @@ export const StandardPage = props => {
   const { direction, fullWidth, pageNo, submitting, validating } = props;
 
   return (
-    <QuestionContainer direction={direction} fullWidth={fullWidth}>
+    <QuestionContainer
+      submitting={submitting}
+      validating={validating}
+      direction={direction}
+      fullWidth={fullWidth}
+    >
       <Box width="100%">
         {(submitting || validating) && <Spinner />}
         page: {pageNo}

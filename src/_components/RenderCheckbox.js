@@ -1,21 +1,23 @@
-import React from 'react'
-import { Field } from 'react-final-form'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
-import Paper from '@material-ui/core/Paper'
-import { makeStyles } from '@material-ui/core/styles'
-import { standardStyles } from '../_assets/styles'
-import { Warning } from './Warning'
-import { RenderNoteField } from '.'
+import React from "react";
+import { Field } from "react-final-form";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
+import Paper from "@material-ui/core/Paper";
+import { makeStyles } from "@material-ui/core/styles";
+import { standardStyles } from "../_assets/styles";
+import { Warning } from "./Warning";
+import { RenderNoteField } from ".";
 
 const useStyles = makeStyles({
   ...standardStyles
-})
+});
 
 //renderCheckbox
 export const RenderCheckbox = props => {
-  const { input, label, explain, explainText, warning } = props
-  const classes = useStyles()
+  const { input, label, explain, explainText, warning } = props;
+  const classes = useStyles();
+
+  console.log("Input", input);
 
   return (
     <Paper className={classes.contain}>
@@ -27,7 +29,7 @@ export const RenderCheckbox = props => {
         control={
           <Checkbox
             name={input.name}
-            checked={input.value ? true : false}
+            checked={input.checked}
             onChange={input.onChange}
             color="primary"
             type="checkbox"
@@ -35,7 +37,7 @@ export const RenderCheckbox = props => {
         }
         label={label}
       />
-      {input.value && explain ? (
+      {input.checked && explain ? (
         <Field
           name={explain}
           component={RenderNoteField}
@@ -44,7 +46,7 @@ export const RenderCheckbox = props => {
           type="text"
         />
       ) : null}
-      {warning && input.value ? <Warning warning={warning} /> : null}
+      {warning && input.checked ? <Warning warning={warning} /> : null}
     </Paper>
-  )
-}
+  );
+};

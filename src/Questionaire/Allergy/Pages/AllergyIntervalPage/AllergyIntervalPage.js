@@ -100,7 +100,7 @@ const AllergyIntervalPage = props => {
   const pricing = getPrices(
     values.subscription.drugId,
     values.subscription.doseOption,
-    values.subscription.addOn
+    values.subscription.addOnId
   );
 
   const options = displayOptions(pricing);

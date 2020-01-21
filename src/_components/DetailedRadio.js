@@ -49,7 +49,7 @@ const DetailedRadio = props => {
             id={id}
             options={options}
             pricing={pricing}
-            checked={input.value === id}
+            checked={input.checked}
             {...rest}
           />
         }

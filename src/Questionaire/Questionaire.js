@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { useApolloClient } from "@apollo/react-hooks";
+import { useApolloClient, useMutation } from "@apollo/react-hooks";
+import gql from "graphql-tag";
 import { Form } from "react-final-form";
 import {
   Redirect,
@@ -9,28 +10,44 @@ import {
   useLocation,
   useParams
 } from "react-router-dom";
-import { getNextPage, getCurrentPage } from "./questionPaths";
-import { QuestionaireLayout } from "../_components/QuestionaireLayout";
+import { getNextPage, getCurrentPage, getFirstPage } from "./questionPaths";
+import { QuestionaireLayout, ErrorMessage } from "../_components";
 import { getQuestionaire } from "./questionPaths";
 import User from "../_components/User";
 
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+const UPDATE_CURR_VISIT = gql`
+  mutation UPDATE_CURR_VISIT($input: Json!) {
+    updateCurrVisit(input: $input) {
+      message
+    }
+  }
+`;
+
+const SAVE_NEW_VISIT = gql`
+  mutation SAVE_NEW_VISIT($input: Json!) {
+    saveNewVisit(input: $input) {
+      message
+    }
+  }
+`;
 
 const Questionaire = () => {
   const history = useHistory();
   const location = useLocation();
   const { id } = useParams();
   const client = useApolloClient();
+  let transDir = "left";
 
   const questionaire = getQuestionaire(id);
   console.log("Questionaire:", questionaire);
 
   const [pageIndex, setPageIndex] = useState(0);
-  const [transDir, setTransDir] = useState("left");
   const [page, setPage] = useState(questionaire.pages[0]);
 
   useEffect(() => {
+    console.log("useEffect Location:", location);
     const pathArray = location.pathname.split("/");
+
     if (pathArray.length >= 4) {
       const testKey = pathArray[3];
       if (testKey.toString().toLowerCase() !== page.key.toString()) {
@@ -41,14 +58,15 @@ const Questionaire = () => {
         }
       }
     }
+    return () => console.log("unmounting...");
   }, [location, page.key, questionaire]);
 
-  const next = async values => {
-    await sleep(2000);
+  const next = values => {
+    console.log("Next page called!");
     const nextPage = getNextPage(values, pageIndex, 1, questionaire);
     setPageIndex(nextPage.pageIndex);
     setPage(nextPage.page);
-    setTransDir("left");
+    transDir = "left";
     history.push(nextPage.path);
   };
 
@@ -56,7 +74,7 @@ const Questionaire = () => {
     const prevPage = getNextPage(values, pageIndex, -1, questionaire);
     setPageIndex(prevPage.pageIndex);
     setPage(prevPage.page);
-    setTransDir("right");
+    transDir = "right";
     history.push(prevPage.path);
   };
 
@@ -65,8 +83,7 @@ const Questionaire = () => {
   };
 
   const validate = async values => {
-    const activePage = page;
-    return activePage.validate ? activePage.validate(values, client) : {};
+    return page.validate ? page.validate(values, client) : {};
   };
 
   return (
@@ -74,47 +91,84 @@ const Questionaire = () => {
       initialValues={questionaire.initialValues}
       validate={validate}
       onSubmit={async values => {
-        if (isLastPage()) {
-          alert("Saving...");
+        console.log("Saving currVisit");
+        values.type = questionaire.type;
+        values.page = page.key;
+        // console.log("Copied Values:", q);
+        //    delete q.personal;
+        //    delete q.subscription;
+        //    delete q.payment;
+        if (!isLastPage()) {
+          console.log("Saving currVisit!");
+          client
+            .mutate({
+              mutation: UPDATE_CURR_VISIT,
+              variables: {
+                input: values
+              }
+            })
+            .then(async ({ data }) => {
+              console.log("Data!!!", data);
+              await next(values);
+            })
+            .catch(mutationError => {
+              console.log("Error:", mutationError);
+            });
         } else {
-          await next(values);
+          console.log("Saving currVisit!");
+          client
+            .mutate({
+              mutation: SAVE_NEW_VISIT,
+              variables: {
+                input: values
+              }
+            })
+            .then(async ({ data }) => {
+              console.log("Data!!!", data);
+              history.push("/confirmation");
+            })
+            .catch(mutationError => {
+              console.log("Error:", mutationError);
+            });
         }
       }}
     >
-      {({ handleSubmit, values, validating, submitting, submitError }) => (
-        <QuestionaireLayout
-          handlePrevious={previous}
-          values={values}
-          page={pageIndex}
-        >
-          <Switch location={location}>
-            <Redirect
-              from={questionaire.pathBase}
-              exact
-              to={`${questionaire.pathBase}/zipcode`}
-            />
-            {questionaire.pages.map(({ key, component: C }) => (
-              <Route key={key} path={`${questionaire.pathBase}/${key}`} exact>
-                <C
-                  key={key}
-                  pageNo={key}
-                  direction={transDir}
-                  handleSubmit={handleSubmit}
-                  values={values}
-                  validating={validating}
-                  submitting={submitting}
-                  submitError={submitError}
-                  heading={questionaire.heading}
-                />
+      {({ handleSubmit, values, validating, submitting, submitError }) => {
+        return (
+          <QuestionaireLayout
+            handlePrevious={previous}
+            values={values}
+            page={pageIndex}
+          >
+            <Switch location={location}>
+              <Redirect
+                from={questionaire.pathBase}
+                exact
+                to={`${questionaire.pathBase}/zipcode`}
+              />
+              {questionaire.pages.map(({ key, component: C }) => (
+                <Route key={key} path={`${questionaire.pathBase}/${key}`} exact>
+                  <C
+                    key={key}
+                    pageNo={key}
+                    direction={transDir}
+                    heading={questionaire.heading}
+                    handleSubmit={handleSubmit}
+                    values={values}
+                    validating={validating}
+                    submitting={submitting}
+                    submitError={submitError}
+                  />
+                </Route>
+              ))}
+              <Route>
+                <div>Page not found</div>
               </Route>
-            ))}
-            <Route>
-              <div>Page not found</div>
-            </Route>
-          </Switch>
-          {/*      <pre>{JSON.stringify(values, 0, 2)}</pre> */}
-        </QuestionaireLayout>
-      )}
+            </Switch>
+            {/*      <pre>{JSON.stringify(values, 0, 2)}</pre> */}
+          </QuestionaireLayout>
+        );
+      }}
     </Form>
   );
 };

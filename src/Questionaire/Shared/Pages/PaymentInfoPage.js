@@ -7,7 +7,10 @@ import Grid from "@material-ui/core/Grid";
 import {
   formatCreditCardNumber,
   formatCVC,
-  formatExpirationDate
+  formatExpirationDate,
+  validCardNumber,
+  validCardExpiry,
+  validCardCVC
 } from "../../../_helpers";
 import { drugDisplaySetup } from "../../ED/ProductInfo/edSelections";
 import Divider from "@material-ui/core/Divider";
@@ -62,15 +65,23 @@ const useStyles = makeStyles(theme => ({
 const validatePaymentInfo = values => {
   const errors = { payment: {} };
 
-  // if (!values.personal.addressOne) {
-  //   errors.personal.addressOne = "Address is required";
-  // }
-  // if (!values.personal.city) {
-  //   errors.personal.city = "City is required";
-  // }
-  // if (!values.personal.state) {
-  //   errors.personal.zipCode = "State is required";
-  // }
+  if (!values.payment.cardNumber) {
+    errors.payment.cardNumber = "Card number is required";
+  } else if (!validCardNumber(values.payment.cardNumber)) {
+    errors.payment.cardNumber = "Card Number is not valid.";
+  }
+
+  if (!values.payment.cardExpiry) {
+    errors.payment.cardExpiry = "Expiration Date is required";
+  } else if (!validCardExpiry(values.payment.cardExpiry)) {
+    errors.payment.cardExpiry = "Expiration Date is not valid.";
+  }
+
+  if (!values.payment.cardCVC) {
+    errors.payment.cardCVC = "CVC is required";
+  } else if (!validCardCVC(values.payment.cardCVC, values.payment.cardNumber)) {
+    errors.payment.cardCVC = "CVC is not valid.";
+  }
 
   return errors;
 };

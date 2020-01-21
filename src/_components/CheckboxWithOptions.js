@@ -27,7 +27,7 @@ export const CheckboxWithOptions = props => {
         control={
           <Checkbox
             name={input.name}
-            checked={input.value ? true : false}
+            checked={input.checked}
             onChange={input.onChange}
             color="primary"
             type="checkbox"
@@ -35,7 +35,7 @@ export const CheckboxWithOptions = props => {
         }
         label={label}
       />
-      {input.value && options
+      {input.checked && options
         ? options.map(o => (
             <Field
               name={o.name}

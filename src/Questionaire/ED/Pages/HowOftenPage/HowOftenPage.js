@@ -100,7 +100,7 @@ const HowOftenPage = props => {
     values.subscription.drugId,
     values.subscription.doseOption,
     values.subscription.dosesPerMonth,
-    values.subscription.addOn
+    values.subscription.addOnId
   );
 
   const options = displayOptions(pricing);

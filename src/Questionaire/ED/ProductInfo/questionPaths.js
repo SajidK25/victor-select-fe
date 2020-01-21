@@ -208,7 +208,6 @@ const pages = [
     component: VisitStartPage,
     validate: validateVisitStart
   },
-  /*
   {
     key: pathConstants.ERECTION,
     component: ErectionPage,
@@ -364,8 +363,6 @@ const pages = [
     component: AnythingElsePage,
     validate: validateAnythingElse
   },
-  */
- 
   {
     key: pathConstants.PICTURES,
     component: PicturesPage,
