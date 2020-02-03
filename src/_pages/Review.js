@@ -35,10 +35,10 @@ export function Review() {
   return (
     <div className={classes.container}>
       <Typography align="center" variant="h6" gutterBottom>
-        Confirmation Screen
+        Thank you!
       </Typography>
       <div>
-        <Typography align="center">(Temporary)</Typography>
+        <Typography align="center">{`Your online visit will be forwarded to your physician and you'll receive a response soon. Usually within 24 hours.`}</Typography>
       </div>
     </div>
   );
