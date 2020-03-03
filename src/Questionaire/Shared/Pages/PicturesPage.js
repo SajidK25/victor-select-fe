@@ -5,10 +5,10 @@ import {
   RenderSimpleCheckbox,
   RenderCheckError
 } from "../../../_components";
-import { withStyles } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import { PictureGrab } from "../../../_components/PictureGrab";
 
-const styles = theme => ({
+const useStyles = makeStyles(theme => ({
   picture: {
     margin: theme.spacing(1),
     display: "block",
@@ -16,7 +16,7 @@ const styles = theme => ({
     marginRight: "auto",
     textAlign: "center"
   }
-});
+}));
 
 const validatePictures = values => {
   const errors = { personal: {} };
@@ -33,38 +33,31 @@ const questionText = "Verify your Identity";
 const additionalText =
   "Your provider needs to verify your identity. They will do that by having you provide an image of a government issued ID that includes a picture of you.";
 
-class PicturesPage extends React.Component {
-  state = {
-    image: ""
-  };
+const PicturesPage = props => {
+  const classes = useStyles();
 
-  render() {
-    const { classes, ...rest } = this.props;
-    return (
-      <StandardPage
-        questionText={questionText}
-        additionalText={additionalText}
-        alignTitles="left"
-        {...rest}
-      >
-        <div className={classes.picture}>
-          <Field
-            component={PictureGrab}
-            name="personal.licenseImage"
-            label="UPLOAD A PHOTO OF YOUR ID"
-          />
-        </div>
+  return (
+    <StandardPage
+      questionText={questionText}
+      additionalText={additionalText}
+      alignTitles="left"
+      {...props}
+    >
+      <div className={classes.picture}>
         <Field
-          name="personal.sendImageLater"
-          component={RenderSimpleCheckbox}
-          label="I'll provide an image later."
+          component={PictureGrab}
+          name="personal.licenseImage"
+          label="UPLOAD A PHOTO OF YOUR ID"
         />
-        <Field name="checkError" component={RenderCheckError} />
-      </StandardPage>
-    );
-  }
-}
-
-PicturesPage = withStyles(styles)(PicturesPage);
+      </div>
+      <Field
+        name="personal.sendImageLater"
+        component={RenderSimpleCheckbox}
+        label="I'll provide an image later."
+      />
+      <Field name="checkError" component={RenderCheckError} />
+    </StandardPage>
+  );
+};
 
 export { PicturesPage, validatePictures };

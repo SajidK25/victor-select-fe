@@ -1,7 +1,6 @@
 import React from "react";
-import { Route, Switch, useParams, useLocation } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { Signin } from "../_pages/signin";
 import { Review } from "../_pages/Review";
 import { LoginPage, CreateAccountPage } from "../Questionaire/Shared/Pages";
 import { Questionaire } from "../Questionaire";
@@ -16,17 +15,12 @@ const useStyles = makeStyles({
   }
 });
 
-export const Main = props => {
+export const Main = () => {
   const classes = useStyles();
-  const p = useParams();
-  const location = useLocation();
 
   return (
     <div className={classes.app}>
       <Switch>
-        <Route path="/signin">
-          <Signin to="/account" />
-        </Route>
         <Route path="/confirmation">
           <Review />
         </Route>

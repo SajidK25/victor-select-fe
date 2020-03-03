@@ -53,7 +53,7 @@ let theme = createMuiTheme({
   }
 });
 
-const App = ({ client }) => {
+const App = () => {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />

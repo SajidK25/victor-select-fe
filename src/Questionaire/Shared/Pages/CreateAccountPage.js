@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 import { Form, Field } from "react-final-form";
 import Grid from "@material-ui/core/Grid";
 import {
@@ -15,35 +14,8 @@ import {
   ErrorMessage
 } from "../../../_components";
 import { getQuestionaire } from "../../questionPaths";
-import { CURRENT_USER_QUERY } from "../../../_components/User";
-
-const SIGNUP_MUTATION = gql`
-  mutation SIGNUP_MUTATION($input: RegisterInput!) {
-    register(input: $input) {
-      message
-    }
-  }
-`;
-
-/*
-const SIGNUP_MUTATION = gql`
-  mutation SIGNUP_MUTATION(
-    $email: String!
-    $firstName: String!
-    $lastName: String!
-    $password: String!
-  ) {
-    register(
-      email: $email
-      firstName: $firstName
-      lastName: $lastName
-      password: $password
-    ) {
-      message
-    }
-  }
-`;
-*/
+import { REGISTER_MUTATION, ME_QUERY } from "../../../Graphql";
+import { setAccessToken } from "../../../accessToken";
 
 const initialData = {
   email: "",
@@ -71,8 +43,8 @@ const validateCreateAccount = values => {
       values.password
     )
   ) {
-    errors.password =
-      "Password must include at least 8 chars., contain at least 1 uppercase letter, 1 lowercase letter and 1 number";
+    errors.password = `Password must include at least 8 chars., 
+                   contain at least 1 uppercase letter, 1 lowercase letter and 1 number`;
   }
 
   if (!values.email) {
@@ -98,38 +70,45 @@ export const CreateAccountPage = () => {
   const [
     register,
     { loading: mutationLoading, error: mutationError }
-  ] = useMutation(SIGNUP_MUTATION, {
-    refetchQueries: [{ query: CURRENT_USER_QUERY }],
-    awaitRefetchQueries: true,
-    onCompleted: data => {
-      if (data && data.register) {
-        if (data.register.message === "EXISTS") {
-          history.push(`/Login/${id}`);
-        } else if (data.register.message === "OK") {
-          console.log("Data: ", data);
-          history.push(pathBase);
-        }
-      }
-    },
-    onError: error => {
-      console.log("Error:", error);
-    }
-  });
+  ] = useMutation(REGISTER_MUTATION);
 
   return (
     <Form
       initialValues={initialData}
       validate={validateCreateAccount}
-      onSubmit={values => {
+      onSubmit={async values => {
         const input = { ...values };
         delete input.accept;
         console.log("Input: ", input);
-        register({ variables: { input } });
+        const response = await register({
+          variables: { input },
+          update: (store, { data }) => {
+            if (!data) {
+              return null;
+            }
+
+            if (data.register.message !== "EXISTS") {
+              store.writeQuery({
+                query: ME_QUERY,
+                data: {
+                  me: data.register.user
+                }
+              });
+            }
+          }
+        });
+        if (response && response.data) {
+          if (response.data.register.message !== "EXISTS") {
+            setAccessToken(response.data.register.accessToken);
+            history.push(pathBase);
+          } else {
+            history.push(`/Login/${id}`);
+          }
+        }
       }}
     >
-      {({ handleSubmit, values, errors, ...rest }) => (
+      {({ handleSubmit, values, ...rest }) => (
         <QuestionaireLayout values={values} page={0}>
-          {mutationLoading && <Spinner />}
           <StandardPage
             questionText={`Getting started towards${questionaire.heading}is just a few clicks away...`}
             additionalText={additionalText}

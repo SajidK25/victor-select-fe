@@ -1,7 +1,6 @@
 import React from "react";
 import { useHistory, useParams } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 import { Form, Field } from "react-final-form";
 import Grid from "@material-ui/core/Grid";
 import {
@@ -11,17 +10,8 @@ import {
   RenderStdTextField,
   ErrorMessage
 } from "../../../_components";
-import { CURRENT_USER_QUERY } from "../../../_components/User";
-
-const SIGNIN_MUTATION = gql`
-  mutation SIGNIN_MUTATION($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      id
-      email
-      firstName
-    }
-  }
-`;
+import { setAccessToken } from "../../../accessToken";
+import { LOGIN_MUTATION, ME_QUERY } from "../../../Graphql";
 
 const initialData = {
   email: "",
@@ -48,26 +38,41 @@ export const LoginPage = () => {
   const { id } = useParams();
 
   const [
-    signin,
+    login,
     { loading: mutationLoading, error: mutationError }
-  ] = useMutation(SIGNIN_MUTATION, {
-    refetchQueries: [{ query: CURRENT_USER_QUERY }],
-    awaitRefetchQueries: true,
-    onCompleted: () => {
-      history.push(`/visit/${id}`);
-    }
-  });
+  ] = useMutation(LOGIN_MUTATION);
 
   return (
     <Form
       initialValues={initialData}
       validate={validateLogin}
-      onSubmit={values => {
-        console.log("Signup:", values);
-        signin({ variables: { ...values } });
+      onSubmit={async values => {
+        const response = await login({
+          variables: { ...values },
+          update: (store, { data }) => {
+            if (!data) {
+              return null;
+            }
+
+            store.writeQuery({
+              query: ME_QUERY,
+              data: {
+                me: data.login.user
+              }
+            });
+          }
+        });
+        console.log(response);
+
+        if (response && response.data) {
+          setAccessToken(response.data.login.accessToken);
+        }
+
+        console.log("Push to /");
+        history.push(`/visit/${id}`);
       }}
     >
-      {({ handleSubmit, values, errors, ...rest }) => (
+      {({ handleSubmit, values, ...rest }) => (
         <QuestionaireLayout values={values} page={0}>
           {mutationLoading && <Spinner />}
           <StandardPage

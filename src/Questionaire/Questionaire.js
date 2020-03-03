@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { useApolloClient, useMutation } from "@apollo/react-hooks";
-import gql from "graphql-tag";
 import { Form } from "react-final-form";
 import {
   Redirect,
@@ -10,32 +9,20 @@ import {
   useLocation,
   useParams
 } from "react-router-dom";
-import { getNextPage, getCurrentPage, getFirstPage } from "./questionPaths";
-import { QuestionaireLayout, ErrorMessage } from "../_components";
+import { getNextPage, getCurrentPage } from "./questionPaths";
+import { QuestionaireLayout } from "../_components";
 import { getQuestionaire } from "./questionPaths";
-import User from "../_components/User";
-
-const UPDATE_CURR_VISIT = gql`
-  mutation UPDATE_CURR_VISIT($input: Json!) {
-    updateCurrVisit(input: $input) {
-      message
-    }
-  }
-`;
-
-const SAVE_NEW_VISIT = gql`
-  mutation SAVE_NEW_VISIT($input: Json!) {
-    saveNewVisit(input: $input) {
-      message
-    }
-  }
-`;
+import { SAVENEWVISIT_MUTATION, UPDATECURRVISIT_MUTATION } from "../Graphql";
 
 const Questionaire = () => {
   const history = useHistory();
   const location = useLocation();
   const { id } = useParams();
   const client = useApolloClient();
+
+  const [saveNewVisit] = useMutation(SAVENEWVISIT_MUTATION);
+  const [updateCurrVisit] = useMutation(UPDATECURRVISIT_MUTATION);
+
   let transDir = "left";
 
   const questionaire = getQuestionaire(id);
@@ -94,42 +81,27 @@ const Questionaire = () => {
         console.log("Saving currVisit");
         values.type = questionaire.type;
         values.page = page.key;
-        // console.log("Copied Values:", q);
-        //    delete q.personal;
-        //    delete q.subscription;
-        //    delete q.payment;
+        let response = null;
         if (!isLastPage()) {
           console.log("Saving currVisit!");
-          client
-            .mutate({
-              mutation: UPDATE_CURR_VISIT,
-              variables: {
-                input: values
-              }
-            })
-            .then(async ({ data }) => {
-              console.log("Data!!!", data);
-              await next(values);
-            })
-            .catch(mutationError => {
-              console.log("Error:", mutationError);
-            });
+          response = await updateCurrVisit({
+            variables: {
+              input: values
+            }
+          });
+          console.log("Response:", response);
+          if (response && response.data) {
+            await next(values);
+          }
         } else {
-          console.log("Saving currVisit!");
-          client
-            .mutate({
-              mutation: SAVE_NEW_VISIT,
-              variables: {
-                input: values
-              }
-            })
-            .then(async ({ data }) => {
-              console.log("Data!!!", data);
-              history.push("/confirmation");
-            })
-            .catch(mutationError => {
-              console.log("Error:", mutationError);
-            });
+          response = await saveNewVisit({
+            variables: {
+              input: values
+            }
+          });
+          if (response && response.data) {
+            history.push("/confirmation");
+          }
         }
       }}
     >

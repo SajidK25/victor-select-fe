@@ -195,6 +195,20 @@ export const drugSelections = [
     },
     doseOptions: [
       {
+        id: "100",
+        default: false,
+        labelOptions: {
+          label: "100mg",
+          subTitle: "",
+          display: "Sildenafil 100mg"
+        },
+        pricing: {
+          threeMonth: 14.0,
+          twoMonth: 14.75,
+          monthly: 16.25
+        }
+      },
+      {
         id: "50",
         default: true,
         labelOptions: {
@@ -210,12 +224,12 @@ export const drugSelections = [
         }
       },
       {
-        id: "25",
+        id: "20",
         default: false,
         labelOptions: {
-          label: "25mg",
+          label: "20mg",
           subTitle: "",
-          display: "Sildenafil 25mg"
+          display: "Sildenafil 20mg"
         },
         pricing: {
           threeMonth: 4.5,

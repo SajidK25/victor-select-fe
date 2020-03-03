@@ -39,15 +39,15 @@ const validateHypertensionMeds = values => {
     errors.checkError = "Please select an option";
   }
 
-  if (o.alphaBlockers && !o.alphaBlockersExplain) {
-    errors.hypertensionMeds.alphaBlockersExplain = "Please provide details.";
-  }
-  if (o.sildenafil && !o.sildenafilExplain) {
-    errors.hypertensionMeds.sildenafilExplain = "Please provide details.";
-  }
-  if (o.riociguat && !o.riociguatExplain) {
-    errors.hypertensionMeds.riociguatExplain = "Please provide details.";
-  }
+  //if (o.alphaBlockers && !o.alphaBlockersExplain) {
+  //  errors.hypertensionMeds.alphaBlockersExplain = "Please provide details.";
+  //}
+  //if (o.sildenafil && !o.sildenafilExplain) {
+  //  errors.hypertensionMeds.sildenafilExplain = "Please provide details.";
+  //}
+  //if (o.riociguat && !o.riociguatExplain) {
+  //  errors.hypertensionMeds.riociguatExplain = "Please provide details.";
+  // }
 
   return errors;
 };
