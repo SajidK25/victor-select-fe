@@ -5,7 +5,7 @@ export const drugIds = {
   HAIRBEST: "HAIRBEST",
   HAIRSUPP: "HAIRSUPP",
   HAIR_ADDON: "HAIR_ADDON",
-  HAIR_NO_ADDON: "HAIR_NO_ADDON"
+  NO_ADDON: "NO_ADDON"
 };
 
 export const drugSelections = [
