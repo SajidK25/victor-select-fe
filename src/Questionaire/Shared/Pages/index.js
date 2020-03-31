@@ -1,5 +1,4 @@
 export * from "./PhysicalExamPage";
-export * from "./LoginPage";
 export * from "./OtherMedicinesPage";
 export * from "./PaymentInfoPage";
 export * from "./VisitStartPage";

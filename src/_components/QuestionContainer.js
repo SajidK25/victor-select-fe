@@ -1,7 +1,6 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Transition } from "./Transition";
-import { Spinner } from "./";
 
 const useStyles = makeStyles(theme => ({
   container: {
@@ -15,19 +14,6 @@ const useStyles = makeStyles(theme => ({
       width: "100%",
       padding: "25px 15px"
     }
-  },
-  containerFull: {
-    display: "flex",
-    minHeight: "100%",
-    padding: "0 !important"
-  },
-  overlay: {
-    position: "absolute",
-    top: 70,
-    right: 0,
-    left: 0,
-    bottom: 0,
-    overflowY: "auto"
   }
 }));
 

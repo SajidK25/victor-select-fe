@@ -32,8 +32,6 @@ export const NextButton = props => {
   const classes = useStyles();
   const formState = useFormState();
 
-  console.log("FormState", formState);
-
   return (
     <Button
       disabled={formState.submitting || formState.validating}

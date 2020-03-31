@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, useParams } from "react-router-dom";
+import { Redirect, useHistory, useParams, useLocation } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { Form, Field } from "react-final-form";
 import Grid from "@material-ui/core/Grid";
@@ -63,6 +63,8 @@ const additionalText = `The information you provide will be used by your doctor 
 export const CreateAccountPage = () => {
   const history = useHistory();
   const { id } = useParams();
+  const location = useLocation();
+  const { from } = location.state || { from: { pathname: "/" } };
 
   const questionaire = getQuestionaire(id);
   const pathBase = questionaire.pathBase;
@@ -102,7 +104,7 @@ export const CreateAccountPage = () => {
             setAccessToken(response.data.register.accessToken);
             history.push(pathBase);
           } else {
-            history.push(`/Login/${id}`);
+            history.push("./login", { from: location });
           }
         }
       }}
