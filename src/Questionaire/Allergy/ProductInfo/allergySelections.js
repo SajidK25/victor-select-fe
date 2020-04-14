@@ -2,7 +2,7 @@ export const MAX_AMOUNT = 40;
 
 export const drugIds = {
   RELEVIUM: "RELEVIUM",
-  RELEVIUM_D: "RELEVIUM_D",
+  RELEVIUM_AM: "RELEVIUM_AM",
   RELEVIUM_PM: "RELEVIUM_PM",
   CBD_ADDON: "ADDON",
   NO_ADDON: "NO_ADDON"
@@ -24,7 +24,7 @@ export const drugSelections = [
     },
     doseOptions: [
       {
-        id: "REG",
+        id: "",
         default: true,
         labelOptions: {
           label: "Relevium",
@@ -40,10 +40,10 @@ export const drugSelections = [
     ]
   },
   {
-    id: drugIds.RELEVIUM_D,
+    id: drugIds.RELEVIUM_AM,
     category: "T",
     labelOptions: {
-      label: "Relevium D",
+      label: "Relevium AM",
       description: `We have added a decongestant in addition to all the 
                other ingredients of Relevium to create a powerful morning 
                cocktail to soothe your allergy symptoms.`,
@@ -51,7 +51,7 @@ export const drugSelections = [
     },
     doseOptions: [
       {
-        id: "REG",
+        id: "",
         default: true,
         labelOptions: {
           label: "Relevium AM",
@@ -150,10 +150,11 @@ const getAddonPricing = addOnId => {
 };
 
 const getAddonName = addOnId => {
-  const addOn = getAddon(addOnId);
-  if (!addOn) return "";
+  //  const addOn = getAddon(addOnId);
+  //  if (!addOn) return "";
 
-  return addOn.labelOptions.label;
+  //  return addOn.labelOptions.label;
+  return "";
 };
 
 // Get a list of drugs filtered by category
@@ -204,7 +205,7 @@ export const defaultDose = drugId => {
   return opt.id;
 };
 
-export const getPrices = (drugId, dose, addOn) => {
+export const getPrices = (drugId, addOnId) => {
   const pricing = {
     display: `${drugId} not found`,
     monthly: 0,
@@ -214,13 +215,14 @@ export const getPrices = (drugId, dose, addOn) => {
     threeTotal: 0
   };
 
-  const drugOption = getDoseOption(drugId, dose);
+  const drugOption = getDoseOption(drugId, "");
+  console.log("Drug Option:", drugOption);
   if (!drugOption) return pricing;
 
-  const addOnPricing = getAddonPricing(addOn);
-  const addOnDisplay = getAddonName(addOn);
+  const addOnPricing = getAddonPricing(addOnId);
+  const addOnDisplay = getAddonName(addOnId);
 
-  pricing.display = drugOption.labelOptions.display;
+  pricing.display = getDrugName(drugId);
   pricing.addOnDisplay = addOnDisplay;
   pricing.monthly = drugOption.pricing.monthly + addOnPricing.monthly;
   pricing.twoMonth = drugOption.pricing.twoMonth + addOnPricing.twoMonth;
@@ -232,7 +234,7 @@ export const getPrices = (drugId, dose, addOn) => {
 };
 
 export const drugDisplaySetup = subscription => {
-  const pricing = getPrices(subscription.drugId);
+  const pricing = getPrices(subscription.drugId, subscription.addOnId);
   const options = {
     display: "",
     title: "",
@@ -247,7 +249,7 @@ export const drugDisplaySetup = subscription => {
   switch (subscription.shippingInterval) {
     case "everyThree":
       options.title = "3 Month Delivery";
-      options.total = pricing.three;
+      options.total = pricing.threeTotal;
       options.per = "3 mo";
       options.interval = "every 3 months";
       options.noDiscount = pricing.monthly * 3;

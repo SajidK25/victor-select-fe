@@ -8,9 +8,9 @@ import {
   RadioSubmit
 } from "../../../../_components";
 import { getPrices, MAX_AMOUNT } from "../../ProductInfo";
-import { SleepIntervalDisplay } from "./SleepIntervalDisplay";
+import { JoyIntervalDisplay } from "./JoyIntervalDisplay";
 
-const validateSleepInterval = values => {
+const validateJoyInterval = values => {
   const errors = {};
 
   return errors;
@@ -63,7 +63,7 @@ const displayOptions = pricing => {
     });
   }
 
-  if (pricing.monthly >= MAX_AMOUNT) {
+  if (pricing.monthly > 35) {
     options.push({
       id: "monthly",
       labelOptions: {
@@ -92,15 +92,14 @@ const displayOptions = pricing => {
 const questionText = `How often should we ship your treatment?`;
 const additionalText = `By choosing to have your treatment delivered every 2 or 3 months you will save money.`;
 
-const SleepIntervalPage = props => {
+const JoyIntervalPage = props => {
   const { values, handleSubmit } = props;
 
+  values.subscription.drugId = "JOYOUS";
   const fieldName = "subscription.shippingInterval";
 
   const pricing = getPrices(
     values.subscription.drugId,
-    values.subscription.doseOption,
-    1,
     values.subscription.addOnId
   );
 
@@ -115,7 +114,7 @@ const SleepIntervalPage = props => {
       <Field
         component={DetailedRadioGroup}
         options={options}
-        displayComponent={SleepIntervalDisplay}
+        displayComponent={JoyIntervalDisplay}
         name={fieldName}
         type="div"
       />
@@ -124,4 +123,4 @@ const SleepIntervalPage = props => {
   );
 };
 
-export { SleepIntervalPage, validateSleepInterval };
+export { JoyIntervalPage, validateJoyInterval };

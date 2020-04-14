@@ -20,7 +20,7 @@ const useStyles = makeStyles(theme => ({
     borderStyle: "solid",
     borderWidth: 1,
     borderColor: "gray",
-    width: '100%',
+    width: "100%",
     minHeight: 200
   },
   image: {
@@ -40,8 +40,6 @@ const PictureGrab = props => {
   const [image, setImage] = useState(input.value);
   const [uploading, setUploading] = useState(false);
   const classes = useStyles();
-
-  console.log("Photo Props", props);
 
   const uploadFile = async (e, input) => {
     console.log("uploading file...");

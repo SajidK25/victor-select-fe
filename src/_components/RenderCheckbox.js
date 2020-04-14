@@ -17,8 +17,6 @@ export const RenderCheckbox = props => {
   const { input, label, explain, explainText, warning } = props;
   const classes = useStyles();
 
-  console.log("Input", input);
-
   return (
     <Paper className={classes.contain}>
       <FormControlLabel

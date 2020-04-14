@@ -12,8 +12,13 @@ import {
   validCardExpiry,
   validCardCVC
 } from "../../../_helpers";
-import { drugDisplaySetup } from "../../ED/ProductInfo/edSelections";
+import { drugDisplaySetup as edDisplaySetup } from "../../ED/ProductInfo/edSelections";
+import { drugDisplaySetup as joyDisplaySetup } from "../../Joy/ProductInfo/joySelections";
+import { drugDisplaySetup as hairDisplaySetup } from "../../Hair/ProductInfo/hairSelections";
+import { drugDisplaySetup as allergyDisplaySetup } from "../../Allergy/ProductInfo/allergySelections";
+import { drugDisplaySetup as sleepDisplaySetup } from "../../Sleep/ProductInfo/sleepSelections";
 import Divider from "@material-ui/core/Divider";
+import { formatMoney } from "../../../_helpers";
 
 const useStyles = makeStyles(theme => ({
   payWith: {
@@ -91,11 +96,33 @@ const PaymentInfoPage = props => {
   const classes = useStyles();
 
   console.log("Subscription", values.subscription);
-  const options = drugDisplaySetup(values.subscription);
+  let options = null;
+  switch (values.type) {
+    case "JOY":
+      options = joyDisplaySetup(values.subscription);
+      break;
+
+    case "HAIR":
+      options = hairDisplaySetup(values.subscription);
+      break;
+
+    case "ALLERGY":
+      options = allergyDisplaySetup(values.subscription);
+      break;
+
+    case "SLEEP":
+      options = sleepDisplaySetup(values.subscription);
+      break;
+
+    case "ED":
+    default:
+      options = edDisplaySetup(values.subscription);
+      break;
+  }
 
   const name = options.display;
   const addonName = options.addOnDisplay;
-  const amount = options.total;
+  const amount = formatMoney(options.total);
   const visitAmount = 0;
   const buttonText = `PAY $${visitAmount} TODAY`;
   const supply = options.per + "nth supply";
@@ -112,7 +139,7 @@ const PaymentInfoPage = props => {
         <div className={classes.infoBlock}>
           <div className={classes.priceLine}>
             <div className={classes.product}>{name}</div>
-            <div className={classes.amount}>${amount}</div>
+            <div className={classes.amount}>{amount}</div>
           </div>
           {addonName ? (
             <div className={classes.product}>{addonName}</div>
@@ -182,10 +209,10 @@ const PaymentInfoPage = props => {
         </Grid>
         <Grid item className={classes.chargeSummary}>
           By clicking {buttonText} you agree that, if prescribed, you will be
-          charged ${amount} for your first shipment and ${amount} every{" "}
-          {interval} thereafter until you cancel your prescription or your
-          prescription expires. You can cancel your plan anytime by logging into
-          your account.
+          charged {amount} for your first shipment and {amount} every {interval}{" "}
+          thereafter until you cancel your prescription or your prescription
+          expires. You can cancel your plan anytime by logging into your
+          account.
         </Grid>
       </Grid>
     </StandardPage>

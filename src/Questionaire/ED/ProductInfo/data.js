@@ -1,7 +1,7 @@
 import { personal, payment, subscription } from "../../Shared/ProductInfo";
 
 export const initialValues = {
-  type: "",
+  type: "ED",
   page: "",
   personal,
   payment,

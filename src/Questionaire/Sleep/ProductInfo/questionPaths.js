@@ -15,7 +15,11 @@ import {
   PicturesPage,
   validatePictures,
   OtherMedicinesPage,
-  validateOtherMedicines
+  validateOtherMedicines,
+  ShippingPage,
+  validateShipping,
+  PaymentInfoPage,
+  validatePaymentInfo
 } from "../../Shared/Pages";
 
 import {
@@ -49,6 +53,8 @@ import {
   validateSleepInterval,
   SleepOtherMedicationsPage,
   validateSleepOtherMedications,
+  SummaryPage,
+  validateSummary,
   AddonPage,
   validateAddon
 } from "../Pages";
@@ -77,7 +83,10 @@ const pathConstants = {
   OTHERMEDICINES: 34,
   ALLERGIES: 35,
   ANYTHINGELSE: 36,
-  PICTURES: 37
+  PICTURES: "photos",
+  SUMMARY: "summary",
+  SHIPPING: "shipping",
+  PAYMENT: "payment"
 };
 
 const pages = [
@@ -195,6 +204,21 @@ const pages = [
     key: pathConstants.PICTURES,
     component: PicturesPage,
     validate: validatePictures
+  },
+  {
+    key: pathConstants.SUMMARY,
+    component: SummaryPage,
+    validate: validateSummary
+  },
+  {
+    key: pathConstants.SHIPPING,
+    component: ShippingPage,
+    validate: validateShipping
+  },
+  {
+    key: pathConstants.PAYMENT,
+    component: PaymentInfoPage,
+    validate: validatePaymentInfo
   }
 ];
 
@@ -217,7 +241,7 @@ const SkipPage = (key, values) => {
 };
 
 export const sleepQuestionaire = {
-  type: "Sleep",
+  type: "SLEEP",
   pages: pages,
   skipPage: SkipPage,
   pathBase: "/visit/Sleep",

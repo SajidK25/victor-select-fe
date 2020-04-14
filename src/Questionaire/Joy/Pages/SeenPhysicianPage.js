@@ -29,7 +29,6 @@ const additionalText = ``;
 
 const SeenPhysicianPage = props => {
   const { values } = props;
-  console.log("Values:", values);
   return (
     <StandardPage
       questionText={questionText}

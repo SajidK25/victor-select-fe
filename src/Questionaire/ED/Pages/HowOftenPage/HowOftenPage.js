@@ -94,8 +94,6 @@ const HowOftenPage = props => {
 
   const fieldName = "subscription.shippingInterval";
 
-  console.log("How Often Start:", values.subscription);
-
   const pricing = getPrices(
     values.subscription.drugId,
     values.subscription.doseOption,

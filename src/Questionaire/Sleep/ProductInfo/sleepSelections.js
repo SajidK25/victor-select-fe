@@ -240,50 +240,81 @@ export const defaultDose = drugId => {
   return opt.id;
 };
 
-export const getPrices = (drugId, dose, addOn) => {
+export const getPrices = (drugId, dose, count, addOn) => {
   const pricing = {
     display: `${drugId} not found`,
+    addOnDisplay: "",
     monthly: 0,
+    monthlyDoses: 0,
+    addOnMonthlyDoses: 0,
     twoMonth: 0,
     twoTotal: 0,
+    twoDoses: 0,
+    addOnTwoDoses: 0,
     threeMonth: 0,
-    threeTotal: 0
+    threeTotal: 0,
+    threeDoses: 0,
+    addOnThreeDoses: 0
   };
 
-  const drugOption = getDoseOption(drugId, dose);
-  if (!drugOption) return pricing;
+  const doseOption = getDoseOption(drugId, dose);
+  if (!doseOption) return pricing;
 
   const addOnPricing = getAddonPricing(addOn);
   const addOnDisplay = getAddonName(addOn);
 
-  pricing.display = drugOption.labelOptions.display;
+  pricing.display = doseOption.labelOptions.display;
   pricing.addOnDisplay = addOnDisplay;
-  pricing.monthly = drugOption.pricing.monthly + addOnPricing.monthly;
-  pricing.twoMonth = drugOption.pricing.twoMonth + addOnPricing.twoMonth;
+  pricing.monthly =
+    doseOption.pricing.monthly * count + addOnPricing.monthly * 30;
+  pricing.monthlyDoses = count;
+  pricing.addOnMonthlyDoses = 30;
+  pricing.twoMonth =
+    doseOption.pricing.twoMonth * count + addOnPricing.twoMonth * 30;
   pricing.twoTotal = pricing.twoMonth * 2;
-  pricing.threeMonth = drugOption.pricing.threeMonth + addOnPricing.threeMonth;
+  pricing.twoDoses = count * 2;
+  pricing.addOnTwoDoses = 60;
+  pricing.threeMonth =
+    doseOption.pricing.threeMonth * count + addOnPricing.threeMonth * 30;
   pricing.threeTotal = pricing.threeMonth * 3;
+  pricing.threeDoses = count * 3;
+  pricing.addOnThreeDoses = 90;
 
   return pricing;
 };
 
 export const drugDisplaySetup = subscription => {
-  const pricing = getPrices(subscription.drugId);
+  const pricing = getPrices(
+    subscription.drugId,
+    subscription.doseOption,
+    1,
+    subscription.addOnId
+  );
   const options = {
     display: "",
+    addOnDisplay: "",
+    monthlyDoses: 0,
+
     title: "",
     total: 0,
+    doses: 0,
     per: "",
     interval: "",
     noDiscount: 0
   };
 
+  console.log("Pricing:", pricing);
   options.display = pricing.display;
+  options.addOnDisplay = pricing.addOnDisplay;
+  options.monthlyDoses = pricing.monthlyDoses;
+  options.addOnMonthlyDoses = pricing.addOnMonthlyDoses;
 
   switch (subscription.shippingInterval) {
     case "everyThree":
       options.title = "3 Month Delivery";
-      options.total = pricing.three;
+      options.total = pricing.threeTotal;
+      options.doses = pricing.threeDoses;
+      options.addOnDoses = pricing.addOnThreeDoses;
       options.per = "3 mo";
       options.interval = "every 3 months";
       options.noDiscount = pricing.monthly * 3;
@@ -292,6 +323,8 @@ export const drugDisplaySetup = subscription => {
     case "everyTwo":
       options.title = "2 Month Delivery";
       options.total = pricing.twoTotal;
+      options.doses = pricing.twoDoses;
+      options.addOnDoses = pricing.addOnTwoDoses;
       options.per = "2 mo";
       options.interval = "every 2 months";
       options.noDiscount = pricing.monthly * 2;
@@ -300,6 +333,8 @@ export const drugDisplaySetup = subscription => {
     case "monthly":
       options.title = "Monthly Delivery";
       options.total = pricing.monthly;
+      options.doses = pricing.monthlyDoses;
+      options.addOnDoses = pricing.addOnMonthlyDoses;
       options.per = "mo";
       options.interval = "monthly";
       options.noDiscount = 0;

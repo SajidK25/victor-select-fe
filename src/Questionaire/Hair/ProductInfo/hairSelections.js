@@ -239,7 +239,7 @@ export const drugDisplaySetup = subscription => {
   switch (subscription.shippingInterval) {
     case "everyThree":
       options.title = "3 Month Delivery";
-      options.total = pricing.three;
+      options.total = pricing.threeTotal;
       options.per = "3 mo";
       options.interval = "every 3 months";
       options.noDiscount = pricing.monthly * 3;

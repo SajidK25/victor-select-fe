@@ -36,9 +36,6 @@ export function Review() {
       <div>
         <Typography align="center">{`Your online visit will be forwarded to your physician and you'll receive a response soon. Usually within 24 hours.`}</Typography>
       </div>
-      <Typography align="center" variant="h6" gutterBottom>
-        Thank you!
-      </Typography>
     </div>
   );
 }

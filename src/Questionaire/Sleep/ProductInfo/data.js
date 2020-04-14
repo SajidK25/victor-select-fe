@@ -1,6 +1,7 @@
 import { personal, payment, subscription } from "../../Shared/ProductInfo";
 
 export const initialValues = {
+  type: "SLEEP",
   personal,
   payment,
   subscription,

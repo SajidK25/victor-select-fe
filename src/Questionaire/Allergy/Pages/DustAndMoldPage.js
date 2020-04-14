@@ -36,18 +36,6 @@ const validateDustAndMold = values => {
     errors.mold = { selected: "Please choose an option." };
   }
 
-  //   if (g.scarring && !g.scarringExplain) {
-  //     errors.genitalIssues.scarringExplain = "Please provide details.";
-  //   }
-  //   if (g.curved && !g.curvedExplain) {
-  //     errors.genitalIssues.curvedExplain = "Please provide details.";
-  //   }
-  //   if (g.pain && !g.painExplain) {
-  //     errors.genitalIssues.painExplain = "Please provide details.";
-  //   }
-  //   if (g.tight && !g.tightExplain) {
-  //     errors.genitalIssues.tightExplain = "Please provide details.";
-  //   }
   return errors;
 };
 

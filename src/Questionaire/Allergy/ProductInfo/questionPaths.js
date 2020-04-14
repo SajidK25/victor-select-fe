@@ -64,9 +64,9 @@ import {
   AllergyDrugPreferencePage,
   validateAllergyDrugPreference,
   AllergyIntervalPage,
-  validateAllergyInterval
-  //  SummaryPage,
-  //  validateSummary
+  validateAllergyInterval,
+  SummaryPage,
+  validateSummary
 } from "../Pages";
 
 const pathConstants = {
@@ -114,6 +114,7 @@ const pages = [
     component: ZipcodePage,
     validate: validateZipcode
   },
+
   {
     key: pathConstants.GENDER,
     component: GenderPage,
@@ -124,11 +125,7 @@ const pages = [
     component: BirthdatePage,
     validate: validateBirthdate
   },
-  //  {
-  //    key: pathConstants.EDSOLUTIONTYPE,
-  //  component: EdSolutionTypePage,
-  //   validate: validateEdSolutionType
-  // },
+
   {
     key: pathConstants.DRUGPREFERENCE,
     component: AllergyDrugPreferencePage,
@@ -249,11 +246,11 @@ const pages = [
     component: EnvironmentalPage,
     validate: validateEnvironmental
   },
-  {
-    key: pathConstants.DUSTANDMOLD,
-    component: DustAndMoldPage,
-    validate: validateDustAndMold
-  },
+  // {
+  //   key: pathConstants.DUSTANDMOLD,
+  //   component: DustAndMoldPage,
+  //   validate: validateDustAndMold
+  // },
   {
     key: pathConstants.ANYTHINGELSE,
     component: AnythingElsePage,
@@ -264,11 +261,11 @@ const pages = [
     component: PicturesPage,
     validate: validatePictures
   },
-  //  {
-  //    key: pathConstants.SUMMARY,
-  //    component: SummaryPage,
-  //    validate: validateSummary
-  //  },
+  {
+    key: pathConstants.SUMMARY,
+    component: SummaryPage,
+    validate: validateSummary
+  },
   {
     key: pathConstants.SHIPPING,
     component: ShippingPage,

@@ -14,12 +14,14 @@ import {
   PhysicalExamPage,
   validatePhysicalExam,
   ShippingPage,
-  validateShipping
-  //  PaymentPage,
-  //  validatePayment
+  validateShipping,
+  PaymentInfoPage,
+  validatePaymentInfo
 } from "../../Shared/Pages";
 
 import {
+  JoyIntervalPage,
+  validateJoyInterval,
   HowOftenPage,
   validateHowOften,
   HowOften2Page,
@@ -29,9 +31,9 @@ import {
   SeenPhysicianPage,
   validateSeenPhysician,
   SocialFactorsPage,
-  validateSocialFactors
-  //  SummaryPage,
-  //  validateSummary
+  validateSocialFactors,
+  SummaryPage,
+  validateSummary
 } from "../Pages";
 
 const pathConstants = {
@@ -104,21 +106,11 @@ const pages = [
   //   component: DrugDosePage,
   //   validate: validateDrugDose
   // },
-  //{
-  //  key: pathConstants.TIMESPERMONTH,
-  // component: AllergyIntervalPage,
-  //  validate: validateAllergyInterval
-  //},
-  // {
-  //   key: pathConstants.ADDON,
-  //   component: EdAddonPage,
-  //   validate: validateEdAddon
-  // },
-  // {
-  //   key: pathConstants.HOWOFTEN,
-  //   component: HowOftenPage,
-  //   validate: validateHowOften
-  // },
+  {
+    key: pathConstants.TIMESPERMONTH,
+    component: JoyIntervalPage,
+    validate: validateJoyInterval
+  },
   {
     key: pathConstants.VISITSTART,
     component: VisitStartPage,
@@ -154,21 +146,21 @@ const pages = [
     component: PicturesPage,
     validate: validatePictures
   },
-  //  {
-  //    key: pathConstants.SUMMARY,
-  //    component: SummaryPage,
-  //    validate: validateSummary
-  //  },
+  {
+    key: pathConstants.SUMMARY,
+    component: SummaryPage,
+    validate: validateSummary
+  },
   {
     key: pathConstants.SHIPPING,
     component: ShippingPage,
     validate: validateShipping
+  },
+  {
+    key: pathConstants.PAYMENT,
+    component: PaymentInfoPage,
+    validate: validatePaymentInfo
   }
-  //  {
-  //    key: pathConstants.PAYMENT,
-  //    component: PaymentPage,
-  //    validate: validatePayment
-  //  }
 ];
 
 const SkipPage = (key, values) => {

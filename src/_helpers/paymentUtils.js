@@ -64,9 +64,7 @@ export const validCardNumber = value => {
 };
 
 export const validCardCVC = (cvc, cc) => {
-  console.log("Valid CVC!!");
   const cardType = Payment.fns.cardType(cc);
-  console.log("CardType:", cardType);
   if (!cardType) return false;
 
   return Payment.fns.validateCardCVC(cvc, cardType);

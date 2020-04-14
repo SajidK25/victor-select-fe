@@ -10,9 +10,6 @@ const RenderStdSelect = props => {
     ...rest
   } = props;
 
-  console.log("Props", props);
-  console.log("Rest", rest);
-
   return (
     <Select {...input} {...rest} inputProps={{ ...input }}>
       {options.map(i => (

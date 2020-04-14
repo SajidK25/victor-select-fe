@@ -14,3 +14,4 @@ export * from "./SleepDosePage";
 export * from "./SleepIntervalPage";
 export * from "./SleepOtherMedicationsPage";
 export * from "./AddonPage";
+export * from "./SummaryPage";

@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 import React from "react";
 import { Field } from "react-final-form";
 import { formatMoney } from "../../../../_helpers";
@@ -10,7 +9,7 @@ import {
 import { getPrices, MAX_AMOUNT } from "../../ProductInfo";
 import { AllergyIntervalDisplay } from "./AllergyIntervalDisplay";
 
-const validateAllergyInterval = values => {
+const validateAllergyInterval = () => {
   const errors = {};
 
   return errors;

@@ -19,3 +19,4 @@ export * from "./EnvironmentalPage";
 export * from "./DustAndMoldPage";
 export * from "./AllergyDrugPreferencePage";
 export * from "./AllergyIntervalPage";
+export * from "./SummaryPage";

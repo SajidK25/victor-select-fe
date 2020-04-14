@@ -4,7 +4,6 @@ import { ErrorDisplay, UpdateButton, Spinner } from "./";
 
 export const UpdateForm = props => {
   const { initialValues, validate, onSubmit, buttonText } = props;
-  console.log("Validate", validate);
 
   return (
     <Form

@@ -10,7 +10,6 @@ const CheckSubmit = props => {
     if (options) {
       options.forEach(o => {
         if (o.id === value && o.warning) {
-          console.log("Values are equal!!");
           ret = false;
         }
       });

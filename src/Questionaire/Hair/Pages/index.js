@@ -29,3 +29,4 @@ export * from "./HairGetAttachmentPage";
 export * from "./HairDrugPreferencePage";
 export * from "./HairIntervalPage";
 export * from "./HairAddonPage";
+export * from "./SummaryPage";

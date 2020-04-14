@@ -14,7 +14,11 @@ import {
   VisitStartPage,
   validateVisitStart,
   PhysicalExamPage,
-  validatePhysicalExam
+  validatePhysicalExam,
+  ShippingPage,
+  validateShipping,
+  PaymentInfoPage,
+  validatePaymentInfo
 } from "../../Shared/Pages";
 
 import {
@@ -75,7 +79,9 @@ import {
   HairAnemiaThyroidPage,
   validateHairAnemiaThyroid,
   HairAllergiesPage,
-  validateHairAllergies
+  validateHairAllergies,
+  SummaryPage,
+  validateSummary
 } from "../Pages";
 
 import { getAge } from "../../../_helpers";
@@ -118,7 +124,10 @@ const pathConstants = {
   HAIRANEMIATHYROID: 33,
   HAIRALLERGIES: 35,
   ANYTHINGELSE: 36,
-  PICTURES: 37
+  PICTURES: "photos",
+  SUMMARY: "summary",
+  SHIPPING: "shipping",
+  PAYMENT: "payment"
 };
 
 const pages = [
@@ -306,6 +315,21 @@ const pages = [
     key: pathConstants.PICTURES,
     component: PicturesPage,
     validate: validatePictures
+  },
+  {
+    key: pathConstants.SUMMARY,
+    component: SummaryPage,
+    validate: validateSummary
+  },
+  {
+    key: pathConstants.SHIPPING,
+    component: ShippingPage,
+    validate: validateShipping
+  },
+  {
+    key: pathConstants.PAYMENT,
+    component: PaymentInfoPage,
+    validate: validatePaymentInfo
   }
 ];
 
@@ -345,7 +369,7 @@ const SkipPage = (key, values) => {
 };
 
 const hairQuestionaire = {
-  type: "Hair",
+  type: "HAIR",
   pages: pages,
   skipPage: SkipPage,
   pathBase: "/visit/Hair",

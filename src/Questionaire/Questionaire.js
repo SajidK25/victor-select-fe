@@ -26,13 +26,11 @@ const Questionaire = () => {
   let transDir = "left";
 
   const questionaire = getQuestionaire(id);
-  console.log("Questionaire:", questionaire);
 
   const [pageIndex, setPageIndex] = useState(0);
   const [page, setPage] = useState(questionaire.pages[0]);
 
   useEffect(() => {
-    console.log("useEffect Location:", location);
     const pathArray = location.pathname.split("/");
 
     if (pathArray.length >= 4) {
@@ -49,7 +47,6 @@ const Questionaire = () => {
   }, [location, page.key, questionaire]);
 
   const next = values => {
-    console.log("Next page called!");
     const nextPage = getNextPage(values, pageIndex, 1, questionaire);
     setPageIndex(nextPage.pageIndex);
     setPage(nextPage.page);
@@ -78,18 +75,15 @@ const Questionaire = () => {
       initialValues={questionaire.initialValues}
       validate={validate}
       onSubmit={async values => {
-        console.log("Saving currVisit");
         values.type = questionaire.type;
         values.page = page.key;
         let response = null;
         if (!isLastPage()) {
-          console.log("Saving currVisit!");
           response = await updateCurrVisit({
             variables: {
               input: values
             }
           });
-          console.log("Response:", response);
           if (response && response.data) {
             await next(values);
           }

@@ -41,7 +41,6 @@ const EdAddonPage = props => {
 
   options = getAddonList();
 
-  console.log("Addon Options", options);
   return (
     <StandardPage questionText={questionText} {...props}>
       <Typography variant="body2" paragraph>
