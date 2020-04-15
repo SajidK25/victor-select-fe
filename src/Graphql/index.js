@@ -4,3 +4,4 @@ export * from "./Visits";
 export * from "./Login";
 export * from "./Logout";
 export * from "./CreditCard";
+export * from "./Interest";

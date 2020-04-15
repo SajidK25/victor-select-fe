@@ -4,24 +4,24 @@ import Close from "@material-ui/icons/Close";
 import IconButton from "@material-ui/core/IconButton";
 import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   updateButton: {
     position: "relative",
     marginTop: theme.spacing(2),
     width: "100%",
     fontSize: 18,
-    padding: 8
-  }
+    padding: 8,
+  },
 }));
 
 // Next Button
-export const UpdateButton = props => {
-  const { buttonText, submitting, validating } = props;
+export const UpdateButton = (props) => {
+  const { buttonText, submitting, validating, disabled } = props;
   const classes = useStyles();
 
   return (
     <Button
-      disabled={submitting || validating}
+      disabled={submitting || validating || disabled}
       variant="contained"
       color="primary"
       type="submit"
@@ -33,7 +33,7 @@ export const UpdateButton = props => {
 };
 
 // Previous Button
-export const ExitButton = props => {
+export const ExitButton = (props) => {
   const { input, handleClick, ...custom } = props;
 
   return (

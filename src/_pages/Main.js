@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { Review, Login } from "./";
+import { Review, Login, ComingSoon } from "./";
 import { PrivateRoute } from "../_components";
 import { CreateAccountPage } from "../Questionaire/Shared/Pages";
 import { Questionaire } from "../Questionaire";
@@ -9,7 +9,7 @@ import {
   UpdateCreditCard,
   UpdateAddress,
   UpdateEmail,
-  UpdatePassword
+  UpdatePassword,
 } from "./Account/AcctInfo";
 import { AcctMain } from "./Account";
 
@@ -19,8 +19,8 @@ const useStyles = makeStyles({
     top: 0,
     bottom: 0,
     left: 0,
-    right: 0
-  }
+    right: 0,
+  },
 });
 
 export const Main = () => {
@@ -50,13 +50,16 @@ export const Main = () => {
         <Route path={`/visitStart/:id`}>
           <CreateAccountPage />
         </Route>
+        <Route path={`/comingsoon/:id`}>
+          <ComingSoon />
+        </Route>
         <Route path="/login" exact>
           <Login />
         </Route>
         <Route path={`/Login/:id`}>
           <Login />
         </Route>
-        <Route path={"/visit/:id"}>
+        <Route path={`/visit/:id`}>
           <Questionaire />
         </Route>
       </Switch>
