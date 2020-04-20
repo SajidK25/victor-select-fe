@@ -45,11 +45,11 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const categories = [
-  { type: "ED", category: "ED" },
-  { type: "HAIR", category: "hair" },
-  { type: "ALLERGY", category: "allergy" },
-  { type: "JOY", category: "Joy" },
-  { type: "SLEEP", category: "sleep" },
+  { type: "ED", category: "ED", url: "/ed/" },
+  { type: "HAIR", category: "hair growth", url: "/hair-growth/" },
+  { type: "ALLERGY", category: "allergy", url: "/allergy/" },
+  { type: "JOY", category: "Joy", url: "/joy/" },
+  { type: "SLEEP", category: "sleep", url: "/sleep/" },
 ];
 
 export const ComingSoon = () => {
@@ -58,8 +58,12 @@ export const ComingSoon = () => {
   const classes = useStyles();
 
   let productLine = "VictorySelect";
+  let url = "";
   const item = categories.find((c) => c.type === id);
-  if (item) productLine = item.category;
+  if (item) {
+    productLine = item.category;
+    url = item.url;
+  }
 
   const initialValues = {
     email: "",
@@ -141,7 +145,7 @@ export const ComingSoon = () => {
               size="small"
               color="primary"
               className={classes.button}
-              href="https://victoryselect.com"
+              href={`https://victoryselect.com${url}`}
             >
               Return to VictorySelect.com
             </Button>

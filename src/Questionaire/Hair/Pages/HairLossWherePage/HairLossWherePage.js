@@ -5,10 +5,10 @@ import { HairLossWhereDisplay } from "./HairLossWhereDisplay";
 import {
   StandardPage,
   DetailedRadioGroup,
-  RadioSubmit
+  RadioSubmit,
 } from "../../../../_components";
 
-const options = [
+const maleOptions = [
   //{ id: "1", labelOptions: { id: "1" } },
   { id: "1", labelOptions: { id: "1" } },
   // { id: "3", labelOptions: { id: "3" } },
@@ -18,18 +18,30 @@ const options = [
     id: "3",
     labelOptions: { id: "3" },
     warning:
-      "If you experience hair loss this extensive, our products are not likely to benefit you."
+      "If you experience hair loss this extensive, our products are not likely to benefit you.",
   },
   // { id: "7", labelOptions: { id: "7" } },
   {
     id: "4",
     labelOptions: { id: "4" },
     warning:
-      "If you experience hair loss this extensive, our products are not likely to benefit you."
-  }
+      "If you experience hair loss this extensive, our products are not likely to benefit you.",
+  },
 ];
 
-const validateHairLossWhere = values => {
+const femaleOptions = [
+  { id: "1", labelOptions: { id: "1" } },
+  { id: "2", labelOptions: { id: "2" } },
+  { id: "3", labelOptions: { id: "3" } },
+  {
+    id: "4",
+    labelOptions: { id: "4" },
+    warning:
+      "If you experience hair loss this extensive, our products are not likely to benefit you.",
+  },
+];
+
+const validateHairLossWhere = (values) => {
   const errors = { hairLoss: {} };
 
   if (!values.hairLoss.where) {
@@ -44,8 +56,11 @@ const validateHairLossWhere = values => {
   return errors;
 };
 
-const HairLossWherePage = props => {
+const HairLossWherePage = (props) => {
   const { handleSubmit, values } = props;
+
+  const options =
+    values.personal.gender === "male" ? maleOptions : femaleOptions;
 
   const fieldName = "hairLoss.where";
 

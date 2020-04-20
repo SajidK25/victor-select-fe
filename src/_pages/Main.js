@@ -29,7 +29,7 @@ export const Main = () => {
   return (
     <div className={classes.app}>
       <Switch>
-        <PrivateRoute path="/account/:id">
+        <PrivateRoute path="/account">
           <AcctMain />
         </PrivateRoute>
         <PrivateRoute path="/update-creditcard">
