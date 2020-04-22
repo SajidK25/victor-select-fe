@@ -8,11 +8,40 @@ export const NEW_MESSAGE = gql`
   }
 `;
 
+export const PATIENT_CHAT = gql`
+  query getPatientChat($prescriptionId: String!) {
+    getPatientChat(prescriptionId: $prescriptionId) {
+      id
+      text
+      createdAt
+      private
+      read
+      user {
+        id
+        firstName
+        lastName
+      }
+      prescription {
+        id
+        product {
+          id
+          productName
+          treatmentUrl
+        }
+      }
+      physician {
+        id
+      }
+    }
+  }
+`;
+
 export const RECENT_PHYSICIAN_MESSAGE = gql`
   query getRecentPrescriptionMessage($prescriptionId: String!) {
     getRecentPrescriptionMessage(prescriptionId: $prescriptionId) {
       id
       text
+      createdAt
     }
   }
 `;

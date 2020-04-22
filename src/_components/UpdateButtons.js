@@ -36,6 +36,7 @@ export const UpdateButton = (props) => {
 export const ExitButton = (props) => {
   const { input, handleClick, ...custom } = props;
 
+  console.log("HandleClick", props);
   return (
     <IconButton {...input} {...custom} onClick={handleClick} color="primary">
       <Close />

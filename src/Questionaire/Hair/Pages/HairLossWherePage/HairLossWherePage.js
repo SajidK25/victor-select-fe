@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 import React from "react";
 import { Field } from "react-final-form";
 import { HairLossWhereDisplay } from "./HairLossWhereDisplay";

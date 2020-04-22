@@ -11,6 +11,7 @@ import {
   UpdateEmail,
   UpdatePassword,
 } from "./Account/AcctInfo";
+import { Chat } from "./Account/Messages";
 import { AcctMain } from "./Account";
 
 const useStyles = makeStyles({
@@ -43,6 +44,9 @@ export const Main = () => {
         </PrivateRoute>
         <PrivateRoute path="/update-email">
           <UpdateEmail />
+        </PrivateRoute>
+        <PrivateRoute path="/chat/:id">
+          <Chat />
         </PrivateRoute>
         <Route path="/confirmation">
           <Review />

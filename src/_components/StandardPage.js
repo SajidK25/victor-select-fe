@@ -2,7 +2,7 @@ import React from "react";
 import Box from "@material-ui/core/Box";
 import { QuestionContainer, StandardForm, StandardHeading, Spinner } from "./";
 
-export const StandardPage = props => {
+export const StandardPage = (props) => {
   const { direction, fullWidth, pageNo, submitting, validating } = props;
 
   return (
@@ -14,7 +14,6 @@ export const StandardPage = props => {
     >
       <Box width="100%">
         {(submitting || validating) && <Spinner />}
-        page: {pageNo}
         <StandardHeading {...props} />
         <StandardForm {...props}>{props.children}</StandardForm>
       </Box>

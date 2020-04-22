@@ -7,10 +7,10 @@ import {
   Switch,
   useHistory,
   useLocation,
-  useParams
+  useParams,
 } from "react-router-dom";
 import { getNextPage, getCurrentPage } from "./questionPaths";
-import { QuestionaireLayout } from "../_components";
+import { QuestionaireLayout, ErrorDisplay } from "../_components";
 import { getQuestionaire } from "./questionPaths";
 import { SAVENEWVISIT_MUTATION, UPDATECURRVISIT_MUTATION } from "../Graphql";
 
@@ -20,7 +20,10 @@ const Questionaire = () => {
   const { id } = useParams();
   const client = useApolloClient();
 
-  const [saveNewVisit] = useMutation(SAVENEWVISIT_MUTATION);
+  const [
+    saveNewVisit,
+    { loading: saveLoading, error: saveError },
+  ] = useMutation(SAVENEWVISIT_MUTATION);
   const [updateCurrVisit] = useMutation(UPDATECURRVISIT_MUTATION);
 
   let transDir = "left";
@@ -46,7 +49,7 @@ const Questionaire = () => {
     return () => console.log("unmounting...");
   }, [location, page.key, questionaire]);
 
-  const next = values => {
+  const next = (values) => {
     const nextPage = getNextPage(values, pageIndex, 1, questionaire);
     setPageIndex(nextPage.pageIndex);
     setPage(nextPage.page);
@@ -54,7 +57,7 @@ const Questionaire = () => {
     history.push(nextPage.path);
   };
 
-  const previous = values => {
+  const previous = (values) => {
     const prevPage = getNextPage(values, pageIndex, -1, questionaire);
     setPageIndex(prevPage.pageIndex);
     setPage(prevPage.page);
@@ -66,7 +69,7 @@ const Questionaire = () => {
     return pageIndex === questionaire.pages.length - 1;
   };
 
-  const validate = async values => {
+  const validate = async (values) => {
     return page.validate ? page.validate(values, client) : {};
   };
 
@@ -74,28 +77,32 @@ const Questionaire = () => {
     <Form
       initialValues={questionaire.initialValues}
       validate={validate}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         values.type = questionaire.type;
         values.page = page.key;
         let response = null;
-        if (!isLastPage()) {
-          response = await updateCurrVisit({
-            variables: {
-              input: values
+        try {
+          if (!isLastPage()) {
+            response = await updateCurrVisit({
+              variables: {
+                input: values,
+              },
+            });
+            if (response && response.data) {
+              await next(values);
             }
-          });
-          if (response && response.data) {
-            await next(values);
-          }
-        } else {
-          response = await saveNewVisit({
-            variables: {
-              input: values
+          } else {
+            response = await saveNewVisit({
+              variables: {
+                input: values,
+              },
+            });
+            if (response && response.data) {
+              history.push("/confirmation");
             }
-          });
-          if (response && response.data) {
-            history.push("/confirmation");
           }
+        } catch (err) {
+          console.log(err);
         }
       }}
     >
@@ -105,6 +112,7 @@ const Questionaire = () => {
             handlePrevious={previous}
             values={values}
             page={pageIndex}
+            error={saveError}
           >
             <Switch location={location}>
               <Redirect

@@ -3,6 +3,7 @@ import { useParams, useLocation, Switch } from "react-router-dom";
 import { AcctLayout, PrivateRoute } from "../../_components";
 import { Treatments } from "./Treatments";
 import { AcctInfo } from "./AcctInfo";
+import { TreatmentMessages } from "./Messages";
 
 export const AcctMain = () => {
   const params = useParams();
@@ -21,7 +22,9 @@ export const AcctMain = () => {
           <PrivateRoute path="/account/info">
             <AcctInfo />
           </PrivateRoute>
-          <PrivateRoute path="/account/messages">Messages!</PrivateRoute>
+          <PrivateRoute path="/account/messages">
+            <TreatmentMessages />
+          </PrivateRoute>
         </Switch>
       </AcctLayout>
     </>

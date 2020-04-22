@@ -7,16 +7,16 @@ import { UpdatePage, RenderStdTextField, ErrorMessage } from "../_components";
 import { setAccessToken } from "../accessToken";
 import { LOGIN_MUTATION, ME_QUERY } from "../Graphql";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   heading: {
     paddingTop: theme.spacing(2),
     paddingBottom: theme.spacing(2),
     fontSize: 20,
-    fontWeight: 500
+    fontWeight: 500,
   },
   fieldContainer: {
-    marginTop: theme.spacing(1)
-  }
+    marginTop: theme.spacing(1),
+  },
 }));
 
 export const Login = () => {
@@ -27,12 +27,12 @@ export const Login = () => {
 
   const initialValues = {
     email: "",
-    password: ""
+    password: "",
   };
 
   const [login, { error: mutationError }] = useMutation(LOGIN_MUTATION);
 
-  const validate = values => {
+  const validate = (values) => {
     console.log("Validate Values:", values);
     const errors = {};
     if (!values.password) {
@@ -50,7 +50,7 @@ export const Login = () => {
     return errors;
   };
 
-  const Submit = async values => {
+  const Submit = async (values) => {
     try {
       const response = await login({
         variables: { ...values },
@@ -61,10 +61,10 @@ export const Login = () => {
           store.writeQuery({
             query: ME_QUERY,
             data: {
-              me: data.login.user
-            }
+              me: data.login.user,
+            },
           });
-        }
+        },
       });
       console.log(response);
       if (response && response.data) {
@@ -82,6 +82,7 @@ export const Login = () => {
       initialValues={initialValues}
       validate={validate}
       onSubmit={Submit}
+      buttonText="Login"
     >
       <div className={classes.heading}>Member Login</div>
       <ErrorMessage error={mutationError} />

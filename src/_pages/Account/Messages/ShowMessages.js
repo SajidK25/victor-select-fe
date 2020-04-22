@@ -1,9 +1,9 @@
-import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 import { useQuery } from "@apollo/react-hooks";
 import { makeStyles } from "@material-ui/core/styles";
-import { ErrorMessage, Loading, ShowMessage } from "./";
-import { GET_MESSAGES } from "../../";
+import { ErrorMessage, Loading } from "../../../_components";
+import { ShowMessage } from "./";
+import { PATIENT_CHAT } from "../../../Graphql";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,10 +22,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const ShowMessages = ({ prescriptionId }) => {
-  const history = useHistory();
-  const [sorting, setSorting] = useState(false);
-
-  const { data, loading, error } = useQuery(GET_MESSAGES, {
+  const { data, loading, error } = useQuery(PATIENT_CHAT, {
     variables: { prescriptionId: prescriptionId },
     pollInterval: 2000,
     onCompleted: (data) => {
@@ -40,21 +37,16 @@ export const ShowMessages = ({ prescriptionId }) => {
   });
   const classes = useStyles();
 
-  const handleClick = (id) => {
-    history.push("/visit/" + id);
-  };
-
   if (loading) return <Loading />;
   if (error) return <ErrorMessage error={error} />;
-  if (sorting) return <p>Sorting Results</p>;
   if (!data) return <p>No new visits</p>;
 
   console.log("Data:", data);
 
   return (
     <div className={classes.container}>
-      {data.getMessagesByPrescription.map((m) => (
-        <ShowMessage key={m.id} message={m} onClick={handleClick} />
+      {data.getPatientChat.map((m) => (
+        <ShowMessage key={m.id} message={m} />
       ))}
     </div>
   );

@@ -10,7 +10,7 @@ import {
   formatExpirationDate,
   validCardNumber,
   validCardExpiry,
-  validCardCVC
+  validCardCVC,
 } from "../../../_helpers";
 import { drugDisplaySetup as edDisplaySetup } from "../../ED/ProductInfo/edSelections";
 import { drugDisplaySetup as joyDisplaySetup } from "../../Joy/ProductInfo/joySelections";
@@ -20,54 +20,61 @@ import { drugDisplaySetup as sleepDisplaySetup } from "../../Sleep/ProductInfo/s
 import Divider from "@material-ui/core/Divider";
 import { formatMoney } from "../../../_helpers";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   payWith: {
     fontSize: 18,
     fontWeight: 500,
-    marginTop: theme.spacing(2)
+    marginTop: theme.spacing(2),
   },
   summaryContainer: {
     padding: theme.spacing(1),
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(3)
+    marginBottom: theme.spacing(3),
   },
   treatment: {
     fontWeight: 500,
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   infoBlock: {
     marginTop: theme.spacing(2),
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   priceLine: {
     display: "flex",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   due: {
     fontWeight: 600,
-    fontSize: 18
+    fontSize: 18,
   },
   free: {
     fontWeight: 600,
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
   supply: {
     fontWeight: 300,
-    fontSize: 12
+    fontSize: 12,
   },
   amount: {
-    fontWeight: 600
+    fontWeight: 600,
   },
   product: {
-    fontWeight: 400
+    fontWeight: 400,
   },
   chargeSummary: {
     marginTop: 0,
-    marginBottom: theme.spacing(3)
-  }
+    marginBottom: theme.spacing(3),
+  },
+  disclaimer: {
+    fontSize: 11,
+    textAlign: "center",
+    width: "64%",
+    lineHeight: "15px",
+    margin: "8px auto 0",
+  },
 }));
 
-const validatePaymentInfo = values => {
+const validatePaymentInfo = (values) => {
   const errors = { payment: {} };
 
   if (!values.payment.cardNumber) {
@@ -91,7 +98,7 @@ const validatePaymentInfo = values => {
   return errors;
 };
 
-const PaymentInfoPage = props => {
+const PaymentInfoPage = (props) => {
   const { values } = props;
   const classes = useStyles();
 
@@ -213,6 +220,10 @@ const PaymentInfoPage = props => {
           thereafter until you cancel your prescription or your prescription
           expires. You can cancel your plan anytime by logging into your
           account.
+          <div className={classes.disclaimer}>
+            A $1.00 temporary authorization by The Daily Dose Pharmacy may be
+            placed in order to verify your card.
+          </div>
         </Grid>
       </Grid>
     </StandardPage>

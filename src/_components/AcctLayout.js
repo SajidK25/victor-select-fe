@@ -2,7 +2,7 @@ import React from "react";
 import { AcctNav, AcctHeader } from "./";
 import { makeStyles } from "@material-ui/core/styles";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   acctApp: {
     height: "100%",
     overflow: "hidden",
@@ -12,38 +12,37 @@ const useStyles = makeStyles(theme => ({
     bottom: 0,
     left: 0,
     display: "flex",
-    flexDirection: "column"
+    flexDirection: "column",
   },
   appContent: {
     backgroundColor: "#FAFAFA",
     flex: 1,
-    overflowY: "auto",
     [theme.breakpoints.up(1280)]: {
-      paddingTop: 60
+      paddingTop: 60,
     },
     [theme.breakpoints.down(1279)]: {
-      paddingTop: 110
-    }
+      paddingTop: 110,
+    },
   },
   appContentInner: {
     padding: "0 13px",
     width: 580,
     maxWidth: "100%",
-    margin: "0 auto"
+    margin: "0 auto",
   },
   appMain: {
     position: "relative",
     display: "flex",
     flexDirection: "column",
     height: "100%",
-    background: "rgb(255,255,255)"
+    background: "rgb(255,255,255)",
   },
   app: {
-    display: "block"
-  }
+    display: "block",
+  },
 }));
 
-export const AcctLayout = props => {
+export const AcctLayout = (props) => {
   const classes = useStyles();
 
   return (

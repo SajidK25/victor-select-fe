@@ -19,12 +19,12 @@ import {
   AnythingElsePage,
   validateAnythingElse,
   ShippingPage,
-  validateShipping
+  validateShipping,
 } from "../../Shared/Pages";
 
 import {
   PaymentInfoPage,
-  validatePaymentInfo
+  validatePaymentInfo,
 } from "../../Shared/Pages/PaymentInfoPage";
 
 import {
@@ -99,7 +99,7 @@ import {
   EdMedsPage,
   validateEdMeds,
   SummaryPage,
-  validateSummary
+  validateSummary,
 } from "../Pages";
 
 const pathConstants = {
@@ -149,240 +149,240 @@ const pathConstants = {
   PICTURES: "photos",
   SUMMARY: "summary",
   SHIPPING: "shipping",
-  PAYMENT: "payment"
+  PAYMENT: "payment",
 };
 
 const pages = [
   {
     key: pathConstants.ZIPCODE,
     component: ZipcodePage,
-    validate: validateZipcode
+    validate: validateZipcode,
   },
   {
     key: pathConstants.GENDER,
     component: GenderPage,
-    validate: validateEitherGender
+    validate: validateEitherGender,
   },
   {
     key: pathConstants.FEMALE_ED,
     component: FemaleEdPage,
-    validate: validateFemaleEd
+    validate: validateFemaleEd,
   },
   {
     key: pathConstants.BIRTHDATE,
     component: BirthdatePage,
-    validate: validateBirthdate
+    validate: validateBirthdate,
   },
   {
     key: pathConstants.EDSOLUTIONTYPE,
     component: EdSolutionTypePage,
-    validate: validateEdSolutionType
+    validate: validateEdSolutionType,
   },
   {
     key: pathConstants.DRUGPREFERENCE,
     component: DrugPreferencePage,
-    validate: validateDrugPreference
+    validate: validateDrugPreference,
   },
   {
     key: pathConstants.DRUGDOSE,
     component: DrugDosePage,
-    validate: validateDrugDose
+    validate: validateDrugDose,
   },
   {
     key: pathConstants.TIMESPERMONTH,
     component: TimesPerMonthPage,
-    validate: validateTimesPerMonth
+    validate: validateTimesPerMonth,
   },
   {
     key: pathConstants.ADDON,
     component: EdAddonPage,
-    validate: validateEdAddon
+    validate: validateEdAddon,
   },
   {
     key: pathConstants.HOWOFTEN,
     component: HowOftenPage,
-    validate: validateHowOften
+    validate: validateHowOften,
   },
   {
     key: pathConstants.EDSTART,
     component: VisitStartPage,
-    validate: validateVisitStart
+    validate: validateVisitStart,
   },
   {
     key: pathConstants.ERECTION,
     component: ErectionPage,
-    validate: validateErection
+    validate: validateErection,
   },
   {
     key: pathConstants.PROBLEMSBEGAN,
     component: ProblemsBeganPage,
-    validate: validateProblemsBegan
+    validate: validateProblemsBegan,
   },
   {
     key: pathConstants.NEWPARTNER,
     component: NewPartnerPage,
-    validate: validateNewPartner
+    validate: validateNewPartner,
   },
   {
     key: pathConstants.ERECTIONSWHEN,
     component: ErectionWhenPage,
-    validate: validateErectionWhen
+    validate: validateErectionWhen,
   },
   {
     key: pathConstants.WHILEMASTURBATING,
     component: MasturbatingPage,
-    validate: validateMasturbating
+    validate: validateMasturbating,
   },
   {
     key: pathConstants.ONWAKING,
     component: WakeUpPage,
-    validate: validateWakeUp
+    validate: validateWakeUp,
   },
   {
     key: pathConstants.PRE_BP,
     component: PreBPPage,
-    validate: validatePreBP
+    validate: validatePreBP,
   },
   {
     key: pathConstants.SYSTOLIC,
     component: SystolicPage,
-    validate: validateSystolic
+    validate: validateSystolic,
   },
   {
     key: pathConstants.DIASTOLIC,
     component: DiastolicPage,
-    validate: validateDiastolic
+    validate: validateDiastolic,
   },
   {
     key: pathConstants.POST_BP,
     component: PostBPPage,
-    validate: validatePostBP
+    validate: validatePostBP,
   },
   {
     key: pathConstants.PHYSICAL_EXAM,
     component: PhysicalExamPage,
-    validate: validatePhysicalExam
+    validate: validatePhysicalExam,
   },
   {
     key: pathConstants.GENITAL_EXAM,
     component: GenitalExamPage,
-    validate: validateGenitalExam
+    validate: validateGenitalExam,
   },
   {
     key: pathConstants.LIBIDO,
     component: LibidoPage,
-    validate: validateLibido
+    validate: validateLibido,
   },
   {
     key: pathConstants.DEPRESSION,
     component: DepressionPage,
-    validate: validateDepression
+    validate: validateDepression,
   },
   {
     key: pathConstants.DEPRESSION_FREQUENCY,
     component: DepressionFrequencyPage,
-    validate: validateDepressionFrequency
+    validate: validateDepressionFrequency,
   },
   {
     key: pathConstants.LIFESTYLE,
     component: LifestylePage,
-    validate: validateLifestyle
+    validate: validateLifestyle,
   },
   {
     key: pathConstants.CONDITIONS,
     component: ConditionsPage,
-    validate: validateConditions
+    validate: validateConditions,
   },
   {
     key: pathConstants.GENITALISSUES,
     component: GenitalIssuesPage,
-    validate: validateGenitalIssues
+    validate: validateGenitalIssues,
   },
   {
     key: pathConstants.SERIOUSHISTORY,
     component: SeriousHistoryPage,
-    validate: validateSeriousHistory
+    validate: validateSeriousHistory,
   },
   {
     key: pathConstants.SERIOUSCONDITIONS,
     component: SeriousConditionsPage,
-    validate: validateSeriousConditions
+    validate: validateSeriousConditions,
   },
   {
     key: pathConstants.OTHERCONDITIONS,
     component: OtherConditionsPage,
-    validate: validateOtherConditions
+    validate: validateOtherConditions,
   },
   {
     key: pathConstants.OTHERMEDICATIONS,
     component: OtherMedicationsPage,
-    validate: validateOtherMedications
+    validate: validateOtherMedications,
   },
   {
     key: pathConstants.HYPERTENSIONMEDS,
     component: HypertensionMedsPage,
-    validate: validateHypertensionMeds
+    validate: validateHypertensionMeds,
   },
   {
     key: pathConstants.EDMEDS,
     component: EdMedsPage,
-    validate: validateEdMeds
+    validate: validateEdMeds,
   },
   {
     key: pathConstants.EXPLAIN_CIALIS,
     component: EdMedsCialisExplainPage,
-    validate: validateEdMedsCialisExplain
+    validate: validateEdMedsCialisExplain,
   },
   {
     key: pathConstants.EXPLAIN_VIAGRA,
     component: EdMedsViagraExplainPage,
-    validate: validateEdMedsViagraExplain
+    validate: validateEdMedsViagraExplain,
   },
   {
     key: pathConstants.EXPLAIN_LEVITRA,
     component: EdMedsLevitraExplainPage,
-    validate: validateEdMedsLevitraExplain
+    validate: validateEdMedsLevitraExplain,
   },
   {
     key: pathConstants.EXPLAIN_AVANAFIL,
     component: EdMedsAvanafilExplainPage,
-    validate: validateEdMedsAvanafilExplain
+    validate: validateEdMedsAvanafilExplain,
   },
   {
     key: pathConstants.OTHERMEDICINES,
     component: OtherMedicinesPage,
-    validate: validateOtherMedicines
+    validate: validateOtherMedicines,
   },
   {
     key: pathConstants.ALLERGIES,
     component: AllergiesPage,
-    validate: validateAllergies
+    validate: validateAllergies,
   },
   {
     key: pathConstants.ANYTHINGELSE,
     component: AnythingElsePage,
-    validate: validateAnythingElse
+    validate: validateAnythingElse,
   },
   {
     key: pathConstants.PICTURES,
     component: PicturesPage,
-    validate: validatePictures
+    validate: validatePictures,
   },
   {
     key: pathConstants.SUMMARY,
     component: SummaryPage,
-    validate: validateSummary
+    validate: validateSummary,
   },
   {
     key: pathConstants.SHIPPING,
     component: ShippingPage,
-    validate: validateShipping
+    validate: validateShipping,
   },
   {
     key: pathConstants.PAYMENT,
     component: PaymentInfoPage,
-    validate: validatePaymentInfo
-  }
+    validate: validatePaymentInfo,
+  },
 ];
 
 const SkipPage = (key, values) => {
@@ -483,5 +483,5 @@ export const edQuestionaire = {
   pathBase: "/visit/ED",
   startPath: "/edstart",
   heading: " a solution for your ED ",
-  initialValues: initialValues
+  initialValues: initialValues,
 };
