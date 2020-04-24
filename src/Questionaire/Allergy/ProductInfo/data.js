@@ -5,190 +5,196 @@ export const initialValues = {
   personal,
   payment,
   subscription,
+  bloodPressure: {
+    preBP: "",
+    systolic: "",
+    diastolic: "",
+    confirmBP: false,
+  },
   noseIssues: {
-    none: false
+    none: false,
   },
   noseCongested: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   noseClearMucus: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   noseColoredMucus: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   noseItchy: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   noseSmell: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   noseSnoring: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   noseSneezing: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   eyeIssues: {
-    none: false
+    none: false,
   },
   eyeWatery: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   eyeItchy: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   eyeRed: {
     selected: false,
     frequency: "",
-    side: ""
+    side: "",
   },
   eyeDry: {
     selected: false,
     side: "",
     frequency: "frequency",
-    occurs: "occurs"
+    occurs: "occurs",
   },
   eyeSwollen: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   eyeDischarge: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   earIssues: {
-    none: false
+    none: false,
   },
   earClogged: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   earItchy: {
     selected: false,
     side: "",
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   earRinging: {
     selected: false,
     frequency: "",
-    side: ""
+    side: "",
   },
   earHearingLoss: {
     selected: false,
     side: "",
-    frequency: ""
+    frequency: "",
   },
   throatIssues: {
-    none: false
+    none: false,
   },
   throatSore: {
     selected: false,
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   throatCough: {
     selected: false,
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   throatItchy: {
     selected: false,
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   throatClearing: {
     selected: false,
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   throatHoarse: {
     selected: false,
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   throatPostNasal: {
     selected: false,
     frequency: "",
-    occurs: ""
+    occurs: "",
   },
   headIssues: {
-    none: false
+    none: false,
   },
   headAche: {
     selected: false,
-    frequency: ""
+    frequency: "",
   },
   headPressure: {
-    frequency: ""
+    frequency: "",
   },
   otherMedicines: {
     taking: "",
-    explain: ""
+    explain: "",
   },
   symptomsBegan: {
-    answer: ""
+    answer: "",
   },
   symptomMonths: {
     have: "",
-    severe: ""
+    severe: "",
   },
   infectionsPerYear: {
-    answer: ""
+    answer: "",
   },
   makeWorse: {
     irritants: [],
     medicine: [],
     allergens: [],
-    location: []
+    location: [],
   },
   dwelling: {
     location: "",
     locationother: "",
     type: "",
-    typeother: ""
+    typeother: "",
   },
   hasSmoked: {
     selected: false,
     howMuch: "",
-    hasQuit: ""
+    hasQuit: "",
   },
   hasPets: {
-    selected: false
+    selected: false,
   },
   allergyMeds: {
     allegra: false,
@@ -199,7 +205,7 @@ export const initialValues = {
     sudafed: false,
     zyrtec: false,
     other: false,
-    none: false
+    none: false,
   },
   problems: {
     earInfections: false,
@@ -209,26 +215,26 @@ export const initialValues = {
     nasalSurgery: false,
     nasalPolyps: false,
     deviatedSeptum: false,
-    none: false
+    none: false,
   },
   skinTesting: {
     answer: "",
-    explain: ""
+    explain: "",
   },
   shots: {
     answer: "",
     range1: {
       from: "",
-      to: ""
+      to: "",
     },
     range2: {
       from: "",
-      to: ""
+      to: "",
     },
     range3: {
       from: "",
-      to: ""
-    }
+      to: "",
+    },
   },
   environment: {
     occupation: "",
@@ -238,19 +244,19 @@ export const initialValues = {
     familyRoomFloor: "",
     mattress: "",
     pillow: "",
-    comforter: ""
+    comforter: "",
   },
   dustCover: {
     selected: "",
-    covered: []
+    covered: [],
   },
   mold: {
     selected: "",
     problem: "",
-    where: []
+    where: [],
   },
   anythingElse: {
     answer: "",
-    explain: ""
-  }
+    explain: "",
+  },
 };

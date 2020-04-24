@@ -20,3 +20,7 @@ export * from "./DustAndMoldPage";
 export * from "./AllergyDrugPreferencePage";
 export * from "./AllergyIntervalPage";
 export * from "./SummaryPage";
+export * from "./PreBloodPressurePage";
+export * from "./PostBloodPressurePage";
+export * from "./DiastolicPage";
+export * from "./SystolicPage";

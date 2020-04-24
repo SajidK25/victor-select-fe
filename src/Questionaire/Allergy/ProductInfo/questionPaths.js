@@ -15,7 +15,7 @@ import {
   ShippingPage,
   validateShipping,
   PaymentInfoPage,
-  validatePaymentInfo
+  validatePaymentInfo,
 } from "../../Shared/Pages";
 
 import {
@@ -66,7 +66,15 @@ import {
   AllergyIntervalPage,
   validateAllergyInterval,
   SummaryPage,
-  validateSummary
+  validateSummary,
+  PreBPPage,
+  validatePreBP,
+  SystolicPage,
+  validateSystolic,
+  DiastolicPage,
+  validateDiastolic,
+  PostBPPage,
+  validatePostBP,
 } from "../Pages";
 
 const pathConstants = {
@@ -80,56 +88,62 @@ const pathConstants = {
   TIMESPERMONTH: 2,
   //  HOWOFTEN: 5,
   //  ADDON: 6,
-  VISITSTART: 7,
-  NOSEISSUES: 8,
-  EARISSUES: 9,
-  EYEISSUES: 10,
-  THROATISSUES: 11,
-  HEADISSUES: 12,
-  SYMPTOMSBEGAN: 13,
-  SYMPTOMMONTHS: 14,
+  VISITSTART: 5,
+
+  PRE_BP: 6,
+  SYSTOLIC: 7,
+  DIASTOLIC: 8,
+  POST_BP: 9,
+
+  NOSEISSUES: 10,
+  EARISSUES: 11,
+  EYEISSUES: 12,
+  THROATISSUES: 13,
+  HEADISSUES: 14,
+  SYMPTOMSBEGAN: 15,
+  SYMPTOMMONTHS: 16,
   //  HAVESYMPTOMS: 14,
   //  SEVERESYMPTOMS: 15,
-  INFECTIONSPERYEAR: 16,
-  MAKEWORSE: 17,
-  SMOKING: 18,
-  DWELLING: 19,
-  OTHERMEDICINES: 20,
-  ALLERGYMEDICATIONS: 21,
-  PROBLEMS: 22,
-  SKINTESTING: 23,
-  ALLERGYSHOTS: 24,
-  ENVIRONMENTAL: 25,
-  DUSTANDMOLD: 26,
-  ANYTHINGELSE: 40,
+  INFECTIONSPERYEAR: 17,
+  MAKEWORSE: 18,
+  SMOKING: 19,
+  DWELLING: 20,
+  OTHERMEDICINES: 21,
+  ALLERGYMEDICATIONS: 22,
+  PROBLEMS: 23,
+  SKINTESTING: 24,
+  ALLERGYSHOTS: 25,
+  ENVIRONMENTAL: 26,
+  DUSTANDMOLD: 27,
+  ANYTHINGELSE: 28,
   PICTURES: "photos",
   SUMMARY: "summary",
   SHIPPING: "shipping",
-  PAYMENT: "payment"
+  PAYMENT: "payment",
 };
 
 const pages = [
   {
     key: pathConstants.ZIPCODE,
     component: ZipcodePage,
-    validate: validateZipcode
+    validate: validateZipcode,
   },
 
   {
     key: pathConstants.GENDER,
     component: GenderPage,
-    validate: validateEitherGender
+    validate: validateEitherGender,
   },
   {
     key: pathConstants.BIRTHDATE,
     component: BirthdatePage,
-    validate: validateBirthdate
+    validate: validateBirthdate,
   },
 
   {
     key: pathConstants.DRUGPREFERENCE,
     component: AllergyDrugPreferencePage,
-    validate: validateAllergyDrugPreference
+    validate: validateAllergyDrugPreference,
   },
   // {
   //   key: pathConstants.DRUGDOSE,
@@ -139,7 +153,7 @@ const pages = [
   {
     key: pathConstants.TIMESPERMONTH,
     component: AllergyIntervalPage,
-    validate: validateAllergyInterval
+    validate: validateAllergyInterval,
   },
   // {
   //   key: pathConstants.ADDON,
@@ -154,42 +168,62 @@ const pages = [
   {
     key: pathConstants.VISITSTART,
     component: VisitStartPage,
-    validate: validateVisitStart
+    validate: validateVisitStart,
+  },
+  {
+    key: pathConstants.PRE_BP,
+    component: PreBPPage,
+    validate: validatePreBP,
+  },
+  {
+    key: pathConstants.SYSTOLIC,
+    component: SystolicPage,
+    validate: validateSystolic,
+  },
+  {
+    key: pathConstants.DIASTOLIC,
+    component: DiastolicPage,
+    validate: validateDiastolic,
+  },
+  {
+    key: pathConstants.POST_BP,
+    component: PostBPPage,
+    validate: validatePostBP,
   },
   {
     key: pathConstants.NOSEISSUES,
     component: NoseIssuesPage,
-    validate: validateNoseIssues
+    validate: validateNoseIssues,
   },
   {
     key: pathConstants.EARISSUES,
     component: EarIssuesPage,
-    validate: validateEarIssues
+    validate: validateEarIssues,
   },
   {
     key: pathConstants.EYEISSUES,
     component: EyeIssuesPage,
-    validate: validateEyeIssues
+    validate: validateEyeIssues,
   },
   {
     key: pathConstants.THROATISSUES,
     component: ThroatIssuesPage,
-    validate: validateThroatIssues
+    validate: validateThroatIssues,
   },
   {
     key: pathConstants.HEADISSUES,
     component: HeadIssuesPage,
-    validate: validateHeadIssues
+    validate: validateHeadIssues,
   },
   {
     key: pathConstants.SYMPTOMSBEGAN,
     component: SymptomsBeganPage,
-    validate: validateSymptomsBegan
+    validate: validateSymptomsBegan,
   },
   {
     key: pathConstants.SYMPTOMMONTHS,
     component: SymptomMonthsPage,
-    validate: validateSymptomMonths
+    validate: validateSymptomMonths,
   },
   // {
   //   key: pathConstants.SEVERESYMPTOMS,
@@ -199,52 +233,52 @@ const pages = [
   {
     key: pathConstants.INFECTIONSPERYEAR,
     component: InfectionsPerYearPage,
-    validate: validateInfectionsPerYear
+    validate: validateInfectionsPerYear,
   },
   {
     key: pathConstants.MAKEWORSE,
     component: MakeWorsePage,
-    validate: validateMakeWorse
+    validate: validateMakeWorse,
   },
   {
     key: pathConstants.SMOKING,
     component: SmokingPage,
-    validate: validateSmoking
+    validate: validateSmoking,
   },
   {
     key: pathConstants.DWELLING,
     component: DwellingPage,
-    validate: validateDwelling
+    validate: validateDwelling,
   },
   {
     key: pathConstants.OTHERMEDICINES,
     component: OtherMedicinesPage,
-    validate: validateOtherMedicines
+    validate: validateOtherMedicines,
   },
   {
     key: pathConstants.ALLERGYMEDICATIONS,
     component: AllergyMedicationsPage,
-    validate: validateAllergyMedications
+    validate: validateAllergyMedications,
   },
   {
     key: pathConstants.PROBLEMS,
     component: ProblemsPage,
-    validate: validateProblems
+    validate: validateProblems,
   },
   {
     key: pathConstants.SKINTESTING,
     component: SkinTestingPage,
-    validate: validateSkinTesting
+    validate: validateSkinTesting,
   },
   {
     key: pathConstants.ALLERGYSHOTS,
     component: AllergyShotsPage,
-    validate: validateAllergyShots
+    validate: validateAllergyShots,
   },
   {
     key: pathConstants.ENVIRONMENTAL,
     component: EnvironmentalPage,
-    validate: validateEnvironmental
+    validate: validateEnvironmental,
   },
   // {
   //   key: pathConstants.DUSTANDMOLD,
@@ -254,28 +288,28 @@ const pages = [
   {
     key: pathConstants.ANYTHINGELSE,
     component: AnythingElsePage,
-    validate: validateAnythingElse
+    validate: validateAnythingElse,
   },
   {
     key: pathConstants.PICTURES,
     component: PicturesPage,
-    validate: validatePictures
+    validate: validatePictures,
   },
   {
     key: pathConstants.SUMMARY,
     component: SummaryPage,
-    validate: validateSummary
+    validate: validateSummary,
   },
   {
     key: pathConstants.SHIPPING,
     component: ShippingPage,
-    validate: validateShipping
+    validate: validateShipping,
   },
   {
     key: pathConstants.PAYMENT,
     component: PaymentInfoPage,
-    validate: validatePaymentInfo
-  }
+    validate: validatePaymentInfo,
+  },
 ];
 
 const SkipPage = (key, values) => {
@@ -296,5 +330,5 @@ export const allergyQuestionaire = {
   pathBase: "/visit/Allergy",
   startPath: "/allergystart",
   heading: " a solution for your allergies ",
-  initialValues: initialValues
+  initialValues: initialValues,
 };
