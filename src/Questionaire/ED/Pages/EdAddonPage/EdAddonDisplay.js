@@ -3,62 +3,62 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles } from "@material-ui/core/styles";
 import { formatMoney } from "../../../../_helpers";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     margin: 0,
     paddingLeft: 8,
-    paddingRight: 8
+    paddingRight: 8,
   },
   titleLine: {
     width: "100%",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   title: {
     fontSize: 18,
     fontWeight: 500,
     marginTop: 0,
-    marginBottom: theme.spacing(0.5)
+    marginBottom: theme.spacing(0.5),
   },
   priceLine: {
     marginTop: 8,
     width: "100%",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   totalPrice: {
     fontWeight: 500,
-    marginRight: 4
+    marginRight: 4,
   },
   priceBox: {
     display: "flex",
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
   },
   detailBox: {
     display: "flex",
     alignSelf: "flex-end",
     fontSize: 14,
-    marginTop: 8
+    marginTop: 8,
   },
   price: {
     fontSize: 18,
     fontWeight: 600,
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
   dose: {
     fontSize: 11,
     fontWeight: 300,
     alignSelf: "center",
     marginLeft: 4,
-    marginTop: 4
+    marginTop: 4,
   },
   description: {
     fontSize: 14,
     fontWeight: 300,
-    marginTop: 0
-  }
+    marginTop: 0,
+  },
 }));
 
 const setPricing = (pricing, howOften) => {
@@ -90,11 +90,9 @@ const setPricing = (pricing, howOften) => {
   return options;
 };
 
-export const EdAddonDisplay = props => {
+export const EdAddonDisplay = (props) => {
   const { options, pricing, howOften } = props;
   const classes = useStyles();
-
-  console.log("Pricing:", pricing);
 
   const pricingOptions = setPricing(pricing, howOften);
 

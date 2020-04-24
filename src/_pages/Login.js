@@ -33,7 +33,6 @@ export const Login = () => {
   const [login, { error: mutationError }] = useMutation(LOGIN_MUTATION);
 
   const validate = (values) => {
-    console.log("Validate Values:", values);
     const errors = {};
     if (!values.password) {
       errors.password = "Password is required";
@@ -66,7 +65,6 @@ export const Login = () => {
           });
         },
       });
-      console.log(response);
       if (response && response.data) {
         setAccessToken(response.data.login.accessToken);
       }

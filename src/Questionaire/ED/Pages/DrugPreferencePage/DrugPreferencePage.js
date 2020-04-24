@@ -5,27 +5,39 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
   StandardPage,
   DetailedRadioGroup,
-  RadioSubmit
+  RadioSubmit,
 } from "../../../../_components";
 import { getDrugList, validDoseOption, defaultDose } from "../../ProductInfo";
 import { DrugPreferenceDisplay } from "./DrugPreferenceDisplay";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   moreText: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   highlite: {
     fontWeight: 500,
-    color: theme.palette.primary.main
-  }
+    color: theme.palette.primary.main,
+  },
 }));
 
-const validateDrugPreference = values => {
+var options = [];
+
+const validateDrugPreference = (values) => {
   const errors = { subscription: {} };
   const s = values.subscription;
 
   if (!values.subscription.drugId) {
     errors.subscription.drugId = "Please make a selection.";
+  } else {
+    var selected = false;
+    var i = 0;
+    while (!selected && i < options.length) {
+      selected = options[i].id === values.subscription.drugId;
+      i++;
+    }
+    if (!selected) {
+      errors.subscription.drugId = "Please make a selection.";
+    }
   }
 
   if (!validDoseOption(s.drugId, s.doseOption)) {
@@ -37,12 +49,11 @@ const validateDrugPreference = values => {
 
 const questionText = "Select Your Product Preference Below";
 
-const DrugPreferencePage = props => {
+const DrugPreferencePage = (props) => {
   const { values, handleSubmit } = props;
 
   const classes = useStyles();
   const name = "subscription.drugId";
-  let options = [];
 
   const drugType = values.subscription.drugType;
   let extraText = "";
@@ -67,12 +78,15 @@ const DrugPreferencePage = props => {
 
   return (
     <StandardPage questionText={questionText} alignTitles="left" {...props}>
-      <Typography variant="body2" gutterBottom>
-        We offer a customized formulation delivered via a unique lozenge which
-        dissolves between the cheek and gum for a very fast onset of action and
-        absolutely the most potent method of erection possible. {extraText}
-      </Typography>
-      {drugType === "C" && (
+      {drugType !== "D" && (
+        <Typography variant="body2" gutterBottom>
+          We offer a customized formulation delivered via a unique lozenge which
+          dissolves between the cheek and gum for a very fast onset of action
+          and absolutely the most potent method of erection possible.{" "}
+          {extraText}
+        </Typography>
+      )}
+      {drugType === "D" && (
         <Typography variant="body2" gutterBottom>
           <span className={classes.highlite}>Male Daily</span> is a collection
           of supplements designed to improve testosterone levels thereby
@@ -82,10 +96,12 @@ const DrugPreferencePage = props => {
           of our customized medications.
         </Typography>
       )}
-      <Typography variant="body2" className={classes.moreText}>
-        The pricing shown is for the recommended starting dose for an average,
-        healthy person. We offer discounts for ordering in quantity.
-      </Typography>
+      {(drugType === "A" || drugType == "B") && (
+        <Typography variant="body2" className={classes.moreText}>
+          The pricing shown is for the recommended starting dose for an average,
+          healthy person. We offer discounts for ordering in quantity.
+        </Typography>
+      )}
       {options && (
         <Field
           component={DetailedRadioGroup}

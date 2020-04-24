@@ -51,7 +51,6 @@ const validateHairLossWhere = (values) => {
   //  errors.hairLoss.where = "We are unable to provide this service for you.";
   //}
 
-  console.log("Errors:", errors);
   return errors;
 };
 

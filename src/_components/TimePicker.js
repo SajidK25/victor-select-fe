@@ -3,19 +3,19 @@ import { makeStyles } from "@material-ui/core/styles";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker
+  KeyboardTimePicker,
 } from "@material-ui/pickers";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   formControl: {
     paddingRight: 6,
     marginTop: 0,
     marginBottom: 0,
-    paddingTop: 0
-  }
+    paddingTop: 0,
+  },
 }));
 
-const TimePicker = props => {
+const TimePicker = (props) => {
   const {
     input: { name, onChange, value },
     meta,
@@ -25,7 +25,6 @@ const TimePicker = props => {
   const showError = meta.error && meta.touched;
 
   const classes = useStyles();
-  console.log("Input: ", props);
 
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>

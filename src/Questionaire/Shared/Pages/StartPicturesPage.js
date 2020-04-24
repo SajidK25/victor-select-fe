@@ -4,21 +4,21 @@ import { StandardPage, FieldContainer } from "../../../_components";
 import { withStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 
-const styles = theme => ({
+const styles = (theme) => ({
   button: {
-    margin: theme.spacing(1)
+    margin: theme.spacing(1),
   },
   input: {
-    display: "none"
+    display: "none",
   },
   image: {
     borderStyle: "solid",
     borderWidth: 1,
-    borderColor: "gray"
-  }
+    borderColor: "gray",
+  },
 });
 
-const validatePictures = values => {
+const validatePictures = (values) => {
   const errors = { personal: {} };
 
   return errors;
@@ -30,11 +30,10 @@ const additionalText =
 
 class PicturesPage extends React.Component {
   state = {
-    image: ""
+    image: "",
   };
 
-  uploadFile = async e => {
-    console.log("uploading file...");
+  uploadFile = async (e) => {
     const files = e.target.files;
     const data = new FormData();
     data.append("file", files[0]);
@@ -44,19 +43,18 @@ class PicturesPage extends React.Component {
       "https://api.cloudinary.com/v1_1/bakerman59/image/upload",
       {
         method: "POST",
-        body: data
+        body: data,
       }
     );
     const file = await res.json();
     console.log(file);
     this.setState({
-      image: file.secure_url
+      image: file.secure_url,
     });
   };
 
   render() {
     console.log(this.props);
-    const { handleSubmit, classes, ...rest } = this.props;
     return (
       <StandardPage
         questionText={questionText}

@@ -1,17 +1,15 @@
-import React, { Component } from 'react'
-import { Elements, CardElement, injectStripe } from 'react-stripe-elements'
-import Typography from '@material-ui/core/Typography'
-import Grid from '@material-ui/core/Grid'
-import TextField from '@material-ui/core/TextField'
-import FormControlLabel from '@material-ui/core/FormControlLabel'
-import Checkbox from '@material-ui/core/Checkbox'
+import React, { Component } from "react";
+import { Elements, CardElement, injectStripe } from "react-stripe-elements";
+import Typography from "@material-ui/core/Typography";
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
+import FormControlLabel from "@material-ui/core/FormControlLabel";
+import Checkbox from "@material-ui/core/Checkbox";
 
-const CreditCardForm = props => {
-  console.log(props)
-
+const CreditCardForm = (props) => {
   const submit = () => {
-    alert('Submit')
-  }
+    alert("Submit");
+  };
 
   return (
     <form onSubmit={submit}>
@@ -25,7 +23,7 @@ const CreditCardForm = props => {
         </Grid>
       </Grid>
     </form>
-  )
-}
+  );
+};
 
-export const CreditCard = injectStripe(CreditCardForm)
+export const CreditCard = injectStripe(CreditCardForm);

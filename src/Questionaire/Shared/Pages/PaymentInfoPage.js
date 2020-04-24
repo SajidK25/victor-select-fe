@@ -102,7 +102,6 @@ const PaymentInfoPage = (props) => {
   const { values } = props;
   const classes = useStyles();
 
-  console.log("Subscription", values.subscription);
   let options = null;
   switch (values.type) {
     case "JOY":

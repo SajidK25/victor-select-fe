@@ -8,7 +8,7 @@ export const drugIds = {
   TADALAFIL_DAILY: "TADALAFIL_DAILY",
   MALE_DAILY: "MALE_DAILY",
   DAILY_PLUS: "DAILY_PLUS",
-  NO_ADDON: "NO_ADDON"
+  NO_ADDON: "NO_ADDON",
 };
 
 export const drugSelections = [
@@ -22,7 +22,7 @@ export const drugSelections = [
                     Prescription strength Tadalafil (Cialis) and Apomorphine
                     are combined to create a super drug with a duration 
                     of action up to 48 hours.`,
-      price: 18.75
+      price: 18.75,
     },
     doseOptions: [
       {
@@ -31,15 +31,15 @@ export const drugSelections = [
         labelOptions: {
           label: "",
           subTile: "",
-          display: "EROS"
+          display: "EROS",
         },
         pricing: {
           threeMonth: 16.25,
           twoMonth: 17.25,
-          monthly: 18.75
-        }
-      }
-    ]
+          monthly: 18.75,
+        },
+      },
+    ],
   },
   {
     id: drugIds.TADALAFIL_DAILY,
@@ -47,7 +47,7 @@ export const drugSelections = [
     labelOptions: {
       label: "Tadalafil Daily (5mg)",
       description: "",
-      price: 3.75
+      price: 3.75,
     },
     doseOptions: [
       {
@@ -56,23 +56,23 @@ export const drugSelections = [
         labelOptions: {
           title: "5mg",
           subTile: "",
-          display: "Tadalafil Daily"
+          display: "Tadalafil Daily",
         },
         pricing: {
           threeMonth: 3.25,
           twoMonth: 3.5,
-          monthly: 3.75
-        }
-      }
-    ]
+          monthly: 3.75,
+        },
+      },
+    ],
   },
   {
     id: drugIds.MALE_DAILY,
-    category: "C",
+    category: "D",
     labelOptions: {
       label: "Male Daily",
       description: "",
-      price: 1.4
+      price: 1.4,
     },
     doseOptions: [
       {
@@ -81,48 +81,48 @@ export const drugSelections = [
         labelOptions: {
           title: "",
           subTile: "",
-          display: "Male Daily"
+          display: "Male Daily",
         },
         pricing: {
           threeMonth: 1.25,
           twoMonth: 1.35,
-          monthly: 1.5
-        }
-      }
-    ]
-  },
-  {
-    id: drugIds.DAILY_PLUS,
-    category: "C",
-    labelOptions: {
-      label: "Male Daily + Tadalafil Daily (5mg)",
-      description: "",
-      price: 5.0
-    },
-    doseOptions: [
-      {
-        id: "",
-        default: true,
-        labelOptions: {
-          title: "",
-          subTile: "",
-          display: "Male Daily+Tadalafil 5mg"
+          monthly: 1.5,
         },
-        pricing: {
-          threeMonth: 4.25,
-          twoMonth: 4.75,
-          monthly: 5
-        }
-      }
-    ]
+      },
+    ],
   },
+  //  {
+  //    id: drugIds.DAILY_PLUS,
+  //    category: "C",
+  //    labelOptions: {
+  //      label: "Male Daily + Tadalafil Daily (5mg)",
+  //      description: "",
+  //      price: 5.0,
+  //    },
+  //    doseOptions: [
+  //      {
+  //        id: "",
+  //        default: true,
+  //        labelOptions: {
+  //          title: "",
+  //          subTile: "",
+  //          display: "Male Daily+Tadalafil 5mg",
+  //        },
+  //        pricing: {
+  //          threeMonth: 4.25,
+  //          twoMonth: 4.75,
+  //          monthly: 5,
+  //       },
+  //     },
+  //   ],
+  // },
   {
     id: drugIds.TADALAFIL,
     category: "B",
     labelOptions: {
       label: "Tadalafil",
       description: "Generic form of Cialis used to treat Erectile Dysfunction",
-      price: 15
+      price: 15,
     },
     doseOptions: [
       {
@@ -132,13 +132,13 @@ export const drugSelections = [
           label: "20mg",
           subTitle:
             "A starting dose of 20mg is most common for people who are new to medication.",
-          display: "Tadalafil 20mg"
+          display: "Tadalafil 20mg",
         },
         pricing: {
           threeMonth: 13,
           twoMonth: 13.75,
-          monthly: 15
-        }
+          monthly: 15,
+        },
       },
       {
         id: "10",
@@ -146,15 +146,15 @@ export const drugSelections = [
         labelOptions: {
           label: "10mg",
           subTitle: "",
-          display: "Tadalafil 10mg"
+          display: "Tadalafil 10mg",
         },
         pricing: {
           threeMonth: 6.5,
           twoMonth: 7.0,
-          monthly: 7.5
-        }
-      }
-    ]
+          monthly: 7.5,
+        },
+      },
+    ],
   },
   {
     id: drugIds.ROMEO,
@@ -166,7 +166,7 @@ export const drugSelections = [
                     in conjunction with Apomorphine. Romeo is enhanced to 
                     be more effective than Viagra alone with a duration of 
                     action up to 6 hours.`,
-      price: 10
+      price: 10,
     },
     doseOptions: [
       {
@@ -175,15 +175,15 @@ export const drugSelections = [
         labelOptions: {
           label: "",
           subTile: "",
-          display: "ROMEO"
+          display: "ROMEO",
         },
         pricing: {
           threeMonth: 8.5,
           twoMonth: 9,
-          monthly: 10
-        }
-      }
-    ]
+          monthly: 10,
+        },
+      },
+    ],
   },
   {
     id: drugIds.SILDENAFIL,
@@ -191,7 +191,7 @@ export const drugSelections = [
     labelOptions: {
       label: "Sildenafil",
       description: "Generic form of Viagra used to treat Erectile Dysfunction",
-      price: 8.75
+      price: 8.75,
     },
     doseOptions: [
       {
@@ -200,13 +200,13 @@ export const drugSelections = [
         labelOptions: {
           label: "100mg",
           subTitle: "",
-          display: "Sildenafil 100mg"
+          display: "Sildenafil 100mg",
         },
         pricing: {
           threeMonth: 14.0,
           twoMonth: 14.75,
-          monthly: 16.25
-        }
+          monthly: 16.25,
+        },
       },
       {
         id: "50",
@@ -215,13 +215,13 @@ export const drugSelections = [
           label: "50mg",
           subTitle:
             "A starting dose of 50mg is most common for people who are new to medication.",
-          display: "Sildenafil 50mg"
+          display: "Sildenafil 50mg",
         },
         pricing: {
           threeMonth: 7.5,
           twoMonth: 8,
-          monthly: 8.75
-        }
+          monthly: 8.75,
+        },
       },
       {
         id: "20",
@@ -229,16 +229,16 @@ export const drugSelections = [
         labelOptions: {
           label: "20mg",
           subTitle: "",
-          display: "Sildenafil 20mg"
+          display: "Sildenafil 20mg",
         },
         pricing: {
           threeMonth: 4.5,
           twoMonth: 4.75,
-          monthly: 5
-        }
-      }
-    ]
-  }
+          monthly: 5,
+        },
+      },
+    ],
+  },
 ];
 
 const addOns = [
@@ -248,13 +248,13 @@ const addOns = [
     labelOptions: {
       label: "Male Daily",
       description: "Yes! I want this supplement to enhance my results!",
-      price: 1.2
+      price: 1.2,
     },
     pricing: {
       threeMonth: 1,
       twoMonth: 1.1,
-      monthly: 1.2
-    }
+      monthly: 1.2,
+    },
   },
   {
     id: drugIds.NO_ADDON,
@@ -262,31 +262,31 @@ const addOns = [
     labelOptions: {
       label: "No Addon",
       description: "No thanks! I don't want to supercharge my treatment.",
-      price: 0
+      price: 0,
     },
     pricing: {
       threeMonth: 0,
       twoMonth: 0,
-      monthly: 0
-    }
-  }
+      monthly: 0,
+    },
+  },
 ];
 
 export const getAddonList = () => {
   return addOns;
 };
 
-const getAddon = addOnId => {
+const getAddon = (addOnId) => {
   if (!addOnId || addOnId === drugIds.NO_ADDON) return null;
 
-  return addOns.find(d => d.id === addOnId);
+  return addOns.find((d) => d.id === addOnId);
 };
 
-const getAddonPricing = addOnId => {
+const getAddonPricing = (addOnId) => {
   const pricing = {
     threeMonth: 0,
     twoMonth: 0,
-    monthly: 0
+    monthly: 0,
   };
 
   const addOn = getAddon(addOnId);
@@ -295,7 +295,7 @@ const getAddonPricing = addOnId => {
   return addOn.pricing;
 };
 
-const getAddonName = addOnId => {
+const getAddonName = (addOnId) => {
   const addOn = getAddon(addOnId);
   if (!addOn) return "";
 
@@ -303,23 +303,23 @@ const getAddonName = addOnId => {
 };
 
 // Get a list of drugs filtered by category
-export const getDrugList = category => {
-  return drugSelections.filter(d => d.category === category);
+export const getDrugList = (category) => {
+  return drugSelections.filter((d) => d.category === category);
 };
 
-const getDrug = drugId => {
-  let drug = drugSelections.find(d => d.id === drugId);
+const getDrug = (drugId) => {
+  let drug = drugSelections.find((d) => d.id === drugId);
 
   return drug;
 };
 
-export const getDrugName = drugId => {
+export const getDrugName = (drugId) => {
   const drug = getDrug(drugId);
 
   return drug ? drug.labelOptions.label : "";
 };
 
-export const getDoseOptions = drugId => {
+export const getDoseOptions = (drugId) => {
   const drug = getDrug(drugId);
   if (!drug) return null;
 
@@ -331,7 +331,7 @@ const getDoseOption = (drugId, dose) => {
 
   if (!options) return null;
 
-  return options.find(o => o.id === dose);
+  return options.find((o) => o.id === dose);
 };
 
 export const validDoseOption = (drugId, dose) => {
@@ -341,11 +341,11 @@ export const validDoseOption = (drugId, dose) => {
   return true;
 };
 
-export const defaultDose = drugId => {
+export const defaultDose = (drugId) => {
   const options = getDoseOptions(drugId);
   if (!options) return "";
 
-  const opt = options.find(o => o.default === true);
+  const opt = options.find((o) => o.default === true);
   if (!opt) return "";
 
   return opt.id;
@@ -365,7 +365,7 @@ export const getPrices = (drugId, dose, count, addOn) => {
     threeMonth: 0,
     threeTotal: 0,
     threeDoses: 0,
-    addOnThreeDoses: 0
+    addOnThreeDoses: 0,
   };
 
   const doseOption = getDoseOption(drugId, dose);
@@ -394,7 +394,7 @@ export const getPrices = (drugId, dose, count, addOn) => {
   return pricing;
 };
 
-export const drugDisplaySetup = subscription => {
+export const drugDisplaySetup = (subscription) => {
   const pricing = getPrices(
     subscription.drugId,
     subscription.doseOption,
@@ -411,10 +411,9 @@ export const drugDisplaySetup = subscription => {
     doses: 0,
     per: "",
     interval: "",
-    noDiscount: 0
+    noDiscount: 0,
   };
 
-  console.log("Pricing:", pricing);
   options.display = pricing.display;
   options.addOnDisplay = pricing.addOnDisplay;
   options.monthlyDoses = pricing.monthlyDoses;

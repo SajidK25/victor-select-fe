@@ -44,7 +44,6 @@ export const EnterMessage = (props) => {
       initialValues={{ messageText: "", private: true }}
       validate={validate}
       onSubmit={async (values, form) => {
-        console.log("text Value", values.messageText);
         const response = await newMessage({
           variables: {
             input: {
@@ -54,7 +53,6 @@ export const EnterMessage = (props) => {
             },
           },
         });
-        console.log(response);
         form.change("messageText", "");
         form.resetFieldState("messageText");
         //  values.messageText = "";

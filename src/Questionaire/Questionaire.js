@@ -10,7 +10,7 @@ import {
   useParams,
 } from "react-router-dom";
 import { getNextPage, getCurrentPage } from "./questionPaths";
-import { QuestionaireLayout, ErrorDisplay } from "../_components";
+import { QuestionaireLayout } from "../_components";
 import { getQuestionaire } from "./questionPaths";
 import { SAVENEWVISIT_MUTATION, UPDATECURRVISIT_MUTATION } from "../Graphql";
 
@@ -20,10 +20,9 @@ const Questionaire = () => {
   const { id } = useParams();
   const client = useApolloClient();
 
-  const [
-    saveNewVisit,
-    { loading: saveLoading, error: saveError },
-  ] = useMutation(SAVENEWVISIT_MUTATION);
+  const [saveNewVisit, { error: saveError }] = useMutation(
+    SAVENEWVISIT_MUTATION
+  );
   const [updateCurrVisit] = useMutation(UPDATECURRVISIT_MUTATION);
 
   let transDir = "left";

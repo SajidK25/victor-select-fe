@@ -41,7 +41,6 @@ export const Chat = () => {
   const history = useHistory();
 
   const handleExit = () => {
-    console.log("handleExit");
     history.push("/account/messages");
   };
 

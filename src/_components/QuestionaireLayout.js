@@ -12,8 +12,6 @@ const useStyles = makeStyles({
 export const QuestionaireLayout = (props) => {
   const classes = useStyles();
   const { error } = props;
-  console.log();
-
   return (
     <>
       <QHeader {...props} />

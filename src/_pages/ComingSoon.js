@@ -73,8 +73,6 @@ export const ComingSoon = () => {
   const [addInterest, { error: error }] = useMutation(ADDINTEREST);
 
   const validate = (values) => {
-    console.log("Validate Values:", values);
-
     const errors = {};
 
     if (!values.email) {
@@ -99,7 +97,6 @@ export const ComingSoon = () => {
           },
         },
       });
-      console.log(response);
       setInterestSaved(true);
     } catch (err) {
       console.log("Error", err);

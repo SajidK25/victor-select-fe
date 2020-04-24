@@ -4,45 +4,44 @@ import Button from "@material-ui/core/Button";
 import Paper from "@material-ui/core/Paper";
 import { ErrorDisplay } from "./";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   button: {
     margin: theme.spacing(1),
     marginTop: 2,
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",
-    textAlign: "center"
+    textAlign: "center",
   },
   input: {
-    display: "none"
+    display: "none",
   },
   paper: {
     borderStyle: "solid",
     borderWidth: 1,
     borderColor: "gray",
     width: "100%",
-    minHeight: 200
+    minHeight: 200,
   },
   image: {
     marginLeft: "auto",
     marginRight: "auto",
-    display: "block"
-  }
+    display: "block",
+  },
 }));
 
-const PictureGrab = props => {
+const PictureGrab = (props) => {
   const {
     name,
     input,
     label,
-    meta: { touched, error }
+    meta: { touched, error },
   } = props;
   const [image, setImage] = useState(input.value);
   const [uploading, setUploading] = useState(false);
   const classes = useStyles();
 
   const uploadFile = async (e, input) => {
-    console.log("uploading file...");
     setUploading(true);
     const files = e.target.files;
     const data = new FormData();
@@ -53,7 +52,7 @@ const PictureGrab = props => {
       "https://api.cloudinary.com/v1_1/bakerman59/image/upload",
       {
         method: "POST",
-        body: data
+        body: data,
       }
     );
     const file = await res.json();
@@ -72,7 +71,7 @@ const PictureGrab = props => {
           name={name}
           id={name}
           type="file"
-          onChange={e => uploadFile(e, input)}
+          onChange={(e) => uploadFile(e, input)}
         />
         <Paper className={classes.paper}>
           {image && (

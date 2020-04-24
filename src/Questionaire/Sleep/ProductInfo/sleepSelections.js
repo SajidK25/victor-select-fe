@@ -13,7 +13,7 @@ export const drugIds = {
   SLEEP_T: "SLEEP_T",
   SLEEP_N: "SLEEP_N",
   CBD_ADDON: "ADDON",
-  NO_ADDON: "NO_ADDON"
+  NO_ADDON: "NO_ADDON",
 };
 
 export const drugSelections = [
@@ -25,7 +25,7 @@ export const drugSelections = [
       description: `Our top recommendation for optimal sleep. This 
                     formula contains Doxepin which is widely prescribed 
                     for insomnia.`,
-      price: 50
+      price: 50,
     },
     doseOptions: [
       {
@@ -35,13 +35,13 @@ export const drugSelections = [
           label: "Hypnos-D",
           display: "Hypnos-D",
           subTitle: `This is the recommended starting dose for those who suffer
-                    with mild to moderate insomnia.`
+                    with mild to moderate insomnia.`,
         },
         pricing: {
           threeMonth: 43.25,
           twoMonth: 45.5,
-          monthly: 50
-        }
+          monthly: 50,
+        },
       },
       {
         id: "FORTE",
@@ -50,15 +50,15 @@ export const drugSelections = [
           label: "Hypnos-D Forte (extra strength)",
           display: "Hypnos-D Forte",
           subTitle: `This is our most potent formulation recommended for 
-                    those with severe insomnia.`
+                    those with severe insomnia.`,
         },
         pricing: {
           threeMonth: 52,
           twoMonth: 55,
-          monthly: 60
-        }
-      }
-    ]
+          monthly: 60,
+        },
+      },
+    ],
   },
   {
     id: drugIds.SLEEP_T,
@@ -67,7 +67,7 @@ export const drugSelections = [
       label: "Hypnos-T",
       description: `Our sleep formula containing Trazodone, a prescriptive 
                     also highly utilized in the treatment of sleep disorders.`,
-      price: 50
+      price: 50,
     },
     doseOptions: [
       {
@@ -77,13 +77,13 @@ export const drugSelections = [
           label: "Hypnos-T",
           display: "Hypnos-T",
           subTitle: `This is the recommended starting dose for those who suffer
-                    with mild to moderate insomnia.`
+                    with mild to moderate insomnia.`,
         },
         pricing: {
           threeMonth: 43.25,
           twoMonth: 45.5,
-          monthly: 50
-        }
+          monthly: 50,
+        },
       },
       {
         id: "FORTE",
@@ -92,15 +92,15 @@ export const drugSelections = [
           label: "Hypnos-T Forte (extra strength)",
           display: "Hypnos-T Forte",
           subTitle: `Our extra strength formulation to treat 
-                    severe insomnia.`
+                    severe insomnia.`,
         },
         pricing: {
           threeMonth: 52,
           twoMonth: 55,
-          monthly: 60
-        }
-      }
-    ]
+          monthly: 60,
+        },
+      },
+    ],
   },
   {
     id: drugIds.SLEEP_N,
@@ -110,7 +110,7 @@ export const drugSelections = [
       description: `Our natural formula encompassing a variety of
                     supplements known to help achieve a more restful
                     nights sleep.`,
-      price: 50
+      price: 50,
     },
     doseOptions: [
       {
@@ -119,16 +119,16 @@ export const drugSelections = [
         labelOptions: {
           label: "",
           subTile: "",
-          display: "Sleep N"
+          display: "Sleep N",
         },
         pricing: {
           threeMonth: 43.25,
           twoMonth: 45.5,
-          monthly: 50
-        }
-      }
-    ]
-  }
+          monthly: 50,
+        },
+      },
+    ],
+  },
 ];
 
 const addOns = [
@@ -138,13 +138,13 @@ const addOns = [
     labelOptions: {
       label: "CBD Addon",
       description: `Yes! I want this supplement to enhance my results!`,
-      price: 80.5
+      price: 80.5,
     },
     pricing: {
       threeMonth: 70,
       twoMonth: 73,
-      monthly: 80.5
-    }
+      monthly: 80.5,
+    },
   },
   {
     id: drugIds.NO_ADDON,
@@ -152,31 +152,31 @@ const addOns = [
     labelOptions: {
       label: "No Addon",
       description: "No thanks!",
-      price: 0
+      price: 0,
     },
     pricing: {
       sixMonth: 0,
       threeMonth: 0,
-      monthly: 0
-    }
-  }
+      monthly: 0,
+    },
+  },
 ];
 
 export const getAddonList = () => {
   return addOns;
 };
 
-const getAddon = addOnId => {
+const getAddon = (addOnId) => {
   if (!addOnId || addOnId === drugIds.HAIR_NO_ADDON) return null;
 
-  return addOns.find(d => d.id === addOnId);
+  return addOns.find((d) => d.id === addOnId);
 };
 
-const getAddonPricing = addOnId => {
+const getAddonPricing = (addOnId) => {
   const pricing = {
     threeMonth: 0,
     twoMonth: 0,
-    monthly: 0
+    monthly: 0,
   };
 
   const addOn = getAddon(addOnId);
@@ -185,7 +185,7 @@ const getAddonPricing = addOnId => {
   return addOn.pricing;
 };
 
-const getAddonName = addOnId => {
+const getAddonName = (addOnId) => {
   const addOn = getAddon(addOnId);
   if (!addOn) return "";
 
@@ -197,19 +197,19 @@ export const getDrugList = () => {
   return drugSelections;
 };
 
-const getDrug = drugId => {
-  let drug = drugSelections.find(d => d.id === drugId);
+const getDrug = (drugId) => {
+  let drug = drugSelections.find((d) => d.id === drugId);
 
   return drug;
 };
 
-export const getDrugName = drugId => {
+export const getDrugName = (drugId) => {
   const drug = getDrug(drugId);
 
   return drug ? drug.labelOptions.label : "";
 };
 
-export const getDoseOptions = drugId => {
+export const getDoseOptions = (drugId) => {
   const drug = getDrug(drugId);
   if (!drug) return null;
 
@@ -221,7 +221,7 @@ const getDoseOption = (drugId, dose) => {
 
   if (!options) return null;
 
-  return options.find(o => o.id === dose);
+  return options.find((o) => o.id === dose);
 };
 
 export const validDoseOption = (drugId, dose) => {
@@ -230,11 +230,11 @@ export const validDoseOption = (drugId, dose) => {
   return true;
 };
 
-export const defaultDose = drugId => {
+export const defaultDose = (drugId) => {
   const options = getDoseOptions(drugId);
   if (!options) return "";
 
-  const opt = options.find(o => o.default === true);
+  const opt = options.find((o) => o.default === true);
   if (!opt) return "";
 
   return opt.id;
@@ -254,7 +254,7 @@ export const getPrices = (drugId, dose, count, addOn) => {
     threeMonth: 0,
     threeTotal: 0,
     threeDoses: 0,
-    addOnThreeDoses: 0
+    addOnThreeDoses: 0,
   };
 
   const doseOption = getDoseOption(drugId, dose);
@@ -283,7 +283,7 @@ export const getPrices = (drugId, dose, count, addOn) => {
   return pricing;
 };
 
-export const drugDisplaySetup = subscription => {
+export const drugDisplaySetup = (subscription) => {
   const pricing = getPrices(
     subscription.drugId,
     subscription.doseOption,
@@ -300,10 +300,9 @@ export const drugDisplaySetup = subscription => {
     doses: 0,
     per: "",
     interval: "",
-    noDiscount: 0
+    noDiscount: 0,
   };
 
-  console.log("Pricing:", pricing);
   options.display = pricing.display;
   options.addOnDisplay = pricing.addOnDisplay;
   options.monthlyDoses = pricing.monthlyDoses;

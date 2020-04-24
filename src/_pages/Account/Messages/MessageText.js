@@ -3,7 +3,6 @@ import { EDWelcome } from "./WelcomeMessages";
 
 export const MessageText = (props) => {
   const { message } = props;
-  console.log("Message Text:", message);
 
   switch (message.text) {
     case "[ED_WELCOME]":

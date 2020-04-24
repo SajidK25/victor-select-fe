@@ -1,17 +1,16 @@
 import React from "react";
-import { Redirect, useHistory, useParams, useLocation } from "react-router-dom";
+import { useHistory, useParams, useLocation } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { Form, Field } from "react-final-form";
 import Grid from "@material-ui/core/Grid";
 import {
   StandardPage,
-  Spinner,
   QuestionaireLayout,
   RenderStdTextField,
   RenderSimpleCheckbox,
   RenderCheckError,
   Legal,
-  ErrorMessage
+  ErrorMessage,
 } from "../../../_components";
 import { getQuestionaire } from "../../questionPaths";
 import { REGISTER_MUTATION, ME_QUERY } from "../../../Graphql";
@@ -22,10 +21,10 @@ const initialData = {
   firstName: "",
   lastName: "",
   password: "",
-  accept: false
+  accept: false,
 };
 
-const validateCreateAccount = values => {
+const validateCreateAccount = (values) => {
   const errors = {};
   if (!values.accept) {
     errors.checkError = "You must indicate that you accept and consent.";
@@ -64,48 +63,48 @@ export const CreateAccountPage = () => {
   const history = useHistory();
   const { id } = useParams();
   const location = useLocation();
-  const { from } = location.state || { from: { pathname: "/" } };
 
   const questionaire = getQuestionaire(id);
   const pathBase = questionaire.pathBase;
 
-  const [
-    register,
-    { loading: mutationLoading, error: mutationError }
-  ] = useMutation(REGISTER_MUTATION);
+  const [register, { error: mutationError }] = useMutation(REGISTER_MUTATION);
 
   return (
     <Form
       initialValues={initialData}
       validate={validateCreateAccount}
-      onSubmit={async values => {
+      onSubmit={async (values) => {
         const input = { ...values };
         delete input.accept;
         console.log("Input: ", input);
-        const response = await register({
-          variables: { input },
-          update: (store, { data }) => {
-            if (!data) {
-              return null;
-            }
+        try {
+          const response = await register({
+            variables: { input },
+            update: (store, { data }) => {
+              if (!data) {
+                return null;
+              }
 
-            if (data.register.message !== "EXISTS") {
-              store.writeQuery({
-                query: ME_QUERY,
-                data: {
-                  me: data.register.user
-                }
-              });
+              if (data.register.message !== "EXISTS") {
+                store.writeQuery({
+                  query: ME_QUERY,
+                  data: {
+                    me: data.register.user,
+                  },
+                });
+              }
+            },
+          });
+          if (response && response.data) {
+            if (response.data.register.message !== "EXISTS") {
+              setAccessToken(response.data.register.accessToken);
+              history.push(pathBase);
+            } else {
+              history.push("./login", { from: location });
             }
           }
-        });
-        if (response && response.data) {
-          if (response.data.register.message !== "EXISTS") {
-            setAccessToken(response.data.register.accessToken);
-            history.push(pathBase);
-          } else {
-            history.push("./login", { from: location });
-          }
+        } catch (err) {
+          console.log(err);
         }
       }}
     >
@@ -129,7 +128,7 @@ export const CreateAccountPage = () => {
                   name="firstName"
                   label="First Name"
                   fullWidth
-                  autoComplete="fname"
+                  autoComplete="given-name"
                 />
               </Grid>
               <Grid item xs={12} sm={6}>
@@ -139,7 +138,7 @@ export const CreateAccountPage = () => {
                   name="lastName"
                   label="Last Name"
                   fullWidth
-                  autoComplete="lname"
+                  autoComplete="family-name"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -150,7 +149,7 @@ export const CreateAccountPage = () => {
                   name="email"
                   label="email"
                   fullWidth
-                  autoComplete="email"
+                  autoComplete="username"
                 />
               </Grid>
               <Grid item xs={12}>
