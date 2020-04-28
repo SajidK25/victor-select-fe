@@ -280,11 +280,11 @@ const pages = [
     component: EnvironmentalPage,
     validate: validateEnvironmental,
   },
-  // {
-  //   key: pathConstants.DUSTANDMOLD,
-  //   component: DustAndMoldPage,
-  //   validate: validateDustAndMold
-  // },
+  {
+    key: pathConstants.DUSTANDMOLD,
+    component: DustAndMoldPage,
+    validate: validateDustAndMold,
+  },
   {
     key: pathConstants.ANYTHINGELSE,
     component: AnythingElsePage,
@@ -316,6 +316,12 @@ const SkipPage = (key, values) => {
   let skip = false;
 
   switch (key) {
+    case pathConstants.SYSTOLIC:
+    case pathConstants.DIASTOLIC:
+    case pathConstants.POST_BP:
+      skip = values.bloodPressure.preBP === "no";
+      break;
+
     default:
       skip = false;
   }

@@ -1,35 +1,14 @@
 import React from "react";
-import { OptionsPage } from "./_components/OptionsPage";
-import { optionsAllFalse } from "../../../_helpers";
+import { Field } from "react-final-form";
+import FormGroup from "@material-ui/core/FormGroup";
 import {
-  CheckboxWithOptions,
-  RadioWithOptions,
+  StandardPage,
+  RadioInline,
   CheckboxInline,
-  RadioInline
+  FieldContainer,
 } from "../../../_components";
 
-const options = [
-  {
-    name: "mold.selected",
-    label: "My home has a mold or mildew problem",
-    options: [
-      {
-        name: "mold.problem",
-        component: RadioInline,
-        label: "Type of problem",
-        options: ["Major Problem", "Minor Problem"]
-      },
-      {
-        name: "mold.where",
-        component: CheckboxInline,
-        label: "Where is it?",
-        options: ["Bathroom", "Basement", "Kitchen", "Window Sills", "Other"]
-      }
-    ]
-  }
-];
-
-const validateDustAndMold = values => {
+const validateDustAndMold = (values) => {
   const errors = {};
 
   if (!values.mold.selected) {
@@ -42,15 +21,48 @@ const validateDustAndMold = values => {
 const questionText = "Tell us more about your environment.";
 const additionalText = "";
 
-const DustAndMoldPage = props => {
+const DustAndMoldPage = (props) => {
+  const { values } = props;
+
   return (
-    <OptionsPage
-      options={options}
+    <StandardPage
       questionText={questionText}
       additionalText={additionalText}
-      component={RadioWithOptions}
       {...props}
-    />
+    >
+      <FormGroup>
+        <FieldContainer>
+          <Field
+            name="mold.selected"
+            component={RadioInline}
+            label="Does your home have a mold or mildew problem?"
+            options={["Yes", "No"]}
+          />
+          {values.mold.selected === "Yes" ? (
+            <div>
+              <Field
+                name="mold.problem"
+                component={RadioInline}
+                label="Type of problem"
+                options={["Major Problem", "Minor Problem"]}
+              />
+              <Field
+                name="mold.where"
+                component={CheckboxInline}
+                label="Where is it?"
+                options={[
+                  "Bathroom",
+                  "Basement",
+                  "Kitchen",
+                  "Window Sills",
+                  "Other",
+                ]}
+              />
+            </div>
+          ) : null}
+        </FieldContainer>
+      </FormGroup>
+    </StandardPage>
   );
 };
 

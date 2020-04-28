@@ -1,18 +1,14 @@
 import React from "react";
 import { CheckboxPage } from "./_components/CheckboxPage";
 import { optionsAllFalse } from "../../../_helpers";
-import {
-  CheckboxWithOptions,
-  RadioInline,
-  CheckboxInline
-} from "../../../_components";
+import { CheckboxWithOptions, RadioInline } from "../../../_components";
 import {
   sideLabel,
   sideOptions,
   frequencyLabel,
   frequencyOptions,
   occursLabel,
-  occursOptions
+  occursOptions,
 } from "./_constants";
 
 const options = [
@@ -24,21 +20,21 @@ const options = [
         name: "noseCongested.frequency",
         component: RadioInline,
         label: frequencyLabel,
-        options: frequencyOptions
+        options: frequencyOptions,
       },
       {
         name: "noseCongested.occurs",
         component: RadioInline,
         label: occursLabel,
-        options: occursOptions
+        options: occursOptions,
       },
       {
         name: "noseCongested.side",
         component: RadioInline,
         label: sideLabel,
-        options: sideOptions
-      }
-    ]
+        options: sideOptions,
+      },
+    ],
   },
   {
     name: "noseClearMucus.selected",
@@ -48,15 +44,15 @@ const options = [
         name: "noseClearMucus.frequency",
         component: RadioInline,
         label: frequencyLabel,
-        options: frequencyOptions
+        options: frequencyOptions,
       },
       {
         name: "noseClearMucus.occurs",
         component: RadioInline,
         label: occursLabel,
-        options: occursOptions
-      }
-    ]
+        options: occursOptions,
+      },
+    ],
   },
   {
     name: "noseColoredMucus.selected",
@@ -66,15 +62,15 @@ const options = [
         name: "noseColoredMucus.frequency",
         component: RadioInline,
         label: frequencyLabel,
-        options: frequencyOptions
+        options: frequencyOptions,
       },
       {
         name: "noseColoredMucus.occurs",
         component: RadioInline,
         label: occursLabel,
-        options: occursOptions
-      }
-    ]
+        options: occursOptions,
+      },
+    ],
   },
   {
     name: "noseItchy.selected",
@@ -84,9 +80,9 @@ const options = [
         name: "noseItchy.frequency",
         component: RadioInline,
         label: frequencyLabel,
-        options: frequencyOptions
-      }
-    ]
+        options: frequencyOptions,
+      },
+    ],
   },
   {
     name: "noseSmell.selected",
@@ -96,9 +92,9 @@ const options = [
         name: "noseSmell.frequency",
         component: RadioInline,
         label: frequencyLabel,
-        options: frequencyOptions
-      }
-    ]
+        options: frequencyOptions,
+      },
+    ],
   },
   {
     name: "noseSnoring.selected",
@@ -108,9 +104,9 @@ const options = [
         name: "noseSnoring.frequency",
         component: RadioInline,
         label: frequencyLabel,
-        options: frequencyOptions
-      }
-    ]
+        options: frequencyOptions,
+      },
+    ],
   },
   {
     name: "noseSneezing.selected",
@@ -120,19 +116,19 @@ const options = [
         name: "noseSneezing.frequency",
         component: RadioInline,
         label: frequencyLabel,
-        options: frequencyOptions
+        options: frequencyOptions,
       },
       {
         name: "noseSneezing.occurs",
         component: RadioInline,
         label: occursLabel,
-        options: occursOptions
-      }
-    ]
-  }
+        options: occursOptions,
+      },
+    ],
+  },
 ];
 
-const validateNoseIssues = values => {
+const validateNoseIssues = (values) => {
   const errors = { noseIssues: {} };
 
   if (optionsAllFalse(options, values) && !values.noseIssues.none) {
@@ -161,7 +157,7 @@ const additionalText = "Check all that apply.";
 const noOptionField = "noseIssues.none";
 const noOptionText = "None of these apply";
 
-const NoseIssuesPage = props => {
+const NoseIssuesPage = (props) => {
   return (
     <CheckboxPage
       options={options}

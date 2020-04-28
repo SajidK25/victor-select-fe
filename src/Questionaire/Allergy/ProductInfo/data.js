@@ -205,6 +205,7 @@ export const initialValues = {
     sudafed: false,
     zyrtec: false,
     other: false,
+    otherExplain: "",
     none: false,
   },
   problems: {
@@ -235,6 +236,8 @@ export const initialValues = {
       from: "",
       to: "",
     },
+    helpful: "",
+    reactions: "",
   },
   environment: {
     occupation: "",

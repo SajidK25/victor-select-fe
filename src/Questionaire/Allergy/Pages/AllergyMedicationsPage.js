@@ -6,39 +6,41 @@ import { RenderCheckbox } from "../../../_components";
 const options = [
   {
     name: "allergyMeds.allegra",
-    label: "Allegra"
+    label: "Allegra",
   },
   {
     name: "allergyMeds.benedryl",
-    label: "Benedryl"
+    label: "Benedryl",
   },
   {
     name: "allergyMeds.claritin",
-    label: "Claritin"
+    label: "Claritin",
   },
   {
     name: "allergyMeds.flonase",
-    label: "Flonase"
+    label: "Flonase",
   },
   {
     name: "allergyMeds.phenylephrine",
-    label: "Phenylephrine"
+    label: "Phenylephrine",
   },
   {
     name: "allergyMeds.sudafed",
-    label: "Sudafed"
+    label: "Sudafed",
   },
   {
     name: "allergyMeds.zyrtec",
-    label: "Zyrtec"
+    label: "Zyrtec",
   },
   {
     name: "allergyMeds.other",
-    label: "Other"
-  }
+    label: "Other",
+    explain: "allergyMeds.otherExplain",
+    explainText: "What did you you use?",
+  },
 ];
 
-const validateAllergyMedications = values => {
+const validateAllergyMedications = (values) => {
   const errors = { allergyMeds: {} };
 
   if (optionsAllFalse(options, values) && !values.allergyMeds.none) {
@@ -66,7 +68,7 @@ const additionalText = "Check all that apply.";
 const noOptionField = "allergyMeds.none";
 const noOptionText = "None of these apply";
 
-const AllergyMedicationsPage = props => {
+const AllergyMedicationsPage = (props) => {
   return (
     <CheckboxPage
       options={options}
