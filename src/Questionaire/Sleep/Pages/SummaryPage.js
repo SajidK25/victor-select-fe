@@ -3,43 +3,42 @@ import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import { StandardPage } from "../../../_components";
-
-import { drugDisplaySetup } from "../ProductInfo";
+import { drugDisplaySetup } from "../../Shared/ProductInfo";
 import { formatMoney } from "../../../_helpers/money";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   pricingBox: {
-    padding: theme.spacing(2)
+    padding: theme.spacing(2),
   },
   treatment: {
     fontSize: 15,
-    fontWeight: 500
+    fontWeight: 500,
   },
   treatmentContainer: {
-    paddingLeft: theme.spacing(1)
+    paddingLeft: theme.spacing(1),
   },
   drugDisplay: {
     fontSize: 18,
     fontWeight: 400,
     marginTop: 8,
-    marginBottom: 0
+    marginBottom: 0,
   },
   drugDoses: {},
   drugDelivery: {
     fontWeight: 300,
     fontSize: 13,
-    marginTop: theme.spacing(1)
+    marginTop: theme.spacing(1),
   },
   drugPrice: {},
   drugMoney: {
-    fontWeight: 500
+    fontWeight: 500,
   },
   noCharge: {
     marginTop: 20,
     marginBottom: 0,
     textAlign: "center",
-    fontSize: 13
-  }
+    fontSize: 13,
+  },
 }));
 
 const validateSummary = () => {
@@ -48,7 +47,7 @@ const validateSummary = () => {
   return errors;
 };
 
-const SummaryPage = props => {
+const SummaryPage = (props) => {
   const { values } = props;
 
   const classes = useStyles();

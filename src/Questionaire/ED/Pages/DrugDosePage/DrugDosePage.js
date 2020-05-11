@@ -4,17 +4,17 @@ import { DrugDoseOption } from "./DrugDoseOption";
 import {
   StandardPage,
   DetailedRadioGroup,
-  RadioSubmit
+  RadioSubmit,
 } from "../../../../_components";
-import { getDoseOptions, getDrugName } from "../../ProductInfo";
+import { getDoseOptions, getDrugName } from "../../../Shared/ProductInfo";
 
-const validateDrugDose = values => {
+const validateDrugDose = () => {
   const errors = {};
 
   return errors;
 };
 
-const DrugDosePage = props => {
+const DrugDosePage = (props) => {
   const { values, handleSubmit } = props;
 
   let options = {};
@@ -22,7 +22,6 @@ const DrugDosePage = props => {
 
   const drugId = values.subscription.drugId;
   if (drugId) {
-
     drugName = getDrugName(drugId);
     options = getDoseOptions(drugId);
   }

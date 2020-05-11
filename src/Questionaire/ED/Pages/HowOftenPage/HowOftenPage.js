@@ -1,22 +1,21 @@
-/* eslint-disable import/order */
 import React from "react";
 import { Field } from "react-final-form";
-import { getPrices, MAX_AMOUNT } from "../../ProductInfo";
+import { getPrices, getMaxAmount } from "../../../Shared/ProductInfo";
 import { formatMoney } from "../../../../_helpers";
 import {
   StandardPage,
   DetailedRadioGroup,
-  RadioSubmit
+  RadioSubmit,
 } from "../../../../_components";
 import { EdPriceOption } from "./EdPriceOption";
 
-const validateHowOften = values => {
+const validateHowOften = () => {
   const errors = {};
 
   return errors;
 };
 
-const displayOptions = pricing => {
+const displayOptions = (pricing) => {
   let options = [
     {
       id: "everyThree",
@@ -34,12 +33,12 @@ const displayOptions = pricing => {
         }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.threeMonth,
         totalPrice: pricing.threeTotal,
-        savings: (pricing.monthly - pricing.threeMonth) * 12
-      }
-    }
+        savings: (pricing.monthly - pricing.threeMonth) * 12,
+      },
+    },
   ];
 
-  if (pricing.threeTotal >= MAX_AMOUNT) {
+  if (pricing.threeTotal >= getMaxAmount()) {
     options.push({
       id: "everyTwo",
       labelOptions: {
@@ -56,12 +55,12 @@ const displayOptions = pricing => {
         }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.twoMonth,
         totalPrice: pricing.twoTotal,
-        savings: (pricing.monthly - pricing.twoMonth) * 12
-      }
+        savings: (pricing.monthly - pricing.twoMonth) * 12,
+      },
     });
   }
 
-  if (pricing.monthly > MAX_AMOUNT) {
+  if (pricing.monthly > getMaxAmount()) {
     options.push({
       id: "monthly",
       labelOptions: {
@@ -78,8 +77,8 @@ const displayOptions = pricing => {
         }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.monthly,
         totalPrice: pricing.monthly,
-        savings: 0
-      }
+        savings: 0,
+      },
     });
   }
 
@@ -89,17 +88,17 @@ const displayOptions = pricing => {
 const questionText = `How often should we ship your treatment?`;
 const additionalText = `By choosing to have your treatment delivered every 2 or 3 months you will save money.`;
 
-const HowOftenPage = props => {
+const HowOftenPage = (props) => {
   const { values, handleSubmit } = props;
 
   const fieldName = "subscription.shippingInterval";
 
-  const pricing = getPrices(
-    values.subscription.drugId,
-    values.subscription.doseOption,
-    values.subscription.dosesPerMonth,
-    values.subscription.addOnId
-  );
+  const pricing = getPrices({
+    drugId: values.subscription.drugId,
+    dose: values.subscription.doseOption,
+    count: values.subscription.dosesPerMonth,
+    addOnId: values.subscription.addOnId,
+  });
 
   const options = displayOptions(pricing);
 

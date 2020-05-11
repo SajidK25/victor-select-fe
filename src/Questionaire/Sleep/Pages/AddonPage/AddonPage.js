@@ -1,16 +1,15 @@
-/* eslint-disable import/order */
 import React from "react";
 import { Field } from "react-final-form";
 import Typography from "@material-ui/core/Typography";
 import {
   StandardPage,
   DetailedRadioGroup,
-  RadioSubmit
+  RadioSubmit,
 } from "../../../../_components";
-import { getAddonList } from "../../ProductInfo";
+import { getAddonList } from "../../../Shared/ProductInfo";
 import { AddonDisplay } from "./AddonDisplay";
 
-const validateAddon = values => {
+const validateAddon = (values) => {
   const errors = { subscription: {} };
 
   if (!values.subscription.addOnId) {
@@ -22,7 +21,7 @@ const validateAddon = values => {
 
 const questionText = "Do you want to enhance your results?";
 
-const AddonPage = props => {
+const AddonPage = (props) => {
   const { handleSubmit } = props;
   const name = "subscription.addOnId";
   let options = [];

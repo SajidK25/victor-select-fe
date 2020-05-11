@@ -1,3 +1,3 @@
-export * from "./edSelections";
+export * from "./products";
 export * from "./data";
 export * from "./questionPaths";

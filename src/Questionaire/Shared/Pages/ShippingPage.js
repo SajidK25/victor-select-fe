@@ -6,7 +6,7 @@ import Grid from "@material-ui/core/Grid";
 import {
   normalizeZip,
   normalizeState,
-  normalizePhone
+  normalizePhone,
 } from "../../../_helpers";
 
 const validZips = [
@@ -14,10 +14,10 @@ const validZips = [
   { min: 75001, max: 75501 },
   { min: 75503, max: 79999 },
   { min: 88510, max: 88589 },
-  { min: 92657, max: 92657 }
+  { min: 92657, max: 92657 },
 ];
 
-const checkZips = zipCode => {
+const checkZips = (zipCode) => {
   for (let i = 0; i < validZips.length; i++) {
     if (zipCode >= validZips[i].min && zipCode <= validZips[i].max) {
       return true;
@@ -26,7 +26,7 @@ const checkZips = zipCode => {
   return false;
 };
 
-const validateShipping = values => {
+export const validateShipping = (values) => {
   const errors = { personal: {} };
   if (!values.personal.addressOne) {
     errors.personal.addressOne = "Address is required";
@@ -55,7 +55,7 @@ const validateShipping = values => {
 
 const additionalText = "Where should we ship your medication? (if prescribed)";
 
-const ShippingPage = props => {
+export const ShippingPage = (props) => {
   return (
     <StandardPage
       questionText="Shipping Address"
@@ -135,5 +135,3 @@ const ShippingPage = props => {
     </StandardPage>
   );
 };
-
-export { ShippingPage, validateShipping };

@@ -1,5 +1,5 @@
 import { initialValues } from "./data";
-import { drugIds } from "./edSelections";
+import { drugIds } from "./products";
 
 import {
   ZipcodePage,
@@ -25,7 +25,7 @@ import {
 import {
   PaymentInfoPage,
   validatePaymentInfo,
-} from "../../Shared/Pages/PaymentInfoPage";
+} from "../../Shared/Pages/PaymentPage";
 
 import {
   TimesPerMonthPage,

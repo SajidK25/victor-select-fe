@@ -17,9 +17,12 @@ import {
   validatePhysicalExam,
   ShippingPage,
   validateShipping,
-  PaymentInfoPage,
-  validatePaymentInfo
 } from "../../Shared/Pages";
+
+import {
+  PaymentInfoPage,
+  validatePaymentInfo,
+} from "../../Shared/Pages/PaymentPage";
 
 import {
   HairIntervalPage,
@@ -81,7 +84,7 @@ import {
   HairAllergiesPage,
   validateHairAllergies,
   SummaryPage,
-  validateSummary
+  validateSummary,
 } from "../Pages";
 
 import { getAge } from "../../../_helpers";
@@ -127,29 +130,29 @@ const pathConstants = {
   PICTURES: "photos",
   SUMMARY: "summary",
   SHIPPING: "shipping",
-  PAYMENT: "payment"
+  PAYMENT: "payment",
 };
 
 const pages = [
   {
     key: pathConstants.ZIPCODE,
     component: ZipcodePage,
-    validate: validateZipcode
+    validate: validateZipcode,
   },
   {
     key: pathConstants.GENDER,
     component: GenderPage,
-    validate: validateEitherGender
+    validate: validateEitherGender,
   },
   {
     key: pathConstants.BIRTHDATE,
     component: BirthdatePage,
-    validate: validateBirthdate
+    validate: validateBirthdate,
   },
   {
     key: pathConstants.HAIRDRUGPREFERENCE,
     component: HairDrugPreferencePage,
-    validate: validateHairDrugPreference
+    validate: validateHairDrugPreference,
   },
   //{
   //  key: pathConstants.HAIRADDON,
@@ -159,178 +162,178 @@ const pages = [
   {
     key: pathConstants.HAIRINTERVAL,
     component: HairIntervalPage,
-    validate: validateHairInterval
+    validate: validateHairInterval,
   },
   {
     key: pathConstants.HAIRSTART,
     component: VisitStartPage,
-    validate: validateVisitStart
+    validate: validateVisitStart,
   },
   {
     key: pathConstants.HAIRLOSSTIMESPAN,
     component: HairLossTimeSpanPage,
-    validate: validateHairLossTimeSpan
+    validate: validateHairLossTimeSpan,
   },
   {
     key: pathConstants.HAIRLOSSDEGREE,
     component: HairLossDegreePage,
-    validate: validateHairLossDegree
+    validate: validateHairLossDegree,
   },
   {
     key: pathConstants.HAIRLOSSCHANGE,
     component: HairLossChangePage,
-    validate: validateHairLossChange
+    validate: validateHairLossChange,
   },
   {
     key: pathConstants.HAIRLOSSWHERE,
     component: HairLossWherePage,
-    validate: validateHairLossWhere
+    validate: validateHairLossWhere,
   },
   {
     key: pathConstants.HAIRLOSSRATE,
     component: HairLossRatePage,
-    validate: validateHairLossRate
+    validate: validateHairLossRate,
   },
   {
     key: pathConstants.HAIRLOSSSHEDDING,
     component: HairLossSheddingPage,
-    validate: validateHairLossShedding
+    validate: validateHairLossShedding,
   },
   {
     key: pathConstants.HAIRLOSSTHINNING,
     component: HairLossThinningPage,
-    validate: validateHairLossThinning
+    validate: validateHairLossThinning,
   },
   {
     key: pathConstants.HAIRLOSSTYPE,
     component: HairLossTypePage,
-    validate: validateHairLossType
+    validate: validateHairLossType,
   },
   {
     key: pathConstants.HAIRSIXMONTH,
     component: HairSixMonthPage,
-    validate: validateHairSixMonth
+    validate: validateHairSixMonth,
   },
   {
     key: pathConstants.HAIRSIGNIFICANT,
     component: HairSignificantPage,
-    validate: validateHairSignificant
+    validate: validateHairSignificant,
   },
   {
     key: pathConstants.HAIRHISTORY,
     component: HairHistoryPage,
-    validate: validateHairHistory
+    validate: validateHairHistory,
   },
   {
     key: pathConstants.HAIRDIETING,
     component: HairDietingPage,
-    validate: validateHairDieting
+    validate: validateHairDieting,
   },
   {
     key: pathConstants.HAIRLABWORK,
     component: HairLabWorkPage,
-    validate: validateHairLabWork
+    validate: validateHairLabWork,
   },
   {
     key: pathConstants.HAIRGETATTACHMENT,
     component: HairGetAttachmentPage,
-    validate: validateHairGetAttachment
+    validate: validateHairGetAttachment,
   },
   {
     key: pathConstants.HAIRSCALP,
     component: HairScalpPage,
-    validate: validateHairScalp
+    validate: validateHairScalp,
   },
   {
     key: pathConstants.HAIRRELATIVES,
     component: HairRelativesPage,
-    validate: validateHairRelatives
+    validate: validateHairRelatives,
   },
   {
     key: pathConstants.HAIRTREATMENTS,
     component: HairTreatmentsPage,
-    validate: validateHairTreatments
+    validate: validateHairTreatments,
   },
   {
     key: pathConstants.HAIRSUPPLEMENTS,
     component: HairSupplementsPage,
-    validate: validateHairSupplements
+    validate: validateHairSupplements,
   },
   {
     key: pathConstants.HAIRCOLORED,
     component: HairColoredPage,
-    validate: validateHairColored
+    validate: validateHairColored,
   },
   {
     key: pathConstants.HAIRPERIOD,
     component: HairPeriodPage,
-    validate: validateHairPeriod
+    validate: validateHairPeriod,
   },
   {
     key: pathConstants.HAIRWOMENHISTORY,
     component: HairWomenHistoryPage,
-    validate: validateHairWomenHistory
+    validate: validateHairWomenHistory,
   },
   {
     key: pathConstants.HAIRLOSSREASON,
     component: HairLossReasonPage,
-    validate: validateHairLossReason
+    validate: validateHairLossReason,
   },
   {
     key: pathConstants.PHYSICALEXAM,
     component: PhysicalExamPage,
-    validate: validatePhysicalExam
+    validate: validatePhysicalExam,
   },
   {
     key: pathConstants.HAIREXAM,
     component: HairExamPage,
-    validate: validateHairExam
+    validate: validateHairExam,
   },
   {
     key: pathConstants.HAIRLIFESTYLE,
     component: HairLifestylePage,
-    validate: validateHairLifestyle
+    validate: validateHairLifestyle,
   },
   {
     key: pathConstants.HAIRCONDITIONS,
     component: HairConditionsPage,
-    validate: validateHairConditions
+    validate: validateHairConditions,
   },
   {
     key: pathConstants.HAIRANEMIATHYROID,
     component: HairAnemiaThyroidPage,
-    validate: validateHairAnemiaThyroid
+    validate: validateHairAnemiaThyroid,
   },
   {
     key: pathConstants.HAIRALLERGIES,
     component: HairAllergiesPage,
-    validate: validateHairAllergies
+    validate: validateHairAllergies,
   },
   {
     key: pathConstants.ANYTHINGELSE,
     component: AnythingElsePage,
-    validate: validateAnythingElse
+    validate: validateAnythingElse,
   },
   {
     key: pathConstants.PICTURES,
     component: PicturesPage,
-    validate: validatePictures
+    validate: validatePictures,
   },
   {
     key: pathConstants.SUMMARY,
     component: SummaryPage,
-    validate: validateSummary
+    validate: validateSummary,
   },
   {
     key: pathConstants.SHIPPING,
     component: ShippingPage,
-    validate: validateShipping
+    validate: validateShipping,
   },
   {
     key: pathConstants.PAYMENT,
     component: PaymentInfoPage,
-    validate: validatePaymentInfo
-  }
+    validate: validatePaymentInfo,
+  },
 ];
 
 const SkipPage = (key, values) => {
@@ -375,7 +378,7 @@ const hairQuestionaire = {
   pathBase: "/visit/Hair",
   startPath: "/hairstart",
   heading: " growing new hair ",
-  initialValues: initialValues
+  initialValues: initialValues,
 };
 
 export { hairQuestionaire };

@@ -11,13 +11,14 @@ import {
   validateVisitStart,
   PicturesPage,
   validatePictures,
-  PhysicalExamPage,
-  validatePhysicalExam,
   ShippingPage,
   validateShipping,
-  PaymentInfoPage,
-  validatePaymentInfo
 } from "../../Shared/Pages";
+
+import {
+  PaymentInfoPage,
+  validatePaymentInfo,
+} from "../../Shared/Pages/PaymentPage";
 
 import {
   JoyIntervalPage,
@@ -33,7 +34,7 @@ import {
   SocialFactorsPage,
   validateSocialFactors,
   SummaryPage,
-  validateSummary
+  validateSummary,
 } from "../Pages";
 
 const pathConstants = {
@@ -41,12 +42,8 @@ const pathConstants = {
   GENDER: "gender",
   FEMALE_ED: "genderf",
   BIRTHDATE: "birthdate",
-  // EDSOLUTIONTYPE: 1,
   DRUGPREFERENCE: 1,
-  //  DRUGDOSE: 3,
   TIMESPERMONTH: 2,
-  //  HOWOFTEN: 5,
-  //  ADDON: 6,
   VISITSTART: 7,
   HOWOFTEN: 8,
   HOWOFTEN2: 9,
@@ -55,8 +52,6 @@ const pathConstants = {
   HEADISSUES: 12,
   SYMPTOMSBEGAN: 13,
   SYMPTOMMONTHS: 14,
-  //  HAVESYMPTOMS: 14,
-  //  SEVERESYMPTOMS: 15,
   SOCIALFACTORS: 16,
   MAKEWORSE: 17,
   SMOKING: 18,
@@ -72,98 +67,83 @@ const pathConstants = {
   PICTURES: "photos",
   SUMMARY: "summary",
   SHIPPING: "shipping",
-  PAYMENT: "payment"
+  PAYMENT: "payment",
 };
 
 const pages = [
   {
     key: pathConstants.ZIPCODE,
     component: ZipcodePage,
-    validate: validateZipcode
+    validate: validateZipcode,
   },
   {
     key: pathConstants.GENDER,
     component: GenderPage,
-    validate: validateEitherGender
+    validate: validateEitherGender,
   },
   {
     key: pathConstants.BIRTHDATE,
     component: BirthdatePage,
-    validate: validateBirthdate
+    validate: validateBirthdate,
   },
-  //  {
-  //    key: pathConstants.EDSOLUTIONTYPE,
-  //  component: EdSolutionTypePage,
-  //   validate: validateEdSolutionType
-  // },
-  //{
-  //  key: pathConstants.DRUGPREFERENCE,
-  //  component: AllergyDrugPreferencePage,
-  //  validate: validateAllergyDrugPreference
-  //},
-  // {
-  //   key: pathConstants.DRUGDOSE,
-  //   component: DrugDosePage,
-  //   validate: validateDrugDose
-  // },
   {
     key: pathConstants.TIMESPERMONTH,
     component: JoyIntervalPage,
-    validate: validateJoyInterval
+    validate: validateJoyInterval,
   },
   {
     key: pathConstants.VISITSTART,
     component: VisitStartPage,
-    validate: validateVisitStart
+    validate: validateVisitStart,
   },
   {
     key: pathConstants.HOWOFTEN,
     component: HowOftenPage,
-    validate: validateHowOften
+    validate: validateHowOften,
   },
   {
     key: pathConstants.HOWOFTEN2,
     component: HowOften2Page,
-    validate: validateHowOften2
+    validate: validateHowOften2,
   },
   {
     key: pathConstants.HOWOFTEN3,
     component: HowOften3Page,
-    validate: validateHowOften3
+    validate: validateHowOften3,
   },
   {
     key: pathConstants.SEENPHYSICIAN,
     component: SeenPhysicianPage,
-    validate: validateSeenPhysician
+    validate: validateSeenPhysician,
   },
   {
     key: pathConstants.SOCIALFACTORS,
     component: SocialFactorsPage,
-    validate: validateSocialFactors
+    validate: validateSocialFactors,
   },
   {
     key: pathConstants.PICTURES,
     component: PicturesPage,
-    validate: validatePictures
+    validate: validatePictures,
   },
   {
     key: pathConstants.SUMMARY,
     component: SummaryPage,
-    validate: validateSummary
+    validate: validateSummary,
   },
   {
     key: pathConstants.SHIPPING,
     component: ShippingPage,
-    validate: validateShipping
+    validate: validateShipping,
   },
   {
     key: pathConstants.PAYMENT,
     component: PaymentInfoPage,
-    validate: validatePaymentInfo
-  }
+    validate: validatePaymentInfo,
+  },
 ];
 
-const SkipPage = (key, values) => {
+const SkipPage = (key) => {
   let skip = false;
 
   switch (key) {
@@ -181,5 +161,5 @@ export const joyQuestionaire = {
   pathBase: "/visit/Joy",
   startPath: "/joystart",
   heading: " getting rid of your blues ",
-  initialValues: initialValues
+  initialValues: initialValues,
 };

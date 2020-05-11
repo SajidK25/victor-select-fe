@@ -4,25 +4,25 @@ import { makeStyles } from "@material-ui/core/styles";
 import docWithClipboard from "../../../../_images/DocWithClipboard.png";
 import rocketData from "../../../../_lotties/rocket.json";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     position: "relative",
     width: 250,
     marginLeft: "auto",
-    marginRight: "auto"
+    marginRight: "auto",
   },
   image: {
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",
-    marginTop: 16
+    marginTop: 16,
   },
   rocket: {
     position: "absolute",
     left: 38,
     top: 73,
-    transform: "rotate(-12.5deg)"
-  }
+    transform: "rotate(-12.5deg)",
+  },
 }));
 
 export const DocImage = () => {
@@ -32,8 +32,8 @@ export const DocImage = () => {
     autoplay: true,
     animationData: rocketData,
     rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
+      preserveAspectRatio: "xMidYMid slice",
+    },
   };
 
   return (

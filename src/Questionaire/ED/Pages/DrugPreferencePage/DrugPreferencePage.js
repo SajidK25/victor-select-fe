@@ -7,7 +7,11 @@ import {
   DetailedRadioGroup,
   RadioSubmit,
 } from "../../../../_components";
-import { getDrugList, validDoseOption, defaultDose } from "../../ProductInfo";
+import {
+  getDrugList,
+  validDoseOption,
+  defaultDose,
+} from "../../../Shared/ProductInfo";
 import { DrugPreferenceDisplay } from "./DrugPreferenceDisplay";
 
 const useStyles = makeStyles((theme) => ({
@@ -96,7 +100,7 @@ const DrugPreferencePage = (props) => {
           of our customized medications.
         </Typography>
       )}
-      {(drugType === "A" || drugType == "B") && (
+      {(drugType === "A" || drugType === "B") && (
         <Typography variant="body2" className={classes.moreText}>
           The pricing shown is for the recommended starting dose for an average,
           healthy person. We offer discounts for ordering in quantity.

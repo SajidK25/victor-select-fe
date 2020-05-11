@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 import React from "react";
 import { Field } from "react-final-form";
 import { makeStyles } from "@material-ui/core/styles";
@@ -7,27 +6,27 @@ import { SleepDoseDisplay } from "./SleepDoseDisplay";
 import {
   StandardPage,
   DetailedRadioGroup,
-  RadioSubmit
+  RadioSubmit,
 } from "../../../../_components";
-import { getDoseOptions, getDrugName } from "../../ProductInfo";
+import { getDoseOptions, getDrugName } from "../../../Shared/ProductInfo";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   moreText: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   highlite: {
     fontWeight: 500,
-    color: theme.palette.primary.main
-  }
+    color: theme.palette.primary.main,
+  },
 }));
 
-const validateSleepDose = values => {
+const validateSleepDose = () => {
   const errors = {};
 
   return errors;
 };
 
-const SleepDosePage = props => {
+const SleepDosePage = (props) => {
   const { values, handleSubmit } = props;
   const classes = useStyles();
 

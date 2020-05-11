@@ -9,6 +9,7 @@ import {
   useLocation,
   useParams,
 } from "react-router-dom";
+import { setCurrentProducts } from "./Shared/ProductInfo";
 import { getNextPage, getCurrentPage } from "./questionPaths";
 import { QuestionaireLayout } from "../_components";
 import { getQuestionaire } from "./questionPaths";
@@ -28,6 +29,7 @@ const Questionaire = () => {
   let transDir = "left";
 
   const questionaire = getQuestionaire(id);
+  setCurrentProducts(questionaire.type);
 
   const [pageIndex, setPageIndex] = useState(0);
   const [page, setPage] = useState(questionaire.pages[0]);
@@ -72,6 +74,8 @@ const Questionaire = () => {
     return page.validate ? page.validate(values, client) : {};
   };
 
+  console.log("Q:", questionaire);
+
   return (
     <Form
       initialValues={questionaire.initialValues}
@@ -82,14 +86,14 @@ const Questionaire = () => {
         let response = null;
         try {
           if (!isLastPage()) {
-            response = await updateCurrVisit({
-              variables: {
-                input: values,
-              },
-            });
-            if (response && response.data) {
-              await next(values);
-            }
+            // response = await updateCurrVisit({
+            //   variables: {
+            //     input: values,
+            //   },
+            // });
+            // if (response && response.data) {
+            await next(values);
+            // }
           } else {
             response = await saveNewVisit({
               variables: {

@@ -1,16 +1,19 @@
-/* eslint-disable import/order */
 import React from "react";
 import { Field } from "react-final-form";
 import Typography from "@material-ui/core/Typography";
 import {
   StandardPage,
   DetailedRadioGroup,
-  RadioSubmit
+  RadioSubmit,
 } from "../../../../_components";
-import { getDrugList, validDoseOption, defaultDose } from "../../ProductInfo";
+import {
+  getDrugList,
+  validDoseOption,
+  defaultDose,
+} from "../../../Shared/ProductInfo";
 import { SleepDrugPreferenceDisplay } from "./SleepDrugPreferenceDisplay";
 
-const validateSleepDrugPreference = values => {
+const validateSleepDrugPreference = (values) => {
   const errors = { subscription: {} };
   const s = values.subscription;
 
@@ -27,7 +30,7 @@ const validateSleepDrugPreference = values => {
 
 const questionText = "Select Your Product Preference Below";
 
-const SleepDrugPreferencePage = props => {
+const SleepDrugPreferencePage = (props) => {
   const { handleSubmit } = props;
 
   const name = "subscription.drugId";

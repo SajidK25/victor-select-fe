@@ -1,4 +1,3 @@
-/* eslint-disable import/order */
 import React from "react";
 import { Field } from "react-final-form";
 import Typography from "@material-ui/core/Typography";
@@ -6,22 +5,22 @@ import { makeStyles } from "@material-ui/core/styles";
 import {
   StandardPage,
   DetailedRadioGroup,
-  RadioSubmit
+  RadioSubmit,
 } from "../../../../_components";
-import { getAddonList } from "../../ProductInfo";
+import { getAddonList } from "../../../Shared/ProductInfo";
 import { EdAddonDisplay } from "./EdAddonDisplay";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   moreText: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   highlite: {
     fontWeight: 500,
-    color: theme.palette.primary.main
-  }
+    color: theme.palette.primary.main,
+  },
 }));
 
-const validateEdAddon = values => {
+const validateEdAddon = (values) => {
   const errors = { subscription: {} };
 
   if (!values.subscription.addOnId) {
@@ -33,7 +32,7 @@ const validateEdAddon = values => {
 
 const questionText = "Do you want to enhance your results?";
 
-const EdAddonPage = props => {
+const EdAddonPage = (props) => {
   const { handleSubmit } = props;
   const classes = useStyles();
   const name = "subscription.addOnId";

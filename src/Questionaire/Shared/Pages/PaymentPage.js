@@ -1,9 +1,9 @@
 import React from "react";
 import { Field } from "react-final-form";
 import { makeStyles } from "@material-ui/core/styles";
-import { StandardPage, RenderStdTextField } from "../../../_components";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
+import Divider from "@material-ui/core/Divider";
 import {
   formatCreditCardNumber,
   formatCVC,
@@ -11,14 +11,10 @@ import {
   validCardNumber,
   validCardExpiry,
   validCardCVC,
+  formatMoney,
 } from "../../../_helpers";
-import { drugDisplaySetup as edDisplaySetup } from "../../ED/ProductInfo/edSelections";
-import { drugDisplaySetup as joyDisplaySetup } from "../../Joy/ProductInfo/joySelections";
-import { drugDisplaySetup as hairDisplaySetup } from "../../Hair/ProductInfo/hairSelections";
-import { drugDisplaySetup as allergyDisplaySetup } from "../../Allergy/ProductInfo/allergySelections";
-import { drugDisplaySetup as sleepDisplaySetup } from "../../Sleep/ProductInfo/sleepSelections";
-import Divider from "@material-ui/core/Divider";
-import { formatMoney } from "../../../_helpers";
+import { drugDisplaySetup } from "../../Shared/ProductInfo";
+import { StandardPage, RenderStdTextField } from "../../../_components";
 
 const useStyles = makeStyles((theme) => ({
   payWith: {
@@ -74,7 +70,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const validatePaymentInfo = (values) => {
+export const validatePaymentInfo = (values) => {
   const errors = { payment: {} };
 
   if (!values.payment.cardNumber) {
@@ -98,33 +94,11 @@ const validatePaymentInfo = (values) => {
   return errors;
 };
 
-const PaymentInfoPage = (props) => {
+export const PaymentInfoPage = (props) => {
   const { values } = props;
   const classes = useStyles();
 
-  let options = null;
-  switch (values.type) {
-    case "JOY":
-      options = joyDisplaySetup(values.subscription);
-      break;
-
-    case "HAIR":
-      options = hairDisplaySetup(values.subscription);
-      break;
-
-    case "ALLERGY":
-      options = allergyDisplaySetup(values.subscription);
-      break;
-
-    case "SLEEP":
-      options = sleepDisplaySetup(values.subscription);
-      break;
-
-    case "ED":
-    default:
-      options = edDisplaySetup(values.subscription);
-      break;
-  }
+  const options = drugDisplaySetup(values.subscription);
 
   const name = options.display;
   const addonName = options.addOnDisplay;
@@ -228,5 +202,3 @@ const PaymentInfoPage = (props) => {
     </StandardPage>
   );
 };
-
-export { PaymentInfoPage, validatePaymentInfo };

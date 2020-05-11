@@ -3,13 +3,15 @@ import { sleepQuestionaire } from "./Sleep/ProductInfo";
 import { hairQuestionaire } from "./Hair/ProductInfo";
 import { allergyQuestionaire } from "./Allergy/ProductInfo";
 import { joyQuestionaire } from "./Joy/ProductInfo";
+import { weightQuestionaire } from "./Weight/ProductInfo";
 
 const visitTypes = {
   SLEEP: "sleep",
   ED: "ed",
   HAIR: "hair",
   ALLERGY: "allergy",
-  JOY: "joy"
+  JOY: "joy",
+  WEIGHT: "weight",
 };
 
 const questionaires = [
@@ -17,11 +19,12 @@ const questionaires = [
   { id: visitTypes.ED, questionaire: edQuestionaire },
   { id: visitTypes.HAIR, questionaire: hairQuestionaire },
   { id: visitTypes.ALLERGY, questionaire: allergyQuestionaire },
-  { id: visitTypes.JOY, questionaire: joyQuestionaire }
+  { id: visitTypes.JOY, questionaire: joyQuestionaire },
+  { id: visitTypes.WEIGHT, questionaire: weightQuestionaire },
 ];
 
-export const getQuestionaire = id => {
-  const que = questionaires.find(q => q.id === id.toLowerCase());
+export const getQuestionaire = (id) => {
+  const que = questionaires.find((q) => q.id === id.toLowerCase());
   if (que) {
     return que.questionaire;
   }
@@ -50,12 +53,12 @@ const getNextPage = (values, currPage, direction, questionaire) => {
   return {
     pageIndex: i,
     path: `${questionaire.pathBase}/${questionaire.pages[i].key}`,
-    page: questionaire.pages[i]
+    page: questionaire.pages[i],
   };
 };
 
 const getCurrentPage = (key, questionaire) => {
-  const keyMatch = q =>
+  const keyMatch = (q) =>
     q.key.toString().toLowerCase() === key.toString().toLowerCase();
 
   const i = questionaire.pages.findIndex(keyMatch);
@@ -67,15 +70,15 @@ const getCurrentPage = (key, questionaire) => {
   return {
     pageIndex: i,
     path: `${questionaire.pathBase}/${questionaire.pages[i].key}`,
-    page: questionaire.pages[i]
+    page: questionaire.pages[i],
   };
 };
 
-const getFirstPage = questionaire => {
+const getFirstPage = (questionaire) => {
   return {
     pageIndex: 0,
     path: `${questionaire.pathBase}/${questionaire.pages[0].key}`,
-    page: questionaire.pages[0]
+    page: questionaire.pages[0],
   };
 };
 

@@ -3,8 +3,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import Divider from "@material-ui/core/Divider";
 import Paper from "@material-ui/core/Paper";
 import { StandardPage } from "../../../_components";
-
-import { drugDisplaySetup } from "../ProductInfo";
+import { drugDisplaySetup } from "../../Shared/ProductInfo";
 import { formatMoney } from "../../../_helpers/money";
 
 const useStyles = makeStyles((theme) => ({

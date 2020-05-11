@@ -1,5 +1,4 @@
 import { initialValues } from "./data";
-import { drugIds } from "./allergySelections";
 
 import {
   ZipcodePage,
@@ -14,9 +13,12 @@ import {
   validatePictures,
   ShippingPage,
   validateShipping,
+} from "../../Shared/Pages";
+
+import {
   PaymentInfoPage,
   validatePaymentInfo,
-} from "../../Shared/Pages";
+} from "../../Shared/Pages/PaymentPage";
 
 import {
   NoseIssuesPage,
@@ -31,10 +33,6 @@ import {
   validateHeadIssues,
   SymptomsBeganPage,
   validateSymptomsBegan,
-  HaveSymptomsPage,
-  validateHaveSymptoms,
-  SevereSymptomsPage,
-  validateSevereSymptoms,
   InfectionsPerYearPage,
   validateInfectionsPerYear,
   MakeWorsePage,
@@ -155,16 +153,6 @@ const pages = [
     component: AllergyIntervalPage,
     validate: validateAllergyInterval,
   },
-  // {
-  //   key: pathConstants.ADDON,
-  //   component: EdAddonPage,
-  //   validate: validateEdAddon
-  // },
-  // {
-  //   key: pathConstants.HOWOFTEN,
-  //   component: HowOftenPage,
-  //   validate: validateHowOften
-  // },
   {
     key: pathConstants.VISITSTART,
     component: VisitStartPage,
@@ -225,11 +213,6 @@ const pages = [
     component: SymptomMonthsPage,
     validate: validateSymptomMonths,
   },
-  // {
-  //   key: pathConstants.SEVERESYMPTOMS,
-  //   component: SevereSymptomsPage,
-  //   validate: validateSevereSymptoms
-  // },
   {
     key: pathConstants.INFECTIONSPERYEAR,
     component: InfectionsPerYearPage,

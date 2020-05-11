@@ -12,6 +12,7 @@ import {
   Legal,
   ErrorMessage,
 } from "../../../_components";
+import { setCurrentProducts } from "../ProductInfo";
 import { getQuestionaire } from "../../questionPaths";
 import { REGISTER_MUTATION, ME_QUERY } from "../../../Graphql";
 import { setAccessToken } from "../../../accessToken";
@@ -66,6 +67,7 @@ export const CreateAccountPage = () => {
 
   const questionaire = getQuestionaire(id);
   const pathBase = questionaire.pathBase;
+  setCurrentProducts(questionaire.type);
 
   const [register, { error: mutationError }] = useMutation(REGISTER_MUTATION);
 

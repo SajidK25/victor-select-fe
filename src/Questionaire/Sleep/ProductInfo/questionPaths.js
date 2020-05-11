@@ -1,5 +1,5 @@
 import { initialValues } from "./data";
-import { drugIds } from "./sleepSelections";
+import { drugIds } from "./products";
 
 import {
   ZipcodePage,
@@ -18,9 +18,12 @@ import {
   validateOtherMedicines,
   ShippingPage,
   validateShipping,
-  PaymentInfoPage,
-  validatePaymentInfo
 } from "../../Shared/Pages";
+
+import {
+  PaymentInfoPage,
+  validatePaymentInfo,
+} from "../../Shared/Pages/PaymentPage";
 
 import {
   SleepProblemsPage,
@@ -55,8 +58,6 @@ import {
   validateSleepOtherMedications,
   SummaryPage,
   validateSummary,
-  AddonPage,
-  validateAddon
 } from "../Pages";
 
 const pathConstants = {
@@ -86,34 +87,34 @@ const pathConstants = {
   PICTURES: "photos",
   SUMMARY: "summary",
   SHIPPING: "shipping",
-  PAYMENT: "payment"
+  PAYMENT: "payment",
 };
 
 const pages = [
   {
     key: pathConstants.ZIPCODE,
     component: ZipcodePage,
-    validate: validateZipcode
+    validate: validateZipcode,
   },
   {
     key: pathConstants.GENDER,
     component: GenderPage,
-    validate: validateEitherGender
+    validate: validateEitherGender,
   },
   {
     key: pathConstants.BIRTHDATE,
     component: BirthdatePage,
-    validate: validateBirthdate
+    validate: validateBirthdate,
   },
   {
     key: pathConstants.DRUGPREFERENCE,
     component: SleepDrugPreferencePage,
-    validate: validateSleepDrugPreference
+    validate: validateSleepDrugPreference,
   },
   {
     key: pathConstants.SLEEPDOSE,
     component: SleepDosePage,
-    validate: validateSleepDose
+    validate: validateSleepDose,
   },
   //{
   //  key: pathConstants.ADDON,
@@ -123,103 +124,103 @@ const pages = [
   {
     key: pathConstants.SLEEPINTERVAL,
     component: SleepIntervalPage,
-    validate: validateSleepInterval
+    validate: validateSleepInterval,
   },
   {
     key: pathConstants.SLEEPSTART,
     component: VisitStartPage,
-    validate: validateVisitStart
+    validate: validateVisitStart,
   },
   {
     key: pathConstants.SLEEPOTHERMEDS,
     component: SleepOtherMedicationsPage,
-    validate: validateSleepOtherMedications
+    validate: validateSleepOtherMedications,
   },
   {
     key: pathConstants.SLEEPPROBLEMS,
     component: SleepProblemsPage,
-    validate: validateSleepProblems
+    validate: validateSleepProblems,
   },
   {
     key: pathConstants.SLEEPISSUES,
     component: SleepIssuesPage,
-    validate: validateSleepIssues
+    validate: validateSleepIssues,
   },
   {
     key: pathConstants.SLEEPHEALTH,
     component: SleepHealthPage,
-    validate: validateSleepHealth
+    validate: validateSleepHealth,
   },
   {
     key: pathConstants.SLEEPBEHAVIOR,
     component: SleepBehaviorPage,
-    validate: validateSleepBehavior
+    validate: validateSleepBehavior,
   },
   {
     key: pathConstants.SLEEPHISTORY,
     component: SleepHistoryPage,
-    validate: validateSleepHistory
+    validate: validateSleepHistory,
   },
   {
     key: pathConstants.SLEEPSYMPTOMS,
     component: SleepSymptomsPage,
-    validate: validateSleepSymptoms
+    validate: validateSleepSymptoms,
   },
   {
     key: pathConstants.SLEEPHABITS,
     component: SleepHabitsPage,
-    validate: validateSleepHabits
+    validate: validateSleepHabits,
   },
   {
     key: pathConstants.SLEEPDOZING,
     component: SleepDozingPage,
-    validate: validateSleepDozing
+    validate: validateSleepDozing,
   },
   {
     key: pathConstants.SLEEPMEDHISTORY,
     component: SleepMedHistoryPage,
-    validate: validateSleepMedHistory
+    validate: validateSleepMedHistory,
   },
   {
     key: pathConstants.SLEEPFAMILY,
     component: SleepFamilyPage,
-    validate: validateSleepFamily
+    validate: validateSleepFamily,
   },
   {
     key: pathConstants.OTHERMEDICINES,
     component: OtherMedicinesPage,
-    validate: validateOtherMedicines
+    validate: validateOtherMedicines,
   },
   {
     key: pathConstants.ALLERGIES,
     component: SleepAllergiesPage,
-    validate: validateSleepAllergies
+    validate: validateSleepAllergies,
   },
   {
     key: pathConstants.ANYTHINGELSE,
     component: AnythingElsePage,
-    validate: validateAnythingElse
+    validate: validateAnythingElse,
   },
   {
     key: pathConstants.PICTURES,
     component: PicturesPage,
-    validate: validatePictures
+    validate: validatePictures,
   },
   {
     key: pathConstants.SUMMARY,
     component: SummaryPage,
-    validate: validateSummary
+    validate: validateSummary,
   },
   {
     key: pathConstants.SHIPPING,
     component: ShippingPage,
-    validate: validateShipping
+    validate: validateShipping,
   },
   {
     key: pathConstants.PAYMENT,
     component: PaymentInfoPage,
-    validate: validatePaymentInfo
-  }
+    validate: validatePaymentInfo,
+  },
 ];
 
 const SkipPage = (key, values) => {
@@ -247,5 +248,5 @@ export const sleepQuestionaire = {
   pathBase: "/visit/Sleep",
   startPath: "/sleepstart",
   heading: " better sleep ",
-  initialValues: initialValues
+  initialValues: initialValues,
 };
