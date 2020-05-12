@@ -86,14 +86,14 @@ const Questionaire = () => {
         let response = null;
         try {
           if (!isLastPage()) {
-            // response = await updateCurrVisit({
-            //   variables: {
-            //     input: values,
-            //   },
-            // });
-            // if (response && response.data) {
-            await next(values);
-            // }
+            response = await updateCurrVisit({
+              variables: {
+                input: values,
+              },
+            });
+            if (response && response.data) {
+              await next(values);
+            }
           } else {
             response = await saveNewVisit({
               variables: {

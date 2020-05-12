@@ -8,7 +8,7 @@ import {
   RenderStdTextField,
 } from "../../../_components";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles({
   wrapper: {
     width: 270,
     margin: "0 auto",
@@ -36,7 +36,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     marginBottom: 8,
   },
-}));
+});
 
 const feetOptions = [
   { value: 4, label: "4'" },
@@ -88,7 +88,6 @@ const questionText = "Tell us about yourself.";
 const additionalText = "";
 
 const CurrentStatePage = (props) => {
-  const { values } = props;
   const classes = useStyles();
 
   return (

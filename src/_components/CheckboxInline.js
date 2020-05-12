@@ -11,11 +11,11 @@ const useStyles = makeStyles({
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "baseline",
-    paddingLeft: 16
+    paddingLeft: 16,
   },
   checkboxRoot: {
     marginLeft: 0,
-    marginRight: 0
+    marginRight: 0,
   },
   checkboxLabel: {
     fontSize: 13,
@@ -23,50 +23,62 @@ const useStyles = makeStyles({
     lineHeight: "16px",
     marginLeft: 4,
     marginRight: 4,
-    marginTop: 0
+    marginTop: 0,
   },
   textLabel: {
     marginLeft: 16,
-    fontWeight: 400
+    fontWeight: 400,
   },
-  fieldDiv: {
+  fieldDiv4: {
     width: "25%",
-    display: "inline-flex"
+    display: "inline-flex",
+  },
+  fieldDiv3: {
+    width: "33%",
+    display: "inline-flex",
+  },
+  fieldDiv2: {
+    width: "50%",
+    display: "inline-flex",
+  },
+  fieldDiv1: {
+    width: "100%",
+    display: "inline-flex",
   },
   textBox: {
     margin: 0,
     fontSize: 13,
     paddingBottom: 4,
-    paddingTop: 0
+    paddingTop: 0,
   },
   textRoot: {
     marginLeft: -38,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   control: {
     paddingTop: 2,
-    paddingBottom: 2
+    paddingBottom: 2,
   },
   input: {
     padding: 2,
-    fontSize: 12
-  }
+    fontSize: 12,
+  },
 });
 
-export const CheckboxInline = props => {
-  const { input, label, options } = props;
+export const CheckboxInline = (props) => {
+  const { input, label, options, columns = 4 } = props;
   const classes = useStyles();
 
   return (
     <>
       <Typography className={classes.textLabel}>{label}</Typography>
       <div className={classes.flexContainer}>
-        {options.map(o => (
-          <div key={o} className={classes.fieldDiv}>
+        {options.map((o) => (
+          <div key={o} className={classes[`fieldDiv${columns}`]}>
             <FormControlLabel
               classes={{
                 root: classes.checkboxRoot, // class name, e.g. `classes-nesting-root-x`
-                label: classes.checkboxLabel // class name, e.g. `classes-nesting-label-x`
+                label: classes.checkboxLabel, // class name, e.g. `classes-nesting-label-x`
               }}
               label={o}
               key={`${input.name}${o}`}
@@ -75,7 +87,7 @@ export const CheckboxInline = props => {
                   name={input.name}
                   component={CheckboxWrapper}
                   classes={{
-                    root: classes.input
+                    root: classes.input,
                   }}
                   type="checkbox"
                   color="primary"
@@ -88,7 +100,7 @@ export const CheckboxInline = props => {
                 name={`${input.name}other`}
                 component={RenderStdTextField}
                 InputProps={{
-                  classes: { root: classes.textRoot, input: classes.textBox }
+                  classes: { root: classes.textRoot, input: classes.textBox },
                 }}
                 margin="dense"
                 autoFocus={true}

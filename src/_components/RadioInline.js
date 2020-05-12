@@ -16,49 +16,66 @@ const useStyles = makeStyles({
     lineHeight: "16px",
     marginLeft: -4,
     marginRight: 4,
-    marginTop: 0
+    marginTop: 0,
   },
   flexContainer: {
     display: "flex",
     flexDirection: "row",
     flexWrap: "wrap",
     alignItems: "baseline",
-    paddingLeft: 16
+    paddingLeft: 16,
   },
-  fieldDiv: {
+  fieldDiv1: {
+    width: "100%",
+    display: "inline-flex",
+  },
+  fieldDiv2: {
+    width: "50%",
+    display: "inline-flex",
+  },
+  fieldDiv3: {
     width: "33%",
-    display: "inline-flex"
+    display: "inline-flex",
+  },
+  fieldDiv4: {
+    width: "25%",
+    display: "inline-flex",
+  },
+  fieldDiv5: {
+    width: "20%",
+    display: "inline-flex",
   },
   textBox: {
     margin: 0,
     fontSize: 13,
     paddingBottom: 4,
-    paddingTop: 0
+    paddingTop: 0,
   },
   textRoot: {
     marginLeft: -36,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   radioRoot: {
     marginLeft: 0,
-    marginRight: 0
+    marginRight: 0,
   },
   textLabel: {
     marginLeft: 16,
-    fontWeight: 400
+    fontWeight: 400,
   },
   control: {
     paddingTop: 2,
-    paddingBottom: 2
-  }
+    paddingBottom: 2,
+  },
 });
 
-export const RadioInline = props => {
+export const RadioInline = (props) => {
   const {
     input,
     label,
     meta: { touched, error },
-    options
+    options,
+    columns = 3,
   } = props;
 
   const classes = useStyles();
@@ -67,12 +84,12 @@ export const RadioInline = props => {
     <>
       <Typography className={classes.textLabel}>{label}</Typography>
       <div className={classes.flexContainer}>
-        {options.map((o, index) => (
-          <div key={o} className={classes.fieldDiv}>
+        {options.map((o) => (
+          <div key={o} className={classes[`fieldDiv${columns}`]}>
             <FormControlLabel
               classes={{
                 root: classes.radioRoot, // class name, e.g. `classes-nesting-root-x`
-                label: classes.radioLabel // class name, e.g. `classes-nesting-label-x`
+                label: classes.radioLabel, // class name, e.g. `classes-nesting-label-x`
               }}
               className={classes.control}
               key={o}
@@ -84,7 +101,7 @@ export const RadioInline = props => {
                 <Radio
                   name={input.name}
                   classes={{
-                    root: classes.control
+                    root: classes.control,
                   }}
                   color="primary"
                   type="radio"
@@ -97,7 +114,7 @@ export const RadioInline = props => {
                 name={`${input.name}other`}
                 component={RenderStdTextField}
                 InputProps={{
-                  classes: { root: classes.textRoot, input: classes.textBox }
+                  classes: { root: classes.textRoot, input: classes.textBox },
                 }}
                 margin="dense"
                 autoFocus={true}

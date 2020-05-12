@@ -4,70 +4,70 @@ import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
 import { formatMoney } from "../../../../_helpers";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     margin: 0,
-    padding: 0
+    padding: 0,
   },
   paperRoot: {
     margin: 0,
     paddingLeft: 4,
-    paddingRight: 4
+    paddingRight: 4,
   },
   title: {
     fontSize: 20,
     fontWeight: 500,
-    marginTop: 4
+    marginTop: 4,
   },
   subTitle: {
     fontSize: 13,
     fontWeight: 500,
-    marginTop: 8
+    marginTop: 8,
   },
   moreText: {
     fontSize: 12,
-    fontWeight: 300
+    fontWeight: 300,
   },
   priceLine: {
     marginTop: 16,
     width: "100%",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   priceBox: {
     display: "flex",
-    alignSelf: "flex-end"
+    alignSelf: "flex-end",
   },
   perMultiMonth: {
     fontSize: 24,
     color: theme.palette.primary.main,
-    fontWeight: 600
+    fontWeight: 600,
   },
   perMonth: {
     fontSize: 24,
-    fontWeight: 400
+    fontWeight: 400,
   },
   savings: {
     display: "flex",
     alignSelf: "flex-end",
     color: theme.palette.primary.main,
     fontSize: 16,
-    fontWeight: 500
+    fontWeight: 500,
   },
   fullPrice: {
     display: "flex",
     alignSelf: "flex-end",
-    fontWeight: 400
+    fontWeight: 400,
   },
   small: {
     fontSize: 12,
     fontWeight: 400,
-    color: theme.palette.text.primary
-  }
+    color: theme.palette.text.primary,
+  },
 }));
 
-export const AllergyIntervalDisplay = props => {
+export const WeightIntervalDisplay = (props) => {
   const { options } = props;
   const classes = useStyles();
 
@@ -79,7 +79,7 @@ export const AllergyIntervalDisplay = props => {
   return (
     <Paper
       classes={{
-        root: classes.paperRoot
+        root: classes.paperRoot,
       }}
       square
       elevation={0}

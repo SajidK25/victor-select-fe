@@ -1,10 +1,6 @@
 import React from "react";
-import { Field } from "react-final-form";
-import Typography from "@material-ui/core/Typography";
 import Paper from "@material-ui/core/Paper";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
 import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
 import { makeStyles } from "@material-ui/core/styles";
 import { CheckboxInline } from "./";
 
@@ -22,12 +18,12 @@ const useStyles = makeStyles({
     borderColor: "lightgrey",
     "&:hover": {
       borderWidth: 0.5,
-      borderColor: "#2196f3"
-    }
+      borderColor: "#2196f3",
+    },
   },
   root: {
     marginLeft: 0,
-    marginRight: 0
+    marginRight: 0,
   },
   label: {
     fontSize: 16,
@@ -35,44 +31,44 @@ const useStyles = makeStyles({
     lineHeight: "20px",
     paddingTop: 6,
     paddingBottom: 6,
-    marginLeft: 0
+    marginLeft: 0,
   },
   textLabel: {
     marginRight: 8,
     //  width: "25%",
     fontWeight: 400,
     fontSize: 12,
-    lineHeight: "15px"
+    lineHeight: "15px",
   },
   fieldDiv: {
     width: "25%",
-    display: "inline-flex"
+    display: "inline-flex",
   },
   textBox: {
     margin: 0,
     fontSize: 13,
     paddingBottom: 4,
-    paddingTop: 0
+    paddingTop: 0,
   },
   textRoot: {
     marginLeft: -38,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   control: {
     paddingTop: 2,
-    paddingBottom: 2
+    paddingBottom: 2,
   },
   input: {
     padding: 2,
-    fontSize: 12
+    fontSize: 12,
   },
   formControl: {
     width: "100%",
-    paddingLeft: 8
-  }
+    paddingLeft: 8,
+  },
 });
 
-export const CheckboxMulti = props => {
+export const CheckboxMulti = (props) => {
   const classes = useStyles();
 
   return (

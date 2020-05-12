@@ -7,9 +7,9 @@ import {
   RadioSubmit,
 } from "../../../../_components";
 import { getPrices, getMaxAmount } from "../../../Shared/ProductInfo";
-import { AllergyIntervalDisplay } from "./AllergyIntervalDisplay";
+import { WeightIntervalDisplay } from "./WeightIntervalDisplay";
 
-const validateAllergyInterval = () => {
+const validateWeightInterval = () => {
   const errors = {};
 
   return errors;
@@ -91,10 +91,11 @@ const displayOptions = (pricing) => {
 const questionText = `How often should we ship your treatment?`;
 const additionalText = `By choosing to have your treatment delivered every 2 or 3 months you will save money.`;
 
-const AllergyIntervalPage = (props) => {
+const WeightIntervalPage = (props) => {
   const { values, handleSubmit } = props;
 
   const fieldName = "subscription.shippingInterval";
+  values.subscription.drugId = "SVELTIQUE";
 
   const pricing = getPrices({
     drugId: values.subscription.drugId,
@@ -113,7 +114,7 @@ const AllergyIntervalPage = (props) => {
       <Field
         component={DetailedRadioGroup}
         options={options}
-        displayComponent={AllergyIntervalDisplay}
+        displayComponent={WeightIntervalDisplay}
         name={fieldName}
         type="div"
       />
@@ -122,4 +123,4 @@ const AllergyIntervalPage = (props) => {
   );
 };
 
-export { AllergyIntervalPage, validateAllergyInterval };
+export { WeightIntervalPage, validateWeightInterval };

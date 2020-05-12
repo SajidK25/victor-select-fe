@@ -74,252 +74,128 @@ export const initialValues = {
     thyroid: false,
     none: false,
   },
-  noseIssues: {
+  lowestWeight: {
+    diet: false,
+    exercise: false,
+    prescription: false,
+    surgery: false,
+    counseling: false,
     none: false,
   },
-  noseCongested: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
+  tryingToLose: {
+    answer: "",
   },
-  noseClearMucus: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
+  stayedSame: {
+    answer: "",
   },
-  noseColoredMucus: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
+  generalHealth: {
+    answer: "",
   },
-  noseItchy: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
+  motivation: {
+    answer: [],
   },
-  noseSmell: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
+  household: {
+    spouse: "N/A",
+    child1: "N/A",
+    child2: "N/A",
+    child3: "N/A",
+    child4: "N/A",
+    other: "N/A",
   },
-  noseSnoring: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
+  importance: {
+    answer: "",
   },
-  noseSneezing: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
+  dietaryProblem: {
+    answer: [],
   },
-  eyeIssues: {
-    none: false,
+  compensate: {
+    answer: "",
   },
-  eyeWatery: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
+  hide: {
+    answer: "",
   },
-  eyeItchy: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
+  sleep: {
+    hours: "",
+    problems: "",
+    rested: "",
   },
-  eyeRed: {
-    selected: false,
-    frequency: "",
-    side: "",
+  scale: {
+    important: "",
+    changes: "",
+    support: "",
+    sabotage: "",
+    confident: "",
   },
-  eyeDry: {
-    selected: false,
-    side: "",
-    frequency: "frequency",
-    occurs: "occurs",
+  caffeinated: {
+    answer: "",
   },
-  eyeSwollen: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
-  },
-  eyeDischarge: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
-  },
-  earIssues: {
-    none: false,
-  },
-  earClogged: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
-  },
-  earItchy: {
-    selected: false,
-    side: "",
-    frequency: "",
-    occurs: "",
-  },
-  earRinging: {
-    selected: false,
-    frequency: "",
-    side: "",
-  },
-  earHearingLoss: {
-    selected: false,
-    side: "",
-    frequency: "",
-  },
-  throatIssues: {
-    none: false,
-  },
-  throatSore: {
-    selected: false,
-    frequency: "",
-    occurs: "",
-  },
-  throatCough: {
-    selected: false,
-    frequency: "",
-    occurs: "",
-  },
-  throatItchy: {
-    selected: false,
-    frequency: "",
-    occurs: "",
-  },
-  throatClearing: {
-    selected: false,
-    frequency: "",
-    occurs: "",
-  },
-  throatHoarse: {
-    selected: false,
-    frequency: "",
-    occurs: "",
-  },
-  throatPostNasal: {
-    selected: false,
-    frequency: "",
-    occurs: "",
-  },
-  headIssues: {
-    none: false,
-  },
-  headAche: {
-    selected: false,
-    frequency: "",
-  },
-  headPressure: {
-    frequency: "",
-  },
-  otherMedicines: {
-    taking: "",
+  smoke: {
+    answer: "",
     explain: "",
   },
-  symptomsBegan: {
+  mental: {
+    depressesd: "",
+    stress: "",
+    manage: [],
+  },
+  describes: {
     answer: "",
   },
-  symptomMonths: {
-    have: "",
-    severe: "",
-  },
-  infectionsPerYear: {
-    answer: "",
-  },
-  makeWorse: {
-    irritants: [],
-    medicine: [],
-    allergens: [],
-    location: [],
-  },
-  dwelling: {
-    location: "",
-    locationother: "",
-    type: "",
-    typeother: "",
-  },
-  hasSmoked: {
-    selected: false,
-    howMuch: "",
-    hasQuit: "",
-  },
-  hasPets: {
-    selected: false,
-  },
-  allergyMeds: {
-    allegra: false,
-    benedryl: false,
-    claritin: false,
-    flonase: false,
-    phenylephrine: false,
-    sudafed: false,
-    zyrtec: false,
+  plans: {
+    weightwatchers: false,
+    weightwatchersExplain: "",
+    jennycraig: false,
+    jennycraigExplain: "",
+    slimfast: false,
+    slimfastExplain: "",
+    atkins: false,
+    atkinsExplain: "",
+    ornish: false,
+    ornishExplain: "",
+    southbeach: false,
+    southbeachExplain: "",
+    laweightloss: false,
+    laweightlossExplain: "",
+    nutrisystems: false,
+    nutrisystemsExplain: "",
+    lindora: false,
+    lindoraExplain: "",
+    overeatersanonymous: false,
+    overeatersanonymousExplain: "",
+    liquiddiets: false,
+    liquiddietsExplain: "",
+    meridial: false,
+    meridialExplain: "",
+    phenfen: false,
+    phenfenExplain: "",
+    otcdietpills: false,
+    otcdietpillsExplain: "",
+    surgery: false,
+    surgeryExplain: "",
     other: false,
     otherExplain: "",
     none: false,
+    notWork: "",
+    oneYear: "No",
   },
-  problems: {
-    earInfections: false,
-    sinus: false,
-    brokenNose: false,
-    earTubes: false,
-    nasalSurgery: false,
-    nasalPolyps: false,
-    deviatedSeptum: false,
-    none: false,
-  },
-  skinTesting: {
+  medications: {
     answer: "",
     explain: "",
   },
-  shots: {
+  supplements: {
     answer: "",
-    range1: {
-      from: "",
-      to: "",
-    },
-    range2: {
-      from: "",
-      to: "",
-    },
-    range3: {
-      from: "",
-      to: "",
-    },
-    helpful: "",
-    reactions: "",
+    explain: "",
   },
-  environment: {
-    occupation: "",
-    heating: "",
-    airConditioning: "",
-    bedroomFloor: "",
-    familyRoomFloor: "",
-    mattress: "",
-    pillow: "",
-    comforter: "",
+  diet: {
+    rating: "3",
+    alcoholCount: 0,
+    alcoholInterval: "day",
+    crave: "",
   },
-  dustCover: {
-    selected: "",
-    covered: [],
-  },
-  mold: {
-    selected: "",
-    problem: "",
-    where: [],
+  exercise: {
+    level: "light",
+    reason: "",
+    reasonExplain: "",
   },
   anythingElse: {
     answer: "",

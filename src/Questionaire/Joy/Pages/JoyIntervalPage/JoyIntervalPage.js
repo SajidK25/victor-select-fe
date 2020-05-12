@@ -99,9 +99,11 @@ const JoyIntervalPage = (props) => {
 
   const pricing = getPrices({
     drugId: values.subscription.drugId,
+    // drugId: "JOYOUS",
     addOnId: values.subscription.addOnId,
   });
 
+  console.log("Pricing!!!:", pricing);
   const options = displayOptions(pricing);
 
   return (

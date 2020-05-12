@@ -15,23 +15,23 @@ const months = [
   "September",
   "October",
   "November",
-  "December"
+  "December",
 ];
 
 const options = [
   {
     name: "symptomMonths.have",
     label: "During what month(s) do you have the symptoms you have indicated?",
-    options: months
+    options: months,
   },
   {
     name: "symptomMonths.severe",
     label: "Which month(s) do you find these symptoms to be most severe?",
-    options: months
-  }
+    options: months,
+  },
 ];
 
-const validateSymptomMonths = values => {
+const validateSymptomMonths = (values) => {
   const errors = { symptomMonths: {} };
 
   return errors;
@@ -40,7 +40,7 @@ const validateSymptomMonths = values => {
 const questionText = `When do you have the symptoms you indicated?`;
 const additionalText = `Check all that apply`;
 
-const SymptomMonthsPage = props => {
+const SymptomMonthsPage = (props) => {
   return (
     <StandardPage
       questionText={questionText}
@@ -48,7 +48,7 @@ const SymptomMonthsPage = props => {
       {...props}
     >
       <FormGroup>
-        {options.map(o => (
+        {options.map((o) => (
           <Field
             name={o.name}
             key={o.name}
