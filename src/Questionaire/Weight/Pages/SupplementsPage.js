@@ -14,12 +14,12 @@ const options = [
 
 const validateSupplements = (values) => {
   const errors = { supplements: {} };
-  const m = values.supplements;
+  const s = values.supplements;
 
-  if (!m.answwer) {
+  if (!s.answer) {
     errors.supplements.answer = "Please select an option.";
   }
-  if (m.answer === "yes" && !m.explain) {
+  if (s.answer === "yes" && !s.explain) {
     errors.supplements.explain = "Please provide details.";
   }
 

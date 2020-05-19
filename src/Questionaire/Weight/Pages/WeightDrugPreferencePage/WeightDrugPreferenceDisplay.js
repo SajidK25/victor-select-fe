@@ -3,53 +3,53 @@ import { Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { formatMoney } from "../../../../_helpers/money";
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme) => ({
   container: {
     margin: 0,
     paddingLeft: 8,
-    paddingRight: 8
+    paddingRight: 8,
   },
   titleLine: {
     width: "100%",
     display: "flex",
     flexDirection: "row",
-    justifyContent: "space-between"
+    justifyContent: "space-between",
   },
   title: {
     fontSize: 18,
     fontWeight: 500,
     marginTop: 0,
-    marginBottom: theme.spacing(0.5)
+    marginBottom: theme.spacing(0.5),
   },
   priceBox: {
     display: "flex",
-    alignSelf: "flex-start"
+    alignSelf: "flex-start",
   },
   price: {
     fontSize: 18,
     fontWeight: 600,
-    color: theme.palette.primary.main
+    color: theme.palette.primary.main,
   },
   dose: {
     fontSize: 11,
     fontWeight: 300,
     alignSelf: "center",
     marginLeft: 4,
-    marginTop: 4
+    marginTop: 4,
   },
   description: {
     fontSize: 14,
     fontWeight: 300,
-    marginTop: 0
+    marginTop: 0,
   },
   checked: {
     borderStyle: "solid",
     borderColor: theme.palette.primary.main,
-    borderWidth: 1
-  }
+    borderWidth: 1,
+  },
 }));
 
-export const AllergyDrugPreferenceDisplay = props => {
+export const WeightDrugPreferenceDisplay = (props) => {
   const { options } = props;
   const classes = useStyles();
 

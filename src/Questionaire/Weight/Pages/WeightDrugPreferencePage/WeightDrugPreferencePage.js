@@ -11,11 +11,14 @@ import {
   validDoseOption,
   defaultDose,
 } from "../../../Shared/ProductInfo";
-import { AllergyDrugPreferenceDisplay } from "./AllergyDrugPreferenceDisplay";
+import { WeightDrugPreferenceDisplay } from "./WeightDrugPreferenceDisplay";
 
-const validateAllergyDrugPreference = (values) => {
-  const errors = { subscription: {} };
+const validateWeightDrugPreference = (values) => {
+  const newLocal = { subscription: {} };
+  const errors = newLocal;
   const s = values.subscription;
+
+  console.log("Subscription", s);
 
   if (!s.drugId) {
     errors.subscription.drugId = "Please make a selection.";
@@ -30,7 +33,7 @@ const validateAllergyDrugPreference = (values) => {
 
 const questionText = "Select Your Product Preference Below";
 
-const AllergyDrugPreferencePage = (props) => {
+const WeightDrugPreferencePage = (props) => {
   const { handleSubmit } = props;
 
   const name = "subscription.drugId";
@@ -48,7 +51,7 @@ const AllergyDrugPreferencePage = (props) => {
         <Field
           component={DetailedRadioGroup}
           options={options}
-          displayComponent={AllergyDrugPreferenceDisplay}
+          displayComponent={WeightDrugPreferenceDisplay}
           name={name}
           type="div"
         />
@@ -58,4 +61,4 @@ const AllergyDrugPreferencePage = (props) => {
   );
 };
 
-export { AllergyDrugPreferencePage, validateAllergyDrugPreference };
+export { WeightDrugPreferencePage, validateWeightDrugPreference };

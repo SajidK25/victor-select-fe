@@ -97,6 +97,7 @@ export const getDoseOptions = (drugId) => {
 
 const getDoseOption = (drugId, dose) => {
   const options = getDoseOptions(drugId);
+  if (!options) return null;
 
   console.log("Dose", dose);
 

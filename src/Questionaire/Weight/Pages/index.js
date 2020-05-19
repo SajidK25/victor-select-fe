@@ -28,3 +28,4 @@ export * from "./ExerciseReasonPage";
 export * from "./MedicationsPage";
 export * from "./SupplementsPage";
 export * from "./WeightIntervalPage";
+export * from "./WeightDrugPreferencePage";

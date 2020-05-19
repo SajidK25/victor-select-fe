@@ -95,7 +95,6 @@ const WeightIntervalPage = (props) => {
   const { values, handleSubmit } = props;
 
   const fieldName = "subscription.shippingInterval";
-  values.subscription.drugId = "SVELTIQUE";
 
   const pricing = getPrices({
     drugId: values.subscription.drugId,

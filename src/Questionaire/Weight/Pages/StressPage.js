@@ -15,6 +15,7 @@ const manage = [
   "Prayer",
   "Family relationships",
   "Social relationships",
+  "Other",
 ];
 
 const validateStress = (values) => {

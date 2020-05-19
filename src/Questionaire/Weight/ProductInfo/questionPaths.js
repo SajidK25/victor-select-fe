@@ -83,13 +83,15 @@ import {
   validateSupplements,
   WeightIntervalPage,
   validateWeightInterval,
+  WeightDrugPreferencePage,
+  validateWeightDrugPreference,
 } from "../Pages";
 
 const pathConstants = {
   ZIPCODE: "zipcode",
   GENDER: "gender",
   BIRTHDATE: "birthdate",
-  // DRUGPREFERENCE: 1,
+  DRUGPREFERENCE: 1,
   TIMESPERMONTH: 2,
   //  HOWOFTEN: 5,
   //  ADDON: 6,
@@ -149,6 +151,11 @@ const pages = [
     validate: validateBirthdate,
   },
   {
+    key: pathConstants.DRUGPREFERENCE,
+    component: WeightDrugPreferencePage,
+    validate: validateWeightDrugPreference,
+  },
+  /* {
     key: pathConstants.TIMESPERMONTH,
     component: WeightIntervalPage,
     validate: validateWeightInterval,
@@ -268,10 +275,16 @@ const pages = [
     component: DescribesPage,
     validate: validateDescribes,
   },
+  */
   {
     key: pathConstants.PLANS,
     component: PlansPage,
     validate: validatePlans,
+  },
+  {
+    key: pathConstants.PLAN_EXPLAIN,
+    component: PlanExplainPage,
+    validate: validatePlanExplain,
   },
   {
     key: pathConstants.MEDICATIONS,
@@ -282,11 +295,6 @@ const pages = [
     key: pathConstants.SUPPLEMENTS,
     component: SupplementsPage,
     validate: validateSupplements,
-  },
-  {
-    key: pathConstants.PLAN_EXPLAIN,
-    component: PlanExplainPage,
-    validate: validatePlanExplain,
   },
   {
     key: pathConstants.DIET,
