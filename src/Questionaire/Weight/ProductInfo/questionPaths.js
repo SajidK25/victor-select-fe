@@ -155,7 +155,7 @@ const pages = [
     component: WeightDrugPreferencePage,
     validate: validateWeightDrugPreference,
   },
-  /* {
+  {
     key: pathConstants.TIMESPERMONTH,
     component: WeightIntervalPage,
     validate: validateWeightInterval,
@@ -275,7 +275,6 @@ const pages = [
     component: DescribesPage,
     validate: validateDescribes,
   },
-  */
   {
     key: pathConstants.PLANS,
     component: PlansPage,
