@@ -42,11 +42,6 @@ const WeightDrugPreferencePage = (props) => {
 
   return (
     <StandardPage questionText={questionText} alignTitles="left" {...props}>
-      <Typography variant="body2" gutterBottom>
-        Our Products help alleviate your suffering from headaches, sneezing,
-        drainage, coughing, itching, rashes, and more!
-      </Typography>
-
       {options && (
         <Field
           component={DetailedRadioGroup}
