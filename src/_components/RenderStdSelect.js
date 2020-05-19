@@ -11,7 +11,6 @@ const RenderStdSelect = (props) => {
     ...rest
   } = props;
 
-  console.log("Input", inputProps);
   return (
     <Select
       {...input}

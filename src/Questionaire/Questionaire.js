@@ -47,7 +47,7 @@ const Questionaire = () => {
         }
       }
     }
-    return () => console.log("unmounting...");
+    return () => {};
   }, [location, page.key, questionaire]);
 
   const next = (values) => {
@@ -73,8 +73,6 @@ const Questionaire = () => {
   const validate = async (values) => {
     return page.validate ? page.validate(values, client) : {};
   };
-
-  console.log("Q:", questionaire);
 
   return (
     <Form

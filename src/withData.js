@@ -15,6 +15,9 @@ const cache = new InMemoryCache({});
 const endpoint =
   process.env.NODE_ENV === "development" ? dev_endpoint : prod_endpoint;
 
+console.log("env", process.env.REACT_APP_API_ENDPOINT);
+console.log("Endpoint", endpoint);
+
 const requestLink = new ApolloLink(
   (operation, forward) =>
     new Observable((observer) => {

@@ -20,16 +20,13 @@ let addOns = null;
 let maxAmount = 0;
 
 export const setCurrentProducts = (type) => {
-  console.log("Type:", type);
   const product = products.filter((d) => d.type === type);
-  console.log("Product:", product);
   if (product) {
     drugIds = product[0].drugIds;
     drugSelections = product[0].drugSelections;
     addOns = product[0].addOns;
     maxAmount = product[0].maxAmount;
   }
-  console.log("DrugSelections", drugSelections);
 };
 
 export const getDrugIds = () => {
@@ -99,11 +96,8 @@ const getDoseOption = (drugId, dose) => {
   const options = getDoseOptions(drugId);
   if (!options) return null;
 
-  console.log("Dose", dose);
-
   const ret = options.find((o) => o.id === dose);
 
-  console.log("option", ret);
   return ret;
 };
 
@@ -125,7 +119,6 @@ export const defaultDose = (drugId) => {
 };
 
 export const getPrices = ({ drugId, addOnId = "", dose = "", count = 0 }) => {
-  console.log("Get prices:", drugId);
   const pricing = {
     display: `${drugId} not found`,
     addOnDisplay: "",
@@ -144,8 +137,6 @@ export const getPrices = ({ drugId, addOnId = "", dose = "", count = 0 }) => {
 
   const doseOption = getDoseOption(drugId, dose);
   if (!doseOption) return pricing;
-
-  console.log("Dose options:", doseOption);
 
   const addOnPricing = getAddonPricing(addOnId);
   const addOnDisplay = getAddonName(addOnId);
