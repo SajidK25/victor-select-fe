@@ -1,7 +1,36 @@
 import React from "react";
 
-export const EDWelcome = (props) => {
-  const { message } = props;
+export const WelcomeMessage = (props) => {
+  const { message, type } = props;
+  let diagnosis = "";
+  switch (type) {
+    case "ED":
+      diagnosis = "Erectile Dysfunction";
+      break;
+
+    case "HAIR":
+      diagnosis = "Alopecia";
+      break;
+
+    case "ALLERGY":
+      diagnosis = "Allergic Rhinitis";
+      break;
+
+    case "JOY":
+      diagnosis = "Dysthymia or Anxiety";
+      break;
+
+    case "SLEEP":
+      diagnosis = "Sleep-Insomnia";
+      break;
+
+    case "WEIGHT":
+      diagnosis = "Obesity";
+      break;
+
+    default:
+      diagnosis = "";
+  }
 
   return (
     <>
@@ -9,9 +38,8 @@ export const EDWelcome = (props) => {
       <p>Thank you for choosing Victory Select for your healthcare needs.</p>
       <p>
         I am Dr. William Franklin. I have reviewed the health history
-        information you provided online. Your diagnosis is Erectile Dysfunction
-        and I feel you would benefit from{" "}
-        {message.prescription.product.productName}.
+        information you provided online. Your diagnosis is {diagnosis} and I
+        feel you would benefit from {message.prescription.product.productName}.
       </p>
       <p>
         Your prescription has been sent to The Daily Dose pharmacy and will be

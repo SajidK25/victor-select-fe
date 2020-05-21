@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
     justifyItems: (props) => props.justify,
   },
   messageText: {
+    color: "black",
     background: (props) => props.color,
     borderWidth: 1,
     borderStyle: "solid",
@@ -36,7 +37,7 @@ const useStyles = makeStyles((theme) => ({
 export const ShowMessage = ({ message }) => {
   const messageStyle = {
     justify: "end",
-    color: "#F3F3F3",
+    color: "#F7F7F7",
     borderRadius: "8px 8px 0 8px",
   };
 

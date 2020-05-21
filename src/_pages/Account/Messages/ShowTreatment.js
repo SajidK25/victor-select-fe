@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
   },
   type: {
     display: "block",
-    fontSize: 20,
+    fontSize: 13,
     marginBottom: 12,
     fontWeight: 500,
   },
@@ -100,9 +100,10 @@ export const ShowTreatment = (props) => {
     date = moment(data.getRecentPrescriptionMessage.createdAt).fromNow();
   }
 
-  if (message === "[ED_WELCOME]")
-    message =
-      "Thank you for choosing Victory Select for your healthcare needs.";
+  if (message.includes("_WELCOME]")) {
+    message = `Thank you for choosing Victory Select for your healthcare needs. I have reviewed the health history
+        information you provided`;
+  }
 
   return (
     <Paper

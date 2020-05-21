@@ -1,1 +1,1 @@
-export * from "./EDWelcome";
+export * from "./WelcomeMessage";
