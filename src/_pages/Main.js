@@ -5,6 +5,7 @@ import { Review, Login, ComingSoon } from "./";
 import { PrivateRoute } from "../_components";
 import { CreateAccountPage } from "../Questionaire/Shared/Pages";
 import { Questionaire } from "../Questionaire";
+import { Product } from "../ProductPurchase/Product";
 import {
   UpdateCreditCard,
   UpdateAddress,
@@ -65,6 +66,9 @@ export const Main = () => {
         </Route>
         <Route path={`/visit/:id`}>
           <Questionaire />
+        </Route>
+        <Route path={`/product/:id`}>
+          <Product />
         </Route>
       </Switch>
     </div>
