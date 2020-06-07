@@ -1,2 +1,3 @@
 export * from "./ProductPage";
-export * from "./Account";
+export * from "./AccountPage";
+export * from "./CheckoutPage";

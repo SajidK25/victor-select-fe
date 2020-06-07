@@ -70,7 +70,7 @@ export const ComingSoon = () => {
     password: "",
   };
 
-  const [addInterest, { error: error }] = useMutation(ADDINTEREST);
+  const [addInterest, { error }] = useMutation(ADDINTEREST);
 
   const validate = (values) => {
     const errors = {};
@@ -88,7 +88,7 @@ export const ComingSoon = () => {
 
   const Submit = async (values) => {
     try {
-      const response = await addInterest({
+      await addInterest({
         variables: {
           input: {
             email: values.email,

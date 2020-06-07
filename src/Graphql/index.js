@@ -7,3 +7,4 @@ export * from "./CreditCard";
 export * from "./Interest";
 export * from "./Messages";
 export * from "./Prescription";
+export * from "./Address";

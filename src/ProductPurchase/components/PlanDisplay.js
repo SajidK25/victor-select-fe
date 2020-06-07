@@ -1,9 +1,8 @@
 import React from "react";
-import Paper from "@material-ui/core/Paper";
 import FormControlLabel from "@material-ui/core/FormControlLabel";
 import Radio from "@material-ui/core/Radio";
 import { makeStyles } from "@material-ui/core/styles";
-import { formatMoney } from "../../_helpers";
+import { getPricing } from "../_util";
 
 const useStyles = makeStyles((theme) => ({
   radioRoot: {
@@ -52,7 +51,7 @@ const useStyles = makeStyles((theme) => ({
   },
   price: {
     fontSize: 16,
-    fontWeight: 300,
+    fontWeight: 500,
   },
   perMonth: {
     fontSize: 13,
@@ -63,65 +62,38 @@ const useStyles = makeStyles((theme) => ({
     bottom: 8,
     width: "100%",
     fontSize: 12,
+    color: theme.palette.primary.main,
+    fontWeight: 300,
+    margin: 0,
+  },
+  regularDisplay: {
+    position: "absolute",
+    bottom: 8,
+    width: "100%",
+    fontSize: 12,
     fontWeight: 300,
     margin: 0,
   },
   savings: {},
 }));
 
-const getPricing = (product, option) => {
-  console.log("product", product);
-  console.log("option", option);
-
-  const pricing = {
-    planName: "",
-    amount: "",
-    savings: "",
-  };
-
-  if (option === "1") {
-    pricing.planName = "Monthly Plan";
-    pricing.amount = formatMoney(product.monthly / 100, 0);
-    pricing.savings = "Pay full price";
-    return pricing;
-  }
-
-  if (option === "2") {
-    pricing.planName = "2-Month Plan";
-    pricing.amount = formatMoney(product.twoMonth / 100, 0);
-    pricing.savings = `Save ${formatMoney(
-      ((product.monthly - product.twoMonth) * 12) / 100,
-      0
-    )} a year!`;
-    return pricing;
-  }
-
-  if (option === "3") {
-    pricing.planName = "3-Month Plan";
-    pricing.amount = formatMoney(product.threeMonth / 100, 0);
-    pricing.savings = `Save ${formatMoney(
-      ((product.monthly - product.threeMonth) * 12) / 100,
-      0
-    )} a year!`;
-    return pricing;
-  }
-};
-
 const OptionDisplay = (props) => {
   const { product, option } = props;
   const classes = useStyles();
   const pricing = getPricing(product, option);
-  console.log("pricing", pricing);
+
   return (
     <>
       <div className={classes.choiceTitle}>{pricing.planName}</div>
       <p className={classes.choicePrice}>
-        <span className={classes.price}>
-          <b>{pricing.amount}</b>/
-        </span>
+        <span className={classes.price}>{pricing.amountPerMonth}</span>/
         <span className={classes.perMonth}>mo</span>
       </p>
-      <p className={classes.savingsDisplay}>
+      <p
+        className={
+          option === "1" ? classes.regularDisplay : classes.savingsDisplay
+        }
+      >
         <span>{pricing.savings}</span>
       </p>
     </>

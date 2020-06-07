@@ -15,3 +15,11 @@ export const SAVENEWVISIT_MUTATION = gql`
     }
   }
 `;
+
+export const SAVENEWSUPPLEMENT_MUTATION = gql`
+  mutation SAVENEWSUPPLEMENT_MUTATION($input: Json!) {
+    saveNewSupplement(input: $input) {
+      message
+    }
+  }
+`;

@@ -30,21 +30,49 @@ const useStyles = makeStyles(() => ({
     position: "relative",
     padding: "0 8px",
   },
+  hiliteItem: {
+    display: "block",
+    position: "relative",
+    padding: "0 8px",
+    fontWeight: 500,
+  },
 }));
 
-export const Breadcrumbs = () => {
+export const Breadcrumbs = (props) => {
+  const { section, handleClick } = props;
   const classes = useStyles();
+
   return (
     <div className={classes.breadCrumbs}>
-      <div className={classes.button}>
-        <PreviousButton />
-      </div>
+      {section !== "product" ? (
+        <div className={classes.button}>
+          <PreviousButton handleClick={handleClick} />
+        </div>
+      ) : null}
       <ul className={classes.list}>
-        <li className={classes.listItem}>Product</li>
+        <li
+          className={
+            section === "product" ? classes.hiliteItem : classes.listItem
+          }
+        >
+          Product
+        </li>
         {` > `}
-        <li className={classes.listItem}>Account</li>
+        <li
+          className={
+            section === "account" ? classes.hiliteItem : classes.listItem
+          }
+        >
+          Account
+        </li>
         {` > `}
-        <li className={classes.listItem}>Checkout</li>
+        <li
+          className={
+            section === "checkout" ? classes.hiliteItem : classes.listItem
+          }
+        >
+          Checkout
+        </li>
       </ul>
     </div>
   );

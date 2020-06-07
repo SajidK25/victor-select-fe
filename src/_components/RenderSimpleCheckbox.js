@@ -9,12 +9,12 @@ const useStyles = makeStyles({
     border: 0,
     padding: 0,
     marginLeft: 20,
-    paddingRight: 15
+    paddingRight: 15,
   },
   label: {
     fontSize: 15,
-    marginBottom: 0
-  }
+    marginBottom: 0,
+  },
 });
 
 export const RenderSimpleCheckbox = ({ input, label }) => {
@@ -23,14 +23,15 @@ export const RenderSimpleCheckbox = ({ input, label }) => {
     <FormControlLabel
       classes={{
         root: classes.root, // class name, e.g. `classes-nesting-root-x`
-        label: classes.label // class name, e.g. `classes-nesting-label-x`
+        label: classes.label, // class name, e.g. `classes-nesting-label-x`
       }}
       control={
         <Checkbox
+          name={input.name}
           checked={input.checked}
           onChange={input.onChange}
           classes={{
-            checked: classes.checked
+            checked: classes.checked,
           }}
           color="primary"
         />

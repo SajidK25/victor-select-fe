@@ -1,22 +1,49 @@
 import React from "react";
 import { Field } from "react-final-form";
-import RadioGroup from "@material-ui/core/RadioGroup";
 import { makeStyles } from "@material-ui/core/styles";
-import { PlansDisplay } from "../components";
+import { PlansDisplay, SubmitButton } from "../components";
+
+const useStyles = makeStyles(() => ({
+  name: {
+    margin: "0 0 10px",
+    fontWeight: 500,
+    fontSize: 26,
+    lineHeight: "32px",
+  },
+  description: {
+    fontSize: 14,
+  },
+  form: {
+    paddingTop: 20,
+  },
+  page: {
+    marginTop: 35,
+  },
+}));
+
+export const validateProduct = async () => {
+  return {};
+};
 
 export const ProductPage = (props) => {
   const { product } = props;
+  const classes = useStyles();
 
   return (
-    <div>
-      <div>{product.name}</div>
-      <div>{product.description}</div>
-      <Field
-        component={PlansDisplay}
-        product={product}
-        name="planChoice"
-        type="div"
-      />
+    <div className={classes.page}>
+      <div>
+        <div className={classes.name}>{product.name}</div>
+        <div className={classes.description}>{product.description}</div>
+      </div>
+      <div className={classes.form}>
+        <Field
+          component={PlansDisplay}
+          product={product}
+          name="subscription.shippingInterval"
+          type="div"
+        />
+      </div>
+      <SubmitButton />
     </div>
   );
 };

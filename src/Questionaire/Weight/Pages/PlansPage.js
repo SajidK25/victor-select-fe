@@ -108,13 +108,9 @@ const validatePlans = (values) => {
   const errors = { plans: {} };
   const p = values.plans;
 
-  console.log("validatePlans", p);
-
   if (optionsAllFalse(options, values) && !p.none) {
     errors.checkError = "Please select an option";
   }
-
-  console.log("Checked All!");
 
   if (p.weightwatchers && !p.weightwatchersExplain) {
     errors.plans.weightwatchersExplain = "Please provide detais";

@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { Review, Login, ComingSoon } from "./";
+import { Review, Login, ComingSoon, Thankyou } from "./";
 import { PrivateRoute } from "../_components";
 import { CreateAccountPage } from "../Questionaire/Shared/Pages";
 import { Questionaire } from "../Questionaire";
@@ -51,6 +51,9 @@ export const Main = () => {
         </PrivateRoute>
         <Route path="/confirmation">
           <Review />
+        </Route>
+        <Route path="/thankyou">
+          <Thankyou />
         </Route>
         <Route path={`/visitStart/:id`}>
           <CreateAccountPage />
