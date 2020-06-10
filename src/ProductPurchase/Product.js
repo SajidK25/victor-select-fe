@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useMutation } from "@apollo/react-hooks";
+import { useMutation, useQuery } from "@apollo/react-hooks";
 import { Form } from "react-final-form";
 import { FORM_ERROR } from "final-form";
 
@@ -15,9 +15,10 @@ import {
   REGISTER_MUTATION,
   SAVE_ADDRESS,
   ME_QUERY,
+  GET_PRODUCT,
 } from "../Graphql";
 import { setAccessToken } from "../accessToken";
-import { getProduct } from "./data";
+import { setupProduct } from "./data";
 import { Layout } from "./components/Layout/Layout";
 import { Spinner, ErrorMessage, ErrorDisplay } from "../_components";
 import {
@@ -35,12 +36,12 @@ const Product = () => {
   const location = useLocation();
   const { id } = useParams();
 
-  const product = getProduct(id);
-  initialProductValues.subscription.drugId = id.toUpperCase();
+  const { loading, error: queryError, data } = useQuery(GET_PRODUCT, {
+    variables: { id: id.toUpperCase() },
+  });
 
   const [register, { error: registerError }] = useMutation(REGISTER_MUTATION);
   const [saveAddress, { error: saveAddressError }] = useMutation(SAVE_ADDRESS);
-
   const [saveNewVisit, { error: saveError }] = useMutation(
     SAVENEWSUPPLEMENT_MUTATION
   );
@@ -123,7 +124,15 @@ const Product = () => {
     return {};
   };
 
-  if (!product) return <Layout>Ooops. Product {id} not found.</Layout>;
+  let product = null;
+  if (!loading) {
+    console.log("Data:", data);
+    if (data && data.getProduct) {
+      product = setupProduct(data.getProduct);
+    }
+    if (!product) return <Layout>Ooops. Product {id} not found.</Layout>;
+  }
+  initialProductValues.subscription.drugId = id.toUpperCase();
 
   return (
     <Form
@@ -178,24 +187,27 @@ const Product = () => {
       {({ handleSubmit, values, submitting, submitError }) => {
         return (
           <Layout handleClick={previous}>
-            {submitting && <Spinner />}
+            {(submitting || loading) && <Spinner />}
             {submitError && <ErrorDisplay errorText={submitError} />}
             <ErrorMessage error={registerError} />
             <ErrorMessage error={saveAddressError} />
             <ErrorMessage error={saveError} />
-            <form onSubmit={handleSubmit}>
-              <Switch location={location}>
-                <Route path={`/product/${id}`} exact>
-                  <ProductPage product={product} />
-                </Route>
-                <Route path={`/product/${id}/account`} exact>
-                  <AccountPage />
-                </Route>
-                <Route path={`/product/${id}/checkout`} exact>
-                  <CheckoutPage values={values} product={product} />
-                </Route>
-              </Switch>
-            </form>
+            <ErrorMessage error={queryError} />
+            {!loading && (
+              <form onSubmit={handleSubmit}>
+                <Switch location={location}>
+                  <Route path={`/product/${id}`} exact>
+                    <ProductPage product={product} />
+                  </Route>
+                  <Route path={`/product/${id}/account`} exact>
+                    <AccountPage />
+                  </Route>
+                  <Route path={`/product/${id}/checkout`} exact>
+                    <CheckoutPage values={values} product={product} />
+                  </Route>
+                </Switch>
+              </form>
+            )}
           </Layout>
         );
       }}
