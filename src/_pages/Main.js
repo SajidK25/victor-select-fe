@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import { makeStyles } from "@material-ui/core/styles";
-import { Review, Login, ComingSoon, Thankyou } from "./";
+import { Review, Login, ComingSoon, Thankyou, RequestReset, Reset } from "./";
 import { PrivateRoute } from "../_components";
 import { CreateAccountPage } from "../Questionaire/Shared/Pages";
 import { Questionaire } from "../Questionaire";
@@ -66,6 +66,12 @@ export const Main = () => {
         </Route>
         <Route path={`/Login/:id`}>
           <Login />
+        </Route>
+        <Route path="/request-reset">
+          <RequestReset />
+        </Route>
+        <Route path="/reset/:resetToken">
+          <Reset />
         </Route>
         <Route path={`/visit/:id`}>
           <Questionaire />

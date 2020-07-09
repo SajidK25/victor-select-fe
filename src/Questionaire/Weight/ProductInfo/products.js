@@ -16,7 +16,7 @@ const drugSelections = [
       This combination, when taken in conjunction with following a healthy diet and 
       exercise program, will offer you optimal results.  Our custom blend contains topiramate, 
       bupropion, and naloxone which will kick start your weight loss journey and get you the body you desire.`,
-      price: 100,
+      price: 71,
     },
     doseOptions: [
       {
@@ -28,9 +28,9 @@ const drugSelections = [
           subTitle: `This is the description of Sveltique.`,
         },
         pricing: {
-          threeMonth: 75,
-          twoMonth: 90,
-          monthly: 100,
+          threeMonth: 60,
+          twoMonth: 67.5,
+          monthly: 71,
         },
       },
     ],
@@ -46,7 +46,7 @@ const drugSelections = [
       an option with fewer side effects which sometimes occur with the topiramate, we suggest 
       this lite alternative. If you do not readily get the results you are hoping for, we recommend 
       upgrading to the Sveltique.`,
-      price: 90,
+      price: 65,
     },
     doseOptions: [
       {
@@ -58,9 +58,9 @@ const drugSelections = [
           subTitle: `This is the description of Sveltique.`,
         },
         pricing: {
-          threeMonth: 65,
-          twoMonth: 80,
-          monthly: 90,
+          threeMonth: 55,
+          twoMonth: 62,
+          monthly: 65,
         },
       },
     ],

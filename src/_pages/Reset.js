@@ -1,11 +1,10 @@
 import React from "react";
-import { useHistory, useLocation, Link } from "react-router-dom";
+import { useHistory, useLocation, useParams } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { makeStyles } from "@material-ui/core/styles";
 import { Field } from "react-final-form";
 import { UpdatePage, RenderStdTextField, ErrorMessage } from "../_components";
-import { setAccessToken } from "../accessToken";
-import { LOGIN_MUTATION, ME_QUERY } from "../Graphql";
+import { RESETPASSWORD_MUTATION, ME_QUERY } from "../Graphql";
 
 const useStyles = makeStyles((theme) => ({
   heading: {
@@ -28,31 +27,38 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const Login = () => {
+export const Reset = () => {
   const history = useHistory();
   const location = useLocation();
+  const { resetToken } = useParams();
+  console.log("Params", resetToken);
   const { from } = location.state || { from: { pathname: "/" } };
   const classes = useStyles();
 
   const initialValues = {
-    email: "",
     password: "",
+    confirmPassword: "",
   };
 
-  const [login, { error: mutationError }] = useMutation(LOGIN_MUTATION);
+  const [resetPassword, { error, loading, called }] = useMutation(
+    RESETPASSWORD_MUTATION
+  );
 
   const validate = (values) => {
     const errors = {};
     if (!values.password) {
       errors.password = "Password is required";
+    } else if (
+      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(
+        values.password
+      )
+    ) {
+      errors.password = `Password must include at least 8 chars., 
+                       contain at least 1 uppercase letter, 1 lowercase letter and 1 number`;
     }
 
-    if (!values.email) {
-      errors.email = "email address is required";
-    } else if (
-      !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)
-    ) {
-      errors.email = "Invalid email address";
+    if (values.password !== values.confirmPassword) {
+      errors.confirmPassword = "Passwords must match.";
     }
 
     return errors;
@@ -60,24 +66,13 @@ export const Login = () => {
 
   const Submit = async (values) => {
     try {
-      const response = await login({
-        variables: { ...values },
-        update: (store, { data }) => {
-          if (!data) {
-            return null;
-          }
-          store.writeQuery({
-            query: ME_QUERY,
-            data: {
-              me: data.login.user,
-            },
-          });
+      await resetPassword({
+        variables: {
+          resetToken: resetToken,
+          password: values.password,
+          confirmPassword: values.confirmPassword,
         },
       });
-      if (response && response.data) {
-        setAccessToken(response.data.login.accessToken);
-      }
-      history.push(from);
     } catch (err) {
       console.log("Error", err);
     }
@@ -85,26 +80,18 @@ export const Login = () => {
 
   return (
     <UpdatePage
-      headerText="Login"
+      headerText="Reset Password"
       initialValues={initialValues}
       validate={validate}
       onSubmit={Submit}
-      buttonText="Login"
+      buttonText="Reset Your Password"
       maxWidth={400}
     >
-      <div className={classes.heading}>Member Login</div>
-      <ErrorMessage error={mutationError} />
-      <div className={classes.fieldContainer}>
-        <Field
-          component={RenderStdTextField}
-          id="email"
-          type="email"
-          name="email"
-          label="Email"
-          fullWidth
-          autoComplete="email"
-        />
-      </div>
+      <div className={classes.heading}>Reset Password</div>
+      <ErrorMessage error={error} />
+      {!error && !loading && called && (
+        <div className={classes.done}>Your password has been reset.</div>
+      )}
       <div className={classes.fieldContainer}>
         <Field
           component={RenderStdTextField}
@@ -116,10 +103,16 @@ export const Login = () => {
           fullWidth
         />
       </div>
-      <div className={classes.buttonLink}>
-        <Link to="request-reset" className={classes.forgotButton}>
-          Forgot Password?
-        </Link>
+      <div className={classes.fieldContainer}>
+        <Field
+          component={RenderStdTextField}
+          id="password"
+          type="password"
+          name="confirmPassword"
+          label="Confirm Password"
+          autoComplete="password"
+          fullWidth
+        />
       </div>
     </UpdatePage>
   );

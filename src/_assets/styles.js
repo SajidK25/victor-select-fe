@@ -6,7 +6,7 @@ const standardStyles = {
     marginLeft: 16,
     marginRight: 16,
     marginBottom: 0,
-    padding: 2
+    padding: 2,
   },
   contain: {
     borderRadius: 2,
@@ -21,19 +21,22 @@ const standardStyles = {
     borderColor: "lightgrey",
     width: "100%",
     "&:hover": {
-      borderWidth: 0.5,
-      borderColor: "#2196f3"
-    }
+      paddingTop: 2,
+      paddingBottom: 2,
+      paddingRight: 7,
+      borderWidth: 1,
+      borderColor: "#2196f3",
+    },
   },
   indent: {
     marginLeft: 30,
     paddingRight: 8,
-    backgroundColor: "white"
+    backgroundColor: "white",
   },
   root: {
     marginLeft: 0,
     marginRight: 0,
-    width: "100%"
+    width: "100%",
   },
   label: {
     fontSize: 16,
@@ -42,12 +45,12 @@ const standardStyles = {
     paddingTop: 6,
     paddingBottom: 6,
     marginLeft: 0,
-    width: "100%"
+    width: "100%",
   },
   group: {
     marginTop: 0,
-    marginBottom: 0
-  }
+    marginBottom: 0,
+  },
 };
 
 export { standardStyles };

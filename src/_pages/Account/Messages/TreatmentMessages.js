@@ -6,7 +6,7 @@ import { ShowTreatment } from "./";
 import { PATIENT_PRESCRIPTIONS } from "../../../Graphql";
 import Typography from "@material-ui/core/Typography";
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(() => ({
   root: {
     flexGrow: 1,
   },
@@ -44,9 +44,12 @@ export const TreatmentMessages = () => {
       <Typography className={classes.heading}>
         Messages from your Physician
       </Typography>
-      {data.getPatientPrescriptions.map((p) => (
-        <ShowTreatment key={p.id} prescription={p} />
-      ))}
+      {data.getPatientPrescriptions.map(
+        (p) =>
+          p.type !== "SUPPLEMENT" && (
+            <ShowTreatment key={p.id} prescription={p} />
+          )
+      )}
     </div>
   );
 };

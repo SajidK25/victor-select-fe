@@ -19,11 +19,13 @@ export const UpdatePage = (props) => {
     validate,
     disableButton = false,
     buttonText = "Save",
+    maxWidth,
   } = props;
   const classes = useStyles();
+  console.log("UpdatePage", props);
 
   return (
-    <UpdateLayout headerText={headerText}>
+    <UpdateLayout headerText={headerText} maxWidth={maxWidth}>
       <Paper className={classes.formContainer}>
         <UpdateForm
           initialValues={initialValues}

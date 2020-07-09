@@ -48,7 +48,7 @@ const useStyles = makeStyles((theme) => ({
   },
   appContentInner: {
     padding: "0 13px",
-    width: 580,
+    width: (props) => props.width,
     maxWidth: "100%",
     margin: "0 auto",
   },
@@ -62,8 +62,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const Header = (props) => {
-  const classes = useStyles();
   const { headerText, handleExit } = props;
+  const classes = useStyles();
 
   return (
     <div className={classes.header}>
@@ -78,8 +78,18 @@ const Header = (props) => {
 };
 
 export const UpdateLayout = (props) => {
-  const classes = useStyles();
-  const { headerText, handleExit } = props;
+  const layoutStyle = {
+    width: 580,
+  };
+
+  console.log("UpdateLayout:", props);
+  const { headerText, handleExit, maxWidth } = props;
+  if (maxWidth) {
+    layoutStyle.width = maxWidth;
+  }
+
+  console.log("LayoutStyle", layoutStyle);
+  const classes = useStyles(layoutStyle);
 
   return (
     <div className={classes.appMain}>

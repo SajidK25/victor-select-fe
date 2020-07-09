@@ -17,10 +17,7 @@ import {
   validateShipping,
 } from "../../Shared/Pages";
 
-import {
-  PaymentInfoPage,
-  validatePaymentInfo,
-} from "../../Shared/Pages/PaymentPage";
+import { PaymentInfoPage, validatePaymentInfo } from "../../Shared/Pages/PaymentPage";
 
 import {
   CurrentStatePage,
@@ -330,6 +327,7 @@ const pages = [
   //   component: SummaryPage,
   //   validate: validateSummary,
   // },
+
   {
     key: pathConstants.SHIPPING,
     component: ShippingPage,

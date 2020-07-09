@@ -10,13 +10,13 @@ export const personal = {
   telephone: "",
   gender: "",
   profileImage: "",
-  provideImageLater: false
+  provideImageLater: false,
 };
 
 export const payment = {
   cardNumber: "",
   cardExpiry: "",
-  cardCVC: ""
+  cardCVC: "",
 };
 
 export const subscription = {
@@ -24,6 +24,6 @@ export const subscription = {
   drugId: "",
   addOnId: "",
   doseOption: "",
-  dosesPerMonth: "",
-  shippingInterval: "everyThree"
+  dosesPerMonth: 0,
+  shippingInterval: "everyThree",
 };
