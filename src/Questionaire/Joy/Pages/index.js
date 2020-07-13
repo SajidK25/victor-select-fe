@@ -5,3 +5,6 @@ export * from "./SeenPhysicianPage";
 export * from "./SocialFactorsPage";
 export * from "./JoyIntervalPage";
 export * from "./SummaryPage";
+export * from "./TreatmentTypePage";
+export * from "./VitaminDPage";
+export * from "./ChildhoodPage";

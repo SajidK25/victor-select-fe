@@ -28,35 +28,24 @@ const useStyles = makeStyles({
 const validateLowest = (values) => {
   const errors = { measurement: {} };
 
-  if (
-    values.measurement.lowestWeight < 70 ||
-    values.measurement.lowestWeight > 999
-  ) {
+  if (values.measurement.lowestWeight < 70 || values.measurement.lowestWeight > 999) {
     errors.measurement.lowestWeight = " ";
   }
-  if (
-    values.measurement.lowestWeightAge < 12 ||
-    values.measurement.lowestWeightAge > 112
-  ) {
+  if (values.measurement.lowestWeightAge < 12 || values.measurement.lowestWeightAge > 112) {
     errors.measurement.lowestWeightAge = " ";
   }
 
   return errors;
 };
 
-const questionText =
-  "What has been your lowest weight and when where you at that weight?";
+const questionText = "What has been your lowest weight as an adult and when where you at that weight?";
 const additionalText = "Enter the weight and age.";
 
 const LowestPage = (props) => {
   const classes = useStyles();
 
   return (
-    <StandardPage
-      questionText={questionText}
-      additionalText={additionalText}
-      {...props}
-    >
+    <StandardPage questionText={questionText} additionalText={additionalText} {...props}>
       <Paper className={classes.paper}>
         <div className={classes.wrapper}>
           <div className={classes.weightWrapper}>

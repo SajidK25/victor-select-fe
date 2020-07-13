@@ -6,7 +6,7 @@ import FormControlLabel from "@material-ui/core/FormControlLabel";
 import { ErrorDisplay } from "./";
 import { makeStyles } from "@material-ui/core/styles";
 import { standardStyles } from "../_assets/styles";
-import { RenderStdTextField } from "./";
+import { RenderStdTextField, RenderNoteField } from "./";
 
 const useStyles = makeStyles({
   ...standardStyles,
@@ -76,6 +76,8 @@ export const RadioInline = (props) => {
     meta: { touched, error },
     options,
     columns = 3,
+    explain,
+    explainText,
   } = props;
 
   const classes = useStyles();
@@ -124,6 +126,7 @@ export const RadioInline = (props) => {
           </div>
         ))}
       </div>
+      {explain && input.value === "Yes" ? <Field name={explain} component={RenderNoteField} placeholder={explainText} type="text" /> : null}
       {touched && error && <ErrorDisplay errorText={error} />}
     </>
   );

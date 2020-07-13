@@ -13,12 +13,11 @@ import {
   validatePictures,
   ShippingPage,
   validateShipping,
+  AnythingElsePage,
+  validateAnythingElse,
 } from "../../Shared/Pages";
 
-import {
-  PaymentInfoPage,
-  validatePaymentInfo,
-} from "../../Shared/Pages/PaymentPage";
+import { PaymentInfoPage, validatePaymentInfo } from "../../Shared/Pages/PaymentPage";
 
 import {
   JoyIntervalPage,
@@ -33,8 +32,12 @@ import {
   validateSeenPhysician,
   SocialFactorsPage,
   validateSocialFactors,
-  SummaryPage,
-  validateSummary,
+  TreatmentTypePage,
+  validateTreatmentType,
+  VitaminDPage,
+  validateVitaminD,
+  ChildhoodPage,
+  validateChildhood,
 } from "../Pages";
 
 const pathConstants = {
@@ -49,23 +52,13 @@ const pathConstants = {
   HOWOFTEN2: 9,
   HOWOFTEN3: 10,
   SEENPHYSICIAN: 11,
-  HEADISSUES: 12,
-  SYMPTOMSBEGAN: 13,
-  SYMPTOMMONTHS: 14,
+  TREATMENT_TYPE: 12,
+  VITAMIN_D: 13,
   SOCIALFACTORS: 16,
-  MAKEWORSE: 17,
-  SMOKING: 18,
-  DWELLING: 19,
-  OTHERMEDICINES: 20,
-  ALLERGYMEDICATIONS: 21,
-  PROBLEMS: 22,
-  SKINTESTING: 23,
-  ALLERGYSHOTS: 24,
-  ENVIRONMENTAL: 25,
-  DUSTANDMOLD: 26,
+  CHILDHOOD: 17,
+
   ANYTHINGELSE: 40,
   PICTURES: "photos",
-  SUMMARY: "summary",
   SHIPPING: "shipping",
   PAYMENT: "payment",
 };
@@ -117,19 +110,34 @@ const pages = [
     validate: validateSeenPhysician,
   },
   {
+    key: pathConstants.TREATMENT_TYPE,
+    component: TreatmentTypePage,
+    validate: validateTreatmentType,
+  },
+  {
+    key: pathConstants.VITAMIN_D,
+    component: VitaminDPage,
+    validate: validateVitaminD,
+  },
+  {
     key: pathConstants.SOCIALFACTORS,
     component: SocialFactorsPage,
     validate: validateSocialFactors,
   },
   {
+    key: pathConstants.CHILDHOOD,
+    component: ChildhoodPage,
+    validate: validateChildhood,
+  },
+  {
+    key: pathConstants.ANYTHINGELSE,
+    component: AnythingElsePage,
+    validate: validateAnythingElse,
+  },
+  {
     key: pathConstants.PICTURES,
     component: PicturesPage,
     validate: validatePictures,
-  },
-  {
-    key: pathConstants.SUMMARY,
-    component: SummaryPage,
-    validate: validateSummary,
   },
   {
     key: pathConstants.SHIPPING,
@@ -143,10 +151,14 @@ const pages = [
   },
 ];
 
-const SkipPage = (key) => {
+const SkipPage = (key, values) => {
   let skip = false;
 
   switch (key) {
+    case pathConstants.TREATMENT_TYPE:
+      skip = values.treatment.answer !== "Yes";
+      break;
+
     default:
       skip = false;
   }

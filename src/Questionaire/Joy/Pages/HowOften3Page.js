@@ -1,84 +1,73 @@
 import React from "react";
 import { Field } from "react-final-form";
 import FormGroup from "@material-ui/core/FormGroup";
-import {
-  StandardPage,
-  RadioInline,
-  FieldContainer
-} from "../../../_components";
+import { StandardPage, RadioInline, FieldContainer } from "../../../_components";
 import { howOftenOptions } from "./_constants";
 
 const options = [
   {
     name: "howOften.goodThings",
     label: "I feel depressed even when good things happen to me.",
-    options: howOftenOptions
+    options: howOftenOptions,
   },
   {
     name: "howOften.weight",
     label: "Without trying to diet, I have lost, or gained, weight.",
-    options: howOftenOptions
+    options: howOftenOptions,
   },
   {
     name: "howOften.nervous",
-    label:
-      "How often have you been bothered by feeling nervous, anxious or on edge?",
-    options: howOftenOptions
+    label: "How often have you been bothered by feeling nervous, anxious or on edge?",
+    options: howOftenOptions,
   },
   {
     name: "howOften.annoyed",
-    label:
-      "How often have you been bothered by becoming easily annoyed or irritable?",
-    options: howOftenOptions
+    label: "How often have you been bothered by becoming easily annoyed or irritable?",
+    options: howOftenOptions,
   },
   {
     name: "howOften.afraid",
-    label:
-      "How often have you been bothered by feeling afraid as if something awful might happen?",
-    options: howOftenOptions
-  }
+    label: "How often have you been bothered by feeling afraid as if something awful might happen?",
+    options: howOftenOptions,
+  },
 ];
 
-const validateHowOften3 = values => {
+const validateHowOften3 = (values) => {
   const errors = { howOften: {} };
-  //   if (!values.dwelling.location) {
-  //     errors.dwelling.location = "Please select a dwelling location";
-  //   } else if (
-  //     values.dwelling.location === "Other" &&
-  //     !values.dwelling.locationother
-  //   ) {
-  //     errors.dwelling.location = "Other value is required";
-  //   }
+  if (!values.howOften.goodThings) {
+    errors.howOften.goodThings = "Please make a selection.";
+  }
 
-  //   if (!values.dwelling.type) {
-  //     errors.dwelling.type = "Please select a dwelling type";
-  //   } else if (values.dwelling.type === "Other" && !values.dwelling.typeother) {
-  //     errors.dwelling.type = "Other value is required";
-  //   }
+  if (!values.howOften.weight) {
+    errors.howOften.weight = "Please make a selection.";
+  }
 
+  if (!values.howOften.nervous) {
+    errors.howOften.nervous = "Please make a selection.";
+  }
+
+  if (!values.howOften.annoyed) {
+    errors.howOften.annoyed = "Please make a selection.";
+  }
+
+  if (!values.howOften.afraid) {
+    errors.howOften.afraid = "Please make a selection.";
+  }
+
+  console.log("HowOften3", errors);
   return errors;
 };
 
 const questionText = `Tell us about your situation.`;
 const additionalText = ``;
 
-const HowOften3Page = props => {
+const HowOften3Page = (props) => {
   return (
-    <StandardPage
-      questionText={questionText}
-      additionalText={additionalText}
-      {...props}
-    >
+    <StandardPage questionText={questionText} additionalText={additionalText} {...props}>
       <FormGroup>
-        {options.map(o => (
+        {options.map((o) => (
           <FieldContainer key={o.name}>
-            <Field
-              name={o.name}
-              key={o.name}
-              component={RadioInline}
-              label={o.label}
-              options={o.options}
-            />
+            <Field name={o.name} key={o.name} component={RadioInline} label={o.label} options={o.options} />
           </FieldContainer>
         ))}
       </FormGroup>

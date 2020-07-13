@@ -5,13 +5,9 @@ export const initialValues = {
   personal,
   payment,
   subscription,
-
   anythingElse: {
     answer: "",
-    explain: ""
-  },
-  treatment: {
-    answer: ""
+    explain: "",
   },
   socialFactors: {
     lgbqt: false,
@@ -24,6 +20,41 @@ export const initialValues = {
     children: false,
     postpartum: false,
     other: false,
-    otherExplain: ""
-  }
+    otherExplain: "",
+  },
+  howOften: {
+    down: "",
+    concentrating: "",
+    pleasure: "",
+    decisions: "",
+    sad: "",
+    agitated: "",
+    fatigued: "",
+    effort: "",
+    failure: "",
+    sleeping: "",
+    kill: "",
+    trapped: "",
+    goodThings: "",
+    weight: "",
+    nervous: "",
+    annoyed: "",
+    afraid: "",
+  },
+  treatment: {
+    answer: "",
+    diagnosis: "",
+    medication: "",
+    medicationExplain: "",
+    medicationHelpful: "",
+    therapy: "",
+    therapyHelpful: "",
+  },
+  vitaminD: {
+    answer: "",
+    supplement: "",
+  },
+  childhood: {
+    answer: "",
+  },
 };
