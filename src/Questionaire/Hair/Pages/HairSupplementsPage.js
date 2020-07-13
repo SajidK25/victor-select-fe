@@ -5,16 +5,16 @@ const options = [
   {
     id: "yes",
     label: "Yes",
-    explain: "supplements.explain",
-    explainText: "​Please list all products."
+    explain: "medicationsSupplements.explain",
+    explainText: "​Please list all products.",
   },
   {
     id: "no",
-    label: "No"
-  }
+    label: "No",
+  },
 ];
 
-const validateHairSupplements = values => {
+const validateHairSupplements = (values) => {
   const errors = { medicationsSupplements: {} };
   const a = values.medicationsSupplements;
 
@@ -32,7 +32,7 @@ const questionText = `Are you CURRENTLY taking any medications, over-the-counter
 const additionalText = `If yes, please list names and dosages and put an asterisk (*) by any 
                         that you were taking when your hair loss started.`;
 
-let HairSupplementsPage = props => {
+let HairSupplementsPage = (props) => {
   return (
     <RadioPage
       name="medicationsSupplements.answer"

@@ -14,14 +14,14 @@ export const initialValues = {
     type: "",
     shedding: "",
     thinning: "",
-    reason: ""
+    reason: "",
   },
   sixMonth: {
     medications: false,
     medicationsExplain: "",
     hormones: false,
     hormonesExplain: "",
-    none: false
+    none: false,
   },
   significant: {
     medical: false,
@@ -30,24 +30,24 @@ export const initialValues = {
     stressExplain: "",
     diet: false,
     dietExplain: "",
-    none: false
+    none: false,
   },
   history: {
     anemia: false,
     anemiaExplain: "",
     thyroid: false,
     thyroidExplain: "",
-    none: false
+    none: false,
   },
   dieting: {
     actively: false,
     activelyExplain: "",
     vegan: false,
-    none: false
+    none: false,
   },
   labWork: {
     answer: "",
-    fileName: ""
+    fileName: "",
   },
   scalp: {
     itch: false,
@@ -55,7 +55,7 @@ export const initialValues = {
     hurt: false,
     rash: false,
     flaking: false,
-    none: false
+    none: false,
   },
   relatives: {
     grandfather: false,
@@ -64,22 +64,18 @@ export const initialValues = {
     mother: false,
     brother: false,
     sister: false,
-    none: false
+    none: false,
   },
   treatments: {
     answer: "",
-    explain: ""
-  },
-  currentMeds: {
-    answer: "",
-    explain: ""
+    explain: "",
   },
   medicationsSupplements: {
     answer: "",
-    explain: ""
+    explain: "",
   },
   colored: {
-    answer: ""
+    answer: "",
   },
   women: {
     period: "",
@@ -89,7 +85,8 @@ export const initialValues = {
     hysterectomy: false,
     hysterectomyExplain: "",
     ovaries: false,
-    ovariesExplain: ""
+    ovariesExplain: "",
+    none: false,
   },
   physicalExam: "",
   hairExam: "",
@@ -98,7 +95,7 @@ export const initialValues = {
     overweight: false,
     smoke: false,
     alcohol: false,
-    none: false
+    none: false,
   },
   conditions: {
     noTreatment: false,
@@ -115,7 +112,7 @@ export const initialValues = {
     pelvisExplain: "",
     stomach: false,
     stomachExplain: "",
-    none: false
+    none: false,
   },
   anemiaThyroid: {
     lowIron: false,
@@ -123,21 +120,21 @@ export const initialValues = {
     lowThyroid: false,
     coldIntolerance: false,
     fatigue: false,
-    weighthGain: false,
+    weightGain: false,
     depression: false,
     breathing: false,
-    none: false
+    none: false,
   },
   otherMedicines: {
     taking: "",
-    explain: ""
+    explain: "",
   },
   allergies: {
     have: "",
-    explain: ""
+    explain: "",
   },
   anythingElse: {
     answer: "",
-    explain: ""
-  }
+    explain: "",
+  },
 };

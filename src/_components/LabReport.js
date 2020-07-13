@@ -82,4 +82,4 @@ const LabReport = (props) => {
   );
 };
 
-export { PictureGrab };
+export { LabReport };
