@@ -4,6 +4,7 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { orange, blue } from "@material-ui/core/colors";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Main } from "./_pages/Main";
+import { intializeReactGA } from "./analytics";
 
 let theme = createMuiTheme({
   overrides: {
@@ -12,22 +13,22 @@ let theme = createMuiTheme({
       root: {
         // Name of the rule
         //    padding: 6
-      }
+      },
     },
     MuiFormHelperText: {
       root: {
         marginLeft: 12,
-        color: "rgba(0, 0, 0, 0.75)"
-      }
-    }
+        color: "rgba(0, 0, 0, 0.75)",
+      },
+    },
   },
   palette: {
     //  primary: teal,
     primary: blue,
     secondary: orange,
     background: {
-      default: "#fafafa"
-    }
+      default: "#fafafa",
+    },
   },
   //  breakpoints: {
   //    values: {
@@ -37,23 +38,24 @@ let theme = createMuiTheme({
   //  },
   typography: {
     body1: {
-      fontWeight: 300
+      fontWeight: 300,
     },
     body2: {
       fontSize: "0.96em",
       fontWeight: 300,
-      lineHeight: "1.35rem"
+      lineHeight: "1.35rem",
     },
     h6: {
       fontSize: "1.5em",
       lineHeight: "1.66rem",
       letterSpacing: 0,
-      fontWeight: 500
-    }
-  }
+      fontWeight: 500,
+    },
+  },
 });
 
 const App = () => {
+  intializeReactGA();
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
