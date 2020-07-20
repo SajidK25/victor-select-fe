@@ -12,11 +12,7 @@ const cache = new InMemoryCache({});
 // const endpoint = prod_endpoint;
 //const endpoint = dev_endpoint;
 
-const endpoint =
-  process.env.NODE_ENV === "development" ? dev_endpoint : prod_endpoint;
-
-console.log("env", process.env.REACT_APP_API_ENDPOINT);
-console.log("Endpoint", endpoint);
+const endpoint = process.env.NODE_ENV === "development" ? dev_endpoint : prod_endpoint;
 
 const requestLink = new ApolloLink(
   (operation, forward) =>
@@ -87,9 +83,7 @@ const client = new ApolloClient({
     onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors)
         graphQLErrors.map(({ message, locations, path }) =>
-          console.log(
-            `[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`
-          )
+          console.log(`[GraphQL error]: Message: ${message}, Location: ${locations}, Path: ${path}`)
         );
 
       if (networkError) console.log(`[Network error]: ${networkError}`);

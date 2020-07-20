@@ -88,7 +88,6 @@ export const UpdateLayout = (props) => {
     layoutStyle.width = maxWidth;
   }
 
-  console.log("LayoutStyle", layoutStyle);
   const classes = useStyles(layoutStyle);
 
   return (
