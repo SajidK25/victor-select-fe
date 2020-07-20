@@ -4,7 +4,7 @@ import { createMuiTheme, MuiThemeProvider } from "@material-ui/core/styles";
 import { orange, blue } from "@material-ui/core/colors";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import { Main } from "./_pages/Main";
-import { intializeReactGA } from "./analytics";
+import { initializeReactGA } from "./analytics";
 
 let theme = createMuiTheme({
   overrides: {
@@ -55,7 +55,7 @@ let theme = createMuiTheme({
 });
 
 const App = () => {
-  intializeReactGA();
+  initializeReactGA();
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
