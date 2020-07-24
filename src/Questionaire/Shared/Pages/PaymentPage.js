@@ -15,6 +15,7 @@ import {
 } from "../../../_helpers";
 import { drugDisplaySetup } from "../../Shared/ProductInfo";
 import { StandardPage, RenderStdTextField } from "../../../_components";
+import { logReactGAEvent } from "../../../analytics";
 
 const useStyles = makeStyles((theme) => ({
   payWith: {
@@ -95,6 +96,7 @@ export const validatePaymentInfo = (values) => {
 };
 
 export const PaymentInfoPage = (props) => {
+  console.log("Props", props);
   const { values } = props;
   const classes = useStyles();
 
@@ -107,13 +109,10 @@ export const PaymentInfoPage = (props) => {
   const buttonText = `PAY $${visitAmount} TODAY`;
   const supply = options.per + "nth supply";
   const interval = options.interval;
+  logReactGAEvent({ category: `${values.type} visit`, action: "Made it to Payment Page" });
 
   return (
-    <StandardPage
-      questionText="Confirm Payment"
-      buttonText={buttonText}
-      {...props}
-    >
+    <StandardPage questionText="Confirm Payment" buttonText={buttonText} {...props}>
       <Card className={classes.summaryContainer}>
         <div className={classes.treatment}>Your plan, if prescribed</div>
         <div className={classes.infoBlock}>
@@ -121,20 +120,14 @@ export const PaymentInfoPage = (props) => {
             <div className={classes.product}>{name}</div>
             <div className={classes.amount}>{amount}</div>
           </div>
-          {addonName ? (
-            <div className={classes.product}>{addonName}</div>
-          ) : null}
+          {addonName ? <div className={classes.product}>{addonName}</div> : null}
           <div className={classes.supply}>{supply}</div>
         </div>
         <Divider />
         <div className={classes.infoBlock}>
           <div className={classes.priceLine}>
             <div>Online Doctor Visit</div>
-            {visitAmount ? (
-              <div>${visitAmount}</div>
-            ) : (
-              <div className={classes.free}>FREE</div>
-            )}
+            {visitAmount ? <div>${visitAmount}</div> : <div className={classes.free}>FREE</div>}
           </div>
         </div>
         <Divider />
@@ -188,14 +181,11 @@ export const PaymentInfoPage = (props) => {
           />
         </Grid>
         <Grid item className={classes.chargeSummary}>
-          By clicking {buttonText} you agree that, if prescribed, you will be
-          charged {amount} for your first shipment and {amount} every {interval}{" "}
-          thereafter until you cancel your prescription or your prescription
-          expires. You can cancel your plan anytime by logging into your
-          account.
+          By clicking {buttonText} you agree that, if prescribed, you will be charged {amount} for your first shipment
+          and {amount} every {interval} thereafter until you cancel your prescription or your prescription expires. You
+          can cancel your plan anytime by logging into your account.
           <div className={classes.disclaimer}>
-            A $1.00 temporary authorization by The Daily Dose Pharmacy may be
-            placed in order to verify your card.
+            A $1.00 temporary authorization by The Daily Dose Pharmacy may be placed in order to verify your card.
           </div>
         </Grid>
       </Grid>

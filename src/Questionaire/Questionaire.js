@@ -1,18 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useApolloClient, useMutation } from "@apollo/react-hooks";
 import { Form } from "react-final-form";
-import {
-  Redirect,
-  Route,
-  Switch,
-  useHistory,
-  useLocation,
-  useParams,
-} from "react-router-dom";
+import { Redirect, Route, Switch, useHistory, useLocation, useParams } from "react-router-dom";
 import { setCurrentProducts } from "./Shared/ProductInfo";
 import { getNextPage, getCurrentPage } from "./questionPaths";
 import { QuestionaireLayout } from "../_components";
 import { getQuestionaire } from "./questionPaths";
+import { logReactGAEvent } from "../analytics";
 import { SAVENEWVISIT_MUTATION, UPDATECURRVISIT_MUTATION } from "../Graphql";
 
 const Questionaire = () => {
@@ -21,9 +15,7 @@ const Questionaire = () => {
   const { id } = useParams();
   const client = useApolloClient();
 
-  const [saveNewVisit, { error: saveError }] = useMutation(
-    SAVENEWVISIT_MUTATION
-  );
+  const [saveNewVisit, { error: saveError }] = useMutation(SAVENEWVISIT_MUTATION);
   const [updateCurrVisit] = useMutation(UPDATECURRVISIT_MUTATION);
 
   let transDir = "left";
@@ -99,6 +91,7 @@ const Questionaire = () => {
               },
             });
             if (response && response.data) {
+              logReactGAEvent({ category: `${questionaire.type} visit`, action: "Finished and saved" });
               history.push("/confirmation");
             }
           }
@@ -109,18 +102,9 @@ const Questionaire = () => {
     >
       {({ handleSubmit, values, validating, submitting, submitError }) => {
         return (
-          <QuestionaireLayout
-            handlePrevious={previous}
-            values={values}
-            page={pageIndex}
-            error={saveError}
-          >
+          <QuestionaireLayout handlePrevious={previous} values={values} page={pageIndex} error={saveError}>
             <Switch location={location}>
-              <Redirect
-                from={questionaire.pathBase}
-                exact
-                to={`${questionaire.pathBase}/zipcode`}
-              />
+              <Redirect from={questionaire.pathBase} exact to={`${questionaire.pathBase}/zipcode`} />
               {questionaire.pages.map(({ key, component: C }) => (
                 <Route key={key} path={`${questionaire.pathBase}/${key}`} exact>
                   <C
