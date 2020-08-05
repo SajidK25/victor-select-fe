@@ -64,6 +64,7 @@ export const CreateAccountPage = () => {
 
   const questionaire = getQuestionaire(id);
   const pathBase = questionaire.pathBase;
+  console.log("Questionaire:", questionaire);
   setCurrentProducts(questionaire.type);
   logReactGAEvent({ category: `${questionaire.type} visit`, action: `Looking at registration` });
 
@@ -96,13 +97,13 @@ export const CreateAccountPage = () => {
             },
           });
           if (response && response.data) {
+            console.log("Response:", response);
             logReactGAEvent({ category: `${questionaire.type} visit`, action: `Started Visit` });
-            if (response.data.register.message !== "EXISTS") {
-              setAccessToken(response.data.register.accessToken);
-              history.push(pathBase);
-            } else {
-              history.push("./login", { from: location });
-            }
+            //     if (response.data.register.message !== "EXISTS") {
+            setAccessToken(response.data.register.accessToken);
+            history.push(pathBase);
+            //      } else {
+            //        history.push("./login", { from: location });
           }
         } catch (err) {
           console.log(err);
