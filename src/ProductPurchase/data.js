@@ -1,8 +1,4 @@
-import {
-  personal,
-  payment,
-  subscription,
-} from "../Questionaire/Shared/ProductInfo";
+import { personal, payment, subscription } from "../Questionaire/Shared/ProductInfo";
 
 export const initialProductValues = {
   type: "SUPPLEMENT",
@@ -14,7 +10,7 @@ export const initialProductValues = {
   accept: false,
 };
 
-initialProductValues.subscription.shippingInterval = "3";
+initialProductValues.subscription.shippingInterval = "1";
 
 const currentProduct = {
   id: "",

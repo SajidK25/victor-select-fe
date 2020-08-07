@@ -3,33 +3,15 @@ import { useMutation, useQuery } from "@apollo/react-hooks";
 import { Form } from "react-final-form";
 import { FORM_ERROR } from "final-form";
 
-import {
-  Route,
-  Switch,
-  useHistory,
-  useLocation,
-  useParams,
-} from "react-router-dom";
-import {
-  SAVENEWSUPPLEMENT_MUTATION,
-  REGISTER_MUTATION,
-  SAVE_ADDRESS,
-  ME_QUERY,
-  GET_PRODUCT,
-} from "../Graphql";
+import { Route, Switch, useHistory, useLocation, useParams } from "react-router-dom";
+import { SAVENEWSUPPLEMENT_MUTATION, REGISTER_MUTATION, SAVE_ADDRESS, ME_QUERY, GET_PRODUCT } from "../Graphql";
 import { setAccessToken } from "../accessToken";
 import { setupProduct } from "./data";
 import { Layout } from "./components/Layout/Layout";
 import { Spinner, ErrorMessage, ErrorDisplay } from "../_components";
-import {
-  ProductPage,
-  validateProduct,
-  CheckoutPage,
-  validateCheckout,
-  AccountPage,
-  validateAccount,
-} from "./Shared";
+import { ProductPage, validateProduct, CheckoutPage, validateCheckout, AccountPage, validateAccount } from "./Shared";
 import { initialProductValues } from "./data";
+import { logReactGAEvent } from "../analytics";
 
 const Product = () => {
   const history = useHistory();
@@ -42,22 +24,21 @@ const Product = () => {
 
   const [register, { error: registerError }] = useMutation(REGISTER_MUTATION);
   const [saveAddress, { error: saveAddressError }] = useMutation(SAVE_ADDRESS);
-  const [saveNewVisit, { error: saveError }] = useMutation(
-    SAVENEWSUPPLEMENT_MUTATION
-  );
+  const [saveNewVisit, { error: saveError }] = useMutation(SAVENEWSUPPLEMENT_MUTATION);
 
-  const [currentPage, setCurrentPage] = useState("");
+  const [currentPage, setCurrentPage] = useState("product");
 
   useEffect(() => {
     const pathArray = location.pathname.split("/");
-    if (pathArray.length > 3) {
+
+    if (pathArray.length > 3 && pathArray[3] !== "") {
       setCurrentPage(pathArray[3]);
     } else {
       setCurrentPage("product");
     }
   }, [location.pathname]);
 
-  const registerAccount = async (values) => {
+  const registerAccount = async (values, product) => {
     const input = {
       email: values.email,
       password: values.password,
@@ -83,12 +64,13 @@ const Product = () => {
         },
       });
       if (response && response.data) {
-        if (response.data.register.message !== "EXISTS") {
-          setAccessToken(response.data.register.accessToken);
-          history.push(`/product/${id}/checkout`);
-        } else {
-          history.push(`/product/${id}/login`);
-        }
+        //      if (response.data.register.message !== "EXISTS") {
+        logReactGAEvent({ category: `Product: ${product.name}`, action: `Created Account/logged in` });
+        setAccessToken(response.data.register.accessToken);
+        history.push(`/product/${id}/checkout`);
+        //       } else {
+        //        history.push(`/product/${id}/login`);
+        //      }
       }
     } catch (err) {
       console.log(err);
@@ -142,7 +124,7 @@ const Product = () => {
         let response = null;
         try {
           if (currentPage === "account") {
-            await registerAccount(values);
+            await registerAccount(values, product);
           } else if (!isLastPage()) {
             next();
           } else {
@@ -176,6 +158,7 @@ const Product = () => {
                 };
               }
               console.log("response", response);
+              logReactGAEvent({ category: `Product: ${product.name}`, action: `Made purchase.` });
               history.push("/thankyou");
             }
           }
