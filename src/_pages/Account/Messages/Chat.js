@@ -45,7 +45,7 @@ export const Chat = () => {
   };
 
   return (
-    <UpdateLayout handleExit={handleExit} headerText="ED">
+    <UpdateLayout handleExit={handleExit} headerText="">
       <div className={classes.sectionContainer}>
         <div className={classes.container}>
           <Paper className={classes.paper}>
