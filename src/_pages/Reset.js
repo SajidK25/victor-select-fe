@@ -1,5 +1,5 @@
 import React from "react";
-import { useHistory, useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { makeStyles } from "@material-ui/core/styles";
 import { Field } from "react-final-form";
@@ -28,10 +28,8 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export const Reset = () => {
-  const history = useHistory();
   const location = useLocation();
   const { resetToken } = useParams();
-  console.log("Params", resetToken);
   const { from } = location.state || { from: { pathname: "/" } };
   const classes = useStyles();
 
@@ -40,19 +38,13 @@ export const Reset = () => {
     confirmPassword: "",
   };
 
-  const [resetPassword, { error, loading, called }] = useMutation(
-    RESETPASSWORD_MUTATION
-  );
+  const [resetPassword, { error, loading, called }] = useMutation(RESETPASSWORD_MUTATION);
 
   const validate = (values) => {
     const errors = {};
     if (!values.password) {
       errors.password = "Password is required";
-    } else if (
-      !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(
-        values.password
-      )
-    ) {
+    } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(values.password)) {
       errors.password = `Password must include at least 8 chars., 
                        contain at least 1 uppercase letter, 1 lowercase letter and 1 number`;
     }
@@ -89,9 +81,7 @@ export const Reset = () => {
     >
       <div className={classes.heading}>Reset Password</div>
       <ErrorMessage error={error} />
-      {!error && !loading && called && (
-        <div className={classes.done}>Your password has been reset.</div>
-      )}
+      {!error && !loading && called && <div className={classes.done}>Your password has been reset.</div>}
       <div className={classes.fieldContainer}>
         <Field
           component={RenderStdTextField}

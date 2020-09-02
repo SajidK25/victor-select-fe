@@ -1,24 +1,14 @@
 import React from "react";
 import { Field } from "react-final-form";
 import Typography from "@material-ui/core/Typography";
-import {
-  StandardPage,
-  DetailedRadioGroup,
-  RadioSubmit,
-} from "../../../../_components";
-import {
-  getDrugList,
-  validDoseOption,
-  defaultDose,
-} from "../../../Shared/ProductInfo";
+import { StandardPage, DetailedRadioGroup, RadioSubmit } from "../../../../_components";
+import { getDrugList, validDoseOption, defaultDose } from "../../../Shared/ProductInfo";
 import { WeightDrugPreferenceDisplay } from "./WeightDrugPreferenceDisplay";
 
 const validateWeightDrugPreference = (values) => {
   const newLocal = { subscription: {} };
   const errors = newLocal;
   const s = values.subscription;
-
-  console.log("Subscription", s);
 
   if (!s.drugId) {
     errors.subscription.drugId = "Please make a selection.";

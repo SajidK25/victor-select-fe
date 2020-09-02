@@ -89,9 +89,7 @@ export const ShowTreatment = (props) => {
 
   if (loading) return <Loading />;
   if (error) return <ErrorMessage error={error} />;
-  console.log("Data:", data);
-  let message =
-    "Your physician will leave a message here once your request is reviewed";
+  let message = "Your physician will leave a message here once your request is reviewed";
   let date = "";
   let doc = "";
   if (data && data.getRecentPrescriptionMessage) {

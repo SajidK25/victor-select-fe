@@ -77,7 +77,6 @@ export const CreateAccountPage = () => {
       onSubmit={async (values) => {
         const input = { ...values };
         delete input.accept;
-        console.log("Input: ", input);
         try {
           const response = await register({
             variables: { input },
@@ -97,7 +96,6 @@ export const CreateAccountPage = () => {
             },
           });
           if (response && response.data) {
-            console.log("Response:", response);
             logReactGAEvent({ category: `${questionaire.type} visit`, action: `Started Visit` });
             //     if (response.data.register.message !== "EXISTS") {
             setAccessToken(response.data.register.accessToken);

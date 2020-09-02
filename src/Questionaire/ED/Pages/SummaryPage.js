@@ -54,7 +54,6 @@ const SummaryPage = (props) => {
   const classes = useStyles();
 
   const displayOptions = drugDisplaySetup(values.subscription);
-  console.log("displayOptions:", displayOptions);
   // const displayOptions = {
   //   display: "Romeo",
   //   monthlyDoses: 8,
@@ -67,42 +66,28 @@ const SummaryPage = (props) => {
   // };
 
   return (
-    <StandardPage
-      questionText="Your Selections"
-      additionalText="Please see your selections below."
-      {...props}
-    >
+    <StandardPage questionText="Your Selections" additionalText="Please see your selections below." {...props}>
       <Paper className={classes.pricingBox}>
         <div className={classes.treatment}>Treatment Preference</div>
         <Divider />
         <div className={classes.treatmentContainer}>
           <div className={classes.drugDisplay}>{displayOptions.display}</div>
 
-          <div
-            className={classes.drugDoses}
-          >{`${displayOptions.monthlyDoses}x per month`}</div>
+          <div className={classes.drugDoses}>{`${displayOptions.monthlyDoses}x per month`}</div>
           {displayOptions.addOnDisplay ? (
             <>
-              <div className={classes.drugDisplay}>
-                {displayOptions.addOnDisplay}
-              </div>
-              <div className={classes.drugDoses}>
-                {`${displayOptions.addOnMonthlyDoses}x per month`}
-              </div>
+              <div className={classes.drugDisplay}>{displayOptions.addOnDisplay}</div>
+              <div className={classes.drugDoses}>{`${displayOptions.addOnMonthlyDoses}x per month`}</div>
             </>
           ) : null}
 
           <div className={classes.drugDelivery}>{displayOptions.title}</div>
           <div className={classes.drugPrice}>
-            <span className={classes.drugMoney}>
-              {formatMoney(displayOptions.total, 2)}
-            </span>
+            <span className={classes.drugMoney}>{formatMoney(displayOptions.total, 2)}</span>
             {` ${displayOptions.interval}`}
           </div>
         </div>
-        <div className={classes.noCharge}>
-          You won&apos;t be charged for your medication yet.
-        </div>
+        <div className={classes.noCharge}>You won&apos;t be charged for your medication yet.</div>
       </Paper>
     </StandardPage>
   );

@@ -64,7 +64,6 @@ const validateHowOften = (values) => {
     errors.howOften.agitated = "Please make a selection.";
   }
 
-  console.log("HowOften", errors);
   return errors;
 };
 

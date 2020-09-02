@@ -63,7 +63,6 @@ const validateHowOften2 = (values) => {
     errors.howOften.trapped = "Please make a selection";
   }
 
-  console.log("HowOften2", errors);
   return errors;
 };
 

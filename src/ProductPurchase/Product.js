@@ -108,7 +108,6 @@ const Product = () => {
 
   let product = null;
   if (!loading) {
-    console.log("Data:", data);
     if (data && data.getProduct) {
       product = setupProduct(data.getProduct);
     }
@@ -150,14 +149,12 @@ const Product = () => {
                 input: values,
               },
             });
-            console.log("SaveProduct:", response);
             if (response && response.data) {
               if (response.data.saveNewSupplement.message !== "OK") {
                 return {
                   [FORM_ERROR]: "Unable to verify your card information.",
                 };
               }
-              console.log("response", response);
               logReactGAEvent({ category: `Product: ${product.name}`, action: `Made purchase.` });
               history.push("/thankyou");
             }

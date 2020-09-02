@@ -32,7 +32,6 @@ export const ShowMessages = ({ prescriptionId }) => {
       //        console.log("Sorted:", data.pendingPrescriptions);
       //        setSorting(false);
       //      }
-      console.log("On completed", data);
     },
   });
   const classes = useStyles();
@@ -40,8 +39,6 @@ export const ShowMessages = ({ prescriptionId }) => {
   if (loading) return <Loading />;
   if (error) return <ErrorMessage error={error} />;
   if (!data) return <p>No new visits</p>;
-
-  console.log("Data:", data);
 
   return (
     <div className={classes.container}>

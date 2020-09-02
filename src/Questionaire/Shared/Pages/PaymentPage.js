@@ -96,7 +96,6 @@ export const validatePaymentInfo = (values) => {
 };
 
 export const PaymentInfoPage = (props) => {
-  console.log("Props", props);
   const { values } = props;
   const classes = useStyles();
 

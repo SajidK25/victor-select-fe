@@ -37,18 +37,11 @@ export const TreatmentMessages = () => {
   if (error) return <ErrorMessage error={error} />;
   if (!data) return <p>No treatment plans</p>;
 
-  console.log("Data:", data);
-
   return (
     <div className={classes.container}>
-      <Typography className={classes.heading}>
-        Messages from your Physician
-      </Typography>
+      <Typography className={classes.heading}>Messages from your Physician</Typography>
       {data.getPatientPrescriptions.map(
-        (p) =>
-          p.type !== "SUPPLEMENT" && (
-            <ShowTreatment key={p.id} prescription={p} />
-          )
+        (p) => p.type !== "SUPPLEMENT" && <ShowTreatment key={p.id} prescription={p} />
       )}
     </div>
   );

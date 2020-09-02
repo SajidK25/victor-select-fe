@@ -53,8 +53,6 @@ const validateHowOften3 = (values) => {
   if (!values.howOften.afraid) {
     errors.howOften.afraid = "Please make a selection.";
   }
-
-  console.log("HowOften3", errors);
   return errors;
 };
 

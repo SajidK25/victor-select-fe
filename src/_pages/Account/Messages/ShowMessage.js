@@ -41,8 +41,6 @@ export const ShowMessage = ({ message }) => {
     borderRadius: "8px 8px 0 8px",
   };
 
-  console.log("Message", message);
-
   if (!message.physician) {
     messageStyle.justify = "start";
     messageStyle.color = "#DDF6FF";
@@ -53,8 +51,6 @@ export const ShowMessage = ({ message }) => {
 
   const classes = useStyles(messageStyle);
 
-  console.log("Message", message);
-
   return (
     <div className={classes.messageRow}>
       <div className={classes.messageContent}>
@@ -62,8 +58,7 @@ export const ShowMessage = ({ message }) => {
           <MessageText message={message} />
         </div>
         <div className={classes.messageTime}>
-          {message.private ? `(private) ` : null}{" "}
-          {moment(message.createdAt).format("MMMM Do YY, h:mm a")}
+          {message.private ? `(private) ` : null} {moment(message.createdAt).format("MMMM Do YY, h:mm a")}
         </div>
       </div>
     </div>
