@@ -14,6 +14,9 @@ export const MessageText = (props) => {
     case "[SLEEP_WELCOME]":
       return <WelcomeMessage type="SLEEP" message={message} />;
 
+    case "[WEIGHT_WELCOME]":
+      return <WelcomeMessage type="WEIGHT" message={message} />;
+
     default:
       return message.text;
   }
