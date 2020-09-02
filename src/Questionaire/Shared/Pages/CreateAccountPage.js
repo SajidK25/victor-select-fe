@@ -64,7 +64,6 @@ export const CreateAccountPage = () => {
 
   const questionaire = getQuestionaire(id);
   const pathBase = questionaire.pathBase;
-  console.log("Questionaire:", questionaire);
   setCurrentProducts(questionaire.type);
   logReactGAEvent({ category: `${questionaire.type} visit`, action: `Looking at registration` });
 
