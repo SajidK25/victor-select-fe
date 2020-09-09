@@ -1,7 +1,8 @@
 import ReactGA from "react-ga";
+import { GA_ANALYTICS } from "./config";
 
 export const initializeReactGA = () => {
-  //  ReactGA.initialize(process.env.REACT_APP_GA_ANALYTICS);
+  ReactGA.initialize(GA_ANALYTICS);
   ReactGA.pageview("/app.visit");
 };
 

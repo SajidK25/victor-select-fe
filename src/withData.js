@@ -6,13 +6,9 @@ import { ApolloLink, Observable } from "apollo-link";
 import { TokenRefreshLink } from "apollo-link-token-refresh";
 import jwtDecode from "jwt-decode";
 import { getAccessToken, setAccessToken } from "./accessToken";
-import { prod_endpoint, dev_endpoint } from "./config";
+import { endpoint } from "./config";
 
 const cache = new InMemoryCache({});
-// const endpoint = prod_endpoint;
-//const endpoint = dev_endpoint;
-
-const endpoint = process.env.NODE_ENV === "development" ? dev_endpoint : prod_endpoint;
 
 const requestLink = new ApolloLink(
   (operation, forward) =>
