@@ -4,3 +4,4 @@ export * from "./validate";
 export * from "./money";
 export * from "./errors";
 export * from "./paymentUtils";
+export * from "./discountCodes";

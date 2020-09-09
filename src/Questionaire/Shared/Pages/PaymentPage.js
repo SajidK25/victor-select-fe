@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { useApolloClient } from "@apollo/react-hooks";
 import { Field } from "react-final-form";
 import { makeStyles } from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import Divider from "@material-ui/core/Divider";
+import Button from "@material-ui/core/Button";
 import {
   formatCreditCardNumber,
   formatCVC,
@@ -12,6 +14,8 @@ import {
   validCardExpiry,
   validCardCVC,
   formatMoney,
+  normalizeDiscountCode,
+  getDiscount,
 } from "../../../_helpers";
 import { drugDisplaySetup } from "../../Shared/ProductInfo";
 import { StandardPage, RenderStdTextField } from "../../../_components";
@@ -35,6 +39,14 @@ const useStyles = makeStyles((theme) => ({
   infoBlock: {
     marginTop: theme.spacing(2),
     marginBottom: theme.spacing(2),
+  },
+  totalBlock: {
+    marginTop: theme.spacing(0.5),
+    marginBottom: theme.spacing(2),
+  },
+  discountBlock: {
+    marginTop: 0,
+    marginBottom: 0,
   },
   priceLine: {
     display: "flex",
@@ -71,8 +83,22 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export const validatePaymentInfo = (values) => {
-  const errors = { payment: {} };
+const verifyDiscountCode = async (values, client) => {
+  if (values.subscription.discountCode) {
+    const discount = await getDiscount(values.subscription.discountCode, client);
+    if (discount) {
+      values.subscription.discountPercent = discount.percent;
+      values.subscription.discountAmount = discount.amount;
+    } else {
+      values.subscription.discountCode = "";
+      values.subscription.discountPercent = 0;
+      values.subscription.discountAmount = 0;
+    }
+  }
+};
+
+export const validatePaymentInfo = async (values) => {
+  const errors = { payment: {}, subscription: {} };
 
   if (!values.payment.cardNumber) {
     errors.payment.cardNumber = "Card number is required";
@@ -97,7 +123,16 @@ export const validatePaymentInfo = (values) => {
 
 export const PaymentInfoPage = (props) => {
   const { values } = props;
+  const client = useApolloClient();
+  const [loading, setLoading] = useState(false);
+
   const classes = useStyles();
+
+  useEffect(() => {
+    logReactGAEvent({ category: `${values.type} visit`, action: "Made it to Payment Page" });
+
+    return () => {};
+  }, [values.type]);
 
   const options = drugDisplaySetup(values.subscription);
 
@@ -108,7 +143,10 @@ export const PaymentInfoPage = (props) => {
   const buttonText = `PAY $${visitAmount} TODAY`;
   const supply = options.per + "nth supply";
   const interval = options.interval;
-  logReactGAEvent({ category: `${values.type} visit`, action: "Made it to Payment Page" });
+  let discountAmount = values.subscription.discountAmount;
+  if (values.subscription.discountPercent > 0) {
+    discountAmount = options.total * values.subscription.discountPercent;
+  }
 
   return (
     <StandardPage questionText="Confirm Payment" buttonText={buttonText} {...props}>
@@ -122,6 +160,25 @@ export const PaymentInfoPage = (props) => {
           {addonName ? <div className={classes.product}>{addonName}</div> : null}
           <div className={classes.supply}>{supply}</div>
         </div>
+        {discountAmount > 0 && (
+          <>
+            <div className={classes.discountBlock}>
+              <div className={classes.priceLine}>
+                <div className={classes.product}>Discount</div>
+                <div className={classes.free}>
+                  -{}
+                  {formatMoney(discountAmount)}
+                </div>
+              </div>
+            </div>
+            <div className={classes.totalBlock}>
+              <div className={classes.priceLine}>
+                <div className={classes.due}>Total (first shipment)</div>
+                <div className={classes.due}>{formatMoney(options.total - discountAmount)}</div>
+              </div>
+            </div>
+          </>
+        )}
         <Divider />
         <div className={classes.infoBlock}>
           <div className={classes.priceLine}>
@@ -137,6 +194,33 @@ export const PaymentInfoPage = (props) => {
           </div>
         </div>
       </Card>
+      <Grid container spacing={3}>
+        <Grid item xs={6} sm={6}>
+          <Field
+            component={RenderStdTextField}
+            name="subscription.discountCode"
+            parse={normalizeDiscountCode}
+            label="Discount Code"
+            id="code"
+            fullWidth
+          />
+        </Grid>
+        <Grid item xs={6} sm={6}>
+          <Button
+            disabled={values.subscription.discountCode === ""}
+            variant="outlined"
+            color="primary"
+            onClick={async () => {
+              setLoading(true);
+              await verifyDiscountCode(values, client);
+              document.getElementById("code").focus();
+              setLoading(false);
+            }}
+          >
+            Apply Discount
+          </Button>
+        </Grid>
+      </Grid>
       <div className={classes.payWith}>Pay with</div>
       <div>Credit or Debit Card</div>
       <Grid container spacing={3}>
@@ -180,9 +264,10 @@ export const PaymentInfoPage = (props) => {
           />
         </Grid>
         <Grid item className={classes.chargeSummary}>
-          By clicking {buttonText} you agree that, if prescribed, you will be charged {amount} for your first shipment
-          and {amount} every {interval} thereafter until you cancel your prescription or your prescription expires. You
-          can cancel your plan anytime by logging into your account.
+          By clicking <b>{buttonText}</b> you agree that, if prescribed, you will be charged{" "}
+          <b>{formatMoney(options.total - discountAmount)}</b> for your first shipment and <b>{amount}</b> {interval}{" "}
+          thereafter until you cancel your prescription or your prescription expires. You can cancel your plan anytime
+          by logging into your account.
           <div className={classes.disclaimer}>
             A $1.00 temporary authorization by The Daily Dose Pharmacy may be placed in order to verify your card.
           </div>

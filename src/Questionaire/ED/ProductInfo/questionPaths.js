@@ -22,10 +22,7 @@ import {
   validateShipping,
 } from "../../Shared/Pages";
 
-import {
-  PaymentInfoPage,
-  validatePaymentInfo,
-} from "../../Shared/Pages/PaymentPage";
+import { PaymentInfoPage, validatePaymentInfo } from "../../Shared/Pages/PaymentPage";
 
 import {
   TimesPerMonthPage,
@@ -90,8 +87,8 @@ import {
   validateEdAddon,
   EdMedsPage,
   validateEdMeds,
-  SummaryPage,
-  validateSummary,
+  //  SummaryPage,
+  //  validateSummary,
   PreBPPage,
   validatePreBP,
   SystolicPage,
@@ -368,11 +365,11 @@ const pages = [
     component: PicturesPage,
     validate: validatePictures,
   },
-  {
-    key: pathConstants.SUMMARY,
-    component: SummaryPage,
-    validate: validateSummary,
-  },
+  //  {
+  //    key: pathConstants.SUMMARY,
+  //    component: SummaryPage,
+  //    validate: validateSummary,
+  //  },
   {
     key: pathConstants.SHIPPING,
     component: ShippingPage,
@@ -391,32 +388,23 @@ const SkipPage = (key, values) => {
   switch (key) {
     case pathConstants.TIMESPERMONTH:
       var s = values.subscription;
-      if (
-        s.drugId === drugIds.MALE_DAILY ||
-        s.drugId === drugIds.TADALAFIL_DAILY ||
-        s.drugId === drugIds.DAILY_PLUS
-      ) {
+      if (s.drugId === drugIds.MALE_DAILY || s.drugId === drugIds.TADALAFIL_DAILY || s.drugId === drugIds.DAILY_PLUS) {
         skip = true;
         s.dosesPerMonth = "30";
       }
       break;
 
     case pathConstants.ADDON:
-      skip =
-        values.subscription.drugId === drugIds.MALE_DAILY ||
-        values.subscription.drugId === drugIds.DAILY_PLUS;
+      skip = values.subscription.drugId === drugIds.MALE_DAILY || values.subscription.drugId === drugIds.DAILY_PLUS;
       break;
 
     case pathConstants.WHILEMASTURBATING:
       // ErectionWhen
-      skip =
-        !values.erectionsWhen.whenMasturbating ||
-        values.personal.gender === "female";
+      skip = !values.erectionsWhen.whenMasturbating || values.personal.gender === "female";
       break;
 
     case pathConstants.ONWAKING:
-      skip =
-        !values.erectionsWhen.onWaking || values.personal.gender === "female";
+      skip = !values.erectionsWhen.onWaking || values.personal.gender === "female";
       break;
 
     case pathConstants.DEPRESSION_FREQUENCY:
@@ -440,9 +428,7 @@ const SkipPage = (key, values) => {
       break;
 
     case pathConstants.DRUGDOSE:
-      skip =
-        values.subscription.drugId !== drugIds.SILDENAFIL &&
-        values.subscription.drugId !== drugIds.TADALAFIL;
+      skip = values.subscription.drugId !== drugIds.SILDENAFIL && values.subscription.drugId !== drugIds.TADALAFIL;
       break;
 
     case pathConstants.SYSTOLIC:
@@ -452,8 +438,7 @@ const SkipPage = (key, values) => {
       break;
 
     case pathConstants.GENITAL_EXAM:
-      skip =
-        values.physicalExam === "no" || values.personal.gender === "female";
+      skip = values.physicalExam === "no" || values.personal.gender === "female";
       break;
 
     case pathConstants.FEMALE_ED:

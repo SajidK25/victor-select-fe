@@ -26,4 +26,7 @@ export const subscription = {
   doseOption: "",
   dosesPerMonth: 0,
   shippingInterval: "everyThree",
+  discountCode: "",
+  discountPercent: 0,
+  discountAmount: 0,
 };

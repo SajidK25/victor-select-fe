@@ -21,6 +21,7 @@ export const initialValues = {
     postpartum: false,
     other: false,
     otherExplain: "",
+    none: false,
   },
   howOften: {
     down: "",
