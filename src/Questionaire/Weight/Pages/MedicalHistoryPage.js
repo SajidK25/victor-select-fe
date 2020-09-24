@@ -148,7 +148,6 @@ const options = [
 const validateMedicalHistory = (values) => {
   const errors = {
     medicalHistory: {},
-    checkError: "",
   };
 
   const m = values.medicalHistory;
