@@ -48,15 +48,11 @@ const PictureGrab = (props) => {
     data.append("file", files[0]);
     data.append("upload_preset", "victory-select");
 
-    const res = await fetch(
-      "https://api.cloudinary.com/v1_1/bakerman59/image/upload",
-      {
-        method: "POST",
-        body: data,
-      }
-    );
+    const res = await fetch("https://api.cloudinary.com/v1_1/bakerman59/image/upload", {
+      method: "POST",
+      body: data,
+    });
     const file = await res.json();
-    console.log(file);
     setImage(file.secure_url);
     input.onChange(file.secure_url);
     setUploading(false);
@@ -74,22 +70,9 @@ const PictureGrab = (props) => {
           onChange={(e) => uploadFile(e, input)}
         />
         <Paper className={classes.paper}>
-          {image && (
-            <img
-              className={classes.image}
-              height="200"
-              src={image}
-              alt="Upload Preview"
-            />
-          )}
+          {image && <img className={classes.image} height="200" src={image} alt="Upload Preview" />}
         </Paper>
-        <Button
-          variant="outlined"
-          color="primary"
-          component="span"
-          className={classes.button}
-          disabled={uploading}
-        >
+        <Button variant="outlined" color="primary" component="span" className={classes.button} disabled={uploading}>
           {label}
         </Button>
         {touched && error && <ErrorDisplay errorText={error} />}

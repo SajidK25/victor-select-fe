@@ -15,7 +15,6 @@ export const getDiscount = async (code, client) => {
       query: GET_DISCOUNT,
       variables: { code: code },
     });
-    console.log("retrun", ret);
     if (ret.data.getDiscount) {
       return ret.data.getDiscount;
     }

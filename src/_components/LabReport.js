@@ -53,7 +53,6 @@ const LabReport = (props) => {
       body: data,
     });
     const file = await res.json();
-    console.log(file);
     setImage(file.secure_url);
     input.onChange(file.secure_url);
     setUploading(false);

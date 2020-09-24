@@ -1,11 +1,7 @@
 import React from "react";
 import { Field } from "react-final-form";
 import { formatMoney } from "../../../../_helpers";
-import {
-  StandardPage,
-  DetailedRadioGroup,
-  RadioSubmit,
-} from "../../../../_components";
+import { StandardPage, DetailedRadioGroup, RadioSubmit } from "../../../../_components";
 import { getPrices, getMaxAmount } from "../../../Shared/ProductInfo";
 import { JoyIntervalDisplay } from "./JoyIntervalDisplay";
 
@@ -25,12 +21,8 @@ const displayOptions = (pricing) => {
           pricing.threeTotal,
           2
         )} and your products shipped every three months.`,
-        moreText: `In each delivery you will be sent a three month supply of ${
-          pricing.display
-        }${
-          pricing.addOnDisplay
-            ? ` and a three month supply of ${pricing.addOnDisplay}`
-            : ""
+        moreText: `In each delivery you will be sent a three month supply of ${pricing.display}${
+          pricing.addOnDisplay ? ` and a three month supply of ${pricing.addOnDisplay}` : ""
         }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.threeMonth,
         totalPrice: pricing.threeTotal,
@@ -44,16 +36,9 @@ const displayOptions = (pricing) => {
       id: "everyTwo",
       labelOptions: {
         title: "Ship every 2 months",
-        subTitle: `You will be billed ${formatMoney(
-          pricing.twoTotal,
-          2
-        )} and your products shipped every two months.`,
-        moreText: `In each delivery you will be sent a two month supply of ${
-          pricing.display
-        }${
-          pricing.addOnDisplay
-            ? ` and a two month supply of ${pricing.addOnDisplay}`
-            : ""
+        subTitle: `You will be billed ${formatMoney(pricing.twoTotal, 2)} and your products shipped every two months.`,
+        moreText: `In each delivery you will be sent a two month supply of ${pricing.display}${
+          pricing.addOnDisplay ? ` and a two month supply of ${pricing.addOnDisplay}` : ""
         }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.twoMonth,
         totalPrice: pricing.twoTotal,
@@ -67,16 +52,9 @@ const displayOptions = (pricing) => {
       id: "monthly",
       labelOptions: {
         title: "Ship monthly",
-        subTitle: `You will be billed ${formatMoney(
-          pricing.monthly,
-          2
-        )} and your products shipped monthly.`,
-        moreText: `In each delivery you will be sent a one month supply of ${
-          pricing.display
-        }${
-          pricing.addOnDisplay
-            ? ` and a one month supply of ${pricing.addOnDisplay}`
-            : ""
+        subTitle: `You will be billed ${formatMoney(pricing.monthly, 2)} and your products shipped monthly.`,
+        moreText: `In each delivery you will be sent a one month supply of ${pricing.display}${
+          pricing.addOnDisplay ? ` and a one month supply of ${pricing.addOnDisplay}` : ""
         }. You may cancel or modify your plan whenever you wish.`,
         pricing: pricing.monthly,
         totalPrice: pricing.monthly,
@@ -103,15 +81,10 @@ const JoyIntervalPage = (props) => {
     addOnId: values.subscription.addOnId,
   });
 
-  console.log("Pricing!!!:", pricing);
   const options = displayOptions(pricing);
 
   return (
-    <StandardPage
-      questionText={questionText}
-      additionalText={additionalText}
-      {...props}
-    >
+    <StandardPage questionText={questionText} additionalText={additionalText} {...props}>
       <Field
         component={DetailedRadioGroup}
         options={options}

@@ -22,7 +22,6 @@ export const UpdatePage = (props) => {
     maxWidth,
   } = props;
   const classes = useStyles();
-  console.log("UpdatePage", props);
 
   return (
     <UpdateLayout headerText={headerText} maxWidth={maxWidth}>

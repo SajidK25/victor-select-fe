@@ -82,7 +82,6 @@ export const UpdateLayout = (props) => {
     width: 580,
   };
 
-  console.log("UpdateLayout:", props);
   const { headerText, handleExit, maxWidth } = props;
   if (maxWidth) {
     layoutStyle.width = maxWidth;

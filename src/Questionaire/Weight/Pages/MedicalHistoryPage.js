@@ -146,18 +146,32 @@ const options = [
 ];
 
 const validateMedicalHistory = (values) => {
-  const errors = { medicalHistory: {} };
-  const s = values.medicalHistory;
+  const errors = {
+    medicalHistory: {},
+    checkError: "",
+  };
 
-  if (optionsAllFalse(options, values) && !s.none) {
+  const m = values.medicalHistory;
+  const details = "Please provide details";
+
+  if (optionsAllFalse(options, values) && !m.none) {
     errors.checkError = "Please select an option";
   }
+
+  options.forEach((o) => {
+    if (o.explain) {
+      const n = o.name.split(".");
+      const e = o.explain.split(".");
+      if (values[n[0]][n[1]] && !values[e[0]][e[1]]) {
+        errors[e[0]][e[1]] = details;
+      }
+    }
+  });
 
   return errors;
 };
 
-const questionText =
-  "Please check the appropriate box if you have a history of any of the following";
+const questionText = "Please check the appropriate box if you have a history of any of the following";
 const additionalText = "Check all that apply.";
 
 const noOptionField = "medicalHistory.none";
