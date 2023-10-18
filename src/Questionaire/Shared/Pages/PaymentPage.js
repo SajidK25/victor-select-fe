@@ -269,7 +269,7 @@ export const PaymentInfoPage = (props) => {
           thereafter until you cancel your prescription or your prescription expires. You can cancel your plan anytime
           by logging into your account.
           <div className={classes.disclaimer}>
-            A $1.00 temporary authorization by The Daily Dose Pharmacy may be placed in order to verify your card.
+            A $1.00 temporary authorization by CPRX pharmacy may be placed in order to verify your card.
           </div>
         </Grid>
       </Grid>
