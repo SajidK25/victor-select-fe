@@ -43,7 +43,9 @@ export const QHeader = (props) => {
           {page > 0 && <PreviousButton handleClick={() => handlePrevious(values)} />}
         </div>
         <div className={classes.centerBar}>
+        <a href="https://www.victoryselect.com/">
           <img src={bigLogo} alt="vs-big-logo" className={classes.biglogo} />
+          </a>
         </div>
         <div className={classes.rightBar}></div>
       </Toolbar>

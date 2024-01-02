@@ -3,5 +3,6 @@ export const AUTH_CONFIG = {
   domain: 'bakerman59.auth0.com',
   roleUrl: 'https://victoryselect-app/role',
   clientId: 'NPMYRH9oy4y6NZ6g4OK6DMyjBjG06QOr',
-  callbackUrl: 'http://localhost:3000/callback'
+  // callbackUrl: 'http://localhost:3000/callback' 
+  callbackUrl: 'https://app.victoryselect.com/callback'
 }

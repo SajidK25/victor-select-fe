@@ -42,7 +42,7 @@ export const WelcomeMessage = (props) => {
         feel you would benefit from {message.prescription.product.productName}.
       </p>
       <p>
-        Your prescription has been sent to The Daily Dose pharmacy and will be
+        your prescription has been sent to Victory Medical Center Pharmacy and will be
         mailed out directly to the address you provided.
       </p>
       <p>
