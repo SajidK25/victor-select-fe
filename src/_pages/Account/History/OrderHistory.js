@@ -1,64 +1,20 @@
-import { makeStyles } from "@material-ui/core";
+import { Typography, makeStyles } from "@material-ui/core";
 import React, { useContext } from "react";
 import { useQuery } from "react-apollo";
 import { ORDERLIST, } from "../../../Graphql/Orders";
 import { ErrorMessage, Loading } from "../../../_components";
 import OrderHisTableRow from "../../../_components/OrderHisTableRow";
 import { UserContext } from "../../../context/UserProvider";
-import { PATIENT_PRESCRIPTIONS } from "../../../Graphql";
 const useStyles = makeStyles({
     app: {
         background: "#000"
     },
-    noPadd: {
-        marginTop: "-1rem",
-    },
-    orrangeBox: {
-        background: "#ffa500",
-        color: "#fff",
-        fontWeight: "400",
-        borderRadius: "3px"
-    },
-    addPadd: {
-        padding: "7px 10px"
-    },
-    tableHead: {
-        display: "flex",
-        justifyContent: "space-between",
-        justifyItems: "center",
-        padding: "10px",
-        borderBottom: "2px solid #e1e1e1",
-        fontWeight: "400",
-        color: "#545643",
-    },
-    tableRow: {
-        display: "flex",
-        justifyContent: "space-between",
-        justifyItems: "center",
-        padding: "10px",
-        borderBottom: "2px solid #e1e1e1",
-        fontWeight: "400",
-        color: "#545643",
-        fontSize: "10px",
-        "&:hover": {
-            backgroundColor: '#F1DEDE'
-        }
-    },
-    textCenterAlign: {
-        textAlign: 'center'
-    },
-    tableData: {
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-    },
-    borderFull: {
-        borderRadius: "50%"
-    },
     heading: {
-        margin: 0,
-    },
-
+        fontSize: 20,
+        fontWeight: 500,
+        marginTop: 25,
+        marginBottom: 20,
+      },
     // Container styles
     container: {
         maxWidth: 10000,
@@ -135,91 +91,36 @@ const useStyles = makeStyles({
 });
 const OrderHistory = () => {
     const classes = useStyles();
-    const { count, me } = React.useContext(UserContext)
     const { loading, error: queryError, data } = useQuery(ORDERLIST, {
-        variables: { email: me.email,},
+        variables: { email: "fortesting@gmail.com", },
     });
-    // const { loading, error: queryError, data } = useQuery(ORDERLIST);
-    // console.log(me, 'providerRef')
-
+   
 
 
     if (loading) return <Loading />;
     if (queryError) return <ErrorMessage error={queryError} />;
+    if(data?.orderHistoryById.length ==0) return <Typography className={classes.heading}>No Current Order History</Typography>
     if (!data) return <p>No treatment plans</p>;
 
-    console.log({data, loading, queryError})
+    console.log({ data, loading, queryError })
     return <div className="">
         <h3 className={classes.firstHeading2}>ORDER HISTORY</h3>
-        {/* <div className={classes.orrangeBox}>
-            <p className={classes.addPadd}>Odrder History...</p>
-        </div> */}
-
-            {/* start here */}
-            <div className=''>
-                <div className={classes.table}>
-                    <div className={classes.tableHeader}>
-                        <div className={classes.headerItem}>Order Id</div>
-                        <div className={classes.headerItem}>Order Date</div>
-                        <div className={classes.headerItem}>Amount</div>
-                        <div className={classes.headerItem}>Email</div>
-                    </div>
-                    <div className="table-content">
-                        {/* <div className={classes.tableRow}>
-                            <div className={classes.tableData} style={{fontWeight:"400"}}>Tausif Ahmed</div>
-                            <div className={classes.tableData}>2</div>
-                            <div className={classes.tableData}>0</div>
-                            <div className={classes.tableData}>1</div>
-                            <div className={classes.tableData}>5</div>
-                        </div>
-                        <div className={classes.tableRow}>
-                            <div className={classes.tableData}>Dick</div>
-                            <div className={classes.tableData}>1</div>
-                            <div className={classes.tableData}>1</div>
-                            <div className={classes.tableData}>2</div>
-                            <div className={classes.tableData}>3</div>
-                        </div>
-                        <div className={classes.tableRow}>
-                            <div className={classes.tableData}>Harry</div>
-                            <div className={classes.tableData}>0</div>
-                            <div className={classes.tableData}>2</div>
-                            <div className={classes.tableData}>2</div>
-                            <div className={classes.tableData}>2</div>
-                        </div> */}
-                        {
-                            data?.orderHistoryById?.map(order=> <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                        }
-                        {
-                            data?.orderHistoryById?.map(order=> <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                        }
-                        {
-                            data?.orderHistoryById?.map(order=> <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                        }
-                        {
-                            data?.orderHistoryById?.map(order=> <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                        }
-                        {
-                            data?.orderHistoryById?.map(order=> <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                        }
-                        {
-                            data?.orderHistoryById?.map(order=> <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                        }
-                        {
-                            data?.orderHistoryById?.map(order=> <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                        }
-                        {
-                            data?.orderHistoryById?.map(order=> <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                        }
-                        {
-                            data?.orderHistoryById?.map(order=> <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                        }
-                    </div>
+        {/* start here */}
+        <div className=''>
+            <div className={classes.table}>
+                <div className={classes.tableHeader}>
+                    <div className={classes.headerItem}>Order Id</div>
+                    <div className={classes.headerItem}>Order Date</div>
+                    <div className={classes.headerItem}>Amount</div>
+                    <div className={classes.headerItem}>Email</div>
+                </div>
+                <div className="table-content">
+                    {
+                        data?.orderHistoryById?.map(order => <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
+                    }
                 </div>
             </div>
-        {/* {
-                data?.orderHistoryById?.map(order=> <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                // data?.orders.map(order=> <OrderHisTableRow key={order?.id} orderData={order} classes={classes} />)
-            } */}
+        </div>
     </div>
 }
 

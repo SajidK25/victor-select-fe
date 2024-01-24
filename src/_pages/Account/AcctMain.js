@@ -1,5 +1,5 @@
 import React from "react";
-import { Route ,Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { AcctLayout, PrivateRoute } from "../../_components";
 import { Treatments } from "./Treatments";
 import { AcctInfo } from "./AcctInfo";
@@ -10,20 +10,19 @@ export const AcctMain = () => {
   return (
     <>
       <AcctLayout>
-        <OrderHistory/>
         <Switch>
-          <PrivateRoute path="/account/home">
+          <PrivateRoute exact path="/account">
+            <OrderHistory />
+          </PrivateRoute>
+          <PrivateRoute exact path="/account/home">
             <Treatments />
           </PrivateRoute>
-          <PrivateRoute path="/account/info">
+          <PrivateRoute exact path="/account/info">
             <AcctInfo />
           </PrivateRoute>
-          <PrivateRoute path="/account/messages">
+          <PrivateRoute exact path="/account/messages">
             <TreatmentMessages />
           </PrivateRoute>
-          <Route path="/history">
-            <OrderHistory />
-          </Route>
         </Switch>
       </AcctLayout>
     </>
