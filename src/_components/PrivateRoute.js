@@ -5,9 +5,7 @@ import { ME_QUERY } from "../Graphql";
 
 export const PrivateRoute = ({ children, ...rest }) => {
   const { data } = useQuery(ME_QUERY);
-
   const me = data ? data.me : null;
-
   return (
     <Route
       {...rest}

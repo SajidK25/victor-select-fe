@@ -5,7 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 const useStyles = makeStyles((theme) => ({
   acctApp: {
     height: "100%",
-    overflow: "hidden",
+    overflow: "auto",
     position: "fixed",
     top: 0,
     right: 0,
@@ -26,9 +26,9 @@ const useStyles = makeStyles((theme) => ({
   },
   appContentInner: {
     padding: "0 13px",
-    width: 580,
+    width: 1000,
     maxWidth: "100%",
-    margin: "0 auto",
+    margin: "0 26%",
   },
   appMain: {
     position: "relative",
