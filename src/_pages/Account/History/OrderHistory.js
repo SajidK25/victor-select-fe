@@ -4,7 +4,7 @@ import { useQuery } from "react-apollo";
 import { ORDERLIST, } from "../../../Graphql/Orders";
 import { ErrorMessage, Loading } from "../../../_components";
 import OrderHisTableRow from "../../../_components/OrderHisTableRow";
-import { UserContext } from "../../../context/UserProvider";
+
 const useStyles = makeStyles({
     app: {
         background: "#000"
