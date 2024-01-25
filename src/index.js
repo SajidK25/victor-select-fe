@@ -7,7 +7,7 @@ import client from "./withData";
 
 const StartApp = () => (
   <ApolloProvider client={client}>
-    <App />
+      <App />
   </ApolloProvider>
 );
 
