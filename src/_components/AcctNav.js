@@ -117,8 +117,10 @@ const Header = () => {
 
   return (
     <div className={classes.header}>
+      <a href="https://www.victoryselect.com/">
       <img src={bigLogo} alt="vs-big-logo" className={classes.logo} />
       <div className={classes.spacer}></div>
+      </a>
     </div>
   );
 };
