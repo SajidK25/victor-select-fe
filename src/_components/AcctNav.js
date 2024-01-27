@@ -90,6 +90,7 @@ const MenuItem = ({ to, label }) => {
   return (
     <li className={classes.item}>
       <NavLink
+        exact
         to={to}
         className={classes.link}
         activeClassName={classes.active}
@@ -106,6 +107,7 @@ const Navigation = () => {
   return (
     <ul className={classes.list}>
       {/*     <MenuItem to="/account/home" label="Treatments" /> */}
+      <MenuItem to="/account" label="Order History" />
       <MenuItem to="/account/info" label="Account" />
       <MenuItem to="/account/messages" label="Messages" />
     </ul>

@@ -14,7 +14,7 @@ const useStyles = makeStyles({
         fontWeight: 500,
         marginTop: 25,
         marginBottom: 20,
-      },
+    },
     // Container styles
     container: {
         maxWidth: 10000,
@@ -62,13 +62,13 @@ const useStyles = makeStyles({
         textAlign: "center",
         textTransform: "",
         color: "#fff",
-        fontWeight:"bold",
+        fontWeight: "bold",
     },
 
     // Filter link styles
     filterLink: {
         color: "#fff",
-        fontWeight:"bold",
+        fontWeight: "bold",
         textDecoration: "none",
         position: "relative",
         display: "inline-block",
@@ -86,7 +86,7 @@ const useStyles = makeStyles({
             top: "50%",
             transform: "translateY(-50%)",
         },
-        
+
     },
 });
 const OrderHistory = () => {
@@ -94,30 +94,30 @@ const OrderHistory = () => {
     const { loading, error: queryError, data } = useQuery(ORDERLIST, {
         variables: { email: "fortesting@gmail.com", },
     });
-   
-
 
     if (loading) return <Loading />;
     if (queryError) return <ErrorMessage error={queryError} />;
-    if(data?.orderHistoryById.length ==0) return <Typography className={classes.heading}>No Current Order History</Typography>
+    if (data?.orderHistoryById.length == 0) return <Typography className={classes.heading}>No Current Order History</Typography>
     if (!data) return <p>No treatment plans</p>;
 
     console.log({ data, loading, queryError })
-    return <div className="">
-        <h3 className={classes.firstHeading2}>ORDER HISTORY</h3>
-        {/* start here */}
-        <div className=''>
-            <div className={classes.table}>
-                <div className={classes.tableHeader}>
-                    <div className={classes.headerItem}>Order Id</div>
-                    <div className={classes.headerItem}>Order Date</div>
-                    <div className={classes.headerItem}>Amount</div>
-                    <div className={classes.headerItem}>Email</div>
-                </div>
-                <div className="table-content">
-                    {
-                        data?.orderHistoryById?.map(order => <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
-                    }
+    return <div>
+        <div className="">
+            <h3 className={classes.firstHeading2}>ORDER HISTORY</h3>
+            {/* start here */}
+            <div className=''>
+                <div className={classes.table}>
+                    <div className={classes.tableHeader}>
+                        <div className={classes.headerItem}>Order Id</div>
+                        <div className={classes.headerItem}>Order Date</div>
+                        <div className={classes.headerItem}>Status</div>
+                        <div className={classes.headerItem}>Email</div>
+                    </div>
+                    <div className="table-content">
+                        {
+                            data?.orderHistoryById?.map(order => <OrderHisTableRow key={order?.id} order={order} classes={classes} />)
+                        }
+                    </div>
                 </div>
             </div>
         </div>
