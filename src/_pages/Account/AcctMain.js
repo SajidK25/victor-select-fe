@@ -5,6 +5,7 @@ import { Treatments } from "./Treatments";
 import { AcctInfo } from "./AcctInfo";
 import { TreatmentMessages } from "./Messages";
 import OrderHistory from "./History/OrderHistory";
+import RXRender from "../../_components/RXRender";
 
 export const AcctMain = () => {
   return (
@@ -12,6 +13,7 @@ export const AcctMain = () => {
       <AcctLayout>
         <Switch>
           <PrivateRoute exact path="/account">
+            <RXRender/>
             <OrderHistory />
           </PrivateRoute>
           <PrivateRoute exact path="/account/home">
