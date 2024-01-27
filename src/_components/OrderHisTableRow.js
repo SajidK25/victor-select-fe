@@ -8,7 +8,7 @@ const OrderHisTableRow = ({ order, classes }) => {
             <div className={classes.tableData}>
                 <GetDateAndTimeIntoIso isoString={createdAt}/>
             </div>
-            <div className={classes.tableData} style={{fontWeight:"400"}}>${amount.toFixed(2)}</div>
+            // <div className={classes.tableData} style={{fontWeight:"400"}}>${amount.toFixed(2)}</div>
             <div className={classes.tableData}>{ status}</div>
             <div className={classes.tableData}>{ user?.email }</div>
         </div>
