@@ -110,7 +110,6 @@ const OrderHistory = () => {
                     <div className={classes.tableHeader}>
                         <div className={classes.headerItem}>Order Id</div>
                         <div className={classes.headerItem}>Order Date</div>
-                        <div className={classes.headerItem}>Amount</div>
                         <div className={classes.headerItem}>Status</div>
                         <div className={classes.headerItem}>Email</div>
                     </div>
