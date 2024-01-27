@@ -90,6 +90,7 @@ const MenuItem = ({ to, label }) => {
   return (
     <li className={classes.item}>
       <NavLink
+        exact
         to={to}
         className={classes.link}
         activeClassName={classes.active}
