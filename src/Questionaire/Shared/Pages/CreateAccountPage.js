@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory, useParams, useLocation } from "react-router-dom";
 import { useMutation } from "@apollo/react-hooks";
 import { Form, Field } from "react-final-form";
@@ -17,6 +17,8 @@ import { getQuestionaire } from "../../questionPaths";
 import { logReactGAEvent } from "../../../analytics";
 import { REGISTER_MUTATION, ME_QUERY } from "../../../Graphql";
 import { setAccessToken } from "../../../accessToken";
+import { VisitStartLoginPage } from "./VisitStartLoginPage";
+import { Checkbox } from "@material-ui/core";
 
 const initialData = {
   email: "",
@@ -39,7 +41,11 @@ const validateCreateAccount = (values) => {
   }
   if (!values.password) {
     errors.password = "Password is required";
-  } else if (!/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(values.password)) {
+  } else if (
+    !/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[a-zA-Z]).{8,16}$/gm.test(
+      values.password
+    )
+  ) {
     errors.password = `Password must include at least 8 chars., 
                    contain at least 1 uppercase letter, 1 lowercase letter and 1 number`;
   }
@@ -62,14 +68,33 @@ export const CreateAccountPage = () => {
   const { id } = useParams();
   const location = useLocation();
 
+  const [isAccount, setIsAccount] = useState(false);
+
   const questionaire = getQuestionaire(id);
   const pathBase = questionaire.pathBase;
   setCurrentProducts(questionaire.type);
-  logReactGAEvent({ category: `${questionaire.type} visit`, action: `Looking at registration` });
+  logReactGAEvent({
+    category: `${questionaire.type} visit`,
+    action: `Looking at registration`,
+  });
 
   const [register, { error: mutationError }] = useMutation(REGISTER_MUTATION);
 
-  return (
+  const handleChange = (event) => {
+    console.log(event.target);
+    setIsAccount(!isAccount);
+  };
+  return isAccount ? (
+    <VisitStartLoginPage
+      handleChange={handleChange}
+      isAccount={isAccount}
+      setIsAccount={setIsAccount}
+      pathBase={pathBase}
+      questionaire={questionaire}
+      logReactGAEvent={logReactGAEvent}
+      history={history}
+    />
+  ) : (
     <Form
       initialValues={initialData}
       validate={validateCreateAccount}
@@ -95,7 +120,10 @@ export const CreateAccountPage = () => {
             },
           });
           if (response && response.data) {
-            logReactGAEvent({ category: `${questionaire.type} visit`, action: `Started Visit` });
+            logReactGAEvent({
+              category: `${questionaire.type} visit`,
+              action: `Started Visit`,
+            });
             //     if (response.data.register.message !== "EXISTS") {
             setAccessToken(response.data.register.accessToken);
             history.push(pathBase);
@@ -164,10 +192,32 @@ export const CreateAccountPage = () => {
               </Grid>
             </Grid>
             <Grid item xs={12}>
-              <Field name="accept" component={RenderSimpleCheckbox} label={<Legal />} />
+              <Field
+                name="accept"
+                component={RenderSimpleCheckbox}
+                label={<Legal />}
+              />
               <Field name="checkError" component={RenderCheckError} />
             </Grid>
           </StandardPage>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+          >
+            <div>
+              <Checkbox
+                checked={isAccount}
+                onChange={handleChange}
+                inputProps={{ "aria-label": "controlled" }}
+              />
+              <span style={{ fontWeight: "bold" }}>
+                I have an already account!
+              </span>
+            </div>
+          </div>
         </QuestionaireLayout>
       )}
     </Form>
