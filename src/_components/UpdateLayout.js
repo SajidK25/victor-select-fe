@@ -8,9 +8,11 @@ const useStyles = makeStyles((theme) => ({
     flex: 1,
     [theme.breakpoints.up(1280)]: {
       paddingTop: 60,
+      paddingBottom: 50,
     },
     [theme.breakpoints.down(1279)]: {
       paddingTop: 110,
+      paddingBottom: 50,
     },
   },
   header: {
@@ -56,7 +58,8 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     display: "flex",
     flexDirection: "column",
-    height: "100%",
+    // height: "60%",
+
     background: "rgb(255,255,255)",
   },
 }));

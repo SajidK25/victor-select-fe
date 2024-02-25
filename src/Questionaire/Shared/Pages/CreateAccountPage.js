@@ -68,7 +68,7 @@ export const CreateAccountPage = () => {
   const { id } = useParams();
   const location = useLocation();
 
-  const [isAccount, setIsAccount] = useState(false);
+  const [isAccount, setIsAccount] = useState(true);
 
   const questionaire = getQuestionaire(id);
   const pathBase = questionaire.pathBase;

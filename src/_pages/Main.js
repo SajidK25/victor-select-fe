@@ -14,6 +14,7 @@ import {
 } from "./Account/AcctInfo";
 import { Chat } from "./Account/Messages";
 import { AcctMain } from "./Account";
+import RXRender from "../_components/RXRender";
 
 const useStyles = makeStyles({
   app: {
@@ -57,6 +58,7 @@ export const Main = () => {
         </Route>
         <Route path={`/visitStart/:id`}>
           <CreateAccountPage />
+          <RXRender />
         </Route>
         <Route path={`/comingsoon/:id`}>
           <ComingSoon />

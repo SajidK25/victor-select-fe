@@ -99,59 +99,63 @@ export const VisitStartLoginPage = ({
   };
 
   return (
-    <UpdatePage
-      headerText="Login"
-      initialValues={initialValues}
-      validate={validate}
-      onSubmit={Submit}
-      buttonText="Login"
-      maxWidth={400}
-    >
-      <div className={classes.heading}>Member Login</div>
-      <ErrorMessage error={mutationError} />
-      <div className={classes.fieldContainer}>
-        <Field
-          component={RenderStdTextField}
-          id="email"
-          type="email"
-          name="email"
-          label="Email"
-          fullWidth
-          autoComplete="email"
-        />
-      </div>
-      <div className={classes.fieldContainer}>
-        <Field
-          component={RenderStdTextField}
-          id="password"
-          type="password"
-          name="password"
-          label="Password"
-          autoComplete="password"
-          fullWidth
-        />
-      </div>
-      <div className={classes.buttonLink}>
-        <Link to="request-reset" className={classes.forgotButton}>
-          Forgot Password?
-        </Link>
-      </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
+    <>
+      <UpdatePage
+        headerText="Login"
+        initialValues={initialValues}
+        validate={validate}
+        onSubmit={Submit}
+        buttonText="Login"
+        maxWidth={400}
       >
-        <div>
-          <Checkbox
-            checked={isAccount}
-            onChange={handleChange}
-            inputProps={{ "aria-label": "controlled" }}
+        <div className={classes.heading}>Member Login</div>
+        <ErrorMessage error={mutationError} />
+        <div className={classes.fieldContainer}>
+          <Field
+            component={RenderStdTextField}
+            id="email"
+            type="email"
+            name="email"
+            label="Email"
+            fullWidth
+            autoComplete="email"
           />
-          <span style={{ fontWeight: "bold" }}>I have an already account!</span>
         </div>
-      </div>
-    </UpdatePage>
+        <div className={classes.fieldContainer}>
+          <Field
+            component={RenderStdTextField}
+            id="password"
+            type="password"
+            name="password"
+            label="Password"
+            autoComplete="password"
+            fullWidth
+          />
+        </div>
+        <div className={classes.buttonLink}>
+          <Link to="request-reset" className={classes.forgotButton}>
+            Forgot Password?
+          </Link>
+        </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div>
+            <Checkbox
+              checked={isAccount}
+              onChange={handleChange}
+              inputProps={{ "aria-label": "controlled" }}
+            />
+            <span style={{ fontWeight: "bold" }}>
+              I have an already account!
+            </span>
+          </div>
+        </div>
+      </UpdatePage>
+    </>
   );
 };
