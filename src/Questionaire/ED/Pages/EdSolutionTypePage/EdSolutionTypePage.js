@@ -33,7 +33,7 @@ const displayOptions = () => {
         title: '"Weekend Getaway" (36-48 hours)',
         product: [
           {
-            title: "EROS (Tadalafil*/Cialis + Apomorphine)",
+            title: "EROS (Tadalafil*/Cialis + Oxytocin (love drug) and PT-141 (sexual stimulant))",
             description: ` our specialty combination drug can last up to 48 hours and takes effect within 45 minutes.`,
           },
           {
@@ -51,7 +51,7 @@ const displayOptions = () => {
         title: '"Intimate Rendezvous" (4-6 hours)',
         product: [
           {
-            title: "Romeo (Sildenafil*/Viagra + Apomorphine)",
+            title: "Romeo (Sildenafil*/Viagra + Oxytocin (love drug) and PT-141 (sexual stimulant))",
             description: ` our specialty combination drug can last up to 6 hours and is likely to 
               have an onset of action in as little as 30 minutes.`,
           },

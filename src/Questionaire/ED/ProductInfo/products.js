@@ -19,7 +19,7 @@ const drugSelections = [
       label: "EROS",
       description: `Eros is a cutting edge formulation unlike any other medication currently available anywhere 
                     for the treatment of Erectile Dysfunction. 
-                    Prescription strength Tadalafil (Cialis) and Apomorphine
+                    Prescription strength Tadalafil (Cialis) and Oxytocin (love drug) and PT-141 (sexual stimulant)
                     are combined to create a super drug with a duration 
                     of action up to 48 hours.`,
       price: 18.75,
@@ -138,7 +138,7 @@ const drugSelections = [
       label: "ROMEO",
       description: `Romeo is a combination product utilizing prescription 
                     strength Sildenafil (Viagra) as the primary component 
-                    in conjunction with Apomorphine. Romeo is enhanced to 
+                    in conjunction with Oxytocin (love drug) and PT-141 (sexual stimulant). Romeo is enhanced to 
                     be more effective than Viagra alone with a duration of 
                     action up to 6 hours.`,
       price: 10,
